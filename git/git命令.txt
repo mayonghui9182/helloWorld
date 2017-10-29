@@ -1,0 +1,57 @@
+git config --global user.name "Your Name" 设置名字
+$ git config --global user.email "email@example.com" 设置email
+mkdir
+cd
+pwd
+cat
+git init 在所在文件夹下简历仓库
+git push origin --delete Su-modify 删除远程分支
+git add 文件名  把文件放进仓库
+git commit -m "提交描述" 文件名 把文件提交到仓库
+git status 查看工作区状态 
+git diff 文件名 查看文件修改内容
+git log 可以查看提交历史，以便确定要回退到哪个版本。
+git reflog查看命令历史，以便确定要回到未来的哪个版本
+git checkout -- file  用版本库里的版本替换工作区的版本
+git reset HEAD file 丢弃添加到了暂存区的某个文件的内容，回到工作去，再用上一步git checkout -- file恢复到修改之前的状态。
+git reset --hard commit_id Git 回退命令,允许我们在版本的历史之间穿梭
+git rm 删除一个文件（包括版本库里）
+ssh-keygen -t rsa -C "youremail@example.com" 生成rsa密钥
+git remote add origin git@server-name:path/repo-name.git 关联远程仓库
+git push -u origin master 第一次推送master分支的所有内容，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
+git push origin master 	推送最新修改
+git push origin branch-name 从本地推送分支
+git clone git@github.com:michaelliao/gitskills.git 把远程仓库克隆到本地
+git branch 查看分支
+git branch <name> 创建分支
+git checkout <name> 切换分支
+git checkout -b <name> 创建+切换分支
+git merge <name> 合并某分支到当前分支
+git branch -d <name> 删除分支
+git log --graph 命令可以看到分支合并图。
+git commit -m "conflict fixed" 解决冲突，删除所有冲突标记，再git add readme.txt，然后git commit -m "conflict fixed"
+git merge --no-ff -m "merge with no-ff" dev 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾		经做过合并，而fast forward合并就看不出来曾经做过合并。
+git stash 存储当前工作区内容
+git stash apply 恢复工作区内容
+git stash drop 删除工作区内容
+git stash pop，恢复的同时把stash内容也删了工作区内容
+git stash list	查看存储的工作现场
+git branch -D <name>强行删除没有被合并过的分支
+git remote 查看远程库的信息 加上参数 -v 显示详细信息git remote -v
+git checkout -b branch-name origin/branch-name 在本地创建和远程分支对应的分支，本地和远程分支的名称最好一致
+git branch --set-upstream branch-name origin/branch-name 建立本地分支和远程分支的关联
+git push origin branch-name 从本地推送分支
+git tag v1.0 打标签
+git tag v0.9 6224937 在id为6224937的commit打上标签
+git tag  -a v0.1 -m "version 0.1 released" 3628164 创建带有说明的标签，用-a指定标签名，-m指定说明文字
+git tag -s v0.2 -m "signed version 0.2 released" fec145a 通过-s用私钥签名一个标签，签名采用PGP签名，因此，必须首先安装gpg（	GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：
+git tag 查看标签
+git show v0.9  查看标签详细信息
+git tag -d v0.1 删除标签
+git push origin <tagname> 推送某个标签到远程
+git push origin --tags 一次性推送全部尚未推送到远程的本地标签
+git push origin :refs/tags/<tagname> 从远程删除标签
+.gitignore 忽略某些文件,文件本身要放到版本库里，并且可以对.gitignore做版本管理！
+git config --global alias.st status 为status创建别名st，--global针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。配置文件放哪了？每个仓库的Git配置文件都放在.git/config文件中，配置别名也可以直接修改这个文件，如果改错了，可以删掉文件重新通过命令配置。
+
+搭建服务器：	https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000

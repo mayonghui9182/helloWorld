@@ -1,0 +1,30 @@
+	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	   <!--pom 版本-->
+	  <modelVersion>4.0.0</modelVersion>
+	  <!--组id  
+	     maven 用坐标概念来标识 jar包
+		  坐标=groupId+artifactId+version
+	  -->
+	  <groupId>cn.itcast.maven</groupId>
+	  <!--构建物id ：产品id-->
+	  <artifactId>Hello</artifactId>
+	  <!--版本 ：SNAPSHOT :测试版本 ，镜像版本   release ：发行版本，最终版本-->
+	  <version>0.0.1-SNAPSHOT</version>
+	  <!--发布的是jar包  ，默认是jar包，也可以使war包等-->
+	  <packaging>jar</packaging>
+	  <!--项目名称 ，可写可不写-->
+	  <name>Hello</name>
+		<dependencies>
+		  <!--jar包声明式依赖  依赖  junit4.9jar包-->
+			<dependency>
+			   <!--用坐标来标识jar包： 坐标=groupId+artifactId+version -->
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.9</version>
+				<!--依赖的jar包的使用范围 ： 当测试时使用该jar包
+				    test 、 compile（默认）  
+				-->
+				<scope>test</scope>
+			</dependency>		
+		</dependencies>
+	</project>
