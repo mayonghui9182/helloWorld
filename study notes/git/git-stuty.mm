@@ -19,6 +19,34 @@
 </html></richcontent>
 </node>
 </node>
+<node CREATED="1509373512012" ID="ID_1352543521" MODIFIED="1509373516793" TEXT="&#x4e2d;&#x6587;&#x4e71;&#x7801;&#x95ee;&#x9898;">
+<node CREATED="1509373521867" ID="ID_1373776847" MODIFIED="1509373578157" TEXT="windows&#x5e73;&#x53f0;&#x4e0b;git status&#x4e2d;&#x6587;&#x4e71;&#x7801; ">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="rgb(51, 51, 51)" face="Source Code Pro, monospace" size="12.6px">git config --</font><font color="rgb(0, 0, 136)" face="Source Code Pro, monospace" size="12.6px">global</font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace" size="12.6px">&#160;core.quotepath </font><font color="rgb(0, 0, 136)" face="Source Code Pro, monospace" size="12.6px">false</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1509373580435" ID="ID_498816502" MODIFIED="1509373675265" TEXT="ls &#x4e2d;&#x6587;&#x4e71;&#x7801;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="rgb(0, 0, 136)" face="Source Code Pro, monospace" size="12.6px">alias </font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace" size="12.6px">ls=</font><font color="rgb(0, 136, 0)" face="Source Code Pro, monospace" size="12.6px">'ls --show-control-chars --color=auto'</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
 <node CREATED="1509283514150" ID="ID_1657378757" MODIFIED="1509283547399" STYLE="bubble" TEXT="&#x5168;&#x5c40;&#x53d8;&#x91cf;">
 <node CREATED="1509284637008" ID="ID_935159230" MODIFIED="1509290663052" TEXT="git config ">
 <richcontent TYPE="NOTE"><html>
