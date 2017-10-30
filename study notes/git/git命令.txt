@@ -63,7 +63,7 @@ git push origin branch-name 从本地推送分支
 git tag v1.0 打标签
 git tag v0.9 6224937 在id为6224937的commit打上标签
 git tag  -a v0.1 -m "version 0.1 released" 3628164 创建带有说明的标签，用-a指定标签名，-m指定说明文字
-git tag -s v0.2 -m "signed version 0.2 released" fec145a 通过-s用私钥签名一个标签，签名采用PGP签名，因此，必须首先安装gpg（	GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：
+git tag -s v0.2 -m "signed version 0.2 released" fec145a 通过-s用私钥签名一个标签，签名采用PGP签名，因此，必须首先安装gpg（	GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错： 
 git tag 查看标签
 git show v0.9  查看标签详细信息
 git tag -d v0.1 删除标签
@@ -74,6 +74,6 @@ git push origin :refs/tags/<tagname> 从远程删除标签
 git config --global alias.st status 为status创建别名st，--global针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。配置文件放哪了？每个仓库的Git配置文件都放在.git/config文件中，配置别名也可以直接修改这个文件，如果改错了，可以删掉文件重新通过命令配置。
 
 
-
+                                                                                                                                                                                                     
 
 搭建服务器：	https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000
