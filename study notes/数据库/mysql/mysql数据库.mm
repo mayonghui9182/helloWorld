@@ -15,8 +15,7 @@
       &#22235;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509354539198" ID="ID_1318049258" MODIFIED="1509362333850" STYLE="bubble" TEXT="select&#x5b50;&#x53e5;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -30,8 +29,7 @@
       &#9313;coun&#65288;*&#65289;&#25110;coun&#65288;&#23383;&#27573;&#21517;&#65289;&#25442;&#25104;count&#65288;1&#65289;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509354548045" ID="ID_1886216203" MODIFIED="1509362333864" STYLE="bubble" TEXT="from&#x5b50;&#x53e5;">
 <richcontent TYPE="NOTE"><html>
@@ -49,8 +47,7 @@
       2)&#22914;&#26524;&#19977;&#20010;&#34920;&#26159;&#26377;&#20851;&#31995;&#30340;&#35805;&#65292;&#23558;&#24341;&#29992;&#26368;&#22810;&#30340;&#34920;&#65292;&#25918;&#22312;&#26368;&#21518;&#65292;&#28982;&#21518;&#20381;&#27425;&#31867;&#25512;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509354559437" ID="ID_650438077" MODIFIED="1509362333875" STYLE="bubble" TEXT="where&#x5b50;&#x53e5;">
 <richcontent TYPE="NOTE"><html>
@@ -68,8 +65,7 @@
       &#21487;&#20197;&#29992;exists&#20195;&#26367;in&#65292;&#29992;union&#20195;&#26367;or
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509354150610" ID="ID_892795197" MODIFIED="1509362333886" STYLE="bubble" TEXT="delete&#x4f18;&#x5316;">
@@ -82,8 +78,7 @@
       <font color="rgb(51, 51, 51)" face="Microsoft Yahei">truncate&#160;&#20195;&#26367;delete</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509357535655" ID="ID_617022400" MODIFIED="1509362333895" STYLE="bubble" TEXT="where">
 <richcontent TYPE="NOTE"><html>
@@ -98,8 +93,7 @@
       &#9313;&#29992;where&#20195;&#26367;having
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509354107738" ID="ID_500269236" MODIFIED="1509358781102" POSITION="left" STYLE="bubble" TEXT="&#x5b58;&#x50a8;&#x4f18;&#x5316;">
@@ -127,10 +121,9 @@
       &#36873;&#25321;&#27491;&#30830;&#30340;&#23384;&#20648;&#24341;&#25806;&#65292;MyISAM &#36866;&#21512;&#20110;&#19968;&#20123;&#38656;&#35201;&#22823;&#37327;&#26597;&#35810;&#30340;&#24212;&#29992;&#65292;InnoDB&#22312;&#20889;&#25805;&#20316;&#27604;&#36739;&#22810;&#30340;&#26102;&#20505;&#65292;&#20250;&#26356;&#20248;&#31168;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
-<node CREATED="1509358844343" FOLDED="true" ID="ID_1725742729" MODIFIED="1509370513044" POSITION="right" TEXT="&#x51fd;&#x6570;">
+<node CREATED="1509358844343" FOLDED="true" ID="ID_1725742729" MODIFIED="1509540008955" POSITION="right" TEXT="&#x51fd;&#x6570;">
 <node CREATED="1509364053666" FOLDED="true" ID="ID_362672860" MODIFIED="1509369622275" TEXT="&#x65e5;&#x671f;&#x51fd;&#x6570;">
 <node CREATED="1509359963835" ID="ID_730053110" MODIFIED="1509364050694" TEXT="&#x65e5;&#x671f;&#x52a0;&#x65f6;&#x95f4;&#x95f4;&#x9694; DATA_ADD()">
 <richcontent TYPE="NOTE"><html>
@@ -598,8 +591,7 @@
       date &#21442;&#25968;&#26159;&#21512;&#27861;&#30340;&#26085;&#26399;&#34920;&#36798;&#24335;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509363180399" ID="ID_594550643" MODIFIED="1509364050881" TEXT="&#x8fd4;&#x56de;&#x65e5;&#x671f;/&#x65f6;&#x95f4;&#x7684;&#x5355;&#x72ec;&#x90e8;&#x5206; EXTRACT() ">
 <richcontent TYPE="NOTE"><html>
@@ -787,8 +779,7 @@
       <font color="rgb(0, 0, 0)" face="Verdana, Arial, Helvetica, sans-serif" size="14px">left&#65288;&#34987;&#25130;&#21462;&#23383;&#27573;&#65292;&#25130;&#21462;&#38271;&#24230;&#65289;&#160;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509368728361" ID="ID_874445563" MODIFIED="1509369209668" TEXT="&#x4ece;&#x53f3;&#x5f00;&#x59cb;&#x622a;&#x53d6; right(str, length)">
 <richcontent TYPE="NOTE"><html>
@@ -800,8 +791,7 @@
       <font color="rgb(0, 0, 0)" face="Verdana, Arial, Helvetica, sans-serif" size="14px">right&#65288;&#34987;&#25130;&#21462;&#23383;&#27573;&#65292;&#25130;&#21462;&#38271;&#24230;&#65289;&#160;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509368728361" ID="ID_1068588797" MODIFIED="1509369201886" TEXT="&#x622a;&#x53d6;&#x5b57;&#x7b26;&#x4e32; substring (str, pos)/substring (str, pos, length)">
 <richcontent TYPE="NOTE"><html>
@@ -813,8 +803,7 @@
       <font color="rgb(0, 0, 0)" face="Verdana, Arial, Helvetica, sans-serif" size="14px">substring&#65288;str, pos&#65289;&#160;<br align="start" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)" />substring&#65288;str, pos, length&#65289;&#160;<br align="start" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)" />&#35828;&#26126;&#65306;substring&#65288;&#34987;&#25130;&#21462;&#23383;&#27573;&#65292;&#20174;&#31532;&#20960;&#20301;&#24320;&#22987;&#25130;&#21462;&#65289;&#160;<br align="start" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)" />substring&#65288;&#34987;&#25130;&#21462;&#23383;&#27573;&#65292;&#20174;&#31532;&#20960;&#20301;&#24320;&#22987;&#25130;&#21462;&#65292;&#25130;&#21462;&#38271;&#24230;&#65289;&#160;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509368728361" ID="ID_1141339143" MODIFIED="1509369098754" STYLE="bubble" TEXT="&#x6309;&#x5173;&#x952e;&#x5b57;&#x622a;&#x53d6;&#x5b57;&#x7b26;&#x4e32; substring_index(str,delim,count)">
 <richcontent TYPE="NOTE"><html>
@@ -832,8 +821,7 @@
       <font color="rgb(0, 0, 0)" face="Verdana, Arial, Helvetica, sans-serif">&#27880;&#65306;&#22914;&#26524;&#20851;&#38190;&#23383;&#20986;&#29616;&#30340;&#27425;&#25968;&#26159;&#36127;&#25968; &#22914;-2 &#21017;&#26159;&#20174;&#21518;&#20498;&#25968;&#65292;&#21040;&#23383;&#31526;&#20018;&#32467;&#26463;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge COLOR="#808080" STYLE="bezier" WIDTH="thin"/>
 </node>
 <node CREATED="1509369319426" ID="ID_770462761" MODIFIED="1509369402616" TEXT="&#x622a;&#x53d6;&#x5b57;&#x7b26;&#x4e32; substr(string string,num start,num length);">
@@ -849,8 +837,7 @@
       <font color="rgb(0, 0, 0)" face="Verdana, Arial, Helvetica, sans-serif" size="14px">&#20174;start&#24320;&#22987;&#65292;&#25130;&#21462;string&#65292;&#25130;&#21462;length&#38271;&#24230;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509369417561" ID="ID_1646088749" MODIFIED="1509369421053" TEXT="&#x5b57;&#x7b26;&#x4e32;&#x5b9a;&#x4f4d;">
@@ -867,8 +854,7 @@
       <font color="rgb(51, 51, 51)" face="Consolas, Courier New, Courier, monospace" size="14px">&#23450;&#20301;String&#23383;&#31526;&#20018;&#20013;localStr&#30340;&#32034;&#24341;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -906,8 +892,7 @@
       &#26080;&#31526;&#21495;&#25972;&#25968; : UNSIGNED
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509370354847" ID="ID_1911774506" MODIFIED="1509370381633" TEXT="CAST(value as type)"/>
 <node CREATED="1509370361743" ID="ID_794711330" MODIFIED="1509370402744" TEXT="CONVERT(value, type) "/>
 </node>
@@ -926,8 +911,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509369873420" ID="ID_1239372717" MODIFIED="1509369928815" TEXT="&#x53d6;&#x6a21; MOD(N,M)">
 <richcontent TYPE="NOTE"><html>
@@ -942,8 +926,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509369931435" ID="ID_4751904" MODIFIED="1509369962069" TEXT="&#x4e0d;&#x5927;&#x4e8e;X&#x7684;&#x6700;&#x5927;&#x6b63;&#x6574;&#x6570; FLOOR(X)"/>
 <node CREATED="1509369971499" ID="ID_1787563041" MODIFIED="1509369980821" TEXT="&#x4e0d;&#x5c0f;&#x4e8e; X &#x7684;&#x6700;&#x5c0f;&#x6574;&#x6570; CEILING(X)"/>
@@ -961,12 +944,11 @@
       &#21442;&#32771; https://www.w3cschool.cn/mysql/b7g51pun.html
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
-<node CREATED="1509359711054" FOLDED="true" ID="ID_1756326273" MODIFIED="1509369625427" POSITION="right" TEXT="&#x547d;&#x4ee4;">
+<node CREATED="1509359711054" FOLDED="true" ID="ID_1756326273" MODIFIED="1509540006978" POSITION="right" TEXT="&#x547d;&#x4ee4;">
 <node CREATED="1509359719150" ID="ID_1065489424" MODIFIED="1509359734650" TEXT="&#x542f;&#x52a8;&#x5173;&#x95ed;">
 <node CREATED="1509359737574" ID="ID_1902879490" MODIFIED="1509359749752" TEXT="&#x542f;&#x52a8;net start mysql"/>
 <node CREATED="1509359750997" ID="ID_187984783" MODIFIED="1509359770799" TEXT="&#x5173;&#x95ed;net stop mysql"/>
@@ -982,8 +964,7 @@
       &#28982;&#21518;&#25968;&#25454;&#23494;&#30721;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509359867484" ID="ID_1938325133" MODIFIED="1509360494930" TEXT="&#x6570;&#x636e;&#x5e93;&#x547d;&#x4ee4;">
@@ -998,8 +979,7 @@
       create database dbname&#160;&#160;default character set utf8
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509360706443" ID="ID_1542490626" MODIFIED="1509361544965" TEXT="&#x67e5;&#x8be2;&#x6570;&#x636e;&#x5e93;&#x9ed8;&#x8ba4;&#x7f16;&#x7801;&#x96c6; show create database dbname;"/>
 <node CREATED="1509360825865" ID="ID_1992339796" MODIFIED="1509360832020" TEXT="&#x4fee;&#x6539;&#x6570;&#x636e;&#x5e93;alter database day15 default character set gbk;"/>
@@ -1020,8 +1000,7 @@
       3&#12289;status&#65292;&#26597;&#35810;&#20986;&#26469;&#30340;&#32467;&#26524;&#20013;&#26377;&#19968;&#34892;&#26159;currrent database: XXX&#12290;&#36825;&#37324;XXX&#23601;&#26159;&#24403;&#21069;&#25152;&#29992;&#30340;&#25968;&#25454;&#24211;&#21517;&#31216;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509359932867" ID="ID_405169651" MODIFIED="1509361549293" TEXT="&#x5207;&#x6362;&#x6570;&#x636e;&#x5e93;use dbname;"/>
 </node>
@@ -1038,8 +1017,7 @@
       create database dbname&#160;&#160;default character set utf8
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509361486697" ID="ID_1984149638" MODIFIED="1509361533139" TEXT="&#x67e5;&#x770b;&#x8868;&#x7ed3;&#x6784; dscr tbname;"/>
 <node CREATED="1509360706443" ID="ID_358406971" MODIFIED="1509360794698" TEXT="&#x67e5;&#x8be2;&#x6570;&#x636e;&#x5e93;&#x9ed8;&#x8ba4;&#x7f16;&#x7801;&#x96c6; show create database dbname&#xff1b;"/>
@@ -1065,8 +1043,7 @@
       5&#12289;&#26356;&#25913;&#34920;&#21517;&#160;&#160;alter table student rename to teacher;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509360835625" ID="ID_1995472302" MODIFIED="1509361605424" TEXT="&#x5220;&#x9664;&#x8868; drop table student;"/>
 <node CREATED="1509361049431" ID="ID_609270228" MODIFIED="1509362333949" TEXT="&#x67e5;&#x8be2;&#x5f53;&#x524d;&#x6570;&#x636e;&#x5e93;">
@@ -1085,8 +1062,7 @@
       3&#12289;status&#65292;&#26597;&#35810;&#20986;&#26469;&#30340;&#32467;&#26524;&#20013;&#26377;&#19968;&#34892;&#26159;currrent database: XXX&#12290;&#36825;&#37324;XXX&#23601;&#26159;&#24403;&#21069;&#25152;&#29992;&#30340;&#25968;&#25454;&#24211;&#21517;&#31216;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509359932867" ID="ID_1340682943" MODIFIED="1509360805574" TEXT="&#x5207;&#x6362;&#x6570;&#x636e;&#x5e93;use dbname&#xff1b;"/>
 </node>
@@ -1199,8 +1175,7 @@
       Uptime &#26381;&#21153;&#22120;&#24037;&#20316;&#20102;&#22810;&#23569;&#31186;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -1221,8 +1196,7 @@
       &#160;&#35302;&#21457;&#20869;&#23481;&#65307;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509362136427" FOLDED="true" ID="ID_1970789092" MODIFIED="1509369638339" POSITION="left" TEXT="&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
@@ -1281,8 +1255,7 @@
       DROP PROCEDURE pro_testOut;<o p="#DEFAULT"></o>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509362353120" ID="ID_858078046" MODIFIED="1509362632259" TEXT="&#x53d8;&#x91cf;">
 <richcontent TYPE="NOTE"><html>
@@ -1330,8 +1303,7 @@
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;--&#23450;&#20041;&#19968;&#20010;&#23616;&#37096;&#21464;&#37327;&#65306; DECLARE i INT DEFAULT 1;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509362356296" ID="ID_1211001759" MODIFIED="1509362566231" TEXT="&#x903b;&#x8f91;&#x8bed;&#x53e5;">
 <richcontent TYPE="NOTE"><html>
@@ -1355,8 +1327,7 @@
       end while&#65307;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>

@@ -30,17 +30,16 @@
       <font color="rgb(51, 51, 51)" face="Source Code Pro, monospace" size="12.6px">git config --</font><font color="rgb(0, 0, 136)" face="Source Code Pro, monospace" size="12.6px">global</font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace" size="12.6px">&#160;core.quotepath </font><font color="rgb(0, 0, 136)" face="Source Code Pro, monospace" size="12.6px">false</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
-<node CREATED="1509373580435" ID="ID_498816502" MODIFIED="1509373675265" TEXT="ls &#x4e2d;&#x6587;&#x4e71;&#x7801;">
+<node CREATED="1509373580435" ID="ID_498816502" MODIFIED="1509497027953" TEXT="ls &#x4e2d;&#x6587;&#x4e71;&#x7801;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      <font color="rgb(0, 0, 136)" face="Source Code Pro, monospace" size="12.6px">alias </font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace" size="12.6px">ls=</font><font color="rgb(0, 136, 0)" face="Source Code Pro, monospace" size="12.6px">'ls --show-control-chars --color=auto'</font>
+      <font color="rgb(0, 0, 136)" face="Source Code Pro, monospace">alias </font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace">ls=</font><font color="rgb(0, 136, 0)" face="Source Code Pro, monospace">'ls --show-control-chars --color=auto'</font>
     </p>
   </body>
 </html>
