@@ -4,7 +4,7 @@ mkdir
 cd
 pwd
 cat
-git init 在所在文件夹下简历仓库
+git init 在所在文件夹下建立仓库
 
 git add 文件或文件夹名路径  把文件放进仓库
 git add -A 保存所有的修改 

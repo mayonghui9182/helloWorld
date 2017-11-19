@@ -837,8 +837,7 @@
       <font color="rgb(0, 0, 0)" face="Verdana, Arial, Helvetica, sans-serif">&#20174;start&#24320;&#22987;&#65292;&#25130;&#21462;string&#65292;&#25130;&#21462;length&#38271;&#24230;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509369417561" ID="ID_1646088749" MODIFIED="1509369421053" TEXT="&#x5b57;&#x7b26;&#x4e32;&#x5b9a;&#x4f4d;">
@@ -949,7 +948,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1509359711054" FOLDED="true" ID="ID_1756326273" MODIFIED="1510131789520" POSITION="right" TEXT="&#x547d;&#x4ee4;">
+<node CREATED="1509359711054" ID="ID_1756326273" MODIFIED="1510822808008" POSITION="right" TEXT="&#x547d;&#x4ee4;">
 <node CREATED="1509359719150" ID="ID_1065489424" MODIFIED="1509359734650" TEXT="&#x542f;&#x52a8;&#x5173;&#x95ed;">
 <node CREATED="1509359737574" ID="ID_1902879490" MODIFIED="1509359749752" TEXT="&#x542f;&#x52a8;net start mysql"/>
 <node CREATED="1509359750997" ID="ID_187984783" MODIFIED="1509359770799" TEXT="&#x5173;&#x95ed;net stop mysql"/>
@@ -1020,7 +1019,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509361486697" ID="ID_1984149638" MODIFIED="1509361533139" TEXT="&#x67e5;&#x770b;&#x8868;&#x7ed3;&#x6784; dscr tbname;"/>
+<node CREATED="1509361486697" ID="ID_1984149638" MODIFIED="1510822895480" TEXT="&#x67e5;&#x770b;&#x8868;&#x7ed3;&#x6784; desc tbname;"/>
 <node CREATED="1509360706443" ID="ID_358406971" MODIFIED="1509360794698" TEXT="&#x67e5;&#x8be2;&#x6570;&#x636e;&#x5e93;&#x9ed8;&#x8ba4;&#x7f16;&#x7801;&#x96c6; show create database dbname&#xff1b;"/>
 <node CREATED="1509360825865" ID="ID_1839957113" MODIFIED="1509361971958" TEXT="&#x4fee;&#x6539;&#x8868;">
 <richcontent TYPE="NOTE"><html>
@@ -1246,8 +1245,7 @@
       2&#12289;&#31639;&#27861;&#35201;&#27714;&#36739;&#39640;&#65292;&#35774;&#35745;&#22810;&#26465;&#25968;&#25454;&#36923;&#36753;&#26102;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509362328905" ID="ID_1931490162" MODIFIED="1510225454159" TEXT="&#x8bed;&#x6cd5;">
 <node CREATED="1510225080670" ID="ID_1529216922" MODIFIED="1510225397349" TEXT="&#x521b;&#x5efa;&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
 <richcontent TYPE="NOTE"><html>
@@ -1292,8 +1290,7 @@
       INOUT&#65306; &#34920;&#31034;&#36755;&#20837;&#36755;&#20986;&#21442;&#25968;&#65292;&#26082;&#21487;&#20197;&#36755;&#20837;&#21151;&#33021;&#65292;&#20063;&#21487;&#20197;&#36755;&#20986;&#21151;&#33021;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510225418075" ID="ID_628378823" MODIFIED="1510225436675" TEXT="&#x6267;&#x884c;&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
 <richcontent TYPE="NOTE"><html>
@@ -1308,8 +1305,7 @@
       CALL pro_test(&#21442;&#25968;);&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-- CALL &#23384;&#20648;&#36807;&#31243;&#21517;&#31216;(&#21442;&#25968;);
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510225403887" ID="ID_60844432" MODIFIED="1510225456631" TEXT="&#x5220;&#x9664;&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
 <richcontent TYPE="NOTE"><html>
@@ -1324,8 +1320,7 @@
       DROP PROCEDURE pro_testOut;<o p="#DEFAULT"></o>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509362353120" ID="ID_858078046" MODIFIED="1510225529769" TEXT="&#x53d8;&#x91cf;">
@@ -1347,8 +1342,7 @@
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1510225469225" ID="ID_22253458" MODIFIED="1510225512162" TEXT="&#x5168;&#x5c40;&#x53d8;&#x91cf;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -1374,8 +1368,7 @@
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-- character_set_results&#65306;mysql&#26381;&#21153;&#22120;&#36755;&#20986;&#25968;&#25454;&#30340;&#32534;&#30721;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510225486040" ID="ID_286469498" MODIFIED="1510225524434" TEXT="&#x4f1a;&#x8bdd;&#x53d8;&#x91cf;">
 <richcontent TYPE="NOTE"><html>
@@ -1393,8 +1386,7 @@
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-- &#26597;&#30475;&#20250;&#35805;&#21464;&#37327;&#65306; select @&#21464;&#37327;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510225490151" ID="ID_875970521" MODIFIED="1510225661036" TEXT="&#x5c40;&#x90e8;&#x53d8;&#x91cf;">
 <richcontent TYPE="NOTE"><html>
@@ -1427,8 +1419,7 @@
       &#34987;&#21442;&#32771;&#21464;&#37327;&#21487;&#33021;&#26159;&#23376;&#31243;&#24207;&#20869;&#22768;&#26126;&#30340;&#21464;&#37327;&#65292;&#25110;&#32773;&#26159;&#20840;&#23616;&#26381;&#21153;&#22120;&#21464;&#37327;&#12290; &#22312;&#23384;&#20648;&#31243;&#24207;&#20013;&#30340;SET&#35821;&#21477;&#20316;&#20026;&#39044;&#20808;&#23384;&#22312;&#30340;SET&#35821;&#27861;&#30340;&#19968;&#37096;&#20998;&#26469;&#23454;&#29616;&#12290;&#36825;&#20801;&#35768;SET a=x, b=y, ...&#36825;&#26679;&#30340;&#25193;&#23637;&#35821;&#27861;&#12290;&#20854;&#20013;&#19981;&#21516;&#30340;&#21464;&#37327;&#31867;&#22411;&#65288;&#23616;&#22495;&#22768;&#26126;&#21464;&#37327;&#21450;&#20840;&#23616;&#21644;&#38598;&#20307;&#21464;&#37327;&#65289;&#21487;&#20197;&#34987;&#28151;&#21512;&#36215;&#26469;&#12290;&#36825;&#20063;&#20801;&#35768;&#25226;&#23616;&#37096;&#21464;&#37327;&#21644;&#19968;&#20123;&#21482;&#23545;&#31995;&#32479;&#21464;&#37327;&#26377;&#24847;&#20041;&#30340;&#36873;&#39033;&#21512;&#24182;&#36215;&#26469;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509362356296" ID="ID_1211001759" MODIFIED="1510226389831" TEXT="&#x903b;&#x8f91;&#x8bed;&#x53e5;">
@@ -1447,8 +1438,7 @@
       endif&#65307;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1510225920258" ID="ID_448517268" MODIFIED="1510225925469" TEXT="&#x6761;&#x4ef6;&#x8bed;&#x53e5;">
 <node CREATED="1510225936430" ID="ID_1294689426" MODIFIED="1510226093090" TEXT="if&#x8bed;&#x53e5;">
 <richcontent TYPE="NOTE"><html>
@@ -1469,8 +1459,7 @@
       &#160;&#160;END IF;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510225939512" ID="ID_1962920490" MODIFIED="1510226286222" TEXT="case&#x8bed;&#x53e5;">
 <richcontent TYPE="NOTE"><html>
@@ -1524,8 +1513,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1510225925917" ID="ID_68894267" MODIFIED="1510225929486" TEXT="&#x5faa;&#x73af;&#x8bed;&#x53e5;">
@@ -1549,8 +1537,7 @@
       END WHILE
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510225951113" ID="ID_103756412" MODIFIED="1510226825942" TEXT="loop">
 <richcontent TYPE="NOTE"><html>
@@ -1568,10 +1555,9 @@
       end loop;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
-<node CREATED="1510225958220" ID="ID_48717317" MODIFIED="1510226652709" TEXT="repeat until">
+<node CREATED="1510225958220" ID="ID_48717317" MODIFIED="1510822795401" TEXT="repeat until">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1615,8 +1601,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -1631,8 +1616,7 @@
       declare cursorName cursor for select_statement
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510230248477" ID="ID_571353808" MODIFIED="1510230379394" TEXT="&#x6253;&#x5f00;&#x5149;&#x6807;">
 <richcontent TYPE="NOTE"><html>
@@ -1644,8 +1628,7 @@
       open cursorName
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510230256532" ID="ID_1825422241" MODIFIED="1510230381283" TEXT="fetch">
 <richcontent TYPE="NOTE"><html>
@@ -1660,8 +1643,7 @@
       &#36825;&#20010;&#35821;&#21477;&#29992;&#25351;&#23450;&#30340;&#25171;&#24320;&#20809;&#26631;&#35835;&#21462;&#19979;&#19968;&#34892;&#65288;&#22914;&#26524;&#26377;&#19979;&#19968;&#34892;&#30340;&#35805;&#65289;&#65292;&#24182;&#19988;&#21069;&#36827;&#20809;&#26631;&#25351;&#38024;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510230269014" ID="ID_1654201957" MODIFIED="1510230394733" TEXT="&#x5173;&#x95ed;&#x5149;&#x6807;">
 <richcontent TYPE="NOTE"><html>
@@ -1673,8 +1655,7 @@
       CLOSE cursor_name
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1510225778697" ID="ID_168427726" MODIFIED="1510225854734" TEXT="&#x7279;&#x6b8a;&#x8bed;&#x53e5;">
@@ -1693,8 +1674,7 @@
       &#36825;&#20010;SELECT&#35821;&#27861;&#25226;&#36873;&#23450;&#30340;&#21015;&#30452;&#25509;&#23384;&#20648;&#21040;&#21464;&#37327;&#12290;&#22240;&#27492;&#65292;&#19968;&#32452;&#21464;&#37327;&#21482;&#21487;&#20197;&#23384;&#20648;&#19968;&#34892;&#25968;&#25454;&#12290; SELECT id,data INTO x,y FROM test.t1 LIMIT 1;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1510125294131" ID="ID_1813679218" MODIFIED="1510125297053" POSITION="right" TEXT="&#x4e8b;&#x52a1;">
