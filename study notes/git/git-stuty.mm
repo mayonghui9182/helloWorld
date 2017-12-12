@@ -16,8 +16,7 @@
       &#21019;&#36896;&#19968;&#20010;&#31354;&#30340;&#20179;&#24211;&#65292;&#25110;&#32773;&#37325;&#26032;&#21021;&#22987;&#21270;&#19968;&#20010;&#24050;&#32463;&#23384;&#22312;&#30340;&#20179;&#24211;&#12290;&#20854;&#23454;&#23601;&#26159;&#29983;&#25104;&#19968;&#20010;.git&#25991;&#20214;&#22841;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509373512012" ID="ID_1352543521" MODIFIED="1509373516793" TEXT="&#x4e2d;&#x6587;&#x4e71;&#x7801;&#x95ee;&#x9898;">
@@ -31,8 +30,7 @@
       <font color="rgb(51, 51, 51)" face="Source Code Pro, monospace">git config --</font><font color="rgb(0, 0, 136)" face="Source Code Pro, monospace">global</font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace">&#160;core.quotepath </font><font color="rgb(0, 0, 136)" face="Source Code Pro, monospace">false</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509373580435" ID="ID_498816502" MODIFIED="1510931359542" TEXT="ls &#x4e2d;&#x6587;&#x4e71;&#x7801;">
 <richcontent TYPE="NOTE"><html>
@@ -44,8 +42,7 @@
       <font color="rgb(0, 0, 136)" face="Source Code Pro, monospace">alias </font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace">ls=</font><font color="rgb(0, 136, 0)" face="Source Code Pro, monospace">'ls --show-control-chars --color=auto'</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509283514150" ID="ID_1657378757" MODIFIED="1509283547399" STYLE="bubble" TEXT="&#x5168;&#x5c40;&#x53d8;&#x91cf;">
@@ -68,8 +65,7 @@
       &#20854;&#20182;&#21442;&#32771;config&#25991;&#20214;&#27880;&#37322;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -88,8 +84,7 @@
       git branch &#26597;&#30475;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510931792673" ID="ID_392021462" MODIFIED="1510931801456" TEXT="&#x521b;&#x5efa;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -101,8 +96,7 @@
       git branch &lt;name&gt; &#21019;&#24314;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510931811117" ID="ID_519802001" MODIFIED="1510931830768" TEXT="&#x5207;&#x6362;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -114,8 +108,7 @@
       git checkout &lt;name&gt; &#20999;&#25442;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510931831256" ID="ID_785382392" MODIFIED="1510931856570" TEXT="&#x521b;&#x5efa;&#x5e76;&#x5207;&#x6362;&#x5230;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -127,8 +120,7 @@
       git checkout -b &lt;name&gt; &#21019;&#24314;+&#20999;&#25442;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510931857586" ID="ID_430092321" MODIFIED="1510931875438" TEXT="&#x5408;&#x5e76;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -143,8 +135,7 @@
       git merge &lt;name&gt; &#21512;&#24182;&#26576;&#20998;&#25903;&#21040;&#24403;&#21069;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510931875743" ID="ID_1754331646" MODIFIED="1510931895684" TEXT="&#x5220;&#x9664;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -156,8 +147,7 @@
       git branch -d &lt;name&gt; &#21024;&#38500;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510931896088" ID="ID_808831203" MODIFIED="1510931960716" TEXT="&#x67e5;&#x770b;&#x5206;&#x652f;&#x5408;&#x5e76;&#x56fe;">
 <richcontent TYPE="NOTE"><html>
@@ -169,8 +159,7 @@
       git log --graph &#21629;&#20196;&#21487;&#20197;&#30475;&#21040;&#20998;&#25903;&#21512;&#24182;&#22270;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509291009442" ID="ID_179319457" MODIFIED="1509291223231" TEXT="&#x51b2;&#x7a81;"/>
@@ -198,8 +187,7 @@
       git remote add origin [url]
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509291380741" ID="ID_1604184295" MODIFIED="1510931526182" TEXT="&#x4e0b;&#x8f7d;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
@@ -220,8 +208,7 @@
       git pull
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509291393125" ID="ID_274428136" MODIFIED="1510931658644" TEXT="&#x4e0a;&#x4f20;&#x5230;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
@@ -242,10 +229,9 @@
       git push origin branch-name &#20174;&#26412;&#22320;&#25512;&#36865;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
-<node CREATED="1509291400397" ID="ID_669401793" MODIFIED="1510933147728" TEXT="&#x514b;&#x9686;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1509291400397" ID="ID_669401793" MODIFIED="1512016983844" TEXT="&#x514b;&#x9686;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -253,6 +239,9 @@
   <body>
     <p>
       git clone git@github.com:michaelliao/gitskills.git &#25226;&#36828;&#31243;&#20179;&#24211;&#20811;&#38534;&#21040;&#26412;&#22320;
+    </p>
+    <p>
+      git clone https://github.com/mayonghui2112/helloWorld&#25226;helloword&#20179;&#24211;&#22797;&#21046;&#21040;&#26412;&#22320;&#12290;
     </p>
   </body>
 </html>
@@ -271,8 +260,7 @@
       untracked files&#65306;&#26032;&#24314;&#30340;&#25991;&#20214;&#65292;&#29992;add&#21629;&#20196;&#23558;&#25991;&#20214;&#21152;&#20837;&#26242;&#23384;&#21306;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509279003124" ID="ID_1793201843" MODIFIED="1510931359639" STYLE="bubble" TEXT="Changes to be committed:">
 <richcontent TYPE="NOTE"><html>
@@ -284,8 +272,7 @@
       changes to be committed&#65306;&#25991;&#20214;&#24050;&#22312;&#26242;&#23384;&#21306;&#65292;&#20294;&#25991;&#20214;&#23384;&#22312;&#20462;&#25913;&#30340;&#20869;&#23481;&#21152;&#20837;&#26242;&#23384;&#21306;&#65292;&#23578;&#26410;&#25552;&#20132;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509279003700" ID="ID_1973196665" MODIFIED="1510931359655" STYLE="bubble" TEXT="Changes not staged for commit">
 <richcontent TYPE="NOTE"><html>
@@ -297,8 +284,7 @@
       changes not staged for commit&#65306;&#25991;&#20214;&#24050;&#22312;&#26242;&#23384;&#21306;&#65292;&#20294;&#25991;&#20214;&#23384;&#22312;&#20462;&#25913;&#30340;&#20869;&#23481;&#27809;&#26377;&#21152;&#20837;&#26242;&#23384;&#21306;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509283351639" ID="ID_968257159" MODIFIED="1509283942623" POSITION="left" STYLE="bubble" TEXT="&#x6587;&#x4ef6;">
@@ -347,8 +333,7 @@
       <font face="&#x5b8b;&#x4f53;" size="3">&#25152;&#35859;&#30340; glob &#27169;&#24335;&#26159;&#25351; shell &#25152;&#20351;&#29992;&#30340;&#31616;&#21270;&#20102;&#30340;&#27491;&#21017;&#34920;&#36798;&#24335;&#12290;&#26143;&#21495;&#65288;*&#65289;&#21305;&#37197;&#38646;&#20010;&#25110;&#22810;&#20010;&#20219;&#24847;&#23383;&#31526;&#65307;[abc] &#21305;&#37197;&#20219;&#20309;&#19968;&#20010;&#21015;&#22312;&#26041;&#25324;&#21495;&#20013;&#30340;&#23383;&#31526;&#65288;&#36825;&#20010;&#20363;&#23376;&#35201;&#20040;&#21305;&#37197;&#19968;&#20010; a&#65292;&#35201;&#20040;&#21305;&#37197;&#19968;&#20010; b&#65292;&#35201;&#20040;&#21305;&#37197;&#19968;&#20010; c&#65289;&#65307;&#38382;&#21495;&#65288;?&#65289;&#21482;&#21305;&#37197;&#19968;&#20010;&#20219;&#24847;&#23383;&#31526;&#65307;&#22914;&#26524;&#22312;&#26041;&#25324;&#21495;&#20013;&#20351;&#29992;&#30701;&#21010;&#32447;&#20998;&#38548;&#20004;&#20010;&#23383;&#31526;&#65292;&#34920;&#31034;&#25152;&#26377;&#22312;&#36825;&#20004;&#20010;&#23383;&#31526;&#33539;&#22260;&#20869;&#30340;&#37117;&#21487;&#20197;&#21305;&#37197;&#65288;&#27604;&#22914; [0-9] &#34920;&#31034;&#21305;&#37197;&#25152;&#26377; 0 &#21040; 9 &#30340;&#25968;&#23383;&#65289;&#12290;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509279886322" ID="ID_103960625" MODIFIED="1510931359733" STYLE="bubble" TEXT="readme.md">
 <richcontent TYPE="NOTE"><html>
@@ -363,8 +348,7 @@
       init&#21021;&#22987;&#21270;&#19968;&#20010;&#20179;&#24211;&#21518;&#65292;&#21487;&#20197;&#29992;git pull --rebase&#23558;&#36828;&#31243;&#20179;&#24211;&#30340;readme.md&#25991;&#20214;&#21152;&#36733;&#36827;&#26469;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509279933617" ID="ID_42917430" MODIFIED="1509283937957" STYLE="bubble" TEXT="license"/>
 <node CREATED="1509283945832" ID="ID_667577138" MODIFIED="1509283949596" TEXT=".git">
@@ -390,8 +374,7 @@
       branch&#65306;&#20998;&#25903;&#65292;&#20027;&#20998;&#25903;master&#21644;&#20854;&#20182;&#20998;&#25903;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -413,8 +396,7 @@
       set convert-meta off
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509290371064" ID="ID_370368684" MODIFIED="1509290484587" TEXT="profile">
 <richcontent TYPE="NOTE"><html>

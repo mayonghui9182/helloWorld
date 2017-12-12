@@ -11,8 +11,7 @@
       SELECT&#12289;UPDATE&#12289;INSERT&#12289;DELETE&#65292;&#23601;&#35937;&#23427;&#30340;&#21517;&#23383;&#19968;&#26679;&#65292;&#36825;4&#26465;&#21629;&#20196;&#26159;&#29992;&#26469;&#23545;&#25968;&#25454;&#24211;&#37324;&#30340;&#25968;&#25454;&#36827;&#34892;&#25805;&#20316;&#30340;&#35821;&#35328;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509540765470" ID="ID_1711904907" MODIFIED="1509540997477" TEXT="select">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -239,8 +238,7 @@
       group by&#160;&#160;all&#23376;&#21477;&#20013;&#65292;&#23545;&#25968;&#25454;&#24211;&#20013;&#30340;&#23383;&#27573;&#25968;&#25454;&#36827;&#34892;&#20998;&#32452;&#65292;&#32780;&#19981;&#26159;&#23545;&#32467;&#26524;&#38598;&#20013;&#30340;&#23383;&#27573;&#36827;&#34892;&#20998;&#32452;&#65288;SQLserver&#65289;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509541019131" ID="ID_1746005286" MODIFIED="1510130971021" TEXT="having">
 <richcontent TYPE="NOTE"><html>
@@ -318,8 +316,7 @@
       </li>
     </ul>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1510219029451" ID="ID_1974349282" MODIFIED="1510219032747" TEXT="union"/>
 <node CREATED="1510219033059" ID="ID_1437191627" MODIFIED="1510219037126" TEXT="union all"/>
 </node>
@@ -333,8 +330,7 @@
       &#29992;&#22312;where&#26465;&#20214;&#20013;&#65292;&#19968;&#33324;&#22312;=&#21518;&#38754;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510218639560" ID="ID_94895351" MODIFIED="1510218691614" TEXT="any">
 <richcontent TYPE="NOTE"><html>
@@ -346,8 +342,7 @@
       &#29992;&#22312;where&#26465;&#20214;&#20013;&#65292;&#19968;&#33324;&#22312;&lt;&#25110;&#32773;&gt;&#21518;&#38754;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510218641830" ID="ID_1841839400" MODIFIED="1510222763238" TEXT="all">
 <richcontent TYPE="NOTE"><html>
@@ -362,8 +357,7 @@
       &#29992;&#22312;group by &#23376;&#21477;&#20013;&#65292;&#23545;&#25968;&#25454;&#24211;&#20013;&#30340;&#23383;&#27573;&#36827;&#34892;&#20998;&#32452;&#65292;&#32780;&#19981;&#26159;&#23545;&#32467;&#26524;&#38598;&#20013;&#30340;&#23383;&#27573;&#36827;&#34892;&#20998;&#32452;&#65288;sqlserver&#65289;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510222162629" ID="ID_1669637304" MODIFIED="1510222737322" TEXT="exists">
 <richcontent TYPE="NOTE"><html>
@@ -381,11 +375,10 @@
       &#21363;&#25968;&#32452;&#25110;&#32467;&#26524;&#38598;&#23384;&#22312;&#25968;&#25454;&#23601;&#36820;&#22238;true
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
-<node CREATED="1509544638802" FOLDED="true" ID="ID_1048305424" MODIFIED="1510223069718" POSITION="right" TEXT="DDL">
+<node CREATED="1509544638802" ID="ID_1048305424" MODIFIED="1512443380089" POSITION="right" TEXT="DDL">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -408,32 +401,36 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509544867108" ID="ID_201262831" MODIFIED="1509544942622" TEXT="&#x521b;&#x5efa;&#x8868; CREATE TABLE">
+<node CREATED="1509544867108" ID="ID_201262831" MODIFIED="1513041232092" TEXT="&#x521b;&#x5efa;&#x8868; CREATE TABLE">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      CREATE TABLE &#34920;&#21517;&#31216;
+      create table testTab(
     </p>
     <p>
-      (
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;id integer(10),
     </p>
     <p>
-      &#21015;&#21517;&#31216;1 &#25968;&#25454;&#31867;&#22411;,
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;field1 varchar(10) not null,
     </p>
     <p>
-      &#21015;&#21517;&#31216;2 &#25968;&#25454;&#31867;&#22411;,
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;field2 varchar(10) not null
     </p>
     <p>
-      &#21015;&#21517;&#31216;3 &#25968;&#25454;&#31867;&#22411;,
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;field3 varchar(10),
     </p>
     <p>
-      )
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;constraint PK_TPDTREPAYMENTDATERATIO primary key (l_id)
+    </p>
+    <p>
+      );
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1509544942607" ID="ID_1276988980" MODIFIED="1509544954120" TEXT="&#x975e;&#x7a7a; NOT NULL"/>
 <node CREATED="1509544962447" ID="ID_94201234" MODIFIED="1509544966481" TEXT="&#x552f;&#x4e00; UNIQUE"/>
 <node CREATED="1509544992350" ID="ID_330190682" MODIFIED="1509544998559" TEXT="&#x4e3b;&#x952e; PRIMARY KEY"/>
@@ -560,7 +557,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509545529923" ID="ID_806644243" MODIFIED="1510147605298" TEXT="&#x66f4;&#x6539;&#x8868;alter table">
+<node CREATED="1509545529923" ID="ID_806644243" MODIFIED="1512970425649" TEXT="&#x66f4;&#x6539;&#x8868;alter table">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -573,7 +570,10 @@
       &#21024;&#38500;&#34920;&#20013;&#30340;&#21015;&#65306;ALTER TABLE table_name DROP COLUMN column_name &#27880; &#26576;&#20123;&#25968;&#25454;&#24211;&#31995;&#32479;&#19981;&#20801;&#35768;&#36825;&#31181;&#22312;&#25968;&#25454;&#24211;&#34920;&#20013;&#21024;&#38500;&#21015;&#30340;&#26041;&#24335; (DROP COLUMN column_name)&#12290;
     </p>
     <p>
-      &#35813;&#34920;&#23383;&#27573;&#25968;&#25454;&#31867;&#22411;&#65306;ALTER TABLE table_name ALTER COLUMN column_name datatype
+      &#20462;&#25913;&#34920;&#23383;&#27573;&#25968;&#25454;&#31867;&#22411;&#65306;ALTER TABLE table_name modify&#160;&#160;column_name datatype
+    </p>
+    <p>
+      &#20462;&#25913;&#34920;&#23383;&#27573;&#21517;&#65306;alter table tableName rename column&#160;&#160;colOldName to colNewName
     </p>
   </body>
 </html></richcontent>
@@ -652,8 +652,7 @@
       &#20855;&#20307;&#21442;&#30475;&#21508;&#20010;&#25968;&#25454;&#24211;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509544822601" ID="ID_1321077167" MODIFIED="1510223959928" POSITION="right" TEXT="&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
 <richcontent TYPE="NOTE"><html>
@@ -706,8 +705,7 @@
       CREATE OR REPLACE PROCEDURE procedureName&#160;&#160;&#21019;&#24314;&#19968;&#20010;&#21483;&#20570;procedureName&#23384;&#20648;&#36807;&#31243;, &#22914;&#26524;&#23384;&#22312;&#23601;&#35206;&#30422;&#23427;;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510224541443" ID="ID_35027640" MODIFIED="1510224541443" TEXT=""/>
 </node>
