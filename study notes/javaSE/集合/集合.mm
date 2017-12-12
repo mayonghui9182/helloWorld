@@ -54,8 +54,7 @@
       &#26377;&#19968;&#20010;default&#30340;&#26500;&#36896;&#26041;&#27861;&#65292;&#26500;&#36896;linkedhashMap&#65292;&#27492;&#26041;&#27861;&#19987;&#20379;linkedhashset&#20351;&#29992;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510937966023" ID="ID_1521089889" MODIFIED="1510992945253" TEXT="TreeSet">
 <richcontent TYPE="NOTE"><html>
@@ -67,8 +66,7 @@
       &#20869;&#32622;Treemap&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510937970419" ID="ID_1573847450" MODIFIED="1510992902010" TEXT="LinkedHashSet">
 <richcontent TYPE="NOTE"><html>
@@ -80,8 +78,7 @@
       &#20351;&#29992;hashset&#30340;&#26500;&#36896;&#26041;&#27861;&#65292;&#26500;&#36896;&#19968;&#20010;likedhashMap&#23545;&#35937;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -99,8 +96,7 @@
       entry&#23454;&#20307;&#21253;&#21547;key&#65292;value&#65292;hash&#65292;next
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1510937970419" ID="ID_666567779" MODIFIED="1510983802836" TEXT="LinkedHashMap">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -111,8 +107,7 @@
       entry&#23454;&#20307;&#65292;&#22312;hashmap.entry&#30340;&#22522;&#30784;&#19978;&#28155;&#21152;after&#21644;before&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1510937966023" ID="ID_176022739" MODIFIED="1510988154374" TEXT="TreeMap">
@@ -131,8 +126,7 @@
       &#21033;&#29992;key&#30340;Comparable&#25509;&#21475;&#25110;&#32773;&#20256;&#20837;&#30340;comparator&#27604;&#36739;&#22120;&#26469;&#27604;&#36739;&#25171;&#19979;&#65292;&#23567;&#30340;&#25918;&#24038;&#36793;&#65292;&#22823;&#30340;&#25918;&#21491;&#36793;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510980833326" ID="ID_976843279" MODIFIED="1510992743940" TEXT="HashTable">
 <richcontent TYPE="NOTE"><html>
@@ -144,11 +138,10 @@
       &#32447;&#31243;&#23433;&#20840;&#30340;hashtable&#65292;key&#21644;value&#37117;&#19981;&#33021;&#20026;null
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
-<node CREATED="1510938799702" ID="ID_1970220420" MODIFIED="1510939138403" POSITION="left" TEXT="&#x904d;&#x5386;&#x95ee;&#x9898;">
+<node CREATED="1510938799702" ID="ID_1970220420" MODIFIED="1511535456894" POSITION="left" TEXT="&#x904d;&#x5386;&#x95ee;&#x9898;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -167,7 +160,8 @@
       &#25110;&#32773;&#29992;iterator&#36941;&#21382;&#22120;&#30340;remove&#26041;&#27861;&#12290;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
 </map>

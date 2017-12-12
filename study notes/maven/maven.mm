@@ -2,8 +2,20 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1509497051195" ID="ID_1887091743" MODIFIED="1509502924554" STYLE="bubble" TEXT="maven">
 <node CREATED="1509497331063" ID="ID_1648831651" MODIFIED="1509502924554" POSITION="right" STYLE="bubble" TEXT="&#x4f5c;&#x7528;">
-<node CREATED="1509497404029" ID="ID_358406566" MODIFIED="1509506135111" STYLE="bubble" TEXT="jar&#x5305;&#x7ba1;&#x7406;"/>
-<node CREATED="1509498712714" FOLDED="true" ID="ID_1463304915" MODIFIED="1509502924555" STYLE="bubble" TEXT="&#x9879;&#x76ee;&#x751f;&#x547d;&#x5468;&#x671f;&#x7ba1;&#x7406;">
+<node CREATED="1509497404029" ID="ID_358406566" MODIFIED="1512228144915" STYLE="bubble" TEXT="jar&#x5305;&#x7ba1;&#x7406;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#21442;&#30475;pom.xml&#30340;&#20381;&#36182;&#37197;&#32622;&#31649;&#29702;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1509498712714" ID="ID_1463304915" MODIFIED="1512227561748" STYLE="bubble" TEXT="&#x9879;&#x76ee;&#x751f;&#x547d;&#x5468;&#x671f;&#x7ba1;&#x7406;">
 <node CREATED="1509499541868" ID="ID_1958004453" MODIFIED="1509499545634" TEXT="clean">
 <node CREATED="1509499587506" ID="ID_1084007941" MODIFIED="1509499593379" TEXT="pre-clean"/>
 <node CREATED="1509499593624" ID="ID_1099532386" MODIFIED="1509499597858" TEXT="clean"/>
@@ -20,8 +32,7 @@
       &#26816;&#26597;&#24037;&#31243;&#26159;&#21542;&#27491;&#30830;&#65292;&#23436;&#25104;&#26500;&#24314;&#36807;&#31243;&#30340;&#25152;&#26377;&#24517;&#35201;&#20449;&#24687;&#26159;&#21542;&#33021;&#22815;&#33719;&#24471;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509499652762" ID="ID_1455483048" MODIFIED="1509500092574" TEXT="initialize">
 <richcontent TYPE="NOTE"><html>
@@ -33,8 +44,7 @@
       &#21021;&#22987;&#21270;&#26500;&#24314;&#20449;&#24687;&#65292;&#20363;&#22914;&#35774;&#32622;&#23646;&#24615;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509499707653" ID="ID_1686544809" MODIFIED="1509500109333" TEXT="generate-sources">
 <richcontent TYPE="NOTE"><html>
@@ -46,8 +56,7 @@
       &#29983;&#25104;&#32534;&#35793;&#38454;&#27573;&#38656;&#35201;&#21253;&#21547;&#30340;&#20219;&#20309;&#28304;&#30721;&#25991;&#20214;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509499719428" ID="ID_1674585608" MODIFIED="1509500146942" TEXT="process-sources">
 <richcontent TYPE="NOTE"><html>
@@ -59,8 +68,7 @@
       &#22788;&#29702;&#28304;&#20195;&#30721;&#65292;&#20363;&#22914;&#36807;&#28388;&#20219;&#20309;&#20540;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509499707653" ID="ID_592732856" MODIFIED="1509500197711" TEXT="generate-resources">
 <richcontent TYPE="NOTE"><html>
@@ -72,8 +80,7 @@
       &#29983;&#25104;&#24037;&#31243;&#20013;&#38656;&#35201;&#21253;&#21547;&#30340;&#36164;&#28304;&#25991;&#20214;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509499719428" ID="ID_1072019315" MODIFIED="1509500229207" TEXT="process-resources">
 <richcontent TYPE="NOTE"><html>
@@ -85,8 +92,7 @@
       &#25335;&#36125;&#21644;&#22788;&#29702;&#36164;&#28304;&#25991;&#20214;&#21040;&#30446;&#26631;&#30446;&#24405;&#20013;&#65292;&#20026;&#25171;&#21253;&#38454;&#27573;&#20570;&#20934;&#22791;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509499747203" ID="ID_386092961" MODIFIED="1509500291959" TEXT="compile">
 <richcontent TYPE="NOTE"><html>
@@ -98,8 +104,7 @@
       &#32534;&#35793;&#24037;&#31243;&#28304;&#30721;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509499755513" ID="ID_1158164952" MODIFIED="1509500341991" TEXT="process-classes">
 <richcontent TYPE="NOTE"><html>
@@ -111,8 +116,7 @@
       &#22788;&#29702;&#32534;&#35793;&#29983;&#25104;&#30340;&#25991;&#20214;&#65292;&#20363;&#22914;class&#23383;&#33410;&#30721;&#30340;&#21152;&#24378;&#21644;&#20248;&#21270;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509501164808" ID="ID_52500557" MODIFIED="1509501180239" TEXT="&#x6d4b;&#x8bd5;test">
 <node CREATED="1509499769871" ID="ID_442682564" MODIFIED="1509500387032" TEXT="generate-test-sources">
@@ -229,8 +233,7 @@
       &#36816;&#34892;&#26816;&#26597;&#24037;&#31243;&#21253;&#26159;&#21542;&#26377;&#25928;&#65292;&#24182;&#28385;&#36275;&#36136;&#37327;&#35201;&#27714;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509500904057" ID="ID_133589933" MODIFIED="1509501212995" TEXT="&#x5b89;&#x88c5;intall">
 <richcontent TYPE="NOTE"><html>
@@ -242,8 +245,7 @@
       &#23433;&#35013;&#24037;&#31243;&#21040;&#26412;&#22320;&#20179;&#24211;&#65292;&#35813;&#20179;&#24211;&#21487;&#20197;&#20316;&#20026;&#26412;&#22320;&#20854;&#20182;&#24037;&#31243;&#30340;&#20381;&#36182;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509501006984" ID="ID_574294520" MODIFIED="1509501219016" TEXT="&#x90e8;&#x7f72;deploy">
 <richcontent TYPE="NOTE"><html>
@@ -255,12 +257,9 @@
       &#25335;&#36125;&#26368;&#32456;&#24037;&#31243;&#21040;&#36828;&#31243;&#20179;&#24211;&#65292;&#24050;&#20849;&#20139;&#32473;&#20854;&#20182;&#24320;&#21457;&#20154;&#21592;&#21644;&#24037;&#31243;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
-<node CREATED="1509499565829" ID="ID_362938267" MODIFIED="1509499569299" TEXT="package"/>
-<node CREATED="1509499571036" ID="ID_1257339524" MODIFIED="1509499574302" TEXT="instal"/>
 </node>
 <node CREATED="1509501474444" ID="ID_1180744792" MODIFIED="1509502924555" STYLE="bubble" TEXT="&#x6587;&#x6863;&#x751f;&#x547d;&#x5468;&#x671f;&#x7ba1;&#x7406;">
 <node CREATED="1509501495718" ID="ID_1775688744" MODIFIED="1509502924555" STYLE="bubble" TEXT="pre-site"/>
@@ -324,8 +323,7 @@
       &#37027;&#20040;&#20854;&#20182;&#20179;&#24211;&#37197;&#30340;&#22320;&#22336;&#65292;&#37117;&#20250;&#22833;&#25928;&#20102;&#65292;&#20197;&#36825;&#20010;&#20026;&#20934;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509497358357" ID="ID_1603125123" MODIFIED="1509502924555" STYLE="bubble" TEXT="&#x672c;&#x5730;&#x4ed3;&#x5e93;">
 <node CREATED="1509503665026" ID="ID_301271561" MODIFIED="1509539307865" TEXT="&#x5728;/conf/setting.xml&#x914d;&#x7f6e;">
 <richcontent TYPE="NOTE"><html>
@@ -340,8 +338,7 @@
       &lt;localRepository&gt;C:/MyLocalRepository&lt;/localRepository&gt;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509497370934" ID="ID_574191158" MODIFIED="1509539657256" STYLE="bubble" TEXT="&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
@@ -354,14 +351,13 @@
       pom.xml&#37197;&#32622;&lt;repositories&gt;&#25110;&#32773;mirror&#25110;&#32773;profile
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509503876748" ID="ID_1301087104" MODIFIED="1509503885323" TEXT="&#x4e2d;&#x5fc3;&#x4ed3;&#x5e93;"/>
 <node CREATED="1509497364903" ID="ID_545661175" MODIFIED="1509502924555" STYLE="bubble" TEXT="&#x516c;&#x53f8;&#x4ed3;&#x5e93;"/>
 <node CREATED="1509503906837" ID="ID_1544364487" MODIFIED="1509539907056" TEXT="&#x5176;&#x4ed6;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;"/>
 </node>
 </node>
-<node CREATED="1509497560148" ID="ID_1943790463" MODIFIED="1509539671720" POSITION="right" TEXT="pom.xml&#x914d;&#x7f6e;&#x6587;&#x4ef6; project">
+<node CREATED="1509497560148" FOLDED="true" ID="ID_1943790463" MODIFIED="1512142934045" POSITION="right" TEXT="pom.xml&#x914d;&#x7f6e;&#x6587;&#x4ef6; project">
 <node CREATED="1509502995650" ID="ID_931332495" MODIFIED="1509504798683" TEXT="&#x9879;&#x76ee;&#x5c5e;&#x6027;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -378,8 +374,7 @@
       <font color="rgb(69, 69, 69)" face="PingFang SC, Microsoft YaHei, SimHei, Arial, SimSun">aritfcatId-version.packaging&#20026;&#39033;&#30446;&#21517;&#31216;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509497900753" ID="ID_1317258873" MODIFIED="1509504428041" TEXT="&#x9879;&#x76ee;&#x6216;&#x7ec4;&#x7ec7;&#x552f;&#x4e00;ID groupId"/>
 <node CREATED="1509497915242" ID="ID_499392430" MODIFIED="1509504446106" TEXT="&#x9879;&#x76ee;&#x901a;&#x7528;&#x540d;&#x79f0; atifactId"/>
 <node CREATED="1509497966768" ID="ID_455374027" MODIFIED="1509504462431" TEXT="&#x9879;&#x76ee;&#x540d;&#x79f0; version"/>
@@ -393,8 +388,7 @@
       <font color="rgb(69, 69, 69)" face="PingFang SC, Microsoft YaHei, SimHei, Arial, SimSun" size="16px">pom,jar,maven-plugin,ejb,war,ear,rar,par</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509504069451" ID="ID_1655552940" MODIFIED="1509504610110" TEXT="&#x7528;&#x6237;&#x540d; name"/>
 <node CREATED="1509504071859" ID="ID_417854867" MODIFIED="1509504616744" TEXT="&#x7f51;&#x5740; url"/>
@@ -419,8 +413,7 @@
       <font color="rgb(69, 69, 69)" face="PingFang SC, Microsoft YaHei, SimHei, Arial, SimSun" size="16px">&#40664;&#35748;&#20026;jar&#31867;&#22411;&#65292;&#24120;&#29992;&#30340;&#31867;&#22411;&#26377;&#65306;jar,ejb-client,test-jar...,&#21487;&#35774;&#32622;plugins&#20013;&#30340;extensions&#20540;&#20026;true&#21518;&#22312;&#22686;&#21152; &#26032;&#30340;&#31867;&#22411;&#65292;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509505037958" ID="ID_719900981" MODIFIED="1509505338737" TEXT="&#x8303;&#x56f4; scope">
 <richcontent TYPE="NOTE"><html>
@@ -447,8 +440,7 @@
       system system&#33539;&#22260;&#20381;&#36182;&#19982;provided&#31867;&#20284;&#65292;&#20294;&#26159;&#20320;&#24517;&#39035;&#26174;&#24335;&#30340;&#25552;&#20379;&#19968;&#20010;&#23545;&#20110;&#26412;&#22320;&#31995;&#32479;&#20013;JAR&#25991;&#20214;&#30340;&#36335;&#24452;&#12290;&#36825;&#20040;&#20570;&#26159;&#20026;&#20102;&#20801;&#35768;&#22522;&#20110;&#26412;&#22320;&#23545;&#35937;&#32534;&#35793;&#65292;&#32780;&#36825;&#20123;&#23545;&#35937;&#26159;&#31995;&#32479;&#31867;&#24211;&#30340;&#19968;&#37096;&#20998;&#12290;&#36825;&#26679;&#30340;&#26500;&#20214;&#24212;&#35813;&#26159;&#19968;&#30452;&#21487;&#29992;&#30340;&#65292;Maven&#20063;&#19981;&#20250;&#22312;&#20179;&#24211;&#20013;&#21435;&#23547;&#25214;&#23427;&#12290;&#12290;&#22914;&#26524;&#20320;&#23558;&#19968;&#20010;&#20381;&#36182;&#33539;&#22260;&#35774;&#32622;&#25104;&#31995;&#32479;&#33539;&#22260;&#65292;&#20320;&#24517;&#39035;&#21516;&#26102;&#25552;&#20379;&#19968;&#20010;systemPath&#20803;&#32032;&#12290;&#27880;&#24847;&#35813;&#33539;&#22260;&#26159;&#19981;&#25512;&#33616;&#20351;&#29992;&#30340;&#65288;&#20320;&#24212;&#35813;&#19968;&#30452;&#23613;&#37327;&#21435;&#20174;&#20844;&#20849;&#25110;&#23450;&#21046;&#30340;Maven&#20179;&#24211;&#20013;&#24341;&#29992;&#20381;&#36182;&#65289;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509505047669" ID="ID_652471136" MODIFIED="1509505397614" TEXT="&#x4f9d;&#x8d56;&#x662f;&#x5426;&#x53ef;&#x9009; optional">
 <richcontent TYPE="NOTE"><html>
@@ -460,8 +452,7 @@
       <font color="rgb(69, 69, 69)" face="PingFang SC, Microsoft YaHei, SimHei, Arial, SimSun" size="16px">&#35774;&#32622;&#25351;&#20381;&#36182;&#26159;&#21542;&#21487;&#36873;&#65292;&#40664;&#35748;&#20026;false,&#21363;&#23376;&#39033;&#30446;&#40664;&#35748;&#37117;&#32487;&#25215;&#65292;&#20026;true,&#21017;&#23376;&#39033;&#30446;&#24517;&#38656;&#26174;&#31034;&#30340;&#24341;&#20837;&#65292;&#19982;dependencyManagement&#37324;&#23450;&#20041;&#30340;&#20381;&#36182;&#31867;&#20284;&#160;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509505067668" ID="ID_1560290124" MODIFIED="1509505425343" TEXT="&#x6392;&#x9664;&#x4f9d;&#x8d56; exclusions">
 <node CREATED="1509505092024" ID="ID_765276279" MODIFIED="1509505101780" TEXT="exclusion">
@@ -481,8 +472,7 @@
       &#22914;&#26524;&#19968;&#20010;&#24037;&#31243;&#26159;parent&#25110;&#32773;aggregation&#65288;&#21363;mutil-module&#30340;&#65289;&#30340;&#65292;&#37027;&#20040;&#24517;&#39035;&#22312;packing&#36171;&#20540;&#20026;pom,child&#24037;&#31243;&#20174;parent&#32487;&#25215;&#30340;&#21253;&#25324;&#65306;dependencies,developers,contributors,plugin lists,reports lists,plugin execution with matching ids,plugin configuration
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509497900753" ID="ID_890085715" MODIFIED="1509504428041" TEXT="&#x9879;&#x76ee;&#x6216;&#x7ec4;&#x7ec7;&#x552f;&#x4e00;ID groupId"/>
 <node CREATED="1509497915242" ID="ID_922397858" MODIFIED="1509504446106" TEXT="&#x9879;&#x76ee;&#x901a;&#x7528;&#x540d;&#x79f0; atifactId"/>
 <node CREATED="1509497966768" ID="ID_889339327" MODIFIED="1509504462431" TEXT="&#x9879;&#x76ee;&#x540d;&#x79f0; version"/>
@@ -496,8 +486,7 @@
       &#26159;&#21487;&#36873;&#30340;,maven&#20250;&#39318;&#20808;&#25628;&#32034;&#36825;&#20010;&#22320;&#22336;,&#22312;&#25628;&#32034;&#26412;&#22320;&#36828;&#31243;repositories&#20043;&#21069;.
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1509504138100" ID="ID_1123100397" MODIFIED="1509505671145" TEXT="&#x4f9d;&#x8d56;&#x7ba1;&#x7406; dependencyManagement">
@@ -510,8 +499,7 @@
       &#26159;&#29992;&#20110;&#24110;&#21161;&#31649;&#29702;chidren&#30340;dependencies&#30340;&#12290;&#20363;&#22914;&#22914;&#26524;parent&#20351;&#29992;dependencyManagement&#23450;&#20041;&#20102;&#19968;&#20010;dependencyon junit:junit4.0,&#37027;&#20040; &#23427;&#30340;children&#23601;&#21487;&#20197;&#21482;&#24341;&#29992; groupId&#21644;artifactId,&#32780;version&#23601;&#21487;&#20197;&#36890;&#36807;parent&#26469;&#35774;&#32622;&#65292;&#36825;&#26679;&#30340;&#22909;&#22788;&#23601;&#26159;&#21487;&#20197;&#38598;&#20013;&#31649;&#29702; &#20381;&#36182;&#30340;&#35814;&#24773;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509504160669" ID="ID_1614636907" MODIFIED="1509505742019" TEXT="&#x591a;&#x6a21;&#x5757;&#x7ba1;&#x7406; modules">
 <richcontent TYPE="NOTE"><html>
@@ -523,8 +511,7 @@
       <font color="rgb(69, 69, 69)" face="PingFang SC, Microsoft YaHei, SimHei, Arial, SimSun" size="16px">&#23545;&#20110;&#22810;&#27169;&#22359;&#30340;project,outer-module&#27809;&#26377;&#24517;&#38656;&#32771;&#34385;inner-module&#30340;dependencies,&#24403;&#21015;&#20986;modules&#30340;&#26102;&#20505;&#65292;modules&#30340;&#39034;&#24207;&#26159;&#19981;&#37325;&#35201;&#30340;&#65292;&#22240;&#20026;maven&#20250;&#33258;&#21160;&#26681;&#25454;&#20381;&#36182;&#20851;&#31995;&#26469;&#25299;&#25169;&#25490;&#24207;</font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509505689466" ID="ID_1685047716" MODIFIED="1509505747256" TEXT="&#x6a21;&#x5757;module"/>
 </node>
 <node CREATED="1509504170632" ID="ID_1551918241" MODIFIED="1509505892604" TEXT="&#x5c5e;&#x6027; properties">
@@ -555,8 +542,7 @@
       ${file.encoding}
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509504180528" ID="ID_856817027" MODIFIED="1509504183393" TEXT="build"/>
 <node CREATED="1509504183680" ID="ID_297439288" MODIFIED="1509504190013" TEXT="reporting"/>
@@ -580,9 +566,9 @@
       profiles:pom4.0&#30340;&#19968;&#20010;&#26032;&#29305;&#24615;&#23601;&#26159;&#20855;&#26377;&#26681;&#25454;environment&#26469;&#20462;&#25913;&#35774;&#32622;&#30340;&#33021;&#21147;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
+<node CREATED="1512142937587" ID="ID_485209483" MODIFIED="1512142944053" POSITION="left" TEXT="&#x76ee;&#x5f55;&#x7ed3;&#x6784;"/>
 </node>
 </map>

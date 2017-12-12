@@ -1,0 +1,18 @@
+注释：
+name		id		address
+张三		001			北京
+李四		002			上海
+王五		003			深圳
+
+w3c规定xsd文件根目录必须是schema，该文件放在张三这里
+<schema 
+		xmlns注明该xml受到哪个约束文件的约束。xsd的约束文件也是一个xsd文件。
+		xmlns="http://www.w3.org/2001/XMLSchema"
+		该约束文件的命名空间
+    targetNamespace="001"
+    该文件约束文件根元素下的子元素默认属于空命名空间（unqualified）还是目标命名空间（qualified）
+    elementFormDefault="qualified"
+    该文件约束文件根元素下的子属性默认属于空命名空间（unqualified）还是目标命名空间（qualified）
+    attributeFormDefault="unqualified"
+>
+</schema>

@@ -104,49 +104,6 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1512987417922" ID="ID_544808625" MODIFIED="1513041232946" TEXT="&#x521b;&#x5efa;&#x7528;&#x6237;&#x5e76;&#x8d4b;&#x4e88;&#x6743;&#x9650;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      create user myh identified by myh123;--&#21019;&#24314;&#29992;&#25143;
-    </p>
-    <p>
-      alter user myh account unlock;--&#35299;&#38145;&#29992;&#25143;
-    </p>
-    <p>
-      grant create session to myh;--&#25480;&#20104;zhangsan&#29992;&#25143;&#21019;&#24314;session&#30340;&#26435;&#38480;&#65292;&#21363;&#30331;&#38470;&#26435;&#38480;
-    </p>
-    <p>
-      grant create sequence to myh;--&#25480;&#20104;zhangsan&#29992;&#25143;&#21019;&#24314;sequence&#30340;&#26435;&#38480;&#65292;&#21363;&#30331;&#38470;&#26435;&#38480;
-    </p>
-    <p>
-      grant unlimited tablespace to myh;--&#25480;&#20104;zhangsan&#29992;&#25143;&#20351;&#29992;&#34920;&#31354;&#38388;&#30340;&#26435;&#38480;
-    </p>
-    <p>
-      grant create table to myh;--&#25480;&#20104;&#21019;&#24314;&#34920;&#30340;&#26435;&#38480;
-    </p>
-    <p>
-      grant drop any table to myh;--&#25480;&#20104;&#21024;&#38500;&#34920;&#30340;&#26435;&#38480;
-    </p>
-    <p>
-      grant insert any table to myh;--&#25554;&#20837;&#34920;&#30340;&#26435;&#38480;
-    </p>
-    <p>
-      grant update any table to myh;--&#20462;&#25913;&#34920;&#30340;&#26435;&#38480;
-    </p>
-    <p>
-      grant delete any table to myh;--&#20462;&#25913;&#34920;&#30340;&#26435;&#38480;
-    </p>
-    <p>
-      --grant all to public;--&#36825;&#26465;&#27604;&#36739;&#37325;&#35201;&#65292;&#25480;&#20104;&#25152;&#26377;&#26435;&#38480;(all)&#32473;&#25152;&#26377;&#29992;&#25143;(public)
-    </p>
-  </body>
-</html>
-</richcontent>
-</node>
 </node>
 <node CREATED="1510134269896" ID="ID_30650941" MODIFIED="1510134737713" TEXT="&#x9000;&#x51fa; exist"/>
 </node>
@@ -526,7 +483,8 @@
     </p>
   </body>
 </html></richcontent>
-<node CREATED="1510144884963" ID="ID_104641984" MODIFIED="1512988819222" TEXT="&#x521b;&#x5efa;sequence">
+<node CREATED="1510144884963" ID="ID_104641984" MODIFIED="1512988819222" TEXT="&#x521b;&#x5efa;sequence"></node>
+<node CREATED="1510144884963" ID="ID_104641984" MODIFIED="1510146922956" TEXT="&#x521b;&#x5efa;sequence">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1916,7 +1874,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1510228376338" ID="ID_733216209" MODIFIED="1510228397976" TEXT="debug">
+<node CREATED="1510228376338" ID="ID_733216209" MODIFIED="1512139443536" TEXT="debug">
 <richcontent TYPE="NOTE"><html>
   <head>
     
