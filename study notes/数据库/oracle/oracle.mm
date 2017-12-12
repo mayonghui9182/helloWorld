@@ -1,7 +1,7 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1510134203271" ID="ID_174662231" MODIFIED="1510134216688" TEXT="oracle">
-<node CREATED="1510134217511" ID="ID_1331968680" MODIFIED="1512987335453" POSITION="right" TEXT="&#x7528;&#x6237;">
+<node CREATED="1510134217511" ID="ID_1331968680" MODIFIED="1513048846946" POSITION="right" TEXT="&#x7528;&#x6237;">
 <node CREATED="1510134227130" ID="ID_1620358217" MODIFIED="1510134251112" TEXT="&#x666e;&#x901a;&#x7528;&#x6237;scout/hr">
 <node CREATED="1510134319797" ID="ID_596249247" MODIFIED="1510134416730" TEXT="&#x66f4;&#x6539;&#x5bc6;&#x7801;">
 <richcontent TYPE="NOTE"><html>
@@ -104,10 +104,36 @@
   </body>
 </html></richcontent>
 </node>
+<node CREATED="1513048872894" ID="ID_927534426" MODIFIED="1513049305108" TEXT="&#x521b;&#x5efa;&#x7528;&#x6237;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      create user zhangsan
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1513048881117" ID="ID_1974026536" MODIFIED="1513048907067" TEXT="&#x8d4b;&#x4e88;&#x6743;&#x9650;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      GRANT CREATE USER,DROP USER,ALTER USER ,CREATE ANY VIEW , DROP ANY VIEW,EXP_FULL_DATABASE,IMP_FULL_DATABASE,DBA,CONNECT,RESOURCE,CREATE SESSION&#160;&#160;TO &#29992;&#25143;&#21517;&#23383;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 <node CREATED="1510134269896" ID="ID_30650941" MODIFIED="1510134737713" TEXT="&#x9000;&#x51fa; exist"/>
 </node>
-<node CREATED="1510134765747" FOLDED="true" ID="ID_935242576" MODIFIED="1510227014498" POSITION="left" TEXT="&#x547d;&#x4ee4;">
+<node CREATED="1510134765747" ID="ID_935242576" MODIFIED="1513056828148" POSITION="left" TEXT="&#x547d;&#x4ee4;">
 <node CREATED="1510134783977" ID="ID_1733289365" MODIFIED="1510134786974" TEXT="&#x7528;&#x6237;">
 <node CREATED="1510134788527" ID="ID_1684515755" MODIFIED="1510134802901" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x7528;&#x6237; show user"/>
 <node CREATED="1510134864936" ID="ID_1421741641" MODIFIED="1510134897380" TEXT="&#x67e5;&#x8be2;scott&#x7528;&#x6237;&#x4e0b;&#x7684;&#x6240;&#x6709;&#x5bf9;&#x8c61;">
@@ -173,8 +199,122 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510134770198" ID="ID_1438368892" MODIFIED="1510134772631" POSITION="right" TEXT="&#x6570;&#x636e;&#x5e93;"/>
-<node CREATED="1510134772932" ID="ID_984234746" MODIFIED="1510134774262" POSITION="right" TEXT="&#x5b9e;&#x4f8b;">
+<node CREATED="1510134770198" ID="ID_1438368892" MODIFIED="1513056919548" POSITION="right" TEXT="&#x6570;&#x636e;&#x5e93;">
+<node CREATED="1513056919486" ID="ID_873169690" MODIFIED="1513056927866" TEXT="&#x5907;&#x4efd;&#x6062;&#x590d;">
+<node CREATED="1513048674318" ID="ID_408160687" MODIFIED="1513071949544" TEXT="&#x5907;&#x4efd;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#22312;cmd&#21629;&#20196;&#34892;&#25191;&#34892;
+    </p>
+    <p>
+      1 &#23558;&#25968;&#25454;&#24211;TEST&#23436;&#20840;&#23548;&#20986;,&#29992;&#25143;&#21517;system &#23494;&#30721;manager &#23548;&#20986;&#21040;D:\daochu.dmp&#20013;
+    </p>
+    <p>
+      exp system/manager@TEST file=d:\daochu.dmp full=y
+    </p>
+    <p>
+      2 &#23558;&#25968;&#25454;&#24211;&#20013;system&#29992;&#25143;&#19982;sys&#29992;&#25143;&#30340;&#34920;&#23548;&#20986;
+    </p>
+    <p>
+      exp system/manager@TEST file=d:\daochu.dmp owner=(system,sys)
+    </p>
+    <p>
+      3 &#23558;&#25968;&#25454;&#24211;&#20013;&#30340;&#34920;table1 &#12289;table2&#23548;&#20986;
+    </p>
+    <p>
+      exp system/manager@TEST file=d:\daochu.dmp tables=(table1,table2)
+    </p>
+    <p>
+      4 &#23558;&#25968;&#25454;&#24211;&#20013;&#30340;&#34920;table1&#20013;&#30340;&#23383;&#27573;filed1&#20197;&quot;00&quot;&#25171;&#22836;&#30340;&#25968;&#25454;&#23548;&#20986;
+    </p>
+    <p>
+      exp system/manager@TEST file=d:\daochu.dmp tables=(table1)query=\&quot; where filed1 like '00%'\&quot;
+    </p>
+    <p>
+      &#19978;&#38754;&#26159;&#24120;&#29992;&#30340;&#23548;&#20986;&#65292;&#23545;&#20110;&#21387;&#32553;&#25105;&#19981;&#22826;&#22312;&#24847;&#65292;&#29992;winzip&#25226;dmp&#25991;&#20214;&#21487;&#20197;&#24456;&#22909;&#30340;&#21387;&#32553;&#12290;&#19981;&#36807;&#22312;&#19978;&#38754;&#21629;&#20196;&#21518;&#38754; &#21152;&#19978; compress=y &#23601;&#21487;&#20197;&#20102;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1513048752050" ID="ID_420469472" MODIFIED="1513048755807" TEXT="&#x6062;&#x590d;"/>
+</node>
+<node CREATED="1513056929645" ID="ID_1094184627" MODIFIED="1513074218896" TEXT="&#x884c;&#x5217;&#x8f6c;&#x6362;">
+<node CREATED="1513056939748" ID="ID_438605838" MODIFIED="1513056947700" TEXT="wm_contact"/>
+<node CREATED="1513074195793" ID="ID_317623819" MODIFIED="1513074213581" TEXT="&#x884c;&#x8f6c;&#x5217;">
+<node CREATED="1513074799906" ID="ID_804604544" MODIFIED="1513074827074" TEXT="decode&#x6216;&#x8005;case when"/>
+<node CREATED="1513056948442" ID="ID_1012243729" MODIFIED="1513077042758" TEXT="pivot">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      pivot&#26102;group by &#21644;case&#30340;&#32467;&#21512;&#65292;pivot&#23376;&#21477;&#20013;&#20986;&#29616;&#30340;&#21015;&#20197;&#22806;&#30340;&#21015;&#20570;&#20102;&#20998;&#32452;&#22788;&#29702;&#65292;&#23545;&#20998;&#32452;&#32467;&#26524;&#65292;&#22312;&#23545;for&#21518;&#23383;&#27573;&#21644;in&#23376;&#21477;&#20013;&#20986;&#29616;&#30340;&#23383;&#27573;&#20570;case&#22788;&#29702;&#65292;case for&#23383;&#27573; when in&#23376;&#21477; then &#32858;&#21512;&#20989;&#25968;&#12290;
+    </p>
+    <p>
+      select * from tablename pivot&#65288;&#32858;&#21512;&#20989;&#25968; for &#21015; in&#65288;&#21015;&#21517;&#65289;&#65289;
+    </p>
+    <p>
+      https://www.cnblogs.com/xuzhong86/p/6208319.html
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1513074218881" ID="ID_676490399" MODIFIED="1513074225993" TEXT="&#x5217;&#x8f6c;&#x884c;">
+<node CREATED="1513074341380" ID="ID_580106349" MODIFIED="1513074807074" TEXT="union&#x6216;union all">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#20363;&#22914;&#65306;&#34920;table&#26377;a&#12289;b&#12289;c&#19977;&#31867;&#65292;&#23558;b/c&#21015;&#36716;&#34892;
+    </p>
+    <p>
+      select a&#65292;&#8216;b&#8217; &#21015;&#21517;&#65292;b value
+    </p>
+    <p>
+      union all
+    </p>
+    <p>
+      select a&#65292;&#8216;c&#8217; &#21015;&#21517;&#65292;c value
+    </p>
+    <p>
+      http://blog.itpub.net/29312249/viewspace-1349445/
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1513056966123" ID="ID_879576340" MODIFIED="1513077031577" TEXT="unpivot">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      select * from table unpivot (&#20540;&#21015;&#21517; for &#21512;&#24182;&#21015;&#21517; in(&#21015;&#21517; as &#21512;&#24182;&#21015;&#20540;))
+    </p>
+    <p>
+      &#31867;&#20284;union
+    </p>
+    <p>
+      &#25226;&#36716;&#25442;&#30340;&#21015;&#21512;&#24182;&#25104;&#19968;&#20010;&#21015;&#65292;for&#21518;&#38754;&#26159;&#21512;&#24182;&#21015;&#30340;&#21015;&#21517;&#65292;&#21015;&#21517;&#20316;&#20026;&#21512;&#24182;&#21015;&#21517;&#30340;&#20540;&#65292;&#25226;&#36716;&#25442;&#21015;&#30340;&#20540;&#20316;&#20026;&#19968;&#21015;&#65292;&#21015;&#21517;&#20026;&#20540;&#21015;&#21517;&#65292;&#20540;&#20316;&#20026;&#20540;&#21015;&#21517;&#30340;&#20540;&#12290;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1510134772932" FOLDED="true" ID="ID_984234746" MODIFIED="1513048656893" POSITION="right" TEXT="&#x5b9e;&#x4f8b;">
 <node CREATED="1510226964993" ID="ID_490236933" MODIFIED="1510226988590" TEXT="&#x5b9e;&#x4f8b;&#x6c60;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -188,7 +328,7 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510135691797" ID="ID_1161210136" MODIFIED="1512548328122" POSITION="left" TEXT="&#x51fd;&#x6570;">
+<node CREATED="1510135691797" ID="ID_1161210136" MODIFIED="1513056850910" POSITION="left" TEXT="&#x51fd;&#x6570;">
 <node CREATED="1512548327679" ID="ID_546626447" MODIFIED="1512548335648" TEXT="null&#x51fd;&#x6570;">
 <node CREATED="1510135696576" ID="ID_1111287299" MODIFIED="1512548324057" TEXT="nvl&#xff08;column&#xff0c;value&#xff09;">
 <richcontent TYPE="NOTE"><html>
@@ -254,7 +394,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1510142550007" ID="ID_546006545" MODIFIED="1510142551955" POSITION="right" TEXT="DCL">
+<node CREATED="1510142550007" FOLDED="true" ID="ID_546006545" MODIFIED="1513048655644" POSITION="right" TEXT="DCL">
 <node CREATED="1510142555420" ID="ID_541477907" MODIFIED="1510144431182" TEXT="&#x8d4b;&#x4e88;&#x6743;&#x9650;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -289,7 +429,7 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510144698198" ID="ID_854703981" MODIFIED="1512988780713" POSITION="right" TEXT="&#x5bf9;&#x8c61;">
+<node CREATED="1510144698198" FOLDED="true" ID="ID_854703981" MODIFIED="1513048858727" POSITION="right" TEXT="&#x5bf9;&#x8c61;">
 <node CREATED="1510143748021" ID="ID_1334880635" MODIFIED="1510144287958" TEXT="&#x89c6;&#x56fe;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -483,7 +623,7 @@
     </p>
   </body>
 </html></richcontent>
-<node CREATED="1510144884963" ID="ID_104641984" MODIFIED="1512988819222" TEXT="&#x521b;&#x5efa;sequence"></node>
+<node CREATED="1510144884963" MODIFIED="1512988819222" TEXT="&#x521b;&#x5efa;sequence"/>
 <node CREATED="1510144884963" ID="ID_104641984" MODIFIED="1510146922956" TEXT="&#x521b;&#x5efa;sequence">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -696,7 +836,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1510149748555" ID="ID_401963940" MODIFIED="1510227720892" POSITION="left" TEXT="pl/sql">
+<node CREATED="1510149748555" ID="ID_401963940" MODIFIED="1513056862678" POSITION="left" TEXT="pl/sql">
 <node CREATED="1510151470452" ID="ID_1899443059" MODIFIED="1510154599696" TEXT="&#x8bed;&#x6cd5;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -1069,7 +1209,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1509362136427" ID="ID_1970789092" MODIFIED="1510228373014" POSITION="left" TEXT="&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
+<node CREATED="1509362136427" ID="ID_1970789092" MODIFIED="1513056868182" POSITION="left" TEXT="&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
