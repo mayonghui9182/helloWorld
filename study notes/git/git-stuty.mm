@@ -3,7 +3,7 @@
 <node CREATED="1509267871193" ID="ID_1635890055" MODIFIED="1509283547399" STYLE="bubble" TEXT="GIT&#x77e5;&#x8bc6;&#x7ed3;&#x6784;&#x56fe;">
 <node CREATED="1509267937419" ID="ID_199549013" MODIFIED="1509283547398" POSITION="right" STYLE="bubble" TEXT="&#x547d;&#x4ee4;">
 <edge COLOR="#808080" STYLE="bezier" WIDTH="thin"/>
-<node CREATED="1509283386175" FOLDED="true" ID="ID_761893405" MODIFIED="1510932068364" STYLE="bubble" TEXT="&#x672c;&#x5730;&#x547d;&#x4ee4;local">
+<node CREATED="1509283386175" ID="ID_761893405" MODIFIED="1513127852489" STYLE="bubble" TEXT="&#x672c;&#x5730;&#x547d;&#x4ee4;local">
 <node CREATED="1509283440679" ID="ID_214593636" MODIFIED="1509283547399" STYLE="bubble" TEXT="&#x521d;&#x59cb;&#x5316;&#x8bbe;&#x7f6e;">
 <node CREATED="1509283482606" ID="ID_1557742894" MODIFIED="1509283547399" STYLE="bubble" TEXT="&#x521d;&#x59cb;&#x5316;&#x7248;&#x672c;&#x5e93;">
 <node CREATED="1509283693564" ID="ID_1572179050" MODIFIED="1510931359495" TEXT="git init">
@@ -40,6 +40,42 @@
   <body>
     <p>
       <font color="rgb(0, 0, 136)" face="Source Code Pro, monospace">alias </font><font color="rgb(51, 51, 51)" face="Source Code Pro, monospace">ls=</font><font color="rgb(0, 136, 0)" face="Source Code Pro, monospace">'ls --show-control-chars --color=auto'</font>
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1509290254690" ID="ID_515153474" MODIFIED="1513128153920" TEXT="&#x89e3;&#x51b3;git commit&#x65e0;&#x6cd5;&#x8f93;&#x5165;&#x4e2d;&#x6587;&#x6ce8;&#x91ca;&#x7684;&#x95ee;&#x9898;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#35299;&#20915;git commit&#26080;&#27861;&#36755;&#20837;&#20013;&#25991;&#27880;&#37322;&#30340;&#38382;&#39064;
+    </p>
+    <p>
+      set output-meta on
+    </p>
+    <p>
+      set convert-meta off
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1509290371064" ID="ID_1814174527" MODIFIED="1513128165843" TEXT="&#x89e3;&#x51b3;git log&#x547d;&#x4ee4;&#x4e2d;&#x6587;&#x6ce8;&#x91ca;&#x4e3a;&#x4e71;&#x7801;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#35299;&#20915;git log&#21629;&#20196;&#20013;&#25991;&#27880;&#37322;&#20026;&#20081;&#30721;&#65288;&#21482;bash&#25511;&#21046;&#21488;&#22909;&#29992;&#65289;
+    </p>
+    <p>
+      &#26368;&#21518;&#36861;&#21152;
+    </p>
+    <p>
+      export LESSCHARSET= iso8859
     </p>
   </body>
 </html></richcontent>
@@ -168,6 +204,19 @@
 </node>
 </node>
 <node CREATED="1509283405286" ID="ID_103762219" MODIFIED="1509283547399" STYLE="bubble" TEXT="&#x8fdc;&#x7a0b;&#x547d;&#x4ee4;remote">
+<node CREATED="1513128037029" ID="ID_1875671219" MODIFIED="1513128065501" TEXT="&#x67e5;&#x770b;&#x7ed1;&#x5b9a;&#x7684;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      git remote -v
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 <node CREATED="1510931032652" ID="ID_240959900" MODIFIED="1510931418519" TEXT="&#x7ed1;&#x5b9a;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -189,7 +238,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509291380741" ID="ID_1604184295" MODIFIED="1510931526182" TEXT="&#x4e0b;&#x8f7d;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1509291380741" ID="ID_1604184295" MODIFIED="1513128049758" TEXT="&#x4e0b;&#x8f7d;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -208,7 +257,8 @@
       git pull
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1509291393125" ID="ID_274428136" MODIFIED="1510931658644" TEXT="&#x4e0a;&#x4f20;&#x5230;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
@@ -244,8 +294,7 @@
       git clone https://github.com/mayonghui2112/helloWorld&#25226;helloword&#20179;&#24211;&#22797;&#21046;&#21040;&#26412;&#22320;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
