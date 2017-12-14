@@ -110,7 +110,7 @@
 <node CREATED="1509290960499" ID="ID_1949763886" MODIFIED="1509291167828" TEXT="&#x63d0;&#x4ea4;&#x6587;&#x4ef6;"/>
 <node CREATED="1509290966418" ID="ID_611040369" MODIFIED="1509291176621" TEXT="&#x64a4;&#x9500;&#x63d0;&#x4ea4;"/>
 <node CREATED="1509290998361" ID="ID_893339129" MODIFIED="1509291217244" TEXT="&#x5206;&#x652f;">
-<node CREATED="1510931765604" ID="ID_1508320211" MODIFIED="1510931791566" TEXT="&#x67e5;&#x770b;&#x5206;&#x652f;">
+<node CREATED="1510931765604" ID="ID_1508320211" MODIFIED="1513215536043" TEXT="&#x67e5;&#x770b;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -119,8 +119,15 @@
     <p>
       git branch &#26597;&#30475;&#20998;&#25903;
     </p>
+    <p>
+      -a &#26597;&#30475;&#36828;&#31243;&#21644;&#26412;&#22320;&#25152;&#26377;&#20998;&#25903;
+    </p>
+    <p>
+      -r &#26597;&#30475;&#36828;&#31243;&#20998;&#25903;
+    </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510931792673" ID="ID_392021462" MODIFIED="1510931801456" TEXT="&#x521b;&#x5efa;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -214,15 +221,23 @@
       git remote -v
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
-<node CREATED="1510931032652" ID="ID_240959900" MODIFIED="1510931418519" TEXT="&#x7ed1;&#x5b9a;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1510931032652" ID="ID_240959900" MODIFIED="1513133603701" TEXT="&#x7ed1;&#x5b9a;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
+    <p>
+      git&#21040;&#36828;&#31243;&#20179;&#24211;&#25903;&#25345;http&#21644;git&#21327;&#35758;&#65292;http&#21327;&#35758;push&#30340;&#26102;&#20505;&#38656;&#35201;&#36755;&#20837;&#29992;&#25143;&#21517;&#21644;&#23494;&#30721;&#65292;git&#19981;&#38656;&#35201;
+    </p>
+    <p>
+      git url&#26684;&#24335;git@github.com:mayonghui2112/helloWorld.git
+    </p>
+    <p>
+      http url&#26684;&#24335;https://github.com/mayonghui2112/helloWorld
+    </p>
     <p>
       git remote add origin git@server-name:path/repo-name.git &#20851;&#32852;&#36828;&#31243;&#20179;&#24211;
     </p>
@@ -238,7 +253,30 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509291380741" ID="ID_1604184295" MODIFIED="1513128049758" TEXT="&#x4e0b;&#x8f7d;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1513136810474" ID="ID_383212273" MODIFIED="1513215332012" TEXT="rsa&#x7ed1;&#x5b9a;&#x5230;githup">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#22312;git bash&#19978;&#25191;&#34892; ssh-keygen&#21629;&#20196;&#65292;&#19981;&#24102;git
+    </p>
+    <p>
+      &#36755;&#20837;&#20445;&#23384;&#22320;&#22336; &#65292;&#19968;&#30452;&#25353;&#22238;&#36710;&#38190;
+    </p>
+    <p>
+      &#29983;&#25104;&#30340;key&#22312;c://&#23478;&#30446;&#24405;/.ssh/id_rsa.pub&#20013;
+    </p>
+    <p>
+      &#22797;&#21046;id_rsa.pub&#25991;&#20214;&#20869;&#23481;&#21040;githup&#30340;account setting--&gt;ssh key--&gt;add ssh key &#30340;key&#20013;&#65292;&#36755;&#20837;&#19968;&#20010;title&#65292;&#20445;&#23384;&#21363;&#21487;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1509291380741" ID="ID_1604184295" MODIFIED="1513215552312" TEXT="&#x4e0b;&#x8f7d;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1513215552282" ID="ID_1907403232" MODIFIED="1513215563588" TEXT="pull">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -259,6 +297,8 @@
   </body>
 </html>
 </richcontent>
+</node>
+<node CREATED="1513215555938" ID="ID_433308239" MODIFIED="1513215558274" TEXT="fetch"/>
 </node>
 <node CREATED="1509291393125" ID="ID_274428136" MODIFIED="1510931658644" TEXT="&#x4e0a;&#x4f20;&#x5230;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
