@@ -107,9 +107,42 @@
 </node>
 <node CREATED="1509283442822" ID="ID_1230449827" MODIFIED="1509283547399" STYLE="bubble" TEXT="&#x65e5;&#x5e38;&#x64cd;&#x4f5c;">
 <node CREATED="1509290875291" ID="ID_1553867490" MODIFIED="1509291159562" TEXT="&#x589e;&#x52a0;&#x6587;&#x4ef6;"/>
-<node CREATED="1509290960499" ID="ID_1949763886" MODIFIED="1509291167828" TEXT="&#x63d0;&#x4ea4;&#x6587;&#x4ef6;"/>
+<node CREATED="1509290960499" ID="ID_1949763886" MODIFIED="1513217670290" TEXT="&#x63d0;&#x4ea4;&#x6587;&#x4ef6;">
+<richcontent TYPE="NOTE">&lt;html&gt;
+  &lt;head&gt;
+    
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      git commit -m ''
+    &lt;/p&gt;
+    &lt;p&gt;
+      &amp;#26412;&amp;#22320;&amp;#24037;&amp;#20316;&amp;#23436;&amp;#25104;&amp;#21518;&amp;#65292;commit&amp;#21487;&amp;#20197;&amp;#23558;&amp;#24403;&amp;#21069;&amp;#24037;&amp;#20316;&amp;#20445;&amp;#23384;&amp;#21040;&amp;#20179;&amp;#24211;&amp;#65292;&lt;content ename=&quot;content&quot;&gt;&amp;#27492;&amp;#26102;&amp;#20250;&amp;#21442;&amp;#25968;&amp;#19968;&amp;#20010;commit-id&amp;#12290;&amp;#36825;&amp;#26159;&amp;#33021;&amp;#21807;&amp;#19968;&amp;#26631;&amp;#35782;&amp;#19968;&amp;#20010;&amp;#29256;&amp;#26412;&amp;#30340;&amp;#24207;&amp;#21015;&amp;#21495;&amp;#12290;
+    &lt;/p&gt;
+    &lt;p&gt;
+      
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</richcontent>
+</node>
 <node CREATED="1509290966418" ID="ID_611040369" MODIFIED="1509291176621" TEXT="&#x64a4;&#x9500;&#x63d0;&#x4ea4;"/>
-<node CREATED="1509290998361" ID="ID_893339129" MODIFIED="1509291217244" TEXT="&#x5206;&#x652f;">
+<node CREATED="1509290998361" ID="ID_893339129" MODIFIED="1513217262168" TEXT="&#x5206;&#x652f;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      git&#22810;&#29256;&#26412;&#20998;&#25903;&#31649;&#29702;&#36719;&#20214;&#12290;
+    </p>
+    <p>
+      &#20998;&#25903;&#26102;&#20026;&#20102;&#21333;&#29420;&#35760;&#24405;&#36719;&#20214;&#26576;&#20010;&#21457;&#24067;&#29256;&#26412;&#32780;&#23384;&#22312;&#30340;&#65292;
+    </p>
+  </body>
+</html>
+</richcontent>
 <node CREATED="1510931765604" ID="ID_1508320211" MODIFIED="1513215536043" TEXT="&#x67e5;&#x770b;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -165,20 +198,18 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1510931857586" ID="ID_430092321" MODIFIED="1510931875438" TEXT="&#x5408;&#x5e76;&#x5206;&#x652f;">
+<node CREATED="1510931857586" ID="ID_430092321" MODIFIED="1513217268262" TEXT="&#x5408;&#x5e76;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      
-    </p>
-    <p>
       git merge &lt;name&gt; &#21512;&#24182;&#26576;&#20998;&#25903;&#21040;&#24403;&#21069;&#20998;&#25903;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510931875743" ID="ID_1754331646" MODIFIED="1510931895684" TEXT="&#x5220;&#x9664;&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -210,7 +241,22 @@
 <node CREATED="1509291242574" ID="ID_1257443147" MODIFIED="1509291247538" TEXT="&#x5bfc;&#x51fa;"/>
 </node>
 </node>
-<node CREATED="1509283405286" ID="ID_103762219" MODIFIED="1509283547399" STYLE="bubble" TEXT="&#x8fdc;&#x7a0b;&#x547d;&#x4ee4;remote">
+<node CREATED="1509283405286" ID="ID_103762219" MODIFIED="1513217124675" STYLE="bubble" TEXT="&#x8fdc;&#x7a0b;&#x547d;&#x4ee4;remote">
+<richcontent TYPE="NOTE">&lt;html&gt;
+  &lt;head&gt;
+    
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      git&amp;#26159;&amp;#19968;&amp;#20010;&amp;#20998;&amp;#24067;&amp;#24335;&amp;#30340;&amp;#32467;&amp;#26500;&amp;#65292;&amp;#36825;&amp;#24847;&amp;#21619;&amp;#30528;&amp;#26412;&amp;#22320;&amp;#21644;&amp;#36828;&amp;#31243;&amp;#26159;&amp;#19968;&amp;#20010;&amp;#30456;&amp;#23545;&amp;#27010;&amp;#24565;&amp;#12290;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &amp;#29992;git remote&amp;#21629;&amp;#20196;&amp;#21487;&amp;#20197;&lt;content ename=&quot;content&quot;&gt;&amp;#23436;&amp;#25104;&amp;#26412;&amp;#22320;&amp;#21644;&amp;#36828;&amp;#31243;&amp;#30340;&amp;#37197;&amp;#23545;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</richcontent>
 <node CREATED="1513128037029" ID="ID_1875671219" MODIFIED="1513128065501" TEXT="&#x67e5;&#x770b;&#x7ed1;&#x5b9a;&#x7684;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -275,7 +321,18 @@
 </html>
 </richcontent>
 </node>
-<node CREATED="1509291380741" ID="ID_1604184295" MODIFIED="1513215552312" TEXT="&#x4e0b;&#x8f7d;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1509291380741" ID="ID_1604184295" MODIFIED="1513217748302" TEXT="&#x4e0b;&#x8f7d;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#23558;commit-id&#19979;&#36733;&#21040;&#26412;&#22320;
+    </p>
+  </body>
+</html>
+</richcontent>
 <node CREATED="1513215552282" ID="ID_1907403232" MODIFIED="1513215563588" TEXT="pull">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -298,14 +355,32 @@
 </html>
 </richcontent>
 </node>
-<node CREATED="1513215555938" ID="ID_433308239" MODIFIED="1513215558274" TEXT="fetch"/>
-</node>
-<node CREATED="1509291393125" ID="ID_274428136" MODIFIED="1510931658644" TEXT="&#x4e0a;&#x4f20;&#x5230;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1513215555938" ID="ID_433308239" MODIFIED="1513216855029" TEXT="fetch">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
+    <p>
+      https://www.cnblogs.com/ToDoToTry/p/4095626.html
+    </p>
+    <p>
+      &#26356;&#26032;commit-id
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1509291393125" ID="ID_274428136" MODIFIED="1513217710728" TEXT="&#x4e0a;&#x4f20;&#x5230;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      push&#21629;&#20196;&#23558;commit-id&#21516;&#27493;&#21040;&#36828;&#31243;&#12290;
+    </p>
     <p>
       git push -u origin master &#31532;&#19968;&#27425;&#25512;&#36865;master&#20998;&#25903;&#30340;&#25152;&#26377;&#20869;&#23481;&#65292;&#21152;&#19978;&#20102;-u&#21442;&#25968;&#65292;Git&#19981;&#20294;&#20250;&#25226;&#26412;&#22320;&#30340;master&#20998;&#25903;&#20869;&#23481;&#25512;&#36865;&#30340;&#36828;&#31243;&#26032;&#30340;master&#20998;&#25903;&#65292;&#36824;&#20250;&#25226;&#26412;&#22320;&#30340;master&#20998;&#25903;&#21644;&#36828;&#31243;&#30340;master&#20998;&#25903;&#20851;&#32852;&#36215;&#26469;&#65292;&#22312;&#20197;&#21518;&#30340;&#25512;&#36865;&#25110;&#32773;&#25289;&#21462;&#26102;&#23601;&#21487;&#20197;&#31616;&#21270;&#21629;&#20196;
     </p>
@@ -319,7 +394,8 @@
       git push origin branch-name &#20174;&#26412;&#22320;&#25512;&#36865;&#20998;&#25903;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1509291400397" ID="ID_669401793" MODIFIED="1512016983844" TEXT="&#x514b;&#x9686;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>

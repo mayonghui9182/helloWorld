@@ -1,6 +1,6 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1511616459777" ID="ID_686986088" MODIFIED="1511616466778" TEXT="&#x8fd0;&#x7b97;&#x7b26;">
+<node CREATED="1511616459777" ID="ID_686986088" MODIFIED="1513245447557" TEXT="&#x8fd0;&#x7b97;&#x7b26;">
 <node CREATED="1511616468447" FOLDED="true" ID="ID_681533664" MODIFIED="1511616829202" POSITION="right" TEXT="&#x7b97;&#x672f;&#x8fd0;&#x7b97;&#x7b26;">
 <node CREATED="1511616608096" ID="ID_171410112" MODIFIED="1511616625269" TEXT="&#x4e09;&#x5143;&#x8fd0;&#x7b97;&#x7b26;">
 <node CREATED="1511616562202" ID="ID_1463102811" MODIFIED="1511616564374" TEXT="+"/>
@@ -44,6 +44,38 @@
 <node CREATED="1511616723926" ID="ID_324579413" MODIFIED="1511616728004" TEXT="n++"/>
 <node CREATED="1511616687474" ID="ID_56319569" MODIFIED="1511616732848" TEXT="--n"/>
 <node CREATED="1511616733601" ID="ID_808779634" MODIFIED="1511616736507" TEXT="n--"/>
+</node>
+<node CREATED="1513245448329" ID="ID_788415947" MODIFIED="1513247658872" POSITION="left" TEXT="instanceof">
+<richcontent TYPE="NOTE">&lt;html&gt;
+  &lt;head&gt;
+    
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      instance instanceof type
+    &lt;/p&gt;
+    &lt;p&gt;
+      &amp;#21028;&amp;#26029;instance&amp;#26159;&amp;#21542;&amp;#26159;type&amp;#31867;&amp;#22411;&amp;#25110;&amp;#20854;&amp;#23376;&amp;#31867;&amp;#22411;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;font color=&quot;#ff0000&quot;&gt;null&amp;#160;&amp;#160;instanceof type&amp;#20026;false&lt;/font&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      1&amp;#12289;type&amp;#21644;instance&lt;content ename=&quot;content&quot;&gt;&amp;#24517;&amp;#39035;&amp;#26159;&amp;#24341;&amp;#29992;&amp;#31867;&amp;#22411;&amp;#65292;&amp;#21542;&amp;#21017;&amp;#32534;&amp;#35793;&amp;#38169;&amp;#35823;&amp;#12290;
+    &lt;/p&gt;
+    &lt;p&gt;
+      2&amp;#12289;
+    &lt;/p&gt;
+    &lt;p&gt;
+      
+    &lt;/p&gt;
+    &lt;p&gt;
+      https://www.zhihu.com/question/21574535/answer/18998914
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</richcontent>
 </node>
 </node>
 </map>
