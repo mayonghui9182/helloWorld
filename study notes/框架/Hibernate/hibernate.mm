@@ -1,7 +1,7 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1510645979658" ID="ID_425023716" MODIFIED="1512884483326" TEXT="hibernate">
-<node CREATED="1510645985124" ID="ID_301222527" MODIFIED="1512918672458" POSITION="right" TEXT="&#x6620;&#x5c04;&#x5173;&#x7cfb;">
+<node CREATED="1510645985124" FOLDED="true" ID="ID_301222527" MODIFIED="1513350233669" POSITION="right" TEXT="&#x6620;&#x5c04;&#x5173;&#x7cfb;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -255,7 +255,7 @@
 <node CREATED="1510646001035" ID="ID_1047691491" MODIFIED="1510646004989" TEXT="&#x4e00;&#x5bf9;&#x591a;&#x6620;&#x5c04;"/>
 <node CREATED="1510646005246" ID="ID_1775229728" MODIFIED="1510646010268" TEXT="&#x591a;&#x5bf9;&#x591a;&#x6620;&#x5c04;"/>
 </node>
-<node CREATED="1512891958436" ID="ID_1501330481" MODIFIED="1512891963247" POSITION="right" TEXT="&#x4e09;&#x79cd;&#x72b6;&#x6001;">
+<node CREATED="1512891958436" FOLDED="true" ID="ID_1501330481" MODIFIED="1513350234793" POSITION="right" TEXT="&#x4e09;&#x79cd;&#x72b6;&#x6001;">
 <node CREATED="1512892070585" ID="ID_1874991758" MODIFIED="1512918665927" TEXT="unsave-value">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -366,9 +366,53 @@
       5&#12289;&#37325;&#20889;equal&#21644;hashcode&#26041;&#27861;&#12290;&#20026;&#20102;set&#38598;&#21512;&#23384;&#20648;&#23545;&#35937;&#65288;&#19968;&#23545;&#22810;&#65292;&#22810;&#23545;&#22810;&#65289;&#26102;&#12290;
     </p>
   </body>
+</html></richcontent>
+</node>
+</node>
+<node CREATED="1513350239061" ID="ID_1547294338" MODIFIED="1513350243796" POSITION="right" TEXT="api">
+<node CREATED="1513350252958" ID="ID_363564219" MODIFIED="1513350645543" TEXT="Configuration">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      new configuration()&#65307;&#40664;&#35748;&#21152;&#36733;hibernate.properties&#25991;&#20214;&#20316;&#20026;&#37197;&#32622;&#25991;&#20214;
+    </p>
+  </body>
+</html>
+</richcontent>
+<node CREATED="1513350657915" ID="ID_1650239105" MODIFIED="1513350820235" TEXT="configure">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#21152;&#36733;hibernate.cfg.xml&#20316;&#20026;&#37197;&#32622;&#25991;&#20214;
+    </p>
+    <p>
+      &#21487;&#20197;&#24102;&#21442;&#25968;&#25351;&#23450;&#21152;&#36733;&#25991;&#20214;&#20316;&#20026;&#37197;&#32622;&#25991;&#20214;
+    </p>
+  </body>
 </html>
 </richcontent>
 </node>
+<node CREATED="1513350822753" ID="ID_1760606836" MODIFIED="1513350885634" TEXT="add*">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#21152;&#36733;mapping&#25991;&#20214;&#65292;&#20316;&#20026;&#37197;&#32622;&#25991;&#20214;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1513350898622" ID="ID_262308276" MODIFIED="1513350907624" TEXT="sessionFactory"/>
 </node>
 </node>
 </map>
