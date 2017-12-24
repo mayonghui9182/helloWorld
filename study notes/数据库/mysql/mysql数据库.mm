@@ -1370,7 +1370,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1510225486040" ID="ID_286469498" MODIFIED="1510225524434" TEXT="&#x4f1a;&#x8bdd;&#x53d8;&#x91cf;">
+<node CREATED="1510225486040" ID="ID_286469498" MODIFIED="1513786500430" TEXT="&#x4f1a;&#x8bdd;&#x53d8;&#x91cf;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1386,7 +1386,8 @@
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-- &#26597;&#30475;&#20250;&#35805;&#21464;&#37327;&#65306; select @&#21464;&#37327;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510225490151" ID="ID_875970521" MODIFIED="1510225661036" TEXT="&#x5c40;&#x90e8;&#x53d8;&#x91cf;">
 <richcontent TYPE="NOTE"><html>

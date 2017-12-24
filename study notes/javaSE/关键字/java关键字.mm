@@ -43,7 +43,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1511613565957" ID="ID_1675458066" MODIFIED="1513245534073" POSITION="right" TEXT="final">
+<node CREATED="1511613565957" ID="ID_1675458066" MODIFIED="1514095340766" POSITION="right" TEXT="final">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -79,6 +79,31 @@
   </body>
 </html>
 </richcontent>
+<node CREATED="1514003728925" ID="ID_649317679" MODIFIED="1514095523492" TEXT="final&#x53d8;&#x91cf;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#21442;&#30475;&#26377;&#36947;&#20113;&#31508;&#35760;&#65306;
+    </p>
+    <p>
+      &#23398;&#20064;&#31508;&#35760;&#12289;javase&#12289;&#20851;&#38190;&#23383;&#12289;final&#21464;&#37327;
+    </p>
+    <p>
+      &#21442;&#32771;&#65306;
+    </p>
+    <p>
+      http://blog.csdn.net/xlh1191860939/article/details/53088806?locationNum=5&amp;fps=1
+    </p>
+    <p>
+      http://developer.51cto.com/art/200906/128214.htm
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 <node CREATED="1513245542690" ID="ID_331511581" MODIFIED="1513247514860" POSITION="right" TEXT="null">
 <richcontent TYPE="NOTE"><html>
@@ -90,8 +115,7 @@
       null&#21487;&#20197;&#24378;&#36716;&#20026;&#20219;&#20309;&#20540;&#21487;&#20197;&#20026;null&#30340;&#24341;&#29992;&#31867;&#22411;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </map>
