@@ -39,4 +39,6 @@ public class HibernateUtil {
 		}
 		sessionLocal.set(null);
 	}
+		
+	
 }
