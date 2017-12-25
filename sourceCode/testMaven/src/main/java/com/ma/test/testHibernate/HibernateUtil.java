@@ -10,6 +10,7 @@ public class HibernateUtil {
 	static {
 		init();
 	}
+	@SuppressWarnings("unused")
 	private static SessionFactory getSessionfactory() {
 		if(sessions==null){
 			synchronized (HibernateUtil.class) {
@@ -24,6 +25,7 @@ public class HibernateUtil {
 		Configuration cfg = new Configuration().configure();
 		sessions=cfg.buildSessionFactory();
 	}
+	@SuppressWarnings("unused")
 	private static Session getSession(){
 		Session session=sessionLocal.get();
 		if(session==null){
@@ -32,6 +34,7 @@ public class HibernateUtil {
 		}
 		return session;
 	}
+	@SuppressWarnings("unused")
 	private static void closeSession(){
 		Session session=sessionLocal.get();
 		if(session!=null){

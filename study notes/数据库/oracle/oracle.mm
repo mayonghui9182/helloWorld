@@ -1,6 +1,86 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1510134203271" ID="ID_174662231" MODIFIED="1510134216688" TEXT="oracle">
+<node CREATED="1510134765747" ID="ID_935242576" MODIFIED="1514190040565" POSITION="right" TEXT="&#x547d;&#x4ee4;">
+<node CREATED="1510134783977" ID="ID_1733289365" MODIFIED="1510134786974" TEXT="&#x7528;&#x6237;">
+<node CREATED="1510134788527" ID="ID_1684515755" MODIFIED="1510134802901" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x7528;&#x6237; show user"/>
+<node CREATED="1510134864936" ID="ID_1421741641" MODIFIED="1510134897380" TEXT="&#x67e5;&#x8be2;scott&#x7528;&#x6237;&#x4e0b;&#x7684;&#x6240;&#x6709;&#x5bf9;&#x8c61;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      select * from tab;
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node CREATED="1510134897649" ID="ID_362807962" MODIFIED="1510134903336" TEXT="&#x6570;&#x636e;&#x5e93;">
+<node CREATED="1514190260433" ID="ID_1178663463" MODIFIED="1514190281007" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x6570;&#x636e;&#x5e93;&#x540d;&#x5b57;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      select SYS_CONTEXT('USERENV','INSTANCE_NAME') from dual;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1510134903716" ID="ID_1370320189" MODIFIED="1510134905228" TEXT="&#x8868;">
+<node CREATED="1510134912030" ID="ID_1116844111" MODIFIED="1510134996180" TEXT="&#x63cf;&#x8ff0;&#x8868;&#x7ed3;&#x6784;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      description tabname
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node CREATED="1510134905657" ID="ID_192257635" MODIFIED="1510134907372" TEXT="&#x5b57;&#x6bb5;"/>
+<node CREATED="1510135003383" ID="ID_86083814" MODIFIED="1510135116229" TEXT="sql&#x8bed;&#x53e5;&#x7684;&#x4fdd;&#x5b58;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#20351;&#29992;spool&#21629;&#20196;&#65292;&#20445;&#23384;SQL&#35821;&#21477;&#21040;&#30828;&#30424;&#25991;&#20214;e:/oracle-day01.sql&#65292;&#24182;&#21019;&#24314;sql&#25991;&#20214;
+    </p>
+    <p>
+      spool e:/oracle-day01.sql;
+    </p>
+    <p>
+      &#160;&#160;SQL&#35821;&#21477;
+    </p>
+    <p>
+      spool off;
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1510135123494" ID="ID_1779282877" MODIFIED="1510135236265" TEXT="&#x8bfb;&#x53d6;sql&#x6587;&#x4ef6;&#x5e76;&#x6267;&#x884c;sql&#x8bed;&#x53e5;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      @ e:/crm.sql;
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
 <node CREATED="1510134217511" ID="ID_1331968680" MODIFIED="1513048846946" POSITION="right" TEXT="&#x7528;&#x6237;">
 <node CREATED="1510134227130" ID="ID_1620358217" MODIFIED="1510134251112" TEXT="&#x666e;&#x901a;&#x7528;&#x6237;scout/hr">
 <node CREATED="1510134319797" ID="ID_596249247" MODIFIED="1510134416730" TEXT="&#x66f4;&#x6539;&#x5bc6;&#x7801;">
@@ -131,75 +211,9 @@
 </node>
 <node CREATED="1510134269896" ID="ID_30650941" MODIFIED="1510134737713" TEXT="&#x9000;&#x51fa; exist"/>
 </node>
-<node CREATED="1510134765747" ID="ID_935242576" MODIFIED="1513056828148" POSITION="left" TEXT="&#x547d;&#x4ee4;">
-<node CREATED="1510134783977" ID="ID_1733289365" MODIFIED="1510134786974" TEXT="&#x7528;&#x6237;">
-<node CREATED="1510134788527" ID="ID_1684515755" MODIFIED="1510134802901" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x7528;&#x6237; show user"/>
-<node CREATED="1510134864936" ID="ID_1421741641" MODIFIED="1510134897380" TEXT="&#x67e5;&#x8be2;scott&#x7528;&#x6237;&#x4e0b;&#x7684;&#x6240;&#x6709;&#x5bf9;&#x8c61;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      select * from tab;
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
-<node CREATED="1510134897649" ID="ID_362807962" MODIFIED="1510134903336" TEXT="&#x6570;&#x636e;&#x5e93;"/>
-<node CREATED="1510134903716" ID="ID_1370320189" MODIFIED="1510134905228" TEXT="&#x8868;">
-<node CREATED="1510134912030" ID="ID_1116844111" MODIFIED="1510134996180" TEXT="&#x63cf;&#x8ff0;&#x8868;&#x7ed3;&#x6784;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      description tabname
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
-<node CREATED="1510134905657" ID="ID_192257635" MODIFIED="1510134907372" TEXT="&#x5b57;&#x6bb5;"/>
-<node CREATED="1510135003383" ID="ID_86083814" MODIFIED="1510135116229" TEXT="sql&#x8bed;&#x53e5;&#x7684;&#x4fdd;&#x5b58;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      &#20351;&#29992;spool&#21629;&#20196;&#65292;&#20445;&#23384;SQL&#35821;&#21477;&#21040;&#30828;&#30424;&#25991;&#20214;e:/oracle-day01.sql&#65292;&#24182;&#21019;&#24314;sql&#25991;&#20214;
-    </p>
-    <p>
-      spool e:/oracle-day01.sql;
-    </p>
-    <p>
-      &#160;&#160;SQL&#35821;&#21477;
-    </p>
-    <p>
-      spool off;
-    </p>
-  </body>
-</html></richcontent>
-</node>
-<node CREATED="1510135123494" ID="ID_1779282877" MODIFIED="1510135236265" TEXT="&#x8bfb;&#x53d6;sql&#x6587;&#x4ef6;&#x5e76;&#x6267;&#x884c;sql&#x8bed;&#x53e5;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      @ e:/crm.sql;
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
 <node CREATED="1510134770198" ID="ID_1438368892" MODIFIED="1513056919548" POSITION="right" TEXT="&#x6570;&#x636e;&#x5e93;">
 <node CREATED="1513056919486" ID="ID_873169690" MODIFIED="1513056927866" TEXT="&#x5907;&#x4efd;&#x6062;&#x590d;">
-<node CREATED="1513048674318" ID="ID_408160687" MODIFIED="1513920247055" TEXT="&#x5907;&#x4efd;">
+<node CREATED="1513048674318" ID="ID_408160687" MODIFIED="1514190031134" TEXT="&#x5907;&#x4efd;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -353,7 +367,7 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510135691797" ID="ID_1161210136" MODIFIED="1513056850910" POSITION="left" TEXT="&#x51fd;&#x6570;">
+<node CREATED="1510135691797" FOLDED="true" ID="ID_1161210136" MODIFIED="1514190038271" POSITION="left" TEXT="&#x51fd;&#x6570;">
 <node CREATED="1512548327679" ID="ID_546626447" MODIFIED="1512548335648" TEXT="null&#x51fd;&#x6570;">
 <node CREATED="1510135696576" ID="ID_1111287299" MODIFIED="1512548324057" TEXT="nvl&#xff08;column&#xff0c;value&#xff09;">
 <richcontent TYPE="NOTE"><html>
