@@ -174,8 +174,7 @@
       git rebase -i head~11
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509290998361" ID="ID_893339129" MODIFIED="1513217262168" TEXT="&#x5206;&#x652f;">
 <richcontent TYPE="NOTE"><html>
@@ -302,7 +301,7 @@
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;</richcontent>
-<node CREATED="1513128037029" ID="ID_1875671219" MODIFIED="1513128065501" TEXT="&#x67e5;&#x770b;&#x7ed1;&#x5b9a;&#x7684;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
+<node CREATED="1513128037029" ID="ID_1875671219" MODIFIED="1513920246583" TEXT="&#x67e5;&#x770b;&#x7ed1;&#x5b9a;&#x7684;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -312,7 +311,8 @@
       git remote -v
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510931032652" ID="ID_240959900" MODIFIED="1513133603701" TEXT="&#x7ed1;&#x5b9a;&#x8fdc;&#x7a0b;&#x4ed3;&#x5e93;">
 <richcontent TYPE="NOTE"><html>

@@ -344,7 +344,7 @@
 </node>
 </node>
 <node CREATED="1512887705684" ID="ID_465744302" MODIFIED="1513175670572" POSITION="left" TEXT="&#x6301;&#x4e45;&#x5316;&#x5bf9;&#x8c61;">
-<node CREATED="1513175685272" ID="ID_850570794" MODIFIED="1513260300904" TEXT="&#x8981;&#x6c42;">
+<node CREATED="1513175685272" ID="ID_850570794" MODIFIED="1513920245373" TEXT="&#x8981;&#x6c42;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -366,7 +366,8 @@
       5&#12289;&#37325;&#20889;equal&#21644;hashcode&#26041;&#27861;&#12290;&#20026;&#20102;set&#38598;&#21512;&#23384;&#20648;&#23545;&#35937;&#65288;&#19968;&#23545;&#22810;&#65292;&#22810;&#23545;&#22810;&#65289;&#26102;&#12290;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
 <node CREATED="1513350239061" ID="ID_1547294338" MODIFIED="1513350243796" POSITION="right" TEXT="api">
@@ -380,8 +381,7 @@
       new configuration()&#65307;&#40664;&#35748;&#21152;&#36733;hibernate.properties&#25991;&#20214;&#20316;&#20026;&#37197;&#32622;&#25991;&#20214;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1513350657915" ID="ID_1650239105" MODIFIED="1513350820235" TEXT="configure">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -395,8 +395,7 @@
       &#21487;&#20197;&#24102;&#21442;&#25968;&#25351;&#23450;&#21152;&#36733;&#25991;&#20214;&#20316;&#20026;&#37197;&#32622;&#25991;&#20214;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1513350822753" ID="ID_1760606836" MODIFIED="1513350885634" TEXT="add*">
 <richcontent TYPE="NOTE"><html>
@@ -408,8 +407,7 @@
       &#21152;&#36733;mapping&#25991;&#20214;&#65292;&#20316;&#20026;&#37197;&#32622;&#25991;&#20214;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1513350898622" ID="ID_262308276" MODIFIED="1513350907624" TEXT="sessionFactory"/>

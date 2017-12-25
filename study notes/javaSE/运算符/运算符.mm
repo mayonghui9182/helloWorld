@@ -45,7 +45,7 @@
 <node CREATED="1511616687474" ID="ID_56319569" MODIFIED="1511616732848" TEXT="--n"/>
 <node CREATED="1511616733601" ID="ID_808779634" MODIFIED="1511616736507" TEXT="n--"/>
 </node>
-<node CREATED="1513245448329" ID="ID_788415947" MODIFIED="1513308741682" POSITION="left" TEXT="instanceof">
+<node CREATED="1513245448329" ID="ID_788415947" MODIFIED="1513920246222" POSITION="left" TEXT="instanceof">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -139,8 +139,7 @@
       System.out.println(new B3(){} instanceof A);//&#32534;&#35793;&#36890;&#36807;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
