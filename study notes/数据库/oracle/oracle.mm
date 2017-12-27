@@ -2,52 +2,7 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1510134203271" ID="ID_174662231" MODIFIED="1510134216688" TEXT="oracle">
 <node CREATED="1510134765747" ID="ID_935242576" MODIFIED="1514190040565" POSITION="right" TEXT="&#x547d;&#x4ee4;">
-<node CREATED="1510134783977" ID="ID_1733289365" MODIFIED="1510134786974" TEXT="&#x7528;&#x6237;">
-<node CREATED="1510134788527" ID="ID_1684515755" MODIFIED="1510134802901" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x7528;&#x6237; show user"/>
-<node CREATED="1510134864936" ID="ID_1421741641" MODIFIED="1510134897380" TEXT="&#x67e5;&#x8be2;scott&#x7528;&#x6237;&#x4e0b;&#x7684;&#x6240;&#x6709;&#x5bf9;&#x8c61;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      select * from tab;
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
-<node CREATED="1510134897649" ID="ID_362807962" MODIFIED="1510134903336" TEXT="&#x6570;&#x636e;&#x5e93;">
-<node CREATED="1514190260433" ID="ID_1178663463" MODIFIED="1514190281007" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x6570;&#x636e;&#x5e93;&#x540d;&#x5b57;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      select SYS_CONTEXT('USERENV','INSTANCE_NAME') from dual;
-    </p>
-  </body>
-</html>
-</richcontent>
-</node>
-</node>
-<node CREATED="1510134903716" ID="ID_1370320189" MODIFIED="1510134905228" TEXT="&#x8868;">
-<node CREATED="1510134912030" ID="ID_1116844111" MODIFIED="1510134996180" TEXT="&#x63cf;&#x8ff0;&#x8868;&#x7ed3;&#x6784;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      description tabname
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
-<node CREATED="1510134905657" ID="ID_192257635" MODIFIED="1510134907372" TEXT="&#x5b57;&#x6bb5;"/>
-<node CREATED="1510135003383" ID="ID_86083814" MODIFIED="1510135116229" TEXT="sql&#x8bed;&#x53e5;&#x7684;&#x4fdd;&#x5b58;">
+<node CREATED="1510135003383" ID="ID_86083814" MODIFIED="1514217547522" TEXT="sql&#x8bed;&#x53e5;&#x7684;&#x4fdd;&#x5b58;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -83,6 +38,31 @@
 </node>
 <node CREATED="1510134217511" ID="ID_1331968680" MODIFIED="1513048846946" POSITION="right" TEXT="&#x7528;&#x6237;">
 <node CREATED="1510134227130" ID="ID_1620358217" MODIFIED="1510134251112" TEXT="&#x666e;&#x901a;&#x7528;&#x6237;scout/hr">
+<node CREATED="1510134864936" ID="ID_1421741641" MODIFIED="1514217439498" TEXT="&#x67e5;&#x8be2;scott&#x7528;&#x6237;&#x4e0b;&#x7684;&#x6240;&#x6709;&#x5bf9;&#x8c61;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      select * from tab;
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1510134788527" ID="ID_1684515755" MODIFIED="1514384784364" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x7528;&#x6237; show user">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#35831;&#29992;&#21629;&#20196;&#34892;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 <node CREATED="1510134319797" ID="ID_596249247" MODIFIED="1510134416730" TEXT="&#x66f4;&#x6539;&#x5bc6;&#x7801;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -160,14 +140,33 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1510134293495" ID="ID_612111037" MODIFIED="1510134574631" TEXT="&#x89e3;&#x9501;&#x666e;&#x901a;&#x7528;&#x6237;">
+<node CREATED="1514217401872" ID="ID_1506474760" MODIFIED="1514384515845" TEXT="&#x67e5;&#x8be2;&#x6240;&#x6709;&#x7528;&#x6237;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      alter user username account unlock
+      select * from dba_users; --&#26597;&#30475;&#25968;&#25454;&#24211;&#37324;&#38754;&#25152;&#26377;&#29992;&#25143;&#65292;&#21069;&#25552;&#26159;&#20320;&#26159;&#26377;dba&#26435;&#38480;&#30340;&#24080;&#21495;&#65292;&#22914;sys,system
+    </p>
+    <p>
+      select * from all_users; -- &#26597;&#30475;&#20320;&#33021;&#31649;&#29702;&#30340;&#25152;&#26377;&#29992;&#25143;&#65281;
+    </p>
+    <p>
+      select * from user_users;-- &#26597;&#30475;&#24403;&#21069;&#29992;&#25143;&#20449;&#24687; &#65281;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1510134293495" ID="ID_612111037" MODIFIED="1514217292679" TEXT="&#x89e3;&#x9501;&#x666e;&#x901a;&#x7528;&#x6237;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      alter user sambase account unlock
     </p>
   </body>
 </html></richcontent>
@@ -250,8 +249,7 @@
       &#19978;&#38754;&#26159;&#24120;&#29992;&#30340;&#23548;&#20986;&#65292;&#23545;&#20110;&#21387;&#32553;&#25105;&#19981;&#22826;&#22312;&#24847;&#65292;&#29992;winzip&#25226;dmp&#25991;&#20214;&#21487;&#20197;&#24456;&#22909;&#30340;&#21387;&#32553;&#12290;&#19981;&#36807;&#22312;&#19978;&#38754;&#21629;&#20196;&#21518;&#38754; &#21152;&#19978; compress=y &#23601;&#21487;&#20197;&#20102;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1513048752050" ID="ID_420469472" MODIFIED="1513665537483" TEXT="&#x6062;&#x590d;">
 <richcontent TYPE="NOTE"><html>
@@ -283,6 +281,19 @@
   </body>
 </html></richcontent>
 </node>
+</node>
+<node CREATED="1514190260433" ID="ID_1178663463" MODIFIED="1514384372894" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x6570;&#x636e;&#x5e93;&#x540d;&#x5b57;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      select SYS_CONTEXT('USERENV','INSTANCE_NAME') from dual;
+    </p>
+  </body>
+</html>
+</richcontent>
 </node>
 <node CREATED="1513056929645" ID="ID_1094184627" MODIFIED="1513074218896" TEXT="&#x884c;&#x5217;&#x8f6c;&#x6362;">
 <node CREATED="1513056939748" ID="ID_438605838" MODIFIED="1513056947700" TEXT="wm_contact"/>
@@ -353,7 +364,49 @@
 </node>
 </node>
 </node>
-<node CREATED="1510134772932" FOLDED="true" ID="ID_984234746" MODIFIED="1513048656893" POSITION="right" TEXT="&#x5b9e;&#x4f8b;">
+<node CREATED="1510134903716" ID="ID_1370320189" MODIFIED="1510134905228" POSITION="right" TEXT="&#x8868;">
+<node CREATED="1510134912030" ID="ID_1116844111" MODIFIED="1510134996180" TEXT="&#x63cf;&#x8ff0;&#x8868;&#x7ed3;&#x6784;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      description tabname
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1514384596293" ID="ID_1111081634" MODIFIED="1514384699315" TEXT="&#x67e5;&#x8be2;&#x5f53;&#x524d;&#x7528;&#x6237;&#x6709;&#x54ea;&#x4e9b;&#x8868;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      -- &#26597;&#35810;&#20320; &#24403;&#21069;&#29992;&#25143;&#19979;,&#26377;&#21738;&#20123;&#34920;
+    </p>
+    <p>
+      SELECT * FROM user_tables;
+    </p>
+    <p>
+      -- &#26597;&#35810;&#20320; &#24403;&#21069;&#29992;&#25143;&#19979;, &#21487;&#20197;&#35775;&#38382;&#21738;&#20123;&#34920; [&#20063;&#23601;&#26159;&#35775;&#38382;&#33258;&#24049; &#21644; &#20854;&#20182;&#29992;&#25143;&#30340;]
+    </p>
+    <p>
+      SELECT * FROM all_tables;
+    </p>
+    <p>
+      -- &#26597;&#35810;&#24403;&#21069;&#25968;&#25454;&#24211;&#25152;&#26377;&#30340;&#34920;&#65292; &#38656;&#35201;&#20320;&#26377; DBA &#30340;&#26435;&#38480;
+    </p>
+    <p>
+      SELECT * FROM dba_tables;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1510134772932" FOLDED="true" ID="ID_984234746" MODIFIED="1514217514796" POSITION="right" TEXT="&#x5b9e;&#x4f8b;">
 <node CREATED="1510226964993" ID="ID_490236933" MODIFIED="1510226988590" TEXT="&#x5b9e;&#x4f8b;&#x6c60;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -433,7 +486,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1510142550007" FOLDED="true" ID="ID_546006545" MODIFIED="1513048655644" POSITION="right" TEXT="DCL">
+<node CREATED="1510142550007" FOLDED="true" ID="ID_546006545" MODIFIED="1514217516188" POSITION="right" TEXT="DCL">
 <node CREATED="1510142555420" ID="ID_541477907" MODIFIED="1510144431182" TEXT="&#x8d4b;&#x4e88;&#x6743;&#x9650;">
 <richcontent TYPE="NOTE"><html>
   <head>
