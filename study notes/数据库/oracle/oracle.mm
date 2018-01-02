@@ -60,8 +60,7 @@
       &#35831;&#29992;&#21629;&#20196;&#34892;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510134319797" ID="ID_596249247" MODIFIED="1510134416730" TEXT="&#x66f4;&#x6539;&#x5bc6;&#x7801;">
 <richcontent TYPE="NOTE"><html>
@@ -156,8 +155,7 @@
       select * from user_users;-- &#26597;&#30475;&#24403;&#21069;&#29992;&#25143;&#20449;&#24687; &#65281;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510134293495" ID="ID_612111037" MODIFIED="1514217292679" TEXT="&#x89e3;&#x9501;&#x666e;&#x901a;&#x7528;&#x6237;">
 <richcontent TYPE="NOTE"><html>
@@ -183,29 +181,67 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1513048872894" ID="ID_927534426" MODIFIED="1513049305108" TEXT="&#x521b;&#x5efa;&#x7528;&#x6237;">
+<node CREATED="1513048872894" ID="ID_927534426" MODIFIED="1514903751054" TEXT="&#x521b;&#x5efa;&#x7528;&#x6237;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      create user zhangsan
+      create user user_name identified by password&#160;&#160;&#24314;&#31435;&#29992;&#25143;&#21644;&#35774;&#32622;&#23494;&#30721;
+    </p>
+    <p>
+      or externally as certificate_dn&#160;&#160;&#22806;&#37096;&#39564;&#35777;
+    </p>
+    <p>
+      or globally as directory_dn &#20840;&#23616;&#39564;&#35777;
+    </p>
+    <p>
+      [DEFAULT tablespace tsname] &#35774;&#32622;&#40664;&#35748;&#34920;&#31354;&#38388;
+    </p>
+    <p>
+      [temporary tablespace tsname | ts_grop_name ] &#35774;&#32622;&#20020;&#26102;&#34920;&#31354;&#38388;&#25110;&#20020;&#26102;&#34920;&#31354;&#38388;&#32452;
+    </p>
+    <p>
+      [ quota size | unlimited on tablespace ] &#35774;&#32622;&#24403;&#21069;&#29992;&#25143;&#20351;&#29992;&#34920;&#31354;&#38388;&#30340;&#26368;&#22823;&#20540;
+    </p>
+    <p>
+      [ profile profile] &#24403;&#21069;&#29992;&#25143;&#20351;&#29992;&#27010;&#35201;&#25991;&#20214;&#21517;&#31216;
+    </p>
+    <p>
+      [ password expire ] &#23494;&#30721;&#20026;&#36807;&#26399;&#29366;&#24577;&#65292;&#29992;&#25143;&#20877;&#30331;&#24405;&#38656;&#35201;&#26356;&#25913;&#23494;&#30721;
+    </p>
+    <p>
+      [ account lock | unlock ] &#35774;&#32622;&#29992;&#25143;&#30340;&#38145;&#23450;&#29366;&#24577;&#12290;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1510142555420" ID="ID_1378830522" MODIFIED="1510142677830" TEXT="&#x56de;&#x6536;&#x6743;&#x9650;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      revoke select any table from username&#65307;&#36171;&#20104;username&#29992;&#25143;&#26597;&#35810;&#20219;&#20309;&#34920;&#30340;&#26435;&#38480;&#12290;
     </p>
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1513048881117" ID="ID_1974026536" MODIFIED="1513048907067" TEXT="&#x8d4b;&#x4e88;&#x6743;&#x9650;">
+<node CREATED="1513048881117" ID="ID_1974026536" MODIFIED="1514904888694" TEXT="&#x8d4b;&#x4e88;&#x6743;&#x9650;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      GRANT CREATE USER,DROP USER,ALTER USER ,CREATE ANY VIEW , DROP ANY VIEW,EXP_FULL_DATABASE,IMP_FULL_DATABASE,DBA,CONNECT,RESOURCE,CREATE SESSION&#160;&#160;TO &#29992;&#25143;&#21517;&#23383;
+      GRANT CREATE USER,DROP USER,ALTER USER ,CREATE ANY VIEW , DROP ANY VIEW,EXP_FULL_DATABASE,IMP_FULL_DATABASE,DBA,CONNECT,RESOURCE,create session to myh;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
 <node CREATED="1510134269896" ID="ID_30650941" MODIFIED="1510134737713" TEXT="&#x9000;&#x51fa; exist"/>
@@ -292,8 +328,7 @@
       select SYS_CONTEXT('USERENV','INSTANCE_NAME') from dual;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1513056929645" ID="ID_1094184627" MODIFIED="1513074218896" TEXT="&#x884c;&#x5217;&#x8f6c;&#x6362;">
 <node CREATED="1513056939748" ID="ID_438605838" MODIFIED="1513056947700" TEXT="wm_contact"/>
@@ -364,62 +399,6 @@
 </node>
 </node>
 </node>
-<node CREATED="1510134903716" ID="ID_1370320189" MODIFIED="1510134905228" POSITION="right" TEXT="&#x8868;">
-<node CREATED="1510134912030" ID="ID_1116844111" MODIFIED="1510134996180" TEXT="&#x63cf;&#x8ff0;&#x8868;&#x7ed3;&#x6784;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      description tabname
-    </p>
-  </body>
-</html></richcontent>
-</node>
-<node CREATED="1514384596293" ID="ID_1111081634" MODIFIED="1514384699315" TEXT="&#x67e5;&#x8be2;&#x5f53;&#x524d;&#x7528;&#x6237;&#x6709;&#x54ea;&#x4e9b;&#x8868;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      -- &#26597;&#35810;&#20320; &#24403;&#21069;&#29992;&#25143;&#19979;,&#26377;&#21738;&#20123;&#34920;
-    </p>
-    <p>
-      SELECT * FROM user_tables;
-    </p>
-    <p>
-      -- &#26597;&#35810;&#20320; &#24403;&#21069;&#29992;&#25143;&#19979;, &#21487;&#20197;&#35775;&#38382;&#21738;&#20123;&#34920; [&#20063;&#23601;&#26159;&#35775;&#38382;&#33258;&#24049; &#21644; &#20854;&#20182;&#29992;&#25143;&#30340;]
-    </p>
-    <p>
-      SELECT * FROM all_tables;
-    </p>
-    <p>
-      -- &#26597;&#35810;&#24403;&#21069;&#25968;&#25454;&#24211;&#25152;&#26377;&#30340;&#34920;&#65292; &#38656;&#35201;&#20320;&#26377; DBA &#30340;&#26435;&#38480;
-    </p>
-    <p>
-      SELECT * FROM dba_tables;
-    </p>
-  </body>
-</html>
-</richcontent>
-</node>
-</node>
-<node CREATED="1510134772932" FOLDED="true" ID="ID_984234746" MODIFIED="1514217514796" POSITION="right" TEXT="&#x5b9e;&#x4f8b;">
-<node CREATED="1510226964993" ID="ID_490236933" MODIFIED="1510226988590" TEXT="&#x5b9e;&#x4f8b;&#x6c60;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      &#29992;&#26469;&#23454;&#29616;&#20107;&#21153;&#38548;&#31163;
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
 <node CREATED="1510135691797" FOLDED="true" ID="ID_1161210136" MODIFIED="1514190038271" POSITION="left" TEXT="&#x51fd;&#x6570;">
 <node CREATED="1512548327679" ID="ID_546626447" MODIFIED="1512548335648" TEXT="null&#x51fd;&#x6570;">
 <node CREATED="1510135696576" ID="ID_1111287299" MODIFIED="1512548324057" TEXT="nvl&#xff08;column&#xff0c;value&#xff09;">
@@ -486,42 +465,62 @@
 </node>
 </node>
 </node>
-<node CREATED="1510142550007" FOLDED="true" ID="ID_546006545" MODIFIED="1514217516188" POSITION="right" TEXT="DCL">
-<node CREATED="1510142555420" ID="ID_541477907" MODIFIED="1510144431182" TEXT="&#x8d4b;&#x4e88;&#x6743;&#x9650;">
+<node CREATED="1510144698198" ID="ID_854703981" MODIFIED="1514897919781" POSITION="right" TEXT="&#x5bf9;&#x8c61;">
+<node CREATED="1510134772932" ID="ID_984234746" MODIFIED="1514897937139" TEXT="&#x5b9e;&#x4f8b;">
+<node CREATED="1510226964993" ID="ID_490236933" MODIFIED="1510226988590" TEXT="&#x5b9e;&#x4f8b;&#x6c60;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      grant select any table to username&#65307;&#36171;&#20104;username&#29992;&#25143;&#26597;&#35810;&#20219;&#20309;&#34920;&#30340;&#26435;&#38480;&#12290;
-    </p>
-    <p>
-      &#26435;&#38480;&#26377;&#65306;
-    </p>
-    <p>
-      select any table
-    </p>
-    <p>
-      create view/database/table/index/synonym(&#34920;&#21516;&#20041;&#35789;)<br />
+      &#29992;&#26469;&#23454;&#29616;&#20107;&#21153;&#38548;&#31163;
     </p>
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1510142555420" ID="ID_1378830522" MODIFIED="1510142677830" TEXT="&#x56de;&#x6536;&#x6743;&#x9650;">
+</node>
+<node CREATED="1510134903716" ID="ID_1370320189" MODIFIED="1510134905228" TEXT="&#x8868;">
+<node CREATED="1510134912030" ID="ID_1116844111" MODIFIED="1510134996180" TEXT="&#x63cf;&#x8ff0;&#x8868;&#x7ed3;&#x6784;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      revoke select any table from username&#65307;&#36171;&#20104;username&#29992;&#25143;&#26597;&#35810;&#20219;&#20309;&#34920;&#30340;&#26435;&#38480;&#12290;
+      description tabname
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1514384596293" ID="ID_1111081634" MODIFIED="1514384699315" TEXT="&#x67e5;&#x8be2;&#x5f53;&#x524d;&#x7528;&#x6237;&#x6709;&#x54ea;&#x4e9b;&#x8868;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      -- &#26597;&#35810;&#20320; &#24403;&#21069;&#29992;&#25143;&#19979;,&#26377;&#21738;&#20123;&#34920;
+    </p>
+    <p>
+      SELECT * FROM user_tables;
+    </p>
+    <p>
+      -- &#26597;&#35810;&#20320; &#24403;&#21069;&#29992;&#25143;&#19979;, &#21487;&#20197;&#35775;&#38382;&#21738;&#20123;&#34920; [&#20063;&#23601;&#26159;&#35775;&#38382;&#33258;&#24049; &#21644; &#20854;&#20182;&#29992;&#25143;&#30340;]
+    </p>
+    <p>
+      SELECT * FROM all_tables;
+    </p>
+    <p>
+      -- &#26597;&#35810;&#24403;&#21069;&#25968;&#25454;&#24211;&#25152;&#26377;&#30340;&#34920;&#65292; &#38656;&#35201;&#20320;&#26377; DBA &#30340;&#26435;&#38480;
+    </p>
+    <p>
+      SELECT * FROM dba_tables;
     </p>
   </body>
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510144698198" FOLDED="true" ID="ID_854703981" MODIFIED="1513048858727" POSITION="right" TEXT="&#x5bf9;&#x8c61;">
 <node CREATED="1510143748021" ID="ID_1334880635" MODIFIED="1510144287958" TEXT="&#x89c6;&#x56fe;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -925,6 +924,167 @@
     </p>
   </body>
 </html></richcontent>
+</node>
+</node>
+<node CREATED="1514898056105" ID="ID_974259083" MODIFIED="1514905001874" TEXT="&#x8868;&#x7a7a;&#x95f4;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#24314;&#31435;&#20020;&#26102;&#34920;&#31354;&#38388;
+    </p>
+    <p>
+      &#24314;&#31435;&#34920;&#31354;&#38388;
+    </p>
+    <p>
+      &#24314;&#31435;&#29992;&#25143;
+    </p>
+    <p>
+      &#36171;&#20104;&#29992;&#25143;&#40664;&#35748;&#34920;&#31354;&#38388;
+    </p>
+    <p>
+      &#32473;&#29992;&#25143;&#25480;&#26435;
+    </p>
+    <p>
+      &#20363;&#22914;&#65306;
+    </p>
+    <p>
+      --&#21019;&#24314;&#34920;&#31354;&#38388;
+    </p>
+    <p>
+      create tablespace myh_tablespace
+    </p>
+    <p>
+      default 'myh_dbf' size 100m
+    </p>
+    <p>
+      autoextend on next 10m
+    </p>
+    <p>
+      maxsize 1g;
+    </p>
+    <p>
+      --&#21019;&#24314;&#29992;&#25143;
+    </p>
+    <p>
+      create user myh identified by myh123
+    </p>
+    <p>
+      DEFAULT tablespace myh_tablespace;
+    </p>
+    <p>
+      --&#35299;&#38145;&#29992;&#25143;
+    </p>
+    <p>
+      alter user myh account UNLOCK;
+    </p>
+    <p>
+      --&#32473;&#29992;&#25143;&#25480;&#26435;
+    </p>
+    <p>
+      GRANT CREATE USER,DROP USER,ALTER USER ,CREATE ANY VIEW , DROP ANY VIEW,EXP_FULL_DATABASE,IMP_FULL_DATABASE,DBA,CONNECT,RESOURCE,create session to myh;
+    </p>
+  </body>
+</html>
+</richcontent>
+<node CREATED="1514898705931" ID="ID_1968994096" MODIFIED="1514898974837" TEXT="&#x67e5;&#x8be2;&#x8868;&#x7a7a;&#x95f4;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#26597;&#35810;&#25152;&#26377;&#34920;&#31354;&#38388;
+    </p>
+    <p>
+      select * from SYS.DBA_TABLESPACES t;
+    </p>
+    <p>
+      &#26597;&#35810;&#40664;&#35748;&#34920;&#31354;&#38388;&#65292;dba_users&#35270;&#22270;&#26377;&#40664;&#35748;&#34920;&#31354;&#38388;&#12290;
+    </p>
+    <p>
+      SELECT * FROM dba_users;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1514898982692" ID="ID_769782769" MODIFIED="1514904215143" TEXT="&#x521b;&#x5efa;&#x8868;&#x7a7a;&#x95f4;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      create tablespace tsname &#24314;&#31435;&#34920;&#31354;&#38388;tsname
+    </p>
+    <p>
+      datafile filename&#160;SIZE&#160;size&#160;&#160;&#25351;&#23450;&#34920;&#31354;&#38388;&#29289;&#29702;&#25991;&#20214;&#21517;filename&#21644;&#22823;&#23567;size
+    </p>
+    <p>
+      [autoextend [on|off] ] next size &#25351;&#23450;&#34920;&#31354;&#38388;&#26159;&#19981;&#26159;&#33258;&#22686;&#38271;&#30340;&#65292;&#22914;&#26524;&#26159;&#65292;&#25351;&#23450;&#33258;&#22686;&#38271;&#22823;&#23567;
+    </p>
+    <p>
+      [maxsize size] &#25351;&#23450;&#33258;&#22686;&#38271;&#26368;&#22823;&#20540;
+    </p>
+    <p>
+      [permanet | temporary] &#25351;&#23450;&#26159;&#27704;&#20037;&#34920;&#36824;&#26159;&#20020;&#26102;&#34920;
+    </p>
+    <p>
+      [extent management [ dictionary | local [ autoallocate | uniform. [ size integer [ K | M ] ] ] ] &#25351;&#23450;&#34920;&#31354;&#38388;&#30340;&#31649;&#29702;&#26041;&#24335;&#12290;dictionary&#25351;&#23383;&#20856;&#31649;&#29702;&#26041;&#24335;&#65292;local&#26159;&#25351;&#26412;&#22320;&#31649;&#29702;&#26041;&#24335;&#65292;&#40664;&#35748;&#20540;local&#65288;&#25512;&#33616;&#65289;&#12290;
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1514902483330" ID="ID_1047969056" MODIFIED="1514902684771" TEXT="&#x66f4;&#x6539;&#x8868;&#x7a7a;&#x95f4;&#x72b6;&#x6001;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#21482;&#35835;&#21644;&#35835;&#20889;
+    </p>
+    <p>
+      alter tablespace tsname read&#160;&#160;[only | write]
+    </p>
+    <p>
+      &#32852;&#26426;&#21644;&#33073;&#26426;&#29366;&#24577;
+    </p>
+    <p>
+      alter tablespace tsname { online | offline [ normal | temporary | immediate ] }
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1514898990920" ID="ID_1682260428" MODIFIED="1514902941126" TEXT="&#x5220;&#x9664;&#x8868;&#x7a7a;&#x95f4;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      drop tablespace tsname [&#160;including contents&#160;] | [&#160;cascade constraints ]
+    </p>
+    <p>
+      &#160;including contents&#65306;&#21024;&#38500;&#34920;&#31354;&#38388;&#26102;&#21024;&#38500;&#25968;&#25454;&#25991;&#20214;
+    </p>
+    <p>
+      &#160;cascade constraints&#65306;&#21024;&#38500;&#34920;&#31354;&#38388;&#26102;&#21024;&#38500;&#34920;&#31354;&#38388;&#30340;&#23436;&#25972;&#24615;
+    </p>
+  </body>
+</html>
+</richcontent>
 </node>
 </node>
 </node>
