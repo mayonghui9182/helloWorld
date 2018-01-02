@@ -79,8 +79,7 @@
       &#40664;&#35748;&#21152;&#36733;&#30340;&#65306;BeanValidationIntegrator&#12289;JaccIntegrator&#12289;CollectionCacheInvalidator
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1513956628688" ID="ID_1266869543" MODIFIED="1514121491772" TEXT="&#x5efa;&#x7acb;&#x5c5e;&#x6027;&#x67e5;&#x627e;&#x7b56;&#x7565;&#x5bf9;&#x8c61;strategySelectorBuilder.buildSelector( CLService )&#xff1a;SS">
 <richcontent TYPE="NOTE"><html>
@@ -166,8 +165,7 @@
       &#22312;&#21021;&#22987;&#21270;&#26102;&#20250;&#21021;&#22987;&#21270;jaxbProcessorHolder&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1514128162055" ID="ID_828508191" MODIFIED="1514128172639" TEXT="this.bootstrapServiceRegistry = BSR;"/>
 <node CREATED="1514171799941" ID="ID_673390077" MODIFIED="1514173600135" TEXT="this.jaxbProcessorHolder=new ValueHolder&lt;JaxbCfgProcessor&gt;">
 <richcontent TYPE="NOTE"><html>
@@ -188,8 +186,7 @@
       new JaxbCfgProcessor( bootstrapServiceRegistry.getService( ClassLoaderService.class ) );
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1514173543265" ID="ID_1933195616" MODIFIED="1514173543265" TEXT="this.xmlResourceResolver = new LocalXmlResourceResolver( classLoaderService );"/>
 <node CREATED="1514173543254" ID="ID_355609808" MODIFIED="1514173543254" TEXT="this.classLoaderService = classLoaderService;"/>
 </node>
@@ -273,8 +270,7 @@
       &#33719;&#24471;&#20027;&#37197;&#32622;&#25991;&#20214;&#30340;&#36755;&#20837;&#27969;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1514172270840" ID="ID_331592174" MODIFIED="1514191052490" TEXT="jaxbCfg=jaxbProcessorHolder.getValue().unmarshal(in,new Origin(SourceType.RESOURCE,Resource)">
 <richcontent TYPE="NOTE"><html>
@@ -295,8 +291,7 @@
       &#28982;&#21518;&#25226;JaxbCfgHibernateConfiguration&#23545;&#35937;&#36716;&#25442;&#20026;loadedconfig&#23545;&#35937;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1514172373582" ID="ID_1329613351" MODIFIED="1514172500311" TEXT="LoadedConfig.consume( jaxbCfg )">
 <richcontent TYPE="NOTE"><html>
@@ -308,8 +303,7 @@
       &#25226;jaxbCfg&#35299;&#26512;&#25104;LoadedConfig&#23545;&#35937;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1514171680722" ID="ID_1356405378" MODIFIED="1514191293261" TEXT="this.onfigure( loadedConfig)">
@@ -322,8 +316,7 @@
       &#23384;&#20648;&#35299;&#26512;&#20986;&#26469;&#30340;&#20449;&#24687;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1514191200564" ID="ID_891576128" MODIFIED="1514191331254" TEXT="this.aggregatedCfgXml.merge( loadedConfig );">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -334,8 +327,7 @@
       &#23558;&#21152;&#36733;&#30340;loadedConfig&#20449;&#24687;&#21512;&#24182;&#36827;&#20837;SSRB&#30340;loadedConfig&#37324;&#38754;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1514191200565" ID="ID_206365431" MODIFIED="1514191352700" TEXT="settings.putAll( loadedConfig.getConfigurationValues() );">
 <richcontent TYPE="NOTE"><html>
@@ -347,8 +339,7 @@
       &#23558;&#21152;&#36733;&#30340;properties&#20449;&#24687;&#21512;&#24182;&#36827;&#20837;SSRB&#30340;properties&#37324;&#38754;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -362,8 +353,7 @@
       &#23558;&#21152;&#36733;&#30340;properties&#20449;&#24687;&#21512;&#24182;&#36827;&#20837;configuration&#30340;properties&#37324;&#38754;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1513954039626" ID="ID_748213782" MODIFIED="1513954039626" POSITION="right" TEXT="SessionFactory sessions=cfg.buildSessionFactory();">
@@ -377,8 +367,7 @@
       &#23558;config&#30340;properties&#21152;&#36733;&#36827;SSRB&#37324;&#38754;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1514191709210" ID="ID_507169394" MODIFIED="1514192160602" TEXT="StandardServiceRegistryImpl SSR=SSRB.build()">
 <richcontent TYPE="NOTE"><html>
@@ -390,9 +379,8 @@
       &#24314;&#31435;&#19968;&#20010;&#26631;&#20934;&#30340;&#26381;&#21153;&#27880;&#20876;&#34920;&#23545;&#35937;
     </p>
   </body>
-</html>
-</richcontent>
-<node CREATED="1514192218443" ID="ID_481286470" MODIFIED="1514197354739" TEXT="applyServiceContributingIntegrators();">
+</html></richcontent>
+<node CREATED="1514192218443" ID="ID_481286470" MODIFIED="1514251553336" TEXT="applyServiceContributingIntegrators();">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -415,8 +403,7 @@
       &#26159;&#21542;&#21152;&#36733;ServiceContributor
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1514192218444" ID="ID_1278460011" MODIFIED="1514193584923" TEXT="final Map settingsCopy = new HashMap();&#xff08;&#x56db;&#x6b65;&#x8f6c;&#x5230;&#x5907;&#x6ce8;&#xff09;">
 <richcontent TYPE="NOTE">&lt;html&gt;
@@ -446,8 +433,7 @@
       
     &lt;/p&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-</richcontent>
+&lt;/html&gt;</richcontent>
 </node>
 <node CREATED="1514192357717" ID="ID_772558668" MODIFIED="1514192398721" TEXT="new SSR(autoCloseRegistry,BSR,initiators,providedServices,settingsCopy)"/>
 </node>
@@ -461,8 +447,7 @@
       &#24314;&#31435;SessionFactory&#23545;&#35937;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1513954039626" ID="ID_372352222" MODIFIED="1513954039626" POSITION="right" TEXT="Session session = sessions.openSession();"/>
