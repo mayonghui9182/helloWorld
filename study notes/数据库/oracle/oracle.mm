@@ -294,8 +294,7 @@
       &#19978;&#38754;&#26159;&#24120;&#29992;&#30340;&#23548;&#20986;&#65292;&#23545;&#20110;&#21387;&#32553;&#25105;&#19981;&#22826;&#22312;&#24847;&#65292;&#29992;winzip&#25226;dmp&#25991;&#20214;&#21487;&#20197;&#24456;&#22909;&#30340;&#21387;&#32553;&#12290;&#19981;&#36807;&#22312;&#19978;&#38754;&#21629;&#20196;&#21518;&#38754; &#21152;&#19978; compress=y &#23601;&#21487;&#20197;&#20102;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1513048752050" ID="ID_420469472" MODIFIED="1514905875599" TEXT="&#x6062;&#x590d;">
 <richcontent TYPE="NOTE"><html>
@@ -1082,6 +1081,30 @@
   </body>
 </html></richcontent>
 </node>
+</node>
+</node>
+<node CREATED="1516024896247" ID="ID_423436613" MODIFIED="1516024901388" POSITION="right" TEXT="&#x6570;&#x636e;&#x5e93;&#x72b6;&#x6001;">
+<node CREATED="1516024904814" ID="ID_841288033" MODIFIED="1516025231087" TEXT="&#x8fde;&#x63a5;&#x6570;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#21442;&#32771;&#65306;http://blog.csdn.net/haiross/article/details/41944493
+    </p>
+    <p>
+      &#23454;&#26102;&#36830;&#25509;&#25968;&#65306;select * from v$session;
+    </p>
+    <p>
+      &#22806;&#37096;&#23454;&#26102;&#36830;&#25509;&#26368;&#22823;&#25968;&#65306;select * from v$session WHERE username IS NOT NULL ;
+    </p>
+    <p>
+      &#26368;&#22823;&#36830;&#25509;&#25968;&#65306;select value from v$parameter where name ='processes';
+    </p>
+  </body>
+</html>
+</richcontent>
 </node>
 </node>
 <node CREATED="1510149748555" ID="ID_401963940" MODIFIED="1515207053750" POSITION="left" TEXT="pl/sql">
