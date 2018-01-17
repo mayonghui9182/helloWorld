@@ -14,7 +14,8 @@
 	<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:sambase</property>
 	<property name="hibernate.connection.username">myh</property>
 	<property name="hibernate.connection.password">myh123</property>
-<!-- 	<mapping file="/testMaven/src/main/java/com/ma/test/testHibernate/*hbm.xml"/>
+	<!-- <property name="hbm2ddl.auto">create</property> -->
+<!-- <mapping file="/testMaven/src/main/java/com/ma/test/testHibernate/*hbm.xml"/>
  -->	
     <mapping resource="com/ma/test/testHibernate/TestTab.hbm.xml"/>
 </session-factory>

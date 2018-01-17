@@ -1083,6 +1083,30 @@
 </node>
 </node>
 </node>
+<node CREATED="1516024896247" ID="ID_423436613" MODIFIED="1516024901388" POSITION="right" TEXT="&#x6570;&#x636e;&#x5e93;&#x72b6;&#x6001;">
+<node CREATED="1516024904814" ID="ID_841288033" MODIFIED="1516025231087" TEXT="&#x8fde;&#x63a5;&#x6570;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#21442;&#32771;&#65306;http://blog.csdn.net/haiross/article/details/41944493
+    </p>
+    <p>
+      &#23454;&#26102;&#36830;&#25509;&#25968;&#65306;select * from v$session;
+    </p>
+    <p>
+      &#22806;&#37096;&#23454;&#26102;&#36830;&#25509;&#26368;&#22823;&#25968;&#65306;select * from v$session WHERE username IS NOT NULL ;
+    </p>
+    <p>
+      &#26368;&#22823;&#36830;&#25509;&#25968;&#65306;select value from v$parameter where name ='processes';
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
 <node CREATED="1510149748555" ID="ID_401963940" MODIFIED="1515207053750" POSITION="left" TEXT="pl/sql">
 <node CREATED="1510151470452" ID="ID_1899443059" MODIFIED="1514905876319" TEXT="&#x8bed;&#x6cd5;">
 <richcontent TYPE="NOTE"><html>
