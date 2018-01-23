@@ -429,8 +429,7 @@
       );
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509544942607" ID="ID_1276988980" MODIFIED="1509544954120" TEXT="&#x975e;&#x7a7a; NOT NULL"/>
 <node CREATED="1509544962447" ID="ID_94201234" MODIFIED="1509544966481" TEXT="&#x552f;&#x4e00; UNIQUE"/>
 <node CREATED="1509544992350" ID="ID_330190682" MODIFIED="1509544998559" TEXT="&#x4e3b;&#x952e; PRIMARY KEY"/>
@@ -557,7 +556,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509545529923" ID="ID_806644243" MODIFIED="1512970425649" TEXT="&#x66f4;&#x6539;&#x8868;alter table">
+<node CREATED="1509545529923" ID="ID_806644243" MODIFIED="1516675072495" TEXT="&#x66f4;&#x6539;&#x8868;alter table">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -576,7 +575,8 @@
       &#20462;&#25913;&#34920;&#23383;&#27573;&#21517;&#65306;alter table tableName rename column&#160;&#160;colOldName to colNewName
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510147653076" ID="ID_1120973951" MODIFIED="1510147680298" TEXT="&#x663e;&#x793a;&#x8868;&#x7684;&#x7ed3;&#x6784; desc tabname"/>
 <node CREATED="1509546019923" ID="ID_529564227" MODIFIED="1509546133753" TEXT="view">

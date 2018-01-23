@@ -1103,8 +1103,7 @@
       &#26368;&#22823;&#36830;&#25509;&#25968;&#65306;select value from v$parameter where name ='processes';
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1510149748555" ID="ID_401963940" MODIFIED="1515207053750" POSITION="left" TEXT="pl/sql">
@@ -1134,17 +1133,23 @@
     </p>
   </body>
 </html></richcontent>
-<node CREATED="1510151901679" ID="ID_187676291" MODIFIED="1514905876338" TEXT="&#x53d8;&#x91cf;&#x7684;&#x58f0;&#x660e;">
+<node CREATED="1510151901679" ID="ID_187676291" MODIFIED="1516690282954" TEXT="&#x53d8;&#x91cf;&#x7684;&#x58f0;&#x660e;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      varName vartype:=defaultValue&#65307;
+      varName vartype&#65288;length&#65289;:=defaultValue&#65307;
     </p>
     <p>
       vartype&#21442;&#30475;&#21464;&#37327;&#31867;&#22411;
+    </p>
+    <p>
+      varType&#21464;&#37327;&#31867;&#22411;
+    </p>
+    <p>
+      length&#21464;&#37327;&#38271;&#24230;&#65292;&#23383;&#31526;&#20018;&#31867;&#22411;&#24517;&#20889;&#12290;
     </p>
     <p>
       varType&#21487;&#20197;&#26159;&#65306;
@@ -1162,7 +1167,8 @@
       &#21442;&#30475;&#21464;&#37327;&#31867;&#22411;&#12290;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510154599679" ID="ID_276837007" MODIFIED="1516185444347" TEXT="&#x8bed;&#x53e5;">
 <node CREATED="1510152185440" ID="ID_827219302" MODIFIED="1510152451575" TEXT="into">
@@ -1326,7 +1332,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1510154611153" ID="ID_892959201" MODIFIED="1514905876360" TEXT="exception">
+<node CREATED="1510154611153" ID="ID_892959201" MODIFIED="1516675071902" TEXT="exception">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1363,7 +1369,8 @@
       time_out_resource&#65288;&#36164;&#28304;&#31561;&#24453;&#36229;&#26102;&#65289;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
 <node CREATED="1510151565571" ID="ID_1141308053" MODIFIED="1510151576858" TEXT="&#x5bf9;&#x8c61;&#x51fd;&#x6570;">
@@ -2215,8 +2222,7 @@
       /
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1510228761785" ID="ID_79364" MODIFIED="1514905876918" TEXT="&#x8bed;&#x53e5;&#x5757;">
