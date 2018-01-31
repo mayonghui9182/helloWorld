@@ -17,9 +17,9 @@ public class testHibernate {
 			SessionFactory SessionFactory = new Configuration().configure().buildSessionFactory();
 			Session session = SessionFactory.openSession();
 			Transaction Transaction = session.beginTransaction();
-			TestTab testTab;
-			testTab =session.get(TestTab.class, 1);
-			testTab.setTid(5);
+			TestTab testTab=new TestTab();
+			//testTab =session.get(TestTab.class, 1);
+			//testTab.setTid(5);
 			testTab.setField1("field1");
 			testTab.setField2("field2");
 	 		testTab.setField3("field3");
