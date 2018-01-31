@@ -575,8 +575,7 @@
       &#20462;&#25913;&#34920;&#23383;&#27573;&#21517;&#65306;alter table tableName rename column&#160;&#160;colOldName to colNewName
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510147653076" ID="ID_1120973951" MODIFIED="1510147680298" TEXT="&#x663e;&#x793a;&#x8868;&#x7684;&#x7ed3;&#x6784; desc tabname"/>
 <node CREATED="1509546019923" ID="ID_529564227" MODIFIED="1509546133753" TEXT="view">
@@ -695,7 +694,7 @@
     </p>
   </body>
 </html></richcontent>
-<node CREATED="1510224527957" ID="ID_856347821" MODIFIED="1510227231426" TEXT="&#x57fa;&#x672c;&#x8bed;&#x6cd5;">
+<node CREATED="1510224527957" ID="ID_856347821" MODIFIED="1517412878338" TEXT="&#x57fa;&#x672c;&#x8bed;&#x6cd5;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -705,7 +704,8 @@
       CREATE OR REPLACE PROCEDURE procedureName&#160;&#160;&#21019;&#24314;&#19968;&#20010;&#21483;&#20570;procedureName&#23384;&#20648;&#36807;&#31243;, &#22914;&#26524;&#23384;&#22312;&#23601;&#35206;&#30422;&#23427;;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510224541443" ID="ID_35027640" MODIFIED="1510224541443" TEXT=""/>
 </node>

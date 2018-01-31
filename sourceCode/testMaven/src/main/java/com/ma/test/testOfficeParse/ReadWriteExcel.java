@@ -15,6 +15,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.ma.utils.MaFileUtils;
+
 public class ReadWriteExcel {
 
 	private static final String EXCEL_XLS = "xls";
@@ -41,7 +43,10 @@ public class ReadWriteExcel {
 	 * 判断文件是否是excel
 	 * @throws Exception 
 	 */
-	public static void checkExcelVaild(File file) throws Exception{
+	public static void isExcel(File file) throws Exception{
+		if(file==null){
+			throw new Exception("file对象为空错误");
+		}
 		if(!file.exists()){
 			throw new Exception("文件不存在");
 		}
@@ -56,12 +61,21 @@ public class ReadWriteExcel {
 	 */
 	public static void main(String[] args) throws Exception {
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:\\Users\\98447_000\\Desktop\\新建 Microsoft Excel 工作表.xlsx")));
+		String[] fileType={EXCEL_XLS,EXCEL_XLSX};
+		String sourcePath="C:\\Users\\98447_000\\Desktop\\新建 Microsoft Excel 工作表.xlsx";
+		String targetPath="C:\\Users\\98447_000\\Desktop\\target.xlsx";
+		File xlsxfile = MaFileUtils.gitFile(targetPath,fileType);
+		if(xlsxfile==null){
+			throw new Exception("路径["+targetPath+"]不存在或文件不是excel文件！");
+		}
+		BufferedWriter bw = new BufferedWriter(new FileWriter(xlsxfile));
 		try {
-			// 同时支持Excel 2003、2007
-			File excelFile = new File("E:/xxx.xlsx"); // 创建文件对象
+			// 获取Excel文件
+			File excelFile = MaFileUtils.gitFile(sourcePath,fileType); // 创建文件对象
+			if(excelFile==null){
+				throw new Exception("路径["+sourcePath+"]不存在或文件不是excel文件！");
+			}
 			FileInputStream is = new FileInputStream(excelFile); // 文件流
-			checkExcelVaild(excelFile);
 			Workbook workbook = getWorkbok(is,excelFile);
 			//Workbook workbook = WorkbookFactory.create(is); // 这种方式 Excel2003/2007/2010都是可以处理的
 
