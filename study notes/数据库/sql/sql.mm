@@ -584,8 +584,7 @@
       &#20462;&#25913;&#34920;&#23383;&#27573;&#21517;&#65306;alter table tableName rename column&#160;&#160;colOldName to colNewName
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510147653076" ID="ID_1120973951" MODIFIED="1510147680298" TEXT="&#x663e;&#x793a;&#x8868;&#x7684;&#x7ed3;&#x6784; desc tabname"/>
 <node CREATED="1509546019923" ID="ID_529564227" MODIFIED="1509546133753" TEXT="view">
@@ -707,9 +706,14 @@
       2&#12289;&#31639;&#27861;&#35201;&#27714;&#36739;&#39640;&#65292;&#35774;&#35745;&#22810;&#26465;&#25968;&#25454;&#36923;&#36753;&#26102;
     </p>
   </body>
+<<<<<<< HEAD
 </html>
 </richcontent>
 <node CREATED="1510224527957" ID="ID_856347821" MODIFIED="1517297422718" TEXT="&#x57fa;&#x672c;&#x8bed;&#x6cd5;">
+=======
+</html></richcontent>
+<node CREATED="1510224527957" ID="ID_856347821" MODIFIED="1517412878338" TEXT="&#x57fa;&#x672c;&#x8bed;&#x6cd5;">
+>>>>>>> 2614472995684fd8eafdcf8cd8c4d8cc6c01cbf9
 <richcontent TYPE="NOTE"><html>
   <head>
     
