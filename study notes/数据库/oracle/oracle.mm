@@ -257,7 +257,7 @@
 </node>
 <node CREATED="1510134770198" ID="ID_1438368892" MODIFIED="1515207053571" POSITION="right" TEXT="&#x6570;&#x636e;&#x5e93;">
 <node CREATED="1513056919486" ID="ID_873169690" MODIFIED="1513056927866" TEXT="&#x5907;&#x4efd;&#x6062;&#x590d;">
-<node CREATED="1513048674318" ID="ID_408160687" MODIFIED="1516872787797" TEXT="&#x5907;&#x4efd;">
+<node CREATED="1513048674318" ID="ID_408160687" MODIFIED="1516937207644" TEXT="&#x5907;&#x4efd;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -297,8 +297,7 @@
       &#19978;&#38754;&#26159;&#24120;&#29992;&#30340;&#23548;&#20986;&#65292;&#23545;&#20110;&#21387;&#32553;&#25105;&#19981;&#22826;&#22312;&#24847;&#65292;&#29992;winzip&#25226;dmp&#25991;&#20214;&#21487;&#20197;&#24456;&#22909;&#30340;&#21387;&#32553;&#12290;&#19981;&#36807;&#22312;&#19978;&#38754;&#21629;&#20196;&#21518;&#38754; &#21152;&#19978; compress=y &#23601;&#21487;&#20197;&#20102;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1513048752050" ID="ID_420469472" MODIFIED="1516872817658" TEXT="&#x6062;&#x590d;">
 <richcontent TYPE="NOTE"><html>
@@ -326,6 +325,18 @@
     </p>
     <p>
       &#160;&#160;&#22522;&#26412;&#19978;&#19978;&#38754;&#30340;&#23548;&#20837;&#23548;&#20986;&#22815;&#29992;&#20102;&#12290;&#19981;&#23569;&#24773;&#20917;&#25105;&#26159;&#23558;&#34920;&#24443;&#24213;&#21024;&#38500;&#65292;&#28982;&#21518;&#23548;&#20837;&#12290;
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1516955120678" ID="ID_1111325866" MODIFIED="1517297428245" TEXT="&#x8bef;&#x5220;&#x6062;&#x590d;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      https://www.cnblogs.com/chaizp/p/5192522.html
     </p>
   </body>
 </html>
@@ -1086,6 +1097,48 @@
   </body>
 </html></richcontent>
 </node>
+</node>
+<node CREATED="1517297457368" ID="ID_1605345467" MODIFIED="1517297460322" TEXT="&#x7cfb;&#x7edf;&#x8868;">
+<node CREATED="1517297464789" ID="ID_1720783188" MODIFIED="1517297506325" TEXT="v$locked_object&#x89c6;&#x56fe;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#23384;&#20648;&#25968;&#25454;&#24211;&#38145;&#30340;&#20449;&#24687;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1517297507838" ID="ID_1279006049" MODIFIED="1517297548339" TEXT="dba_object&#x89c6;&#x56fe;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#23384;&#20648;&#25968;&#25454;&#24211;&#23545;&#35937;&#20449;&#24687;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1517297548926" ID="ID_1948531294" MODIFIED="1517297625510" TEXT="v$sessio&#x89c6;&#x56fe;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#23384;&#20648;&#25968;&#25454;&#24211;&#36830;&#25509;&#20449;&#24687;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1517304295902" ID="ID_46541410" MODIFIED="1517304301400" TEXT="&#x91ca;&#x653e;&#x9501;"/>
 </node>
 </node>
 <node CREATED="1516024896247" ID="ID_423436613" MODIFIED="1516024901388" POSITION="right" TEXT="&#x6570;&#x636e;&#x5e93;&#x72b6;&#x6001;">
