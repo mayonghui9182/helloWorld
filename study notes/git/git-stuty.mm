@@ -134,8 +134,7 @@
       git rm --f &#25991;&#20214;&#21517;&#160;&#160;//&#21024;&#38500;readme1.txt&#30340;&#36319;&#36394;&#65292;&#24182;&#19988;&#21024;&#38500;&#26412;&#22320;&#25991;&#20214;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1515207843919" ID="ID_1146146905" MODIFIED="1515207866739" TEXT="&#x64a4;&#x9500;&#x4fee;&#x6539;">
 <richcontent TYPE="NOTE"><html>
@@ -520,7 +519,7 @@
 </node>
 </node>
 <node CREATED="1509283351639" ID="ID_968257159" MODIFIED="1509283942623" POSITION="left" STYLE="bubble" TEXT="&#x6587;&#x4ef6;">
-<node CREATED="1509279504319" ID="ID_805823455" MODIFIED="1517473017181" STYLE="bubble" TEXT=".gitignore">
+<node CREATED="1509279504319" ID="ID_805823455" MODIFIED="1517752101988" STYLE="bubble" TEXT=".gitignore">
 <richcontent TYPE="NOTE"><html>
   <head>
     

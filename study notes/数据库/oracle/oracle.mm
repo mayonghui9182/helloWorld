@@ -299,7 +299,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1513048752050" ID="ID_420469472" MODIFIED="1516872817658" TEXT="&#x6062;&#x590d;">
+<node CREATED="1513048752050" ID="ID_420469472" MODIFIED="1517752101341" TEXT="&#x6062;&#x590d;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -327,7 +327,8 @@
       &#160;&#160;&#22522;&#26412;&#19978;&#19978;&#38754;&#30340;&#23548;&#20837;&#23548;&#20986;&#22815;&#29992;&#20102;&#12290;&#19981;&#23569;&#24773;&#20917;&#25105;&#26159;&#23558;&#34920;&#24443;&#24213;&#21024;&#38500;&#65292;&#28982;&#21518;&#23548;&#20837;&#12290;
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1516955120678" ID="ID_1111325866" MODIFIED="1517297428245" TEXT="&#x8bef;&#x5220;&#x6062;&#x590d;">
 <richcontent TYPE="NOTE"><html>
@@ -339,8 +340,7 @@
       https://www.cnblogs.com/chaizp/p/5192522.html
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1514190260433" ID="ID_1178663463" MODIFIED="1514905875616" TEXT="&#x663e;&#x793a;&#x5f53;&#x524d;&#x6570;&#x636e;&#x5e93;&#x540d;&#x5b57;">
@@ -1109,8 +1109,7 @@
       &#23384;&#20648;&#25968;&#25454;&#24211;&#38145;&#30340;&#20449;&#24687;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1517297507838" ID="ID_1279006049" MODIFIED="1517297548339" TEXT="dba_object&#x89c6;&#x56fe;">
 <richcontent TYPE="NOTE"><html>
@@ -1122,8 +1121,7 @@
       &#23384;&#20648;&#25968;&#25454;&#24211;&#23545;&#35937;&#20449;&#24687;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1517297548926" ID="ID_1948531294" MODIFIED="1517297625510" TEXT="v$sessio&#x89c6;&#x56fe;">
 <richcontent TYPE="NOTE"><html>
@@ -1135,8 +1133,7 @@
       &#23384;&#20648;&#25968;&#25454;&#24211;&#36830;&#25509;&#20449;&#24687;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1517304295902" ID="ID_46541410" MODIFIED="1517304301400" TEXT="&#x91ca;&#x653e;&#x9501;"/>
 </node>
@@ -1164,7 +1161,123 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510149748555" ID="ID_401963940" MODIFIED="1515207053750" POSITION="left" TEXT="pl/sql">
+<node CREATED="1510149748555" ID="ID_401963940" MODIFIED="1517752697878" POSITION="left" TEXT="pl/sql">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      declare
+    </p>
+    <p>
+      &#160;&#160;-- Local variables here
+    </p>
+    <p>
+      &#160;&#160;i INTEGER;
+    </p>
+    <p>
+      &#160;&#160;rowTable tpdttemplettable%ROWTYPE;
+    </p>
+    <p>
+      &#160;&#160;cursor tableCursor is select *&#160;&#160;from tpdttemplettable tb where tb.l_templetid = 6 and tb.c_templetmod = 'preRegister';
+    </p>
+    <p>
+      &#160;&#160;rowdata tpdttempletpro%ROWTYPE;
+    </p>
+    <p>
+      &#160;&#160;cursor mycursor is select *&#160;&#160;from tpdttempletpro p where l_templetid = 6 and c_templetmod = 'preRegister' or l_tableid in (select tb.l_tableid from tpdttemplettable tb where tb.l_templetid = 6 and tb.c_templetmod = 'preRegister') order by p.l_tableid DESC,p.c_classcode,p.l_order;
+    </p>
+    <p>
+      BEGIN
+    </p>
+    <p>
+      &#160;&#160;-- &#25554;&#20837;&#20998;&#34920;
+    </p>
+    <p>
+      &#160;&#160;OPEN tableCursor;
+    </p>
+    <p>
+      &#160;&#160;LOOP
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;FETCH tableCursor INTO rowTable;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;exit when tableCursor%NOTFOUND;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;rowTable.c_Templetmod:='success';
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;rowTable.l_Tableid:=rowTable.l_Tableid+100;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;rowTable.c_Tablecode:=rowTable.c_Tablecode||'A';
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;INSERT INTO tpdttemplettable VALUES&#160;&#160;rowTable;
+    </p>
+    <p>
+      &#160;&#160;END LOOP;
+    </p>
+    <p>
+      &#160;&#160;-- &#25554;&#20837;&#27169;&#26495;
+    </p>
+    <p>
+      &#160;&#160;OPEN mycursor;
+    </p>
+    <p>
+      &#160;&#160;LOOP
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;FETCH mycursor INTO rowdata;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;exit when mycursor%NOTFOUND;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;IF(rowdata.l_tableid IS NOT NULL) THEN
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;rowdata.l_tableid := rowdata.l_tableid+100;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;END IF;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;IF(rowdata.c_templetmod IS NOT NULL) THEN
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;rowdata.c_templetmod:='success';
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;END IF;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;rowdata.c_tablecode:=rowdata.c_tablecode||'A';
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;INSERT INTO tpdttempletpro VALUES rowdata;
+    </p>
+    <p>
+      &#160;&#160;end loop;
+    </p>
+    <p>
+      &#160;&#160;close mycursor;
+    </p>
+    <p>
+      &#160;&#160;select count(*) INTO i from tpdttempletpro p where l_templetid = 6 and c_templetmod = 'success' or l_tableid in (select tb.l_tableid from tpdttemplettable tb where tb.l_templetid = 6 and tb.c_templetmod = 'success') order by p.l_tableid DESC,p.c_classcode,p.l_order;
+    </p>
+    <p>
+      &#160;&#160;dbms_output.put_line(i);
+    </p>
+    <p>
+      end;
+    </p>
+  </body>
+</html>
+</richcontent>
 <node CREATED="1510151470452" ID="ID_1899443059" MODIFIED="1514905876319" TEXT="&#x8bed;&#x6cd5;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -1429,7 +1542,7 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510151565571" ID="ID_1141308053" MODIFIED="1510151576858" TEXT="&#x5bf9;&#x8c61;&#x51fd;&#x6570;">
+<node CREATED="1510151565571" FOLDED="true" ID="ID_1141308053" MODIFIED="1517752507763" TEXT="&#x5bf9;&#x8c61;&#x51fd;&#x6570;">
 <node CREATED="1510151635630" ID="ID_1166267077" MODIFIED="1514905876378" TEXT="dbms_output">
 <richcontent TYPE="NOTE"><html>
   <head>

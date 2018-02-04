@@ -12,8 +12,8 @@
 	<property name="hibernate.jdbc.batch_size">20</property>
 	<property name="hibernate.show_sql">true</property>
 	<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:sambase</property>
-	<property name="hibernate.connection.username">myh</property>
-	<property name="hibernate.connection.password">myh123</property>
+	<property name="hibernate.connection.username">sambase</property>
+	<property name="hibernate.connection.password">sambase</property>
 	<!-- <property name="hbm2ddl.auto">create</property> -->
 <!-- <mapping file="/testMaven/src/main/java/com/ma/test/testHibernate/*hbm.xml"/>
  -->	
