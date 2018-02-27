@@ -10,8 +10,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.NativeQuery;
 
+import com.ma.test.testHibernate.HibernateUtil;
 import com.ma.test.testOfficeParse.ReadWriteExcel;
+import com.ma.utils.HibernateUtils;
 
 public class TestClaims {
 
@@ -22,6 +25,11 @@ public class TestClaims {
 		Workbook workbook = ReadWriteExcel.getWorkbok(new File(path));
 		Sheet sheet = workbook.getSheet("default");
 		List<List<String>> rows = ReadWriteExcel.readSheet(sheet);
+		/*Map<String,List<String>> rowMap=new HashMap<String,List<String>>();
+		for (List<String> list : rows) {
+			String name = list.get(5);
+			rowMap.put(name, list);
+		}*/
 		Map<String, Tpdttempletpro> proMap = getPro("default");
 		Tpdttempletpro pro = null;
 		int rowLen = rows.size();
@@ -36,29 +44,9 @@ public class TestClaims {
 
 	private static void validatePro(Tpdttempletpro pro, List<String> cells) {
 		String name = cells.get(5);
-		String dictionary = cells.get(6);
-		String type = cells.get(7);
 		String isNotnull = cells.get(8);
-		if (!validateType(pro.getCProtype(), cells.get(7))) {
-			System.out.print(name + "类型不对：" + pro.getCProtype() + ":" + cells.get(7));
-		}
-		if (!validateNotnull(pro.getCNotnull(), cells.get(8))) {
+		if (!validateNotnull(pro.getCNotnull(), isNotnull)) {
 			System.out.print(name + "是否必填不对：" + pro.getCNotnull() + ":" + cells.get(9));
-		}
-		if (type.equals("多选") || type.equals("单选") || type.equals("下拉选项")) {
-			Long Keyno = pro.getLKeyno();
-			if (Keyno != 0) {
-				Map<String,Tdictionary> dic = getDic(Keyno);
-				String[] dicExcel = cells.get(6).split(",");
-				for (String string : dicExcel) {
-					if(dic.get(string)==null)
-						System.out.print(name + "字典项不对：" + string + ":" + Keyno);
-
-				}
-				
-			} else {
-				System.out.print(name + "少字典：");
-			}
 		}
 	}
 
@@ -127,14 +115,19 @@ public class TestClaims {
 	}
 
 	public static Map<String, Tpdttempletpro> getPro(String templateCode) {
-		SessionFactory SessionFactory = new Configuration().configure().buildSessionFactory();
-		Session session = SessionFactory.openSession();
+		Session session = HibernateUtils.getNewSession();
 		StringBuffer sql = new StringBuffer();
 		sql.append(
-				"select * from tpdttempletpro p where l_templetid = 6 and c_templetmod = ? or l_tableid in (select tb.l_tableid from tpdttemplettable tb where tb.l_templetid = 6 and tb.c_templetmod = ？) order by p.l_tableid DESC,p.c_classcode,p.l_order ");
-		List<Tpdttempletpro> resultList = session.createNativeQuery(sql.toString()).setParameter(0, templateCode)
-				.setParameter(0, templateCode).addEntity(Tpdttempletpro.class).getResultList();
+				"select * from tpdttempletpro p where l_templetid = 6 and c_templetmod = ? or l_tableid in (select tb.l_tableid from tpdttemplettable tb where tb.l_templetid = 6 and tb.c_templetmod = ?) order by p.l_tableid DESC,p.c_classcode,p.l_order ");
+		List<Tpdttempletpro> resultList= null;
+		NativeQuery<Tpdttempletpro> NativeQuery = session.createNativeQuery(sql.toString(),Tpdttempletpro.class).setParameter(0, templateCode).setParameter(1, templateCode);
+		resultList=NativeQuery.getResultList();
 		Map<String, Tpdttempletpro> proMap = new HashMap<String, Tpdttempletpro>();
+		int length=resultList.size();
+		for (int i = 0; i <length; i++) {
+			Tpdttempletpro object=resultList.get(i);
+			proMap.put(object.getCViewname(), object);
+		}
 		for (Tpdttempletpro object : resultList) {
 			proMap.put(object.getCViewname(), object);
 		}
@@ -142,8 +135,7 @@ public class TestClaims {
 	}
 
 	public static Map<String,Tdictionary> getDic(long keyNo) {
-		SessionFactory SessionFactory = new Configuration().configure().buildSessionFactory();
-		Session session = SessionFactory.openSession();
+		Session session = HibernateUtils.getNewSession();
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * FROM tdictionary t WHERE t.l_keyno=? AND t.c_sysname='FUNDCRM' AND t.c_keyvalue!='#'");
 		List<Tdictionary> resultList = session.createNativeQuery(sql.toString()).setParameter(0, keyNo)

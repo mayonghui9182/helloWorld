@@ -6,6 +6,11 @@ import java.util.LinkedList;
 
 public class testCollection {
 	public static void main(String[] args) {
-		System.out.println("a".compareTo("B"));
+		int[] arr=new int[]{};
+		arr=null;
+		for (int i : arr) {
+			System.out.println(i);
+		}
+		
 	}
 }

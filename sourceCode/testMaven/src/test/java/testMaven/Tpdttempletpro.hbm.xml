@@ -2,12 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="testMaven.Tpdttempletpro" table="TPDTTEMPLETPRO" schema="SAMBASE">
-		<id>
-			<property name="LTempletid" type="java.lang.Long">
-				<column name="L_TEMPLETID" precision="10" scale="0" />
-			</property>
-		</id>
+	<class name="testMaven.Tpdttempletpro" table="TPDTTEMPLETPRO"
+		schema="SAMBASE">
+		<id type="java.lang.Long" >
+			<column name="L_TEMPLETID" precision="10" scale="0" />
+		</id>    
 		<property name="LTableid" type="java.lang.Long">
 			<column name="L_TABLEID" precision="10" scale="0" />
 		</property>

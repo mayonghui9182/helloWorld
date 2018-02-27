@@ -706,14 +706,10 @@
       2&#12289;&#31639;&#27861;&#35201;&#27714;&#36739;&#39640;&#65292;&#35774;&#35745;&#22810;&#26465;&#25968;&#25454;&#36923;&#36753;&#26102;
     </p>
   </body>
-<<<<<<< HEAD
-</html>
-</richcontent>
-<node CREATED="1510224527957" ID="ID_856347821" MODIFIED="1517297422718" TEXT="&#x57fa;&#x672c;&#x8bed;&#x6cd5;">
-=======
+
 </html></richcontent>
 <node CREATED="1510224527957" ID="ID_856347821" MODIFIED="1517412878338" TEXT="&#x57fa;&#x672c;&#x8bed;&#x6cd5;">
->>>>>>> 2614472995684fd8eafdcf8cd8c4d8cc6c01cbf9
+
 <richcontent TYPE="NOTE"><html>
   <head>
     

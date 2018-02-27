@@ -11,6 +11,7 @@ public class SumFileCount {
 
 	public static void main(String[] args) {
 		int sum=0;
+		int size=0;
 		FileFilter fileFilter=new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
@@ -49,8 +50,17 @@ public class SumFileCount {
 			if(!accessoryFolder.exists()){
 				continue;
 			}
-            sum+=accessoryFolder.listFiles().length;
+			File[] fileArray=accessoryFolder.listFiles();
+            sum+=fileArray.length;
+            for (File file : fileArray) {
+				if(file!=null){
+					size+=file.length();
+				}
+			}
+            
         }
         System.out.println(sum);
+        //System.out.println(size/1024/1024);
+        
 	}
 }

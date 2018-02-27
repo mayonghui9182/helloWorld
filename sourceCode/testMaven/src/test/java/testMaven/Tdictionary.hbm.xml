@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="testMaven.Tdictionary" table="TDICTIONARY" schema="SAMBASE">
-        <composite-id name="id" class="test.TdictionaryId">
+        <composite-id name="id" class="testMaven.TdictionaryId">
             <key-property name="CSysname" type="java.lang.String">
                 <column name="C_SYSNAME" length="16" />
             </key-property>

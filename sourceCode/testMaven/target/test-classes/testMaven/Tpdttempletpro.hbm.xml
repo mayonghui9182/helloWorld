@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="testMaven.Tpdttempletpro" table="TPDTTEMPLETPRO"
+		schema="SAMBASE">
+		<id type="java.lang.Long" >
+			<column name="L_TEMPLETID" precision="10" scale="0" />
+		</id>    
+		<property name="LTableid" type="java.lang.Long">
+			<column name="L_TABLEID" precision="10" scale="0" />
+		</property>
+		<property name="CProcode" type="java.lang.String">
+			<column name="C_PROCODE" length="32" />
+		</property>
+		<property name="CProtype" type="java.lang.String">
+			<column name="C_PROTYPE" length="16" />
+		</property>
+		<property name="CProname" type="java.lang.String">
+			<column name="C_PRONAME" />
+		</property>
+		<property name="CViewname" type="java.lang.String">
+			<column name="C_VIEWNAME" />
+		</property>
+		<property name="CTablecode" type="java.lang.String">
+			<column name="C_TABLECODE" length="32" />
+		</property>
+		<property name="CClasscode" type="java.lang.String">
+			<column name="C_CLASSCODE" length="16" />
+		</property>
+		<property name="CClassname" type="java.lang.String">
+			<column name="C_CLASSNAME" length="64" />
+		</property>
+		<property name="CNotnull" type="java.lang.String">
+			<column name="C_NOTNULL" length="1" />
+		</property>
+		<property name="CRegexp" type="java.lang.String">
+			<column name="C_REGEXP" />
+		</property>
+		<property name="LKeyno" type="java.lang.Long">
+			<column name="L_KEYNO" precision="10" scale="0" />
+		</property>
+		<property name="CDefaultvalue" type="java.lang.String">
+			<column name="C_DEFAULTVALUE" length="32" />
+		</property>
+		<property name="CSelectorurl" type="java.lang.String">
+			<column name="C_SELECTORURL" length="128" />
+		</property>
+		<property name="LOrder" type="java.lang.Long">
+			<column name="L_ORDER" precision="10" scale="0" />
+		</property>
+		<property name="CDescunit" type="java.lang.String">
+			<column name="C_DESCUNIT" length="32" />
+		</property>
+		<property name="CStylecss" type="java.lang.String">
+			<column name="C_STYLECSS" />
+		</property>
+		<property name="CCaption" type="java.lang.String">
+			<column name="C_CAPTION" />
+		</property>
+		<property name="CColspan" type="java.lang.String">
+			<column name="C_COLSPAN" length="10" />
+		</property>
+		<property name="CDatatype" type="java.lang.String">
+			<column name="C_DATATYPE" length="32" />
+		</property>
+		<property name="CSysname" type="java.lang.String">
+			<column name="C_SYSNAME" length="32" />
+		</property>
+		<property name="CShowkeyvalue" type="java.lang.String">
+			<column name="C_SHOWKEYVALUE" />
+		</property>
+		<property name="CExtshowsql" type="java.lang.String">
+			<column name="C_EXTSHOWSQL" />
+		</property>
+		<property name="CEventattr" type="java.lang.String">
+			<column name="C_EVENTATTR" />
+		</property>
+		<property name="CAttrauditstatus" type="java.lang.String">
+			<column name="C_ATTRAUDITSTATUS" length="32" />
+		</property>
+		<property name="CValueentertype" type="java.lang.String">
+			<column name="C_VALUEENTERTYPE" length="32" />
+		</property>
+		<property name="CReadonly" type="java.lang.String">
+			<column name="C_READONLY" length="32" />
+		</property>
+		<property name="CTempletmod" type="java.lang.String">
+			<column name="C_TEMPLETMOD" length="200" />
+		</property>
+		<property name="CDictoptionignores" type="java.lang.String">
+			<column name="C_DICTOPTIONIGNORES" length="200" />
+		</property>
+		<property name="CLimitnotnulloperatorflag" type="java.lang.String">
+			<column name="C_LIMITNOTNULLOPERATORFLAG" length="200" />
+		</property>
+		<property name="CNotice" type="java.lang.String">
+			<column name="C_NOTICE" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -17,7 +17,8 @@
 	<!-- <property name="hbm2ddl.auto">create</property> -->
 <!-- <mapping file="/testMaven/src/main/java/com/ma/test/testHibernate/*hbm.xml"/>
  -->	
-    <mapping resource="com/ma/test/testHibernate/TestTab.hbm.xml"/>
+    <mapping resource="testMaven/Tdictionary.hbm.xml"/>
+    <mapping resource="testMaven/Tpdttempletpro.hbm.xml"/>
 </session-factory>
 
 </hibernate-configuration>
