@@ -11,8 +11,7 @@
       SELECT&#12289;UPDATE&#12289;INSERT&#12289;DELETE&#65292;&#23601;&#35937;&#23427;&#30340;&#21517;&#23383;&#19968;&#26679;&#65292;&#36825;4&#26465;&#21629;&#20196;&#26159;&#29992;&#26469;&#23545;&#25968;&#25454;&#24211;&#37324;&#30340;&#25968;&#25454;&#36827;&#34892;&#25805;&#20316;&#30340;&#35821;&#35328;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509540765470" ID="ID_1711904907" MODIFIED="1509540997477" TEXT="select">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -389,8 +388,7 @@
       &#20027;&#35201;&#30340;&#21629;&#20196;&#26377;CREATE&#12289;ALTER&#12289;DROP&#31561;&#65292;DDL&#20027;&#35201;&#26159;&#29992;&#22312;&#23450;&#20041;&#25110;&#25913;&#21464;&#34920;&#65288;TABLE&#65289;&#30340;&#32467;&#26500;&#65292;&#25968;&#25454;&#31867;&#22411;&#65292;&#34920;&#20043;&#38388;&#30340;&#38142;&#25509;&#21644;&#32422;&#26463;&#31561;&#21021;&#22987;&#21270;&#24037;&#20316;&#19978;&#65292;&#20182;&#20204;&#22823;&#22810;&#22312;&#24314;&#31435;&#34920;&#26102;&#20351;&#29992;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509544825621" ID="ID_1301379437" MODIFIED="1517297422395" TEXT="&#x521b;&#x5efa;&#x6570;&#x636e;&#x5e93; CREATE DATABASE">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -401,8 +399,7 @@
       c
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509544867108" ID="ID_201262831" MODIFIED="1517297422425" TEXT="&#x521b;&#x5efa;&#x8868; CREATE TABLE">
 <richcontent TYPE="NOTE"><html>
@@ -432,8 +429,7 @@
       );
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509544942607" ID="ID_1276988980" MODIFIED="1509544954120" TEXT="&#x975e;&#x7a7a; NOT NULL"/>
 <node CREATED="1509544962447" ID="ID_94201234" MODIFIED="1509544966481" TEXT="&#x552f;&#x4e00; UNIQUE"/>
 <node CREATED="1509544992350" ID="ID_330190682" MODIFIED="1509544998559" TEXT="&#x4e3b;&#x952e; PRIMARY KEY"/>
@@ -447,8 +443,7 @@
       &#22806;&#38190;&#25351;&#21521;&#21478;&#19968;&#20010;&#34920;&#30340;&#20027;&#38190;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509545014268" ID="ID_563299902" MODIFIED="1517297422481" TEXT="&#x6761;&#x4ef6; CHECK">
 <richcontent TYPE="NOTE"><html>
@@ -466,8 +461,7 @@
       &#22914;&#26524;&#23545;&#19968;&#20010;&#34920;&#23450;&#20041; CHECK &#32422;&#26463;&#65292;&#37027;&#20040;&#27492;&#32422;&#26463;&#20250;&#22312;&#29305;&#23450;&#30340;&#21015;&#20013;&#23545;&#20540;&#36827;&#34892;&#38480;&#21046;&#12290;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509545019886" ID="ID_1017127407" MODIFIED="1509545025166" TEXT="&#x9ed8;&#x8ba4;&#x503c; DEFAULT"/>
 <node CREATED="1509545790557" ID="ID_1094414852" MODIFIED="1517297422519" TEXT="&#x81ea;&#x589e;&#x957f; AUTO_INCREMENT">
@@ -504,8 +498,7 @@
       &#27599;&#20010;&#25968;&#25454;&#24211;&#33258;&#22686;&#38271;&#20851;&#38190;&#23383;&#19981;&#19968;&#26679;&#65306;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1509545939092" ID="ID_738211184" MODIFIED="1509545939092" TEXT=""/>
 </node>
 </node>
@@ -543,8 +536,7 @@
       ON table_name (column_name)
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509545323530" ID="ID_25474680" MODIFIED="1517297422581" TEXT="&#x5220;&#x9664;DROP">
 <richcontent TYPE="NOTE"><html>
@@ -562,10 +554,9 @@
       &#21024;&#38500;&#25968;&#25454;&#24211;&#65306;DROP DATABASE &#25968;&#25454;&#24211;&#21517;&#31216;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
-<node CREATED="1509545529923" ID="ID_806644243" MODIFIED="1517297419205" TEXT="&#x66f4;&#x6539;&#x8868;alter table">
+<node CREATED="1509545529923" ID="ID_806644243" MODIFIED="1519796544983" TEXT="&#x66f4;&#x6539;&#x8868;alter table">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -584,7 +575,8 @@
       &#20462;&#25913;&#34920;&#23383;&#27573;&#21517;&#65306;alter table tableName rename column&#160;&#160;colOldName to colNewName
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node CREATED="1510147653076" ID="ID_1120973951" MODIFIED="1510147680298" TEXT="&#x663e;&#x793a;&#x8868;&#x7684;&#x7ed3;&#x6784; desc tabname"/>
 <node CREATED="1509546019923" ID="ID_529564227" MODIFIED="1509546133753" TEXT="view">
@@ -607,8 +599,7 @@
       WHERE condition
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509546118730" ID="ID_12048825" MODIFIED="1517297422635" TEXT="&#x66f4;&#x65b0;&#x89c6;&#x56fe;">
 <richcontent TYPE="NOTE"><html>
@@ -632,8 +623,7 @@
       WHERE condition
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509546164841" ID="ID_561326579" MODIFIED="1517297422651" TEXT="&#x64a4;&#x9500;&#x89c6;&#x56fe;">
 <richcontent TYPE="NOTE"><html>
@@ -645,8 +635,7 @@
       DROP VIEW view_name
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -663,8 +652,7 @@
       &#20855;&#20307;&#21442;&#30475;&#21508;&#20010;&#25968;&#25454;&#24211;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509544822601" ID="ID_1321077167" MODIFIED="1517297422699" POSITION="right" TEXT="&#x5b58;&#x50a8;&#x8fc7;&#x7a0b;">
 <richcontent TYPE="NOTE"><html>
@@ -709,7 +697,6 @@
 
 </html></richcontent>
 <node CREATED="1510224527957" ID="ID_856347821" MODIFIED="1517412878338" TEXT="&#x57fa;&#x672c;&#x8bed;&#x6cd5;">
-
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -719,8 +706,7 @@
       CREATE OR REPLACE PROCEDURE procedureName&#160;&#160;&#21019;&#24314;&#19968;&#20010;&#21483;&#20570;procedureName&#23384;&#20648;&#36807;&#31243;, &#22914;&#26524;&#23384;&#22312;&#23601;&#35206;&#30422;&#23427;;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510224541443" ID="ID_35027640" MODIFIED="1510224541443" TEXT=""/>
 </node>
