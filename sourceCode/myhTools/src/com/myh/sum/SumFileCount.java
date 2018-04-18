@@ -2,9 +2,9 @@ package com.myh.sum;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.nio.file.DirectoryStream.Filter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
 
 
 public class SumFileCount {
@@ -54,7 +54,10 @@ public class SumFileCount {
             sum+=fileArray.length;
             for (File file : fileArray) {
 				if(file!=null){
-					size+=file.length();
+					String name = file.getName();
+					if(!name.endsWith("pdf")){
+						System.out.println(name);
+					}
 				}
 			}
             
@@ -64,3 +67,4 @@ public class SumFileCount {
         
 	}
 }
+ 

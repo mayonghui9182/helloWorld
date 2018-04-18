@@ -252,6 +252,28 @@
   </body>
 </html></richcontent>
 </node>
+<node CREATED="1520854461122" ID="ID_536941683" MODIFIED="1521619127970" TEXT="&#x89e3;&#x9501;&#x8868;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#29992;dba&#29992;&#25143;&#25191;&#34892;&#19968;&#19979;&#35821;&#21477;
+    </p>
+    <p>
+      select&#160;&#160;&#160;&#160;&#160;t2.serial#, t2.sid from v$locked_object t1, v$session t2, dba_objects t3 where t1.session_id = t2.sid&#160;&#160;&#160;and t1.object_id = t3.object_id;
+    </p>
+    <p>
+      &#26681;&#25454;&#19978;&#19968;&#26465;&#35821;&#21477;&#25340;&#25509;&#19979;&#26465;&#35821;&#21477;&#24182;&#25191;&#34892;
+    </p>
+    <p>
+      alter system kill session 'sid,seial#';
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 <node CREATED="1510134269896" ID="ID_30650941" MODIFIED="1510134737713" TEXT="&#x9000;&#x51fa; exist"/>
 </node>
@@ -1275,8 +1297,7 @@
       end;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1510151470452" ID="ID_1899443059" MODIFIED="1514905876319" TEXT="&#x8bed;&#x6cd5;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -1303,6 +1324,21 @@
     </p>
   </body>
 </html></richcontent>
+<node CREATED="1510151874658" ID="ID_1613241120" MODIFIED="1514905876406" TEXT="&#x53d8;&#x91cf;&#x7c7b;&#x578b;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      number(n)&#65306;n&#20301;&#25972;&#25968;
+    </p>
+    <p>
+      varchar(n)&#65306;n&#23383;&#33410;&#23383;&#31526;&#20018;
+    </p>
+  </body>
+</html></richcontent>
+</node>
 <node CREATED="1510151901679" ID="ID_187676291" MODIFIED="1516690282954" TEXT="&#x53d8;&#x91cf;&#x7684;&#x58f0;&#x660e;">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -1426,7 +1462,7 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1510152947529" FOLDED="true" ID="ID_1936179264" MODIFIED="1510154595054" TEXT="&#x5224;&#x65ad;">
+<node CREATED="1510152947529" ID="ID_1936179264" MODIFIED="1519965888709" TEXT="&#x5224;&#x65ad;">
 <node CREATED="1510153111973" ID="ID_1535274149" MODIFIED="1510153179428" TEXT="if1">
 <richcontent TYPE="NOTE"><html>
   <head>
@@ -1569,21 +1605,6 @@
   </body>
 </html></richcontent>
 </node>
-</node>
-<node CREATED="1510151874658" ID="ID_1613241120" MODIFIED="1514905876406" TEXT="&#x53d8;&#x91cf;&#x7c7b;&#x578b;">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      number(n)&#65306;n&#20301;&#25972;&#25968;
-    </p>
-    <p>
-      varchar(n)&#65306;n&#23383;&#33410;&#23383;&#31526;&#20018;
-    </p>
-  </body>
-</html></richcontent>
 </node>
 <node CREATED="1512447497183" ID="ID_594980823" MODIFIED="1512447499982" TEXT="&#x8f6c;&#x79fb;&#x7b26;">
 <node CREATED="1512447505794" ID="ID_1148385780" MODIFIED="1514905876429" TEXT="&amp;">
