@@ -123,7 +123,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509358844343" FOLDED="true" ID="ID_1725742729" MODIFIED="1510224803750" POSITION="right" TEXT="&#x51fd;&#x6570;">
+<node CREATED="1509358844343" ID="ID_1725742729" MODIFIED="1546164668716" POSITION="right" TEXT="&#x51fd;&#x6570;">
 <node CREATED="1509364053666" ID="ID_362672860" MODIFIED="1510127188374" TEXT="&#x65e5;&#x671f;&#x51fd;&#x6570;">
 <node CREATED="1509359963835" ID="ID_730053110" MODIFIED="1509364050694" TEXT="&#x65e5;&#x671f;&#x52a0;&#x65f6;&#x95f4;&#x95f4;&#x9694; DATA_ADD()">
 <richcontent TYPE="NOTE"><html>
@@ -950,7 +950,28 @@
 </node>
 <node CREATED="1509359711054" ID="ID_1756326273" MODIFIED="1510822808008" POSITION="right" TEXT="&#x547d;&#x4ee4;">
 <node CREATED="1509359719150" ID="ID_1065489424" MODIFIED="1509359734650" TEXT="&#x542f;&#x52a8;&#x5173;&#x95ed;">
-<node CREATED="1509359737574" ID="ID_1902879490" MODIFIED="1509359749752" TEXT="&#x542f;&#x52a8;net start mysql"/>
+<node CREATED="1509359737574" ID="ID_1902879490" MODIFIED="1546166118052" TEXT="&#x542f;&#x52a8;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      window:
+    </p>
+    <p>
+      net start mysql
+    </p>
+    <p>
+      linux:
+    </p>
+    <p>
+      mysqld --user=mysql
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 <node CREATED="1509359750997" ID="ID_187984783" MODIFIED="1509359770799" TEXT="&#x5173;&#x95ed;net stop mysql"/>
 </node>
 <node CREATED="1509359929851" ID="ID_1592958118" MODIFIED="1509359977157" TEXT="&#x8fde;&#x63a5;&#x6570;&#x636e;&#x5e93;">
@@ -1386,8 +1407,7 @@
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-- &#26597;&#30475;&#20250;&#35805;&#21464;&#37327;&#65306; select @&#21464;&#37327;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1510225490151" ID="ID_875970521" MODIFIED="1510225661036" TEXT="&#x5c40;&#x90e8;&#x53d8;&#x91cf;">
 <richcontent TYPE="NOTE"><html>

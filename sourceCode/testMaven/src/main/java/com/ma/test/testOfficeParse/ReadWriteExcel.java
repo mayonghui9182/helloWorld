@@ -1,7 +1,6 @@
 package com.ma.test.testOfficeParse;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -19,7 +18,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.utils.file.MaFileUtils;
+import com.ma.utils.file.MaFileUtils;
 
 public class ReadWriteExcel {
 

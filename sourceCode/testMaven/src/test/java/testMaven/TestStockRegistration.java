@@ -22,7 +22,7 @@ public class TestStockRegistration {
 		}
 		List<List<String>> sheet = rows.get("产品信息确认模板");
 		if(sheet==null){
-			return null;
+			return ;
 		}
 	}
 }
