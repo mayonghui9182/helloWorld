@@ -2,7 +2,7 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1544192721119" ID="ID_536869851" MODIFIED="1544192737039" TEXT="linux">
 <node CREATED="1544192738285" ID="ID_1765364741" MODIFIED="1544192744270" POSITION="right" TEXT="&#x8f6f;&#x4ef6;">
-<node CREATED="1544192756250" ID="ID_1694472377" MODIFIED="1546165134101" TEXT="&#x67e5;&#x770b;&#x6240;&#x6709;&#x5b89;&#x88c5;&#x7684;&#x8f6f;&#x4ef6;&#x5305;">
+<node CREATED="1544192756250" ID="ID_1694472377" MODIFIED="1546324845686" TEXT="&#x67e5;&#x770b;&#x6240;&#x6709;&#x5b89;&#x88c5;&#x7684;&#x8f6f;&#x4ef6;&#x5305;">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -79,6 +79,23 @@
   </body>
 </html></richcontent>
 </node>
+</node>
+<node CREATED="1546324863243" ID="ID_1815142876" MODIFIED="1546324866302" POSITION="right" TEXT="&#x9632;&#x706b;&#x5899;">
+<node CREATED="1546324874356" ID="ID_1145037132" MODIFIED="1546325279458" TEXT="&#x67e5;&#x770b;&#x9632;&#x706b;&#x5899;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="rgb(79, 79, 79)" face="Microsoft YaHei,SF Pro Display,Roboto,Noto,Arial,PingFang SC,sans-serif" size="16px">service iptables status</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1546324884756" ID="ID_1633950407" MODIFIED="1546324890247" TEXT="&#x5173;&#x95ed;&#x9632;&#x706b;&#x5899;"/>
+<node CREATED="1546324892932" ID="ID_1705997715" MODIFIED="1546324902656" TEXT="&#x542f;&#x52a8;&#x9632;&#x706b;&#x5899;"/>
 </node>
 <node CREATED="1544194521810" ID="ID_886719232" MODIFIED="1544194525079" POSITION="left" TEXT="&#x67e5;&#x627e;">
 <node CREATED="1544194528156" ID="ID_562878445" MODIFIED="1544194575580" TEXT="find">

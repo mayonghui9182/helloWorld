@@ -123,7 +123,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1509358844343" ID="ID_1725742729" MODIFIED="1546164668716" POSITION="right" TEXT="&#x51fd;&#x6570;">
+<node CREATED="1509358844343" FOLDED="true" ID="ID_1725742729" MODIFIED="1546273259219" POSITION="right" TEXT="&#x51fd;&#x6570;">
 <node CREATED="1509364053666" ID="ID_362672860" MODIFIED="1510127188374" TEXT="&#x65e5;&#x671f;&#x51fd;&#x6570;">
 <node CREATED="1509359963835" ID="ID_730053110" MODIFIED="1509364050694" TEXT="&#x65e5;&#x671f;&#x52a0;&#x65f6;&#x95f4;&#x95f4;&#x9694; DATA_ADD()">
 <richcontent TYPE="NOTE"><html>
@@ -969,8 +969,7 @@
       mysqld --user=mysql
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1509359750997" ID="ID_187984783" MODIFIED="1509359770799" TEXT="&#x5173;&#x95ed;net stop mysql"/>
 </node>
