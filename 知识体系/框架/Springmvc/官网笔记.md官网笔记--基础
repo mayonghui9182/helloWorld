@@ -1,0 +1,184 @@
+## 一、springmvc初始化
+
+​	一）、servlet3.0初始化
+
+​	二）、web.xml初始化
+
+​	三）、父子容器
+
+## 二、springmvc处理流程
+
+​	The `DispatcherServlet` processes requests as follows:
+
+- The `WebApplicationContext` is searched for and bound in the request as an attribute that the controller and other elements in the process can use. It is bound by default under the `DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE` key.
+- The locale resolver is bound to the request to let elements in the process resolve the locale to use when processing the request (rendering the view, preparing data, and so on). If you do not need locale resolving, you do not need the locale resolver.
+- The theme resolver is bound to the request to let elements such as views determine which theme to use. If you do not use themes, you can ignore it.
+- If you specify a multipart file resolver, the request is inspected for multiparts. If multiparts are found, the request is wrapped in a `MultipartHttpServletRequest` for further processing by other elements in the process. See [Multipart Resolver](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-multipart) for further information about multipart handling.
+- An appropriate handler is searched for. If a handler is found, the execution chain associated with the handler (preprocessors, postprocessors, and controllers) is executed in order to prepare a model or rendering. Alternatively, for annotated controllers, the response can be rendered (within the `HandlerAdapter`) instead of returning a view.
+- If a model is returned, the view is rendered. If no model is returned (maybe due to a preprocessor or postprocessor intercepting the request, perhaps for security reasons), no view is rendered, because the request could already have been fulfilled.
+
+​     DispatcherServlet` 处理请求流程如下：
+
+- 找到“WebApplicationContext”并放入request，。默认情况下，它的key是 DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE。
+- 把The locale resolver放到request里面，以便让流程中的元素解析处理请求时使用本地语言环境(呈现视图、准备数据，等等)。不需要则不用设置The locale resolver
+- 把The theme resolver 放到request里面，让视图等元素决定使用哪个主题的请求。不需要则不用设置The theme resolver
+- 如果指定一个a multipart file resolver处理多问家上传，则会检查请求是否为multiparts，是则把请求包装为MultipartHttpServletRequest`
+- 找到合适的handler，执行interceptor和handler，返回model或者rendering，如果为注解controller，可以直接在HandlerAdapter里rendered response
+- 如果直接返回一个model，则渲染视图，否则不渲染，因为请求可能已经被处理
+
+
+
+## 三、springmvc组件bean
+
+​	1）、HandlerMapping
+
+​		请求处理映射bean，将一个请求映射到具体的拥有handler和interceptors的处理链。
+
+​			RequestMappingHandlerMapping：支持@RequestMapping注解	
+
+​			SimpleUrlHandlerMapping：url到handler的显示注册
+
+​	2）、HandlerAdapter
+
+​		帮助DispatcherServlet调用handler，将DispatcherServlet与handler调用细节解耦
+
+​	3）、HandlerExceptionResolver
+
+​		异常处理器。异常处理策略，可能把异常映射到handler/html等对象
+
+​	4）、ViewResolver
+
+​		视图解析器：将handler返回的视图的字符串名字映射到具体的视图，呈现给response对象
+
+​	5）、LocaleResolver LocaleContextResolver
+
+​		本地化解析器：支持国际化
+
+​	6）、ThemeResolver
+
+​		主题解析器：
+
+​	7）、MultipartResolver
+
+​		用于解析多部分请求的抽象
+
+​	8）、FlashMapManager
+
+​		存储和检索“输入”和“输出”FlashMap，它们可用于将属性从一个请求传递到另一个请求，通常是通过重定向。
+
+## 四、MVC config
+
+​	如果dispatcherservlet没有找到这些bean，他会获取DispatcherServlet.properties中的默认bean
+
+## 五、servlet config
+
+- servlet3.0容器请实现AbstractAnnotationConfigDispatcherServletInitializer（AbstractDispatcherServletInitializer 的子类），servlet3.0规范要求容器自动获取ServletContainerInitializer接口的实现类，并调用器onStartedup方法
+- xml配置请实现AbstractDispatcherServletInitializer 
+- 两则都可以通过getServletFilters注册过滤器
+
+## 六、interceptor
+
+​	拦截指定的url，在handler方法执行前执行preHandle方法，在handler方法执行后执行postHandle方法，在请求返回后执行afterCompletion方法。
+
+​	preHandle方法返回true，继续执行，否则直接返回。
+
+​	postHandle对@ResponseBody和ResponseEntity方法无效，因为在HandlerAdapter处理方法handler之后，postHandle执行之前，response已经响应。可以通过ResponseBodyAdvice并将他声明为Controller Advice bean或者直接在RequestMappingHandlerAdapter中配置它，来做后置拦截。
+
+## 七、Exceptions
+
+​	通过HandlerExceptionResolver异常解析器链处理handler抛出的异常。在springmvc中声明异常解析器，并用priorityOrder或Order注解表明执行顺序，值越大越靠后执行。
+
+​	mvc config 自动获取内置解析器解析springmvc默认异常，@ResponseStatus注解异常，并支持@ExceptionHandler注解方法。
+
+​	springmvc提供的默认实现有：
+
+- SimpleMappingExceptionResolver：将异常类型和视图映射起来，进行处理
+
+- DefaultHandlerExceptionResolver：将mvc抛出的异常和http状态吗映射起来。
+
+- ResponseEntityExceptionHandler：使用@ResponseStatus注释解析异常，并根据注释中的值将异常映射到HTTP状态代码。
+
+- ExceptionHandlerExceptionResolver：调用@Controller或@ControllerAdvice注解的类的 @ExceptionHandler方法处理异常。
+
+  异常解析器可以返回：
+
+  - ModelAndView 只想一个试图
+  - An empty ModelAndView；异常被解析器处理则返回空的ModelAndView
+  - null，说明解析器解析不了，交给后来的解析器处理，如果异常一直未解决，则交给servlet容器处理。
+
+  
+
+  springmvc异常解析器没能处理异常，或者@ResponseStatus返回4XX或5XX异常，那么servlet容器会重定向到/error地址，可以被DispatcherServlet处理，返回一个错误试图或者错误JSON字符串。
+
+  
+
+## 八、试图解析器(待补充)
+
+​	参考连接：https://blog.csdn.net/qq_27607965/article/details/78587505 
+
+​	试图解析器提供一个视图名到视图的映射关系，在移交视图给特定技术之前，视图接口处理数据准备工作。
+
+​	springmvc提供的内置视图解析器实现：
+
+- AbstractCachingViewResolver：AbstractCachingViewResolver的子类，缓存他们解析过的视图实例，提高性能，可以设置属性关闭缓存（cache=false），也可以在运行时刷新缓存（removeFromCache）。
+
+- XmlViewResolver：AbstractCachingViewResolver的子类，把所有的视图作为bean配置到xml中，并为所有视图去一个名字，然后根据handler返回的视图名称去配置中找寻对应bn的视图，默认的配置是/WEB-INF/views.xml，或者在XmlViewResolver的location属性中指定它的位置
+
+- BeanNameViewResolver：同XmlViewResolver，两点不同，1、不进行缓存，2、视图按正常bean配置，不用配置在特定xml中。
+
+- ResourceBundleViewResolver：ViewResolver 的实现，
+
+- UrlBasedViewResolver：拼接前缀和后缀，得到视图的具体url。支持 redirect: / forword: 前缀，带有redirect前缀的url，前缀redirect会被去掉，将后边的url组成曾一个redirectView对象，RedirectView中将把请求返回的模型属性组合成查询参数的形式组合到redirect的URL后面，利用response对象的sendRedirect方法进行跳转；带有forword 前缀的url会被封装称InternalResourceView对象，利用despacherServlet的forword方法进行跳转。
+
+- InternalResourceViewResolver（常用）：UrlBasedViewResolver的之类，支持UrlBasedViewResolver一起额特性。此外，InternalResourceViewResolver会把返回的视图名称解析称一个InternalResourceView对象，internalResourceView会把handler返回的模型属性存放到request，然后通过dispatcherServlet的forward方法重定向到View。支持FreeMarkerView
+
+- FreeMarkerViewResolver：
+
+- ContentNegotiatingViewResolver
+
+  配置试图解析器链解析视图，顺序配置同拦截器，把InternalResourceViewResolver配置最后执行
+
+## 九、Multipart解析器
+
+​	处理post请求中contentType为multipart/form-data请求的策略，比如文件上传。为了支持multipart解析器，必须声明一个名为multipartResolver的multipartResolver类型bean。解析器解析内容，并把HttpServletRequest包装为MultipartHttpServletRequest。
+
+处理文件上传的两种方法：
+
+1. 用commons-fileupload包的CommonsMultipartResolver类，作为名为multipartResolver的bean声明在springmvc中。
+2. 通过重写AbstractAnnotationConfigDispatcherServletInitializer 的customizeRegistration方法将MultipartConfigElement注册进入 Servlet registration，然后声明一个名为multipartResolverStandardServletMultipartResolver类型的bean。
+
+## 十、日志
+
+enableLoggingRequestDetails 开启请求参数日志打印。
+
+```
+public class MyInitializer
+        extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    。。。省略部分代码。。。
+
+    @Override
+    protected void customizeRegistration(Dynamic registration) {
+        registration.setInitParameter("enableLoggingRequestDetails", "true");
+    }
+
+
+```
+
+## 十一、过滤器
+
+form数据：
+
+servlet API 要求ServletRequest.getParameter*()仅仅支持访问post请求中的表单数据（非表单数据没限制）。所以springmvc提供类一个FormContentFilter 拦截contentType为application/x-www-form-urlencoded类型的put、patch、delete请求，处理servletrequest，以便通过ServletRequest.getParameter*()家族方法访问表单数据。
+
+网络代理：
+
+ForwardedHeaderFilter 处理代理请求中不可信的host、port、scheme信息。
+
+Shallow ETag：
+
+ShallowEtagHeaderFilter ：通过将相应内容计算为md5缓存起来，下次请求做同样操作，比较两次md5，相同抛出304
+
+cors：
+
+CorsFilter ：支持CORS与Spring Security的整合。
