@@ -9,4 +9,9 @@ public class SupClass {
         boolean b = obj1.Coller == Coller;
         return super.equals(obj);
     }
+
+    private void supPrivateMethod() {
+        System.out.println("supPrivateMethod");
+    }
+
 }
