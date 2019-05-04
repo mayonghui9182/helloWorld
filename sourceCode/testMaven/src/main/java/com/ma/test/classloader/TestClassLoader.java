@@ -23,6 +23,7 @@ public class TestClassLoader extends SupClass {
         System.out.println("main start");
         System.out.println("Start instantiating");
         new TestClassLoader();
+        new SupClass();
     }
 
 }

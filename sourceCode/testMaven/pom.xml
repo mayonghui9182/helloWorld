@@ -16,6 +16,7 @@
         <module>coreJava</module>
         <module>servlet3.0</module>
         <module>spring-annotation</module>
+        <module>thinkingInJava</module>
     </modules>
 
     <properties>
