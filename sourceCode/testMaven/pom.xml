@@ -17,6 +17,7 @@
         <module>servlet3.0</module>
         <module>spring-annotation</module>
         <module>thinkingInJava</module>
+        <module>onjava8</module>
     </modules>
 
     <properties>
