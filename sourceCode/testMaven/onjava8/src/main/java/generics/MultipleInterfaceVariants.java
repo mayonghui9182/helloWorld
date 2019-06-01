@@ -7,7 +7,7 @@ package generics;
 
 interface Payable<T> {}
 
-class Employee implements Payable<Employee> {}
+class Employee implements Payable<EmployeeOfInstantiateGenericType> {}
 
-class Hourly extends Employee
+class Hourly extends EmployeeOfInstantiateGenericType
 implements Payable<Hourly> {}

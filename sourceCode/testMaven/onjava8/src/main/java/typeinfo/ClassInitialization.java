@@ -10,6 +10,7 @@ class Initable {
     ClassInitialization.rand.nextInt(1000);
   static {
     System.out.println("Initializing Initable");
+    System.out.println(STATIC_FINAL);
   }
 }
 
@@ -17,6 +18,7 @@ class Initable2 {
   static int staticNonFinal = 147;
   static {
     System.out.println("Initializing Initable2");
+    System.out.println(staticNonFinal);
   }
 }
 
@@ -24,6 +26,7 @@ class Initable3 {
   static int staticNonFinal = 74;
   static {
     System.out.println("Initializing Initable3");
+    System.out.println(staticNonFinal);
   }
 }
 
@@ -39,7 +42,7 @@ public class ClassInitialization {
     System.out.println(Initable.STATIC_FINAL2);
     // Does trigger initialization:
     System.out.println(Initable2.staticNonFinal);
-    Class initable3 = Class.forName("Initable3");
+    Class initable3 = Class.forName("typeinfo.Initable3");
     System.out.println("After creating Initable3 ref");
     System.out.println(Initable3.staticNonFinal);
   }

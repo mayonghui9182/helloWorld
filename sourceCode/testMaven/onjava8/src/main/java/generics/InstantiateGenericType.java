@@ -20,15 +20,15 @@ class ClassAsFactory<T> implements Supplier<T> {
   }
 }
 
-class Employee {
+class EmployeeOfInstantiateGenericType {
   @Override
-  public String toString() { return "Employee"; }
+  public String toString() { return "EmployeeOfInstantiateGenericType"; }
 }
 
 public class InstantiateGenericType {
   public static void main(String[] args) {
-    ClassAsFactory<Employee> fe =
-      new ClassAsFactory<>(Employee.class);
+    ClassAsFactory<EmployeeOfInstantiateGenericType> fe =
+      new ClassAsFactory<>(EmployeeOfInstantiateGenericType.class);
     System.out.println(fe.get());
     ClassAsFactory<Integer> fi =
       new ClassAsFactory<>(Integer.class);
@@ -40,6 +40,6 @@ public class InstantiateGenericType {
   }
 }
 /* Output:
-Employee
+EmployeeOfInstantiateGenericType
 java.lang.InstantiationException: java.lang.Integer
 */
