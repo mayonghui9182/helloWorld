@@ -18,11 +18,12 @@
         <module>spring-annotation</module>
         <module>thinkingInJava</module>
         <module>onjava8</module>
+        <module>document-deal</module>
+        <module>utils</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <poi-version>3.17</poi-version>
         <commons-io-version>1.4</commons-io-version>
         <fastjson-version>1.2.54</fastjson-version>
         <!--//数据库-->
@@ -35,6 +36,9 @@
         <spring-version>5.0.9.RELEASE</spring-version>
         <springboot-version>2.0.8.RELEASE</springboot-version>
         <servlet-version>3.0-alpha-1</servlet-version>
+        <javax-servlet-version>4.0.1</javax-servlet-version>
+        <jstl-version>1.2</jstl-version>
+        <tomcat.embed-version>9.0.14</tomcat.embed-version>
         <!--//struts hibernate-->
         <hibernate-version>5.2.0.Final</hibernate-version>
         <struts-version>2.5.10</struts-version>
@@ -47,6 +51,13 @@
         <junit-version>4.12</junit-version>
         <!--代理-->
         <cglib-version>3.2.10</cglib-version>
+        <!--poi版本-->
+        <poi-version>3.8</poi-version>
+        <jacob-version>1.10</jacob-version>
+        <openoffice-version>3.0.1</openoffice-version>
+        <artofsolving-version>2.2.1</artofsolving-version>
+        <jodconverter-version>4.2.0</jodconverter-version>
+        <docx4j-version>6.1.2</docx4j-version>
     </properties>
 
     <dependencies>
@@ -199,22 +210,25 @@
                 <version>${servlet-version}</version>
                 <scope>provided</scope>
             </dependency>
+            <!--jsp支持-->
+            <!-- servlet 依赖. -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax-servlet-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl-version}</version>
+            </dependency>
+            <!---->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-jasper</artifactId>
+                <version>${tomcat.embed-version}</version>
+            </dependency>
 
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi</artifactId>
-                <version>${poi-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <version>${poi-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml-schemas</artifactId>
-                <version>${poi-version}</version>
-            </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
@@ -321,8 +335,71 @@
                 <artifactId>cglib-nodep</artifactId>
                 <version>${cglib-version}</version>
             </dependency>
-        </dependencies>
+
+            <!--poi相关jar包-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml-schemas</artifactId>
+                <version>${poi-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-scratchpad</artifactId>
+                <version>${poi-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jacob</groupId>
+                <artifactId>jacob</artifactId>
+                <version>${jacob-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.artofsolving</groupId>
+                <artifactId>jodconverter</artifactId>
+                <version>${artofsolving-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openoffice</groupId>
+                <artifactId>jurt</artifactId>
+                <version>${openoffice-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openoffice</groupId>
+                <artifactId>ridl</artifactId>
+                <version>${openoffice-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openoffice</groupId>
+                <artifactId>juh</artifactId>
+                <version>${openoffice-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openoffice</groupId>
+                <artifactId>unoil</artifactId>
+                <version>${openoffice-version}</version>
+            </dependency>
         <!-- https://mvnrepository.com/artifact/cglib/cglib-nodep -->
+            <dependency>
+                <groupId>org.jodconverter</groupId>
+                <artifactId>jodconverter-core</artifactId>
+                <version>${jodconverter-version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.docx4j/docx4j -->
+            <dependency>
+                <groupId>org.docx4j</groupId>
+                <artifactId>docx4j</artifactId>
+                <version>${docx4j-version}</version>
+            </dependency>
+        </dependencies>
 
     </dependencyManagement>
 
