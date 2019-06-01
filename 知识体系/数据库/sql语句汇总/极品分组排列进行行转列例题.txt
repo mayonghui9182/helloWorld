@@ -1,0 +1,59 @@
+刚才有点错误 创建临时表的时候 时间有一点错误
+现在更正一下[code=SQL]
+--创建测试数据
+create   table   tbl(idno   varchar(6),Ban   varchar(10),icdate   varchar(15),ictime   varchar(18)) 
+insert into tbl
+select  '000008', 'T ', '2007/9/26 ', '01:00:00 ' union all                                            
+select  '000008', 'T ', '2007/9/26 ', '07:00:00 ' union all                           
+select  '000008', 'T ', '2007/9/26 ', '12:30:00 ' union all                                                                  
+select  '000008', 'T ', '2007/9/26 ', '13:30:00 ' union all  
+select  '000008', 'T ', '2007/9/26 ', '17:00:00 ' union all  
+select  '000008', 'T ', '2007/9/27 ', '00:30:00 ' union all  
+select  '000011', 'F ', '2007/9/26 ', '13:00:00 ' union all  
+select  '000011', 'F ', '2007/9/26 ', '19:00:00 ' union all  
+select  '000011', 'F ', '2007/9/26 ', '23:00:00 ' union all  
+select  '000011', 'F ', '2007/9/27 ', '01:00:00 ' union all  
+select  '000011', 'F ', '2007/9/27 ', '07:00:00 ' union all  
+select  '000011', 'F ', '2007/9/27 ', '11:30:00 ' union all  
+select  '000008', 'T ', '2007/9/27 ', '07:30:00 ' union all  
+select  '000008', 'T ', '2007/9/27 ', '10:10:00 ' union all  
+select  '000008', 'T ', '2007/9/27 ', '12:30:00 ' union all  
+select  '000011', 'F ', '2007/9/27 ', '07:30:00 ' union all  
+select  '000011', 'F ', '2007/9/27 ', '10:10:00 ' union all  
+select  '000011', 'F ', '2007/9/27 ', '12:10:00 ' 
+
+
+--创建临时表一
+select a.*,dateadd(minute,-31,convert(datetime,a.icdate+' '+a.ictime,120)) sj into #f from tbl a where ban='t'and ictime<'00:31:00' 
+insert into #f
+select a.*,convert(datetime,a.icdate+' '+a.ictime,120) sj from tbl a where ban='t'and ictime between '01:00:00' and '23:59:59'
+union
+select a.*,dateadd(day,1,convert(datetime,a.icdate+' '+a.ictime,120)) sj  from tbl a where ban='f' and ictime between '13:00:00' and '23:59:00'
+union 
+select a.*,convert(datetime,a.icdate+' '+a.ictime,120) sj from tbl a where ban='f' and ictime between '00:00:00' and '12:30:00'
+
+--创建临时表二
+select a.idno,a.ban,a.icdate,a.ictime,a.sj,px=(select count(ictime)+1 from #f where idno=a.idno and ban=a.ban and sj<a.sj and convert(varchar(10),sj,120)=convert(varchar(10),a.sj,120)) into #g from #f a
+order by a.idno,a.ban,a.sj
+
+--l转换查询
+select idno,min(icdate) icdate,t1=max(case px when 1 then ictime else null end),
+			t2=max(case px when 2 then ictime else null end),
+			t3=max(case px when 3 then ictime else null end),
+			t4=max(case px when 4 then ictime else null end),
+			t5=max(case px when 5 then ictime else null end),
+			t6=max(case px when 6 then ictime else null end),
+			t7=max(case px when 7 then ictime else null end),
+			t8=max(case px when 8 then ictime else null end)
+			
+ from #g group by idno,convert(varchar(10),sj,120)
+order by icdate
+
+--删除测试数据
+drop table tbl,#f,#g
+
+
+
+
+
+[/code]

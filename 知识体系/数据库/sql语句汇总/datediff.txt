@@ -1,0 +1,4 @@
+要查询9 月份的数据中的任意时间段,可能是一个月的,也可能是1日到15日的
+
+select   *   from   tabname   where   datediff(month,colname,'2006-09-01')=0
+

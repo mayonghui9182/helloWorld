@@ -1,0 +1,46 @@
+B=(1,11,2,22,3)
+
+select   *   from   table   where     
+charindex(',1,',','+B+',')>0   or   charindex(',2,',','+B+',')>0   
+or   charindex(',3,',','+B+',')>0
+
+（2）
+
+  INSERT   @t   SELECT   '消费电子'   
+  UNION   ALL   SELECT   '消费电子   '   
+  UNION   ALL   SELECT   ',消费电子,'   
+    
+  select   *   from   @t   where   nkey='消费电子'   
+  /*--   结果   
+  id                     nkey   
+  -----------   ----------   
+  1                       消费电子   
+  2                       消费电子     
+  --*/   
+    
+  select   *,   ','+'消费电子'+','   from   @t   where   charindex(','+'消费电子'+',',','+nkey+',')>0   
+  /*--   结果   
+  id                     nkey                 
+  -----------   ----------   ----------   
+  1                       消费电子               ,消费电子,   
+  3                       ,消费电子,           ,消费电子,   
+    
+  (2   行受影响)   
+  --*/   
+    
+  select   *   from   @t   where   ','+'消费电子'+','=','+nkey+','   
+  /*--   结果   
+  id                     nkey   
+  -----------   ----------   
+  1                       消费电子   
+    
+  (1   行受影响)   
+  --*/   
+   
+
+ charindex(','+'消费电子'+',',','+nkey+',')>0   
+  这个是包含关系   
+    
+    
+  ','+'消费电子'+','=','+nkey+','   
+  这个是完全匹配关系.

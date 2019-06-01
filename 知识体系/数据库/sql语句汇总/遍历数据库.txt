@@ -1,0 +1,162 @@
+ 从SQLSERVER6.5开始，MS提供了一个非常有用的系统存储过程sp_MSforeachtable和sp_MSforeachDB；作为DBA会经常需要检查所有的数据库或用户表，比如：检查所有数据库的容量;看看指定数据库所有用户表的容量，所有表的记录数，我们一般处理这样的问题都是用游标分别处理处理，比如：在数据库检索效率非常慢时，我们想检查数据库所有的用户表，我们就必须这样写游标：
+
+DECLARE @TableName varchar（255）
+DECLARE @ExeSQL varchar（4000） 
+DECLARE Table_Cursor CURSOR FOR SELECT [name] FROM sysobjects WHERE xtype='U'
+OPEN Table_Cursor
+FETCH NEXT FROM  Table_Cursor INTO @TableName
+WHILE（@@FETCH_STATUS=0）
+BEGIN
+ PRINT @TableName
+ SELECT @ExeSQL='DBCC CHECKTABLE（mailto:'''%252B@TableName%252B'''）'
+ EXEC（@EXESQL）
+FETCH NEXT FROM  Table_Cursor INTO @TableName
+END
+CLOSE Table_Cursor
+DEALLOCATE Table_Cursor
+GO
+    如果我们用sp_MSforeachtable就可以非常方便的达到相同的目的:
+EXEC sp_MSforeachtable @command1=“print '?' DBCC CHECKTABLE（'?'）”
+
+    大家可以看出这样就更加简洁（虽然在后台也是通过游标来处理的），下面我们就仔细分析一下sp_MSforeachtable这个存储过程：
+
+    我们看看sp_MSforeachtable详细的CODE：
+USE MASTER 
+GO
+SP_HELPTEXT sp_MSforeachtable
+--下面时sp_MSforeachtable的原始代码
+CREATE proc sp_MSforeachtable
+ @command1 nvarchar（2000）， @replacechar nchar（1） = N'?'， @command2 nvarchar（2000） = null，
+   @command3 nvarchar（2000） = null， @whereand nvarchar（2000） = null，
+ @precommand nvarchar（2000） = null， @postcommand nvarchar（2000） = null
+as
+ /* This proc returns one or more rows for each table （optionally， matching @where）， with each table defaulting to its 
+own result set */
+ /* @precommand and @postcommand may be used to force a single result set via a temp table。 */
+ /* Preprocessor won't replace within quotes so have to use str（）。 */
+ declare @mscat nvarchar（12）
+ select @mscat = ltrim（str（convert（int， 0x0002）））
+ if （@precommand is not null）
+  exec（@precommand）
+ /* Create the select */
+   exec（N'declare hCForEach cursor global for select ''['' + REPLACE（user_name（uid）， N'']''， N'']]''） + '']'' + ''。'' + ''['' 
++ REPLACE（object_name（id）， N'']''， N'']]''） + '']'' from dbo。sysobjects o '
+         + N' where OBJECTPROPERTY（o。id， N''IsUserTable''） = 1 ' + N' and o。category & ' + @mscat + N' = 0 '
+         + @whereand）
+ declare @retval int
+ select @retval = @@error
+ if （@retval = 0）
+  exec @retval = sp_MSforeach_worker @command1， @replacechar， @command2， @command3
+ if （@retval = 0 and @postcommand is not null）
+  exec（@postcommand）
+ return @retval
+
+这个系统存储过程有7个参数：
+
+ @command1 nvarchar（2000），  --第一条运行的T-SQL指令
+ @replacechar nchar（1） = N'?'，   --指定的占位符号 
+ @command2 nvarchar（2000） = null，--第二条运行的T-SQL指令
+    @command3 nvarchar（2000） = null， --第三条运行的T-SQL指令
+ @whereand nvarchar（2000） = null， --可选条件来选择表
+ @precommand nvarchar（2000） = null， --在表前执行的指令
+ @postcommand nvarchar（2000） = null --在表后执行的指令
+
+所以上面的语句也可以这样写:
+
+EXEC sp_MSforeachtable @command1=“print '?'”，
+         @command2= “DBCC CHECKTABLE（'?'）”
+
+    了解参数以后，就让我们做几个实列吧：
+
+1。获得每个表的记录数和容量：
+
+EXEC sp_MSforeachtable @command1=“print '?'“，
+         @command2=“sp_spaceused '?'“，
+         @command3= “SELECT count（*） FROM ? ”
+
+2。更新PUBS数据库中已t开头的所有表的统计：
+
+EXEC sp_MSforeachtable @whereand=“and name like 't%'”，
+         @replacechar='*'，
+         @precommand=“print 'Updating Statistics。。。。。' print ''”，
+         @command1=“print '*' update statistics * “，
+         @postcommand= “print''print 'Complete Update Statistics!'”
+
+sp_MSforeachDB除了@whereand外，和sp_MSforeachtable的参数是一样的，我们可以通过这个存储过程检测所有的数据库，比如：
+
+1。获得所有的数据库的存储空间：
+       EXEC sp_MSforeachdb  @command1=“print '?'“，
+                                         @command2=“sp_spaceused “
+2。检查所有的数据库
+       EXEC sp_MSforeachdb  @command1=“print '?'“，
+                                           @command2=“DBCC CHECKDB （?） “
+    有了上面的分析，我们可以建立自己的sp_MSforeachObject:
+
+USE MASTER
+GO
+CREATE proc sp_MSforeachObject
+ @objectType int=1，
+ @command1 nvarchar（2000）， 
+ @replacechar nchar（1） = N'?'， 
+ @command2 nvarchar（2000） = null，
+    @command3 nvarchar（2000） = null， 
+ @whereand nvarchar（2000） = null，
+ @precommand nvarchar（2000） = null， 
+ @postcommand nvarchar（2000） = null
+as
+ /* This proc returns one or more rows for each table （optionally， matching @where）， with each table defaulting to its 
+own result set */
+ /* @precommand and @postcommand may be used to force a single result set via a temp table。 */
+ /* Preprocessor won't replace within quotes so have to use str（）。 */
+ declare @mscat nvarchar（12）
+ select @mscat = ltrim（str（convert（int， 0x0002）））
+ if （@precommand is not null）
+  exec（@precommand）
+ /* Defined  @isobject for save object type */
+ Declare @isobject varchar（256）
+ select @isobject= case @objectType when 1 then 'IsUserTable'
+         when 2 then 'IsView'
+         when 3 then 'IsTrigger'
+         when 4 then 'IsProcedure' 
+         when 5 then 'IsDefault'   
+         when 6 then 'IsForeignKey'
+         when 7 then 'IsScalarFunction'
+         when 8 then 'IsInlineFunction'
+         when 9 then 'IsPrimaryKey'
+         when 10 then 'IsExtendedProc'    
+         when 11 then 'IsReplProc'
+         when 12 then 'IsRule'
+                  end
+ /* Create the select */
+ /* Use @isobject variable isstead of IsUserTable string */
+EXEC（N'declare hCForEach cursor global for select ''['' + REPLACE（user_name（uid）， N'']''， N'']]''） + '']'' + ''。'' + ''['' + 
+REPLACE（object_name（id）， N'']''， N'']]''） + '']'' from dbo。sysobjects o '
+        + N' where OBJECTPROPERTY（o。id， mailto:N'''%252B@isobject%252B'''） = 1 '+N' and o。category & ' + @mscat + N' = 0 '
+       + @whereand）
+ declare @retval int
+ select @retval = @@error
+ if （@retval = 0）
+  exec @retval = sp_MSforeach_worker @command1， @replacechar， @command2， @command3
+ if （@retval = 0 and @postcommand is not null）
+  exec（@postcommand）
+ return @retval
+GO
+
+    这样我们来测试一下：
+
+1。获得所有的存储过程的脚本：
+         EXEc sp_MSforeachObject @command1=“sp_helptext '?' “，@objectType=4
+
+2。获得所有的视图的脚本：
+         EXEc sp_MSforeachObject @command1=“sp_helptext '?' “，@objectType=2
+
+3。比如在开发过程中，没一个用户都是自己的OBJECT OWNER，所以在真实的数据库时都要改为DBO：
+           EXEc sp_MSforeachObject @command1=“sp_changeobjectowner '?'， 'dbo'“，@objectType=1
+           EXEc sp_MSforeachObject @command1=“sp_changeobjectowner '?'， 'dbo'“，@objectType=2
+            EXEc sp_MSforeachObject @command1=“sp_changeobjectowner '?'， 'dbo'“，@objectType=3
+              EXEc sp_MSforeachObject @command1=“sp_changeobjectowner '?'， 'dbo'“，@objectType=4
+
+    这样就非常方便的将每一个数据库对象改为DBO。
+
+    当然还要很多非常好的功能，大家可以自己深入研究吧。
+

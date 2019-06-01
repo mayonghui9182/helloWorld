@@ -1,0 +1,46 @@
+declare @t table(编号 varchar(6),名称 varchar(6),数量 int)
+insert @t select '001',  'AAA',   10
+union all select '001',  'AAA',   3
+union all select '001',  'AAA',   50
+union all select '001',  'AAA',   70
+union all select '001',  'AAA',   18
+union all select '002',  'BBB',   10
+union all select '002',  'BBB',   20
+union all select '002',  'BBB',   40
+union all select '002',  'BBB',   60
+union all select '002',  'BBB',   80
+union all select '003',  'CCC',   10
+union all select '003',  'CCC',   110
+union all select '003',  'CCC',   150
+union all select '003',  'CCC',   120
+union all select '003',  'CCC',   130
+---查看测试数据
+select * from @t
+---查看结果
+select 
+  case when not exists (select 1 from @t where 编号=a.编号 and 名称=a.名称 and 数量<a.数量) then 编号 else '' end as 编号,
+  case when not exists (select 1 from @t where 编号=a.编号 and 名称=a.名称 and 数量<a.数量) then 名称 else '' end as 名称,
+  数量     
+from @t a
+group by 编号,名称,数量
+/*
+编号     名称     数量          
+------ ------ ----------- 
+001    AAA    3
+              10
+              18
+              50
+              70
+002    BBB    10
+              20
+              40
+              60
+              80
+003    CCC    10
+              110
+              120
+              130
+              150
+
+（所影响的行数为 15 行）
+*/

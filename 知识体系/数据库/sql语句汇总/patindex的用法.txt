@@ -1,0 +1,100 @@
+返回指定表达式中某模式第一次出现的起始位置；如果在全部有效的文本和字符数据类型中没有找到该模式，则返回零。
+
+ Transact-SQL 语法约定
+
+语法
+ 
+PATINDEX ( '%pattern%' , expression )
+ 
+
+备注
+如果 pattern 或 expression 为 NULL，则当数据库的兼容级别为 70 时，PATINDEX 将返回 NULL；如果数据库兼容级别小于或等于 65，则仅当 pattern 和 expression 同时为 NULL 时，PATINDEX 才返回 NULL。
+
+PATINDEX 基于输入的排序规则执行比较。若要以指定排序规则进行比较，则可以使用 COLLATE 将显式排序规则应用于输入值。
+
+参数
+pattern 
+一个文字字符串。可以使用通配符，但 pattern 之前和之后必须有 % 字符（搜索第一个或最后一个字符时除外）。pattern 是字符串数据类型类别的表达式。
+
+expression 
+一个表达式，通常为要在其中搜索指定模式的列，expression 为字符串数据类型类别。
+
+返回类型
+如果 expression 的数据类型为 varchar(max) 或 nvarchar(max)，则为 bigint，否则为 int。
+
+示例
+A. 在 PATINDEX 中使用模式
+以下示例查找模式 ensure 在 Document 表的 DocumentSummary 列的某一特定行中的开始位置。
+
+ 复制代码 
+USE AdventureWorks;
+GO
+SELECT PATINDEX('%ensure%',DocumentSummary)
+FROM Production.Document
+WHERE DocumentID = 3;
+GO
+ 
+
+下面是结果集： 
+
+ 复制代码 
+----------- 
+64          
+
+(1 row(s) affected)
+ 
+
+如果未通过 WHERE 子句限制要搜索的行，查询将返回表中的所有行，对在其中找到该模式的所有行报告非零值，对在其中未找到该模式的所有行报告零值。
+
+B. 在 PATINDEX 中使用通配符
+以下示例使用通配符查找模式 en_ure 在 Document 表中 DocumentSummary 列的某一特定行中的开始位置，其中下划线为代表任何字符的通配符。
+
+ 复制代码 
+USE AdventureWorks;
+GO
+SELECT PATINDEX('%en_ure%', DocumentSummary)
+FROM Production.Document
+WHERE DocumentID = 3;
+GO
+
+ 
+
+下面是结果集： 
+
+ 复制代码 
+------------
+64
+
+(1 row(s) affected)
+ 
+
+如果没有限制要搜索的行，查询将返回表中的所有行，对在其中找到该模式的所有行报告非零值。
+
+C. 在 PATINDEX 中使用 COLLATE
+以下示例使用 COLLATE 函数显式指定要搜索的表达式的排序规则。
+
+ 复制代码 
+USE tempdb;
+GO
+SELECT PATINDEX ( '%ein%', 'Das ist ein Test'  COLLATE Latin1_General_BIN) ;
+GO
+ 
+
+例子:
+create table tab(sType varchar(10))
+insert tab
+select '良好'
+union all
+select '合格'
+union all
+select '300'
+union all
+select '一般'
+union all
+select '100'
+union all
+select '89'
+select * from tab where (case when patindex('%[0-9]%',sType)=1 then sType else 200 end)<200 
+or sType='良好' or sType='合格'
+
+drop table tab

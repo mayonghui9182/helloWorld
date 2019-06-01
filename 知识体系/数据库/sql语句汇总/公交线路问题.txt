@@ -1,0 +1,228 @@
+
+--解答一
+CREATE TABLE T_Line(
+ID      nvarchar(10),  --公交线路号
+Station nvarchar(10),  --站点名称
+Orders  int)           --行车方向(通过它反应每个站的上一个、下一个站)
+INSERT T_Line 
+SELECT N'8路'  ,N'站A',1 UNION ALL
+SELECT N'8路'  ,N'站B',2 UNION ALL
+SELECT N'8路'  ,N'站C',3 UNION ALL
+SELECT N'8路'  ,N'站D',4 UNION ALL
+SELECT N'8路'  ,N'站J',5 UNION ALL
+SELECT N'8路'  ,N'站L',6 UNION ALL
+SELECT N'8路'  ,N'站M',7 UNION ALL
+SELECT N'20路' ,N'站G',1 UNION ALL
+SELECT N'20路' ,N'站H',2 UNION ALL
+SELECT N'20路' ,N'站I',3 UNION ALL
+SELECT N'20路' ,N'站J',4 UNION ALL
+SELECT N'20路' ,N'站L',5 UNION ALL
+SELECT N'20路' ,N'站M',6 UNION ALL
+SELECT N'255路',N'站N',1 UNION ALL
+SELECT N'255路',N'站O',2 UNION ALL
+SELECT N'255路',N'站P',3 UNION ALL
+SELECT N'255路',N'站Q',4 UNION ALL
+SELECT N'255路',N'站J',5 UNION ALL
+SELECT N'255路',N'站D',6 UNION ALL
+SELECT N'255路',N'站E',7 UNION ALL
+SELECT N'255路',N'站F',8
+GO
+
+--乘车线路查询存储过程
+CREATE PROC p_qry
+@Station_Start nvarchar(10),
+@Station_Stop  nvarchar(10)
+AS
+SET NOCOUNT ON
+DECLARE @l int
+SET @l=0
+SELECT ID,Station,
+Line=CAST('('+RTRIM(ID)+': '+RTRIM(Station) as nvarchar(4000)),
+Orders=Orders,
+[Level]=@l
+INTO # FROM T_Line
+WHERE Station=@Station_Start
+WHILE @@ROWCOUNT>0 
+AND NOT EXISTS(SELECT * FROM # WHERE Station=@Station_Stop)
+BEGIN
+SET @l=@l+1
+INSERT #(Line,ID,Station,Orders,[Level])
+SELECT 
+Line=a.Line+CASE
+WHEN a.ID=b.ID THEN N'->'+RTRIM(b.Station)
+ELSE N') ∝ ('+RTRIM(b.ID)
++N': '+RTRIM(b.Station) END,
+b.ID,b.Station,b.Orders,@l
+FROM # a,T_Line b
+WHERE a.[Level]=@l-1
+AND(a.Station=b.Station AND a.ID<>b.ID
+OR a.ID=b.ID AND(
+a.Orders=b.Orders+1
+OR
+a.Orders=b.Orders-1))
+AND LEN(a.Line)<4000
+AND PATINDEX('%[ >]'+b.Station+'[-)]%',a.Line)=0
+END
+SELECT N'起点站'=@Station_Start
+,N'终点站'=@Station_Stop
+,N'乘车线路'=Line+N')' 
+FROM # 
+WHERE [Level]=@l 
+AND Station=@Station_Stop
+IF @@ROWCOUNT =0 --如果未有可以到达的线路,则显示处理结果表备查
+SELECT * FROM #
+GO
+
+--调用
+EXEC p_qry N'站A',N'站L'
+/*--结果
+起点站  终点站  乘车线路
+---------- ------------ -----------------------------------------------------------
+站A    站L    (8路: 站A->站B->站C->站D->站J->站L)
+--*/
+
+--解答二
+CREATE TABLE T_Line(busID nvarchar(20),stationID nvarchar(20),staTionName nvarchar(50),stationSort  int)
+INSERT T_Line 
+SELECT N'B0280017',N'S0280030',N'荷花池',1 UNION ALL
+SELECT N'B0280017',N'S0280028',N'火车北站',2 UNION ALL
+SELECT N'B0280017',N'S0280289',N'二环北二段',3 UNION ALL
+SELECT N'B0280018',N'S0280011',N'人名北路',1 UNION ALL
+SELECT N'B0280018',N'S0280028',N'火车北站',2 UNION ALL
+SELECT N'B0280018',N'S0280213',N'五块石',3 UNION ALL
+SELECT N'B0280019',N'S0280013',N'五块石',1 UNION ALL
+SELECT N'B0280019',N'S0280014',N'二环路东二段',2 UNION ALL
+SELECT N'B0280019',N'S0280215',N'二环东三段',3 
+GO
+
+--乘车线路查询存储过程
+CREATE PROC p_qry
+@Station_Start nvarchar(10),
+@Station_Stop  nvarchar(10)
+AS
+SET NOCOUNT ON
+DECLARE @l int
+SET @l=0
+SELECT busID,staTionName,
+Line=CAST('('+RTRIM(busID)+': '+RTRIM(staTionName) as nvarchar(4000)),
+stationSort=stationSort,
+[Level]=@l
+INTO # FROM T_Line
+WHERE staTionName=@Station_Start
+WHILE @@ROWCOUNT>0 
+AND NOT EXISTS(SELECT * FROM # WHERE staTionName=@Station_Stop)
+BEGIN
+SET @l=@l+1
+INSERT #(Line,busID,staTionName,stationSort,[Level])
+SELECT 
+Line=a.Line+CASE
+WHEN a.busID=b.busID THEN N'->'+RTRIM(b.staTionName)
+ELSE N') ∝ ('+RTRIM(b.busID)
++N': '+RTRIM(b.staTionName) END,
+b.busID,b.staTionName,b.stationSort,@l
+FROM # a,T_Line b
+WHERE a.[Level]=@l-1
+AND(a.staTionName=b.staTionName AND a.busID<>b.busID
+OR a.busID=b.busID AND(
+a.stationSort=b.stationSort+1
+OR
+a.stationSort=b.stationSort-1))
+AND LEN(a.Line)<4000
+AND PATINDEX('%[ >]'+b.staTionName+'[-)]%',a.Line)=0
+END
+SELECT N'起点站'=@Station_Start
+,N'终点站'=@Station_Stop
+,N'乘车线路'=Line+N')' 
+FROM # 
+WHERE [Level]=@l 
+AND staTionName=@Station_Stop
+IF @@ROWCOUNT =0 --如果未有可以到达的线路,则显示处理结果表备查
+SELECT * FROM #
+GO
+
+--调用
+EXEC p_qry N'荷花池',N'二环东三段'
+
+
+drop proc p_qry   ----删除存储过程
+drop table T_Line ----删除表
+
+/*    结果
+
+起点站  终点站     乘车线路  
+
+--解答三
+CREATE TABLE T_Line(busID nvarchar(20),stationID nvarchar(20),staTionName nvarchar(50),stationSort  int)
+INSERT T_Line 
+SELECT N'B0280017',N'S0280030',N'荷花池',1 UNION ALL
+SELECT N'B0280017',N'S0280028',N'火车北站',2 UNION ALL
+SELECT N'B0280017',N'S0280289',N'二环北二段',3 UNION ALL
+SELECT N'B0280018',N'S0280011',N'人名北路',1 UNION ALL
+SELECT N'B0280018',N'S0280028',N'火车北站',2 UNION ALL
+SELECT N'B0280018',N'S0280213',N'五块石',3 UNION ALL
+SELECT N'B0280019',N'S0280013',N'五块石',1 UNION ALL
+SELECT N'B0280019',N'S0280014',N'二环路东二段',2 UNION ALL
+SELECT N'B0280019',N'S0280215',N'二环东三段',3 
+GO
+
+--乘车线路查询存储过程
+CREATE PROC p_qry
+@Station_Start nvarchar(10),
+@Station_Stop  nvarchar(10)
+AS
+SET NOCOUNT ON
+DECLARE @l int
+SET @l=0
+SELECT busID,staTionName,
+Line=CAST('('+RTRIM(busID)+': '+RTRIM(staTionName) as nvarchar(4000)),
+stationSort=stationSort,
+[Level]=@l
+INTO # FROM T_Line
+WHERE staTionName=@Station_Start
+WHILE @@ROWCOUNT>0 
+AND NOT EXISTS(SELECT * FROM # WHERE staTionName=@Station_Stop)
+BEGIN
+SET @l=@l+1
+INSERT #(Line,busID,staTionName,stationSort,[Level])
+SELECT 
+Line=a.Line+CASE
+WHEN a.busID=b.busID THEN N'->'+RTRIM(b.staTionName)
+ELSE N') ∝ ('+RTRIM(b.busID)
++N': '+RTRIM(b.staTionName) END,
+b.busID,b.staTionName,b.stationSort,@l
+FROM # a,T_Line b
+WHERE a.[Level]=@l-1
+AND(a.staTionName=b.staTionName AND a.busID<>b.busID
+OR a.busID=b.busID AND(
+a.stationSort=b.stationSort+1
+OR
+a.stationSort=b.stationSort-1))
+AND LEN(a.Line)<4000
+AND PATINDEX('%[ >]'+b.staTionName+'[-)]%',a.Line)=0
+END
+SELECT N'起点站'=@Station_Start
+,N'终点站'=@Station_Stop
+,N'乘车线路'=Line+N')' 
+FROM # 
+WHERE [Level]=@l 
+AND staTionName=@Station_Stop
+IF @@ROWCOUNT =0 --如果未有可以到达的线路,则显示处理结果表备查
+SELECT * FROM #
+GO
+
+--调用
+EXEC p_qry N'荷花池',N'二环东三段'
+
+
+drop proc p_qry
+drop table T_Line
+
+/*    结果
+
+起点站        终点站        乘车线路                                                                                                                                                                                                                                                             
+---------- ---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+荷花池        二环东三段      (B0280017: 荷花池->火车北站) ∝ (B0280018: 火车北站->五块石) ∝ (B0280019: 五块石->二环路东二段->二环东三段)
+
+
+*/
+

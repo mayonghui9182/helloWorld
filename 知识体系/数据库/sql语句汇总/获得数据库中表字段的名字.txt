@@ -1,0 +1,23 @@
+获得数据库中所有数据库的名字：select name From sysdatabases 
+
+获得某个数据库中所有表的名字：select name from sysobjects where type='U'
+
+获得某个表中字段的名字：select name from syscolumns  where id=object_id('表名')
+
+use master
+if exists(SELECT * From sysdatabases where name='test3')
+drop database  test3
+create database test3
+go
+use test3
+go
+if exists (select * from sysobjects where type='U' and name='abc')
+drop table abc
+create table abc (
+id int not null identity(20011001,1) primary key clustered,
+name varchar(6) not null ,class int null , time1 datetime default getdate())
+insert into abc  
+select 'a',1,1 union all 
+select 'b',2,2
+
+insert into abc values('a',null,default) 

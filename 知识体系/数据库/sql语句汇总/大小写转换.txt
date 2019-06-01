@@ -1,0 +1,10 @@
+UPPER ( character_expression )
+返回将小写字符数据转换为大写的字符表达式
+LOWER ( character_expression )
+将大写字符数据转换为小写字符数据后返回字符表达式。
+
+（6）
+
+REVERSE ( character_expression ) 
+返回字符表达式的反转。
+

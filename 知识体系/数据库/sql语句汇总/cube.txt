@@ -1,0 +1,54 @@
+要使用CUBE，首先要了解GROUP BY。
+其实CUBE和ROLLUP区别不太大，只是在基于GROUP BY 子句创建和汇总分组的可能的组合上有一定差别，CUBE将返回的更多的可能组合。如果在GROUP BY子句中有N个列或者是有N个表达式的话，SQLSERVER在结果集上会返回2的N－1次幂个可能组合。
+
+CUBE和ROLLUP之间的区别在于：     
+    
+CUBE 生成的结果集显示了所选列中值的所有组合的聚合。  
+
+ROLLUP生成的结果集显示了所选列中值的某一层次结构的聚合
+    
+ROLLUP就是将GROUP BY后面的第一列名称求总和，而其他列并不要求
+而CUBE则会将每一个列名称都求总和  
+
+COPY了一个例子，首先用ROLLUP
+
+查询语句：
+
+Select cust_id,product_code,sum(qty) as quantity
+
+From invoices Where cust_id IN (4,5)
+
+Group By cust_id, product_code
+
+WITH Rollup Order By cust_id
+
+查询结果：
+cust_id         product_code         quantity
+-------        --------------         -------
+NULL            NULL                      10
+4                 5                        3
+4                 6                        3
+4                 NULL                     6
+5                 5                        4
+5                 NULL                     4
+第一行是4,5买的所有产品的数量(
+第二行是4买5产品的数量
+第三行是4买6产品的数量
+第四行是4买所有产品的数量（按照cust_id=4总汇）
+第五行是5买5产品的数量
+第六行是5买所有产品的数量（按照cust_id=5总汇）
+
+如果查询语句中的ROLLUP关键字更改为CUBE，就会多出有关产品的信息
+查询结果：
+cust_id         product_code         quantity
+-------        --------------         -------
+NULL            NULL                       10
+NULL            5                           7
+NULL            6                           3
+4               5                           3
+4               6                           3
+4               NULL                        6
+5               5                           4
+5               NULL                        4
+第2行是所有顾客买5产品的数量（product_code=5 总汇）
+第3行是所有顾客买6产品的数量（product_code=6 总汇）

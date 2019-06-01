@@ -1,0 +1,6 @@
+sql替换表中某些字.
+比如 titles表中有id,name ,age3个字段
+我想根据name字段来修改id字段,并且在id字段前面添加'ABC'
+
+
+update 表名 set id=stuff(id,1,3,'abc') where name='名称'

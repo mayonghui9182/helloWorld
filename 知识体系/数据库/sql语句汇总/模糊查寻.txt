@@ -1,0 +1,10 @@
+like '%[AB]%'
+只要满足字符串中包含A或者B或者AB就选出，顺序不限，这样会选出很多
+
+like '%[AB]%'这样会选出如下组合
+AB
+BA
+ACCCC
+BCCCCC
+ACB
+BCA

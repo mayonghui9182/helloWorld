@@ -3,6 +3,8 @@ package streams;// streams/Machine2.java
 // We make no guarantees that this code is fit for any purpose.
 // Visit http://OnJava8.com for more book information.
 import java.util.*;
+import java.util.function.Consumer;
+
 import onjava.Operations;
 
 public class Machine2 {

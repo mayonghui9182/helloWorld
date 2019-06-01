@@ -1,0 +1,5 @@
+select Name,Description from Students,现在我想把Name,Description作为一个字段Detail输出，请问如何写？
+
+
+select Name+Description as Detail from Students
+

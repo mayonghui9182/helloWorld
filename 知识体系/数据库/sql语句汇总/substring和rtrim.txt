@@ -1,0 +1,16 @@
+（2）
+LTRIM ( character_expression )删除字符变量中的起始空格
+RTRIM ( character_expression ) 删除字符变量中的尾随空格
+
+（3）
+SUBSTRING ( expression , start , length ) 
+参数
+expression
+是字符串、二进制字符串、text、image、列或包含列的表达式。不要使用包含聚合函数的表达式。
+start
+是一个整数，指定子串的开始位置。
+length
+是一个整数，指定子串的长度（要返回的字符数或字节数）。
+SELECT x = SUBSTRING('abcdef', 2, 3)
+下面是结果集：
+x ---------- bcd 
