@@ -1,0 +1,30 @@
+
+declare @t table(name varchar(20),qy varchar(20),je int)
+insert into @t 
+select '产品一','北京',500
+union all select '产品一','上海',300
+union all select '产品二','北京',600
+union all select '产品三','上海',1000
+union all select '产品三','北京',8008
+union all select '产品四','上海',400
+--select * from @t a where not exists  --这是取表中的NAME相同的最大值
+--(select 1 from @t where name=a.name and je>a.je)
+--第一个答案：
+SELECT NAME,QY,JE-ISNULL((SELECT JE FROM @T WHERE NAME=A.NAME AND QY<>A.QY),0)
+FROM @T A
+WHERE JE=(SELECT MAX(JE) FROM @T WHERE NAME=A.NAME)
+ORDER BY NAME
+--第二个答案
+Select 
+      Name,
+      qy,
+      je-(Select 
+                Case When Min(je)=A.je Then 0 Else Min(je) End 
+          From 
+                @t 
+          Where Name=A.Name Group By Name) As je 
+From 
+      @t A 
+Where Not Exists
+     (Select 1 From @t Where Name=A.Name And je>A.je)
+

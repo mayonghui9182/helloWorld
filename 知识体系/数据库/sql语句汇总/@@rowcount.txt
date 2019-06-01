@@ -1,0 +1,26 @@
+原代码:   
+   DECLARE   @E_ID   VARCHAR(20)   
+   DECLARE   @AFFECT   INT   
+   SELECT   @E_ID=TB_USER.E_ID   FROM   TB_EMPLOYEE   INNER   JOIN   TB_USER     
+   ON   TB_USER.E_ID=TB_EMPLOYEE.E_ID   WHERE   U_USERNAME='LL'   
+   UPDATE   TB_EMPLOYEE   
+   SET   E_NAME='张三',E_MAIL='zhangsan163@163.COM',E_TEL='12345667'   
+   WHERE   E_ID=@E_ID   
+   IF   @@ROWCOUNT>0   SET   @AFFECT=@@ROWCOUNT   
+   ELSE   SET   @AFFECT=0   
+   PRINT   @AFFECT   
+   PRINT   @@ROWCOUNT   
+   为什么   @AFFECT==0&amp;&amp;@@ROWCOUNT==0？？？？
+第 1 楼    roy_88(中国风_燃烧你的激情！！！)2006-12-03 15:58:02得分：0   返回顶部
+楼主的语句，在sql2005应该是可以，在2000不支持
+第 2 楼    wangzehuan2002()2006-12-05 13:48:55得分：0   返回顶部
+怎样才能让   @@ROWCOUNT的值赋给@AFFECT     ？
+第 3 楼    roy_88(中国风_燃烧你的激情！！！)2006-12-05 18:17:13得分：0   返回顶部
+declare   @i   int   
+   select   t*   from   表名   
+   set   @i=@@rowcount   
+   select   @i
+第 4 楼    wangzehuan2002()2006-12-06 14:40:44得分：0   返回顶部
+楼上说的的却能赋值，可是和我的代码不相关呀，我得意思是能把我的代码中的   @@ROWCOUNT的值赋给@AFFECT的语句或方法，然后在我程序里通过@@AFFECT   的值作判断用
+第 5 楼    wangzehuan2002()2006-12-12 20:21:40得分：0   返回顶部
+分少就没有人回答问题了？   还是都不会！   

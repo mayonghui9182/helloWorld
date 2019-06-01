@@ -1,0 +1,174 @@
+现有一张表:ContractChangeInfo 
+包含以下字段：ContractName(合同名称)，ContraceId（合同ID），ChangeMoney(合同变更金额)，ChangeDate(变更日期) 
+
+如何用视图实现下面功能： 
+
+按合同名称累计变更金额，并且变更日期显示该合同最近一次变更的日期。 
+  
+如：合同名称    变更金额      最新变更日期 
+     合同1      100        2007-01-01 
+     合同1     200        2007-07-01 
+     合同2     500        2007-02-01 
+     合同2     300        2007-11-01 
+
+结果为：  合同名称    变更金额      最新变更日期 
+          合同1      300         2007-07-01 
+         合同2      800         2007-11-01 
+
+表 A,C,D,E,B 
+SELECT  
+(SELECT name FROM A WHERE ID = B.hm_scheme AND CID = 1) AS p1, 
+(SELECT name FROM A WHERE ID = B.hm_scheme AND CID = 2) AS p2, 
+(SELECT name FROM A WHERE ID = B.hm_scheme AND CID = 3) AS p3, 
+(SELECT name FROM A WHERE ID = B.hm_scheme AND CID = 4) AS p4, 
+(SELECT bs   FROM C WHERE ID = B.hm_scheme) AS bs, 
+FROM (SELECT scheme, Stime FROM D 
+      UNION ALL 
+      SELECT znum, Ztime FROM E) B 
+
+表A,C,D,E 中各有几万到十几条记录,发现用这条SQL语句读取记录很慢，请问这个SQL语句怎么优化了，表结构不能修改。 
+
+谢谢! 
+
+
+
+我执行如下语句后： 
+use   zmfz_v2 
+if   exists   (select   *   from   dbo.sysobjects   where   id   =   object_id(N "[dbo].[AA] ")   and   OBJECTPROPERTY(id,   N "IsUserTable ")   =   1) 
+drop   table   [dbo].[AA] 
+GO 
+select   b.t_ma   as   "款式条码 ",   a.K_shi_name   as   "款式名称 "   into   AA   from   zc_ksbm   a,zc_tm   b 
+where   a.k_shi   =   b.K_shi   
+GO 
+exec       master..xp_cmdshell           
+                            "bcp       "zmfz_v2.dbo.AA"       out       "C:\zzqzzq.txt"       -c       -q       -U"sa"       -P"" "   
+正常的应该是会导出数据到C盘下面的zzqzzq.txt文档。 
+但现在提示这样的信息： 
+Operating-system   error: 
+  No   such   file   or   directory 
+DB-LIBRARY   error: 
+  Error   in   attempting   to   determine   the   size   of   a   pair   of   translation   tables.:   Unable   to   access   file   information 
+NULL 
+请问各位兄弟们，这是什么原因啊，我在有些机器上面执行又是正常的。 
+在线等待ing..... 
+
+有三个表student(stu_id,stu_name),subject(sub_id,sub_name),grade(g_id,stu_id,sub_id,grade) 
+查询： 
+1：每个学生的名字，科目，分数； 
+2：缺考学生急缺考科目；
+
+
+例如，表中某一字段存放的的日期字段 date datetime类型，另外一个字段存放的是天数days int型； 假如date为2007-01-01 08：00：00 days为10 
+怎么通过sql语句得到 2007-10-01 08：00：00？
+
+
+
+
+
+
+
+
+
+
+
+
+我现在需要从一个表里读取数据，其中有个字段的值是这样的“一级名称_二级名称_三级名称”。 
+我现在只需要把这个字段的一级名称读取出来。然后按照一级名称排序。 
+譬如这个字段为a 则 
+如：Select f1,f2,f3,a from table order by a 
+
+得到如下结果 
+1，1，1，一级名称 
+2，22，2，一级名称 
+3，2，11，一级名称 
+12，31，41，一级名称 
+11，12，71，一级名称 
+
+结果是按照“一级名称”来排序的。 
+可以在一个SQL语句中实现这个吗？怎么弄
+
+
+
+
+
+
+
+
+在存储过程中 我有一个数据集 
+
+declare str1 varchar(4000) 
+declare str2 varchar(4000) 
+
+select * from abc 
+注意:其字段名不详 
+
+我想得到到两个 
+str1= 字段名1  , 字段名2, 字段名3,  .............. 
+str2= 字段名1值,字段名2值,字段名3值, ............... 
+如:  姓名,年龄,工作 
+     a,20,电工 
+
+怎么得到? 
+
+表1 
+A，B，C，D 
+aa,1,100,100 
+aa,501,800,300 
+aa,401,450,50 
+...... 
+表2 
+A,B,C,D 
+aa,1,1000,1000 
+..... 
+怎么样从表1中找出在表2中没有数据范围。 
+B：开始的数字 
+C：结束的数字 
+我要得到的结果是： 
+A，B，C，D 
+aa,101,401,400 
+aa,451,500,50 
+aa,801,1000,200 
+怎么在SQL中实现啊！
+
+
+
+
+
+
+
+有一个表结构为  
+帐号 起算日期 变动日期 余额  
+001 20070205 20070506 1000.00  
+001 20070205 20070806 1200.00  
+001 20070205 20071106 1400.00  
+001 20070205 29999999 1400.00  
+
+002 20070810 20070815 500.00  
+002 20070810 20070820 600.00  
+002 20070810 20070821 0.00 
+
+003 20070910 20070930 1000.00 
+003 20070910 29999999 1000.00 
+
+要求计算每个帐号在2007/8月的每天平均余额  
+例如001的余额就是（1000*5+1200*26）/31  
+002就是（8*10+5*600+11*0)/31 
+003就是0 
+
+
+关键就是相当于求每个时间段分别在某个已定义的固定时间段内的天数 
+例如有下面n个时间段 
+1，StartDate---date1 
+2，date1    ---date2 
+3，date2    ---date3 
+4，date3    ---date4 
+..... 
+n,date4    ---dateX 
+e,dateX    ---EndDate 
+
+求上面每个时间段在某个固定时间段（例如t1---t2）的天数 
+昨天有位DX帮我写了一个，但是时间段方面还是有点漏洞，所以今天再求了:) 
+我自己写的晕头转向，求比较好的思路 
+
+
+

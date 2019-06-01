@@ -1,0 +1,13 @@
+declare @t table(id int,name varchar(20),bh int)
+insert into @t
+select 1,'aa',10
+union all select 2,'bb',11
+
+
+select name=a.name,bh=b.bh,sl=isnull(c.sl,0)from 
+(select name from @t group by name) a
+cross join 
+(select bh from @t group by bh) b
+left join 
+(select name,bh,sl=count(*) from @t group by name,bh) c 
+on a.name=c.name and b.bh=c.bh

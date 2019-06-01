@@ -1,0 +1,69 @@
+create table a(id int identity,aid varchar(5),name varchar(6))  
+insert into a select 1,  'a  '  
+insert into a select 1,  'a  '  
+insert into a select 1,  'a  '  
+insert into a select 1,  'b  '  
+insert into a select 1,  'b  '  
+insert into a select 1,  'c  '  
+insert into a select 2,  'a  '  
+insert into a select 2,  'a  '  
+
+create table b(id int identity,aid varchar(5),name varchar(6))  
+insert into b select 1,  'a  '  
+insert into b select 1,  'a  '  
+insert into b select 1,  'b  '  
+insert into b select 1,  'b  '  
+insert into b select 1,  'b  '  
+insert into b select 1,  'd  '  
+
+
+
+select px=(select count(1) from a  where aid = t.aid and name= t.name and id<t.id)+1,* into #tb1 from a t 
+select px=(select count (1) from b where aid = t.aid and name= t.name and id<t.id)+1,* into #tb2 from b t
+ 
+select * from #tb1
+select * from #tb2
+delete a where id in
+(select id from #tb1 a where not exists(select * from #tb2 b where b.px=a.px and b.aid=a.aid and b.name=a.name)
+and a.aid=1)
+insert into a
+select aid,name from #tb2 a  where not exists(select * from #tb1 b where b.px=a.px and b.aid=a.aid and b.name=a.name)
+
+
+create table tb1(ID int,Account int) 
+insert into tb1 values(11,                 10000 ) 
+insert into tb1 values(12,                 10000 ) 
+insert into tb1 values(13,                 10000 ) 
+insert into tb1 values(14,                 20000 ) 
+insert into tb1 values(15,                 25000 ) 
+insert into tb1 values(16,                 35000 ) 
+insert into tb1 values(17,                 40000 ) 
+insert into tb1 values(18,                 50000 )  
+create table tb2(ID int,Account int) 
+insert into tb2 values(1,                 10000 ) 
+insert into tb2 values(2,                 10000 ) 
+insert into tb2 values(3,                 20000 ) 
+insert into tb2 values(4,                 20000 ) 
+insert into tb2 values(5,                 20000 ) 
+insert into tb2 values(6,                 30000 ) 
+insert into tb2 values(7,                 40000 ) 
+insert into tb2 values(8,                 80000 )  
+
+select px=identity(int, 1,1),* into #t1 from tb1 order by account,id
+select px=identity(int ,1,1),* into #t2 from tb2 order by account,id
+
+
+select a.id,a.account from #t1 a where not exists(select * from #t2 b where a.px=b.px and a.account=b.account)
+
+
+drop table tb1,tb2,#t1,#t2
+select name,db_id(name) as db_id from sysdatabases order by db_id
+
+select dbid,db_name(dbid) as db_name from sysdatabases
+select file_id('northwind')
+
+
+
+
+
+

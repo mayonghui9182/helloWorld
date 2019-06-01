@@ -1,0 +1,446 @@
+一存储过程中有3个参数
+如下：
+ALTER  PROCEDURE Pro_AddIDS(
+@IDS varchar(255),
+@IDName varchar(50),
+@IDLevel int
+)
+其中@IDS="1,5,9,6,10"这样的数据，需要将这些数据分割出来，插到一张表中结构如下：
+CREATE TABLE IDS
+(
+  ID INT,
+  IDName VARCHAR(50),
+  IDLevel int
+)
+假设：@IDS="1,5,9,6,10"，IDName ="hello" 得到如下结果
+/*
+IDS         IDName       IDLevel                                      
+----------- -------------------------------------------------- 
+1           hello          null
+5           hello          null
+9           hello          null
+6           hello          null
+10          hello          null
+
+请帮下忙，谢谢！
+
+
+如何将'2006-01-12|2006-02-13|2006-03-15|2006-11-11|2003-1-1'按'|'分割成
+2006-01-12
+2006-02-13
+2006-03-15
+2006-11-11
+2003-1-1
+
+
+declare @Days varchar(4000)
+declare @tmpDay varchar(10)
+set @Days='2006-01-12|2006-02-13|2006-03-15|2006-11-11|2003-1-1'
+set @tmpDay=''
+declare @i int
+set @i=0
+while @i<len(@Days)
+begin 
+  set @i=@i+1
+  if SUBSTRING(@Days,@i,1)='|'
+     begin
+       print left(@Days,@i-1)
+       set @Days=SUBSTRING(@Days,@i+1,len(@Days))
+       set @i=0
+     end  
+end
+print @Days
+
+
+输出结果：
+2006-01-12
+2006-02-13
+2006-03-15
+2006-11-11
+2003-1-1
+
+
+
+一字段信息包括如下：李三|李三＠d.com|公司|单位地址|  
+我将查询用(Select)只列出李三及单位地址的方法？
+
+create table #t(c1 varchar(100))
+insert into #t select 'li4|33@com|mircrosoft|china|'
+insert into #t select 'zhang3|zhang3@163.com|IBM|USA|'
+insert into #t select '李三|李三＠d.com|公司|单位地址|'
+
+
+select substring(c1,1,charindex('|',c1)-1) as name, 
+reverse(substring(reverse(c1) , 2 , charindex('|' , reverse(c1) , 2) - 2)) as address  from #t
+
+drop table #t
+
+name    address   
+-----   -------
+li4     china
+zhang3  USA
+李三    单位地址
+
+（所影响的行数为 3 行）
+
+
+declare @s varchar(20)
+set @s='06G512753-08-01'  
+select 
+    parsename(t.s,3) part1,
+    parsename(t.s,2) part2,
+    parsename(t.s,1) part3
+from 
+    (select replace(@s,'-','.') as s) t
+
+
+
+参考：
+
+create table tblTest(PdID int,PdName varchar(100))
+
+insert tblTest
+select 1,'A10'           union all
+select 2,'A20,A20S'      union all
+select 3,'A30,A30K,A30M' union all
+select 4,'A301'          union all
+select 5,'A301M'
+select * from tblTest
+go
+
+-- 建立一个辅助的临时表就可以了
+SELECT TOP 8000 
+id = identity(int,1,1) 
+INTO # FROM syscolumns a, syscolumns b   
+-- 这个辅助表是什么含义,为下一步铺垫的目的是什么?
+-- 以上生成一个临时表
+ 
+SELECT 
+    A.PdID, 
+    PdName = SUBSTRING(A.PdName, B.ID, CHARINDEX(',', A.PdName + ',', B.ID) - B.ID) --这个SUBSTRING在B.ID每一次执行的时候的值是多少?
+FROM tblTest A, # B
+WHERE SUBSTRING(',' + a.PdName, B.id, 1) = ','    --这个where后面的检索条件又代表什么含义?
+ORDER BY 1,2
+GO
+
+DROP TABLE tblTest, #
+
+
+即：
+
+CREATE TABLE A(id INT,country VARCHAR(100))
+INSERT A
+SELECT 1,'中国;日本;韩国' UNION ALL
+SELECT 2,'美国;意大利;法国' UNION ALL
+SELECT 3,'德国'
+SELECT * FROM A
+
+-- 建立一个辅助的临时表就可以了
+SELECT TOP 8000 id = identity(int,1,1) 
+INTO # FROM syscolumns a, syscolumns b   
+
+ 
+SELECT 
+    A.ID, 
+    COUNTRY = SUBSTRING(A.COUNTRY, B.ID, CHARINDEX(';', A.COUNTRY + ';', B.ID) - B.ID) 
+FROM A, # B
+WHERE SUBSTRING(';' + a.COUNTRY, B.id, 1) = ';'   
+ORDER BY 1,2
+GO
+
+DROP TABLE A,#
+
+id          country         
+----------- ----------------
+1           中国;日本;韩国
+2           美国;意大利;法国
+3           德国
+
+（所影响的行数为 3 行）
+
+ID          COUNTRY  
+----------- ---------
+1           韩国
+1           日本
+1           中国
+2           法国
+2           美国
+2           意大利
+3           德国
+
+（所影响的行数为 7 行）
+
+
+
+
+declare @sql varchar(8000)
+set @sql=replace(@Ids,',',','''+@IDName+''' union all select ')+','''+@IDName+''''
+
+exec('insert IDS(IDS,IDName) select '+@sql )
+
+
+
+CREATE TABLE IDS(IDS INT,IDNAME VARCHAR(50),IDLevel INT)
+go
+
+create procedure sp_test(@str varchar(8000),@IDName varchar(50),@IDLevel int)
+as
+begin
+    while charindex(',',@str)>0
+    begin
+        insert into IDS(IDS,IDNAME,IDLevel) select left(@str,charindex(',',@str)-1),@IDName,@IDLevel
+        set @str=stuff(@str,1,charindex(',',@str),'')
+    end
+    insert into IDS(IDS,IDNAME,IDLevel) select @str,@IDName,@IDLevel
+end
+go
+
+exec sp_test '1,2,3,4,5,9','Hello',NULL
+
+select * from IDS
+/*
+IDS         IDNAME                                             IDLevel     
+----------- -------------------------------------------------- ----------- 
+1           Hello                                              NULL
+2           Hello                                              NULL
+3           Hello                                              NULL
+4           Hello                                              NULL
+5           Hello                                              NULL
+9           Hello                                              NULL
+*/
+go
+
+drop procedure sp_test
+drop table IDS
+go
+
+
+--sqlserver 2000;
+CREATE FUNCTION [dbo].[f_splitToTable] (@p_StringList VARCHAR(1000),@flag char(1)=',')
+RETURNS @t TABLE (s VARCHAR(10))
+AS
+BEGIN
+	DECLARE @ib int,@ie int
+	set @p_StringList=ltrim(rtrim(@p_StringList))
+  if left(@p_StringList,1)=@flag set @p_StringList=right(@p_StringList,len(@p_StringList)-1)
+  if right(@p_StringList,1)<>@flag set @p_StringList=@p_StringList+@flag
+	select @ib=0,@ie=0
+  select @ie=charindex(@flag,@p_StringList,@ib+1)
+	WHILE @ie > 0
+	BEGIN
+		insert into @t select substring(@p_StringList,@ib+1,@ie-@ib-1)
+		select @ib=@ie,@ie=charindex(@flag,@p_StringList,@ib+1)
+	END	
+	RETURN
+END
+
+--调用：
+select @IDName,s from dbo.f_splitToTable(@IDS,',')
+
+
+
+create  PROCEDURE Pro_AddIDS(
+@IDS varchar(255),
+@IDName varchar(50),
+@IDLevel int = null
+)
+as
+begin
+      declare @IDSplit varchar(10)     --数据分隔符
+      set @IDSplit = ','
+      --创建分拆处理的辅助表(用户定义函数中只能操作表变量)
+      DECLARE @t TABLE(ID int IDENTITY,b bit)
+      declare @re TABLE(col varchar(10),IDName varchar(50),IDlevel int)
+      INSERT @t(b) SELECT TOP 8000 0 FROM syscolumns a,syscolumns b
+
+      INSERT @re SELECT SUBSTRING(@IDS,ID,CHARINDEX(@IDSplit,@IDS+@IDSplit,ID)-ID),@IDName,@IDLevel
+      FROM @t
+      WHERE ID<=LEN(@IDS+'a') 
+            AND CHARINDEX(@IDSplit,@IDSplit+@IDS,ID)=ID
+      select * from @re
+END
+GO
+
+
+exec Pro_AddIDS '1,5,9,6,10','hello'
+go
+drop proc Pro_AddIDS
+/*
+col        IDName                                             IDlevel     
+---------- -------------------------------------------------- ----------- 
+1          hello                                              NULL
+5          hello                                              NULL
+9          hello                                              NULL
+6          hello                                              NULL
+10         hello                                              NULL
+*/
+
+
+--建表
+CREATE TABLE IDS
+(
+  ID INT,
+  IDName VARCHAR(50),
+  IDLevel int
+)
+go
+
+drop table #
+
+--存储过程
+create  PROCEDURE Pro_AddIDS
+@IDS varchar(255),
+@IDName varchar(50),
+@IDLevel int
+
+as
+
+create table # (
+ids int
+)
+
+declare @sql varchar(8000)
+set @sql=replace(@IDS,',',' union all select ')
+
+exec('insert # select '+@sql )
+
+insert Ids
+select ids,@IDName,@IDLevel from #
+
+drop table #
+
+go
+
+--调用
+exec Pro_AddIDS '1,5,9,6,10','hello',null
+
+--结果
+select * from ids
+
+ID          IDName                                             IDLevel     
+----------- -------------------------------------------------- ----------- 
+1           hello                                              NULL
+5           hello                                              NULL
+9           hello                                              NULL
+6           hello                                              NULL
+10          hello                                              NULL
+
+（所影响的行数为 5 行）
+
+
+
+--sqlserver 2005 邹建的写法
+SELECT b.s,@IDName   
+FROM(SELECT CONVERT(xml,'<r><v>'+REPLACE(@IDS,',','</v><v>') + '</v></r>') x) a
+OUTER APPLY(SELECT s=N.v.value('.', 'varchar(100)') FROM a.x.nodes('/r/v') N(v)) b
+
+
+
+
+Create PROCEDURE Pro_AddIDS(
+@IDS varchar(255),
+@IDName varchar(50),
+@IDLevel int
+)
+as
+Set Nocount on
+
+Select Top 500 identity(int,1,1) as ident into #Table_Pqs from syscolumns as pqs,syscolumns as pqh
+
+Select Substring(Pqh.IDS,Pqs.ident,charindex(',',Pqh.IDS+',',Pqs.ident) - Pqs.ident) As [ID],@IDName As IDName ,@IDLevel As IDLevel 
+from  (Select @IDS as IDS) as Pqh,#Table_Pqs as Pqs
+Where Substring(','+Pqh.IDS,Pqs.ident,1)=',' 
+
+drop table #Table_Pqs
+go
+
+--------------------------------
+执行 
+Pro_AddIDS '1,5,9,6,10','hello',null
+--------------------------------
+                                                                                                                                                                                                                                                  ID IDName      IDLevel     
+-------------------------------- 
+1  hello	NULL	
+5  hello	NULL	
+9  hello	NULL	
+6  hello	NULL	
+10 hello	NULL	
+
+
+
+
+
+CREATE TABLE #
+(
+  ID INT,
+  IDName VARCHAR(50),
+  IDLevel int
+)
+
+declare @var nvarchar(4000)
+
+set @var='insert into # select '''+ REPLACE ('1,1,1,2,3,4,5',',',''',@IDName,@IDLevel union all select''')+''',@IDName,@IDLevel'
+
+execute sp_executesql @var,N'@IDName varchar(50), @IDLevel int',@IDName='hello',@IDLevel=null
+
+
+select * from #
+
+
+ID          IDName                                             IDLevel     
+----------- -------------------------------------------------- ----------- 
+1           hello                                              NULL
+1           hello                                              NULL
+1           hello                                              NULL
+2           hello                                              NULL
+3           hello                                              NULL
+4           hello                                              NULL
+5           hello                                              NULL
+
+（所影响的行数为 7 行）
+
+
+
+
+CREATE TABLE #
+(
+  ID INT,
+  IDName VARCHAR(50),
+  IDLevel int
+)
+
+alter PROCEDURE Pro_AddIDS(
+@IDS varchar(255),
+@IDName varchar(50),
+@IDLevel int
+)
+as
+declare @var nvarchar(4000)
+set @var='insert into # select '''+ REPLACE (@IDS,',',''',@IDNames,@IDLevels union all select''')+''',@IDNames,@IDLevels'
+execute sp_executesql @var,N'@IDNames varchar(50), @IDLevels int',@IDNames=@IDName,@IDLevels=@IDLevel
+
+
+
+exec Pro_AddIDS '1,2,54,6,7,43,3','how','1'
+
+
+select * from #
+
+ID          IDName                                             IDLevel     
+----------- -------------------------------------------------- ----------- 
+1           how                                                1
+2           how                                                1
+54          how                                                1
+6           how                                                1
+7           how                                                1
+43          how                                                1
+3           how                                                1
+
+
+
+
+declare @str varchar(1000)
+
+select @str='insert into ids select '+replace('1,5,9,6,10',',',',''hello'',null union all select  ')+',''hello'',null'
+exec(@str)
+

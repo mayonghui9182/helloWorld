@@ -1,0 +1,50 @@
+CASE 具有两种格式： 
+(1)简单 CASE 函数将某个表达式与一组简单表达式进行比较以确定结果。 
+(2)CASE 搜索函数计算一组布尔表达式以确定结果。两种格式都支持可选的 ELSE 参数。 
+
+语法
+简单 CASE 函数：
+
+CASE input_expression
+    WHEN when_expression THEN result_expression
+        [ ...n ]
+    [ 
+        ELSE else_result_expression
+    END
+
+CASE 搜索函数：
+
+select case StatusValue
+when '0' then (select top 1 字段名 from work)
+when '1' then (select top 1 字段名 from Notice)
+end 
+from CommonStatusDict
+
+
+create table tb(id int ,class varchar)--class种类就只有三种，如果不固定就需要存储过程来实现
+insert tb 
+select 1,'a' union all
+select 1,'a' union all
+select 1,'b' union all
+select 1,'c' union all
+select 2,'a' union all
+select 2,'b' union all
+select 2,'b' 
+select * from tb
+
+想查找出按id分组得到的 a  ,b  ,c 的数量
+  如下
+id   a   b    c
+1   2   1     1
+2   1   2    0 
+
+
+select 
+ id,
+ a=sum(case class when 'a' then 1 else 0 end),
+ b=sum(case class when 'b' then 1 else 0 end),
+ c=sum(case class when 'c' then 1 else 0 end)
+from 
+ tb
+group by
+ id

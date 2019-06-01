@@ -1,0 +1,5 @@
+ISNUMERIC ( expression )
+当输入表达式得数为一个有效的整数、浮点数、money 或 decimal 类型，那么 ISNUMERIC 返回 1；否则返回 0。返回值为 1 确保可以将 expression 转换为上述数字类型中的一种。
+注意判断后返回的是0和1
+与它具有相同用法的就是ISDATE ( expression ) 
+如：case when ISNUMERIC(字段)=1 then '数字' else '字符' end

@@ -1,0 +1,364 @@
+hrb2008(35948413) 21:17:45
+csdnsql版得占80％吧
+欧锡彬(1020306) 21:18:20
+99%
+
+hrb2008(35948413) 21:18:37
+  Qsdn
+欧锡彬(1020306) 21:18:43
+到底那个是1%
+gslrq(179179312) 21:19:05
+我是
+王者之风(282790778) 21:46:36
+DataModelResourceBook.pdf
+王者之风(282790778) 21:46:43
+这书谁看过
+王者之风(282790778) 21:47:10
+我一个搞J2EE的堂哥推荐的
+王者之风(282790778) 21:47:26
+说是什么他们做数据库的必备书
+王者之风(282790778) 21:47:40
+经典
+王者之风(282790778) 21:47:53
+但是俺愣是没有看明白
+西门吹风(79950949) 21:48:00
+共享出来看看
+王者之风(282790778) 21:49:40
+正在上传
+西门吹风(79950949) 21:50:43
+谁还有什么好书呀
+西门吹风(79950949) 21:51:06
+唉。现在好迷茫了。都不知道学什么好。
+王者之风(282790778) 21:51:20
+你在哪儿高就啊
+Ning(83598666) 21:54:22
+数据库基础太差了...唉..惭愧
+西门吹风(79950949) 21:54:34
+在深圳。。
+西门吹风(79950949) 21:54:57
+感觉做IT太累了
+大风(383056624) 21:56:28
+做IT太累w
+Ning(83598666) 21:57:45
+青春饭..
+Ning(83598666) 21:57:52
+多做几年身体不行的
+野蛮人(175183020) 21:58:19
+nnd 最近怎么老是一些数据库 的英文书啊。
+野蛮人(175183020) 21:58:26
+看得忒累哦。
+王者之风(282790778) 21:59:03
+和而后
+西门吹风(79950949) 21:59:10
+是啊。谁有几本珍藏共享一下
+王者之风(282790778) 21:59:10
+o(∩_∩)o...哈哈
+西门吹风(79950949) 21:59:36
+.net学得好累
+西门吹风(79950949) 21:59:58
+以后多做数据库算了
+王者之风(282790778) 22:00:30
+一个牛逼的DBA ，要达到什么程度啊
+王者之风(282790778) 22:00:37
+高薪的
+Ning(83598666) 22:05:57
+id price type1  100   12  200   13  50   -14  60    1------------------------
+type 为1 表现入帐,-1表示出帐现在我要得到余额..用一句语句怎么写?
+Ning(83598666) 22:06:13
+先谢了
+gslrq(179179312) 22:07:29
+ http://www.hiscn.cn/
+一个医院管理和论坛,大家支持一下
+王者之风(282790778) 22:09:26
+select sum( select price*type as num from table as t) from  t
+王者之风(282790778) 22:09:38
+不知道行不
+Roy_88(中国风)(3813163) 22:11:09
+不行
+
+gslrq(179179312) 22:11:25
+select sum(price*type) as num from table
+Roy_88(中国风)(3813163) 22:11:41
+select sum(num)
+from 
+( select price*type as num from table as t)ta
+王者之风(282790778) 22:13:12
+为什么要个别名啊
+gslrq(179179312) 22:13:57
+为什么要那么麻烦
+Roy_88(中国风)(3813163) 22:14:20
+不变改楼上的表达式
+gslrq(179179312) 22:15:01
+select sum(price*type) as num from table
+这样不行
+Roy_88(中国风)(3813163) 22:15:28
+这是更正楼上的写法，不是实现结果。。。
+gslrq(179179312) 22:19:10
+那有数据库优化的书或资料
+gslrq(179179312) 22:19:35
+GOOGLE不知道用什么数据库,那么快
+gslrq(179179312) 22:19:47
+比SQL或ORALCE都快
+gslrq(179179312) 22:19:51
+怎么实现??
+Roy_88(中国风)(3813163) 22:20:22
+发一个系统存储过程给大家学习一下：
+ALTER proc [sys].[sp_MSforeach_worker]
+								@command1 nvarchar(2000), 
+								@replacechar nchar(1) = N'?', 
+								@command2 nvarchar(2000) = null, 
+								@command3 nvarchar(2000) = null, 
+								@worker_type int =1
+as
+
+	create table #qtemp (	/* Temp command storage */
+		qnum				int				NOT NULL,
+		qchar				nvarchar(2000)	COLLATE database_default NULL
+	)
+
+	set nocount on
+declare @name nvarchar(517), @namelen int, @q1 nvarchar(2000), @q2 nvarchar(2000)
+declare @q3 nvarchar(2000), @q4 nvarchar(2000), @q5 nvarchar(2000)
+declare @q6 nvarchar(2000), @q7 nvarchar(2000), @q8 nvarchar(2000), @q9 nvarchar(2000), @q10 nvarchar(2000)
+declare @cmd nvarchar(2000), @replacecharindex int, @useq tinyint, @usecmd tinyint, @nextcmd nvarchar(2000)
+declare @namesave nvarchar(517), @nametmp nvarchar(517), @nametmp2 nvarchar(258)
+
+declare @local_cursor cursor
+if @worker_type=1	
+	set @local_cursor = hCForEachDatabase
+else
+	set @local_cursor = hCForEachTable
+
+open @local_cursor
+fetch @local_cursor into @name
+
+/* Loop for each database */
+while (@@fetch_status >= 0) begin
+	/* Initialize. */
+Roy_88(中国风)(3813163) 22:20:34
+select @namesave = @name
+	select @useq = 1, @usecmd = 1, @cmd = @command1, @namelen = datalength(@name)
+	while (@cmd is not null) 
+	begin		
+		/* Generate @q* for exec() */
+		/*
+		 * Parse each @commandX into a single executable batch.
+		 * Because the expanded form of a @commandX may be > OSQL_MAXCOLLEN_SET, we'll need to allow overflow.
+		 * We also may append @commandX's (signified by '++' as first letters of next @command).
+		 */
+		select @replacecharindex = charindex(@replacechar, @cmd)
+		while (@replacecharindex <> 0) 
+			begin
+	
+	        /* 7.0, if name contains ' character, and the name has been single quoted in command, double all of them in dbname */
+	        /* if the name has not been single quoted in command, do not doulbe them */
+	        /* if name contains ] character, and the name has been [] quoted in command, double all of ] in dbname */
+	        select @name = @namesave
+	        select @namelen = datalength(@name)
+	        declare @tempindex int
+	        if (substring(@cmd, @replacecharindex - 1, 1) = N'''') begin
+	           /* if ? is inside of '', we need to double all the ' in name */
+	           select @name = REPLACE(@name, N'''', N'''''')
+	        end
+        else if (substring(@cmd, @replacecharindex - 1, 1) = N'[') 
+        	begin
+           /* if ? is inside of [], we need to double all the ] in name */
+           		select @name = REPLACE(@name, N']', N']]')
+        	end
+        else if ((@name LIKE N'%].%]') and (substring(@name, 1, 1) = N'[')) 
+        	begin
+	           /* ? is NOT inside of [] nor '', and the name is in [owner].[name] format, handle it */
+	           /* !!! work around, when using LIKE to find string pattern, can't use '[', since LIKE operator is treating '[' as a wide char */
+	           select @tempindex = charindex(N'].[', @name)
+	           select @nametmp  = substring(@name, 2, @tempindex-2 )
+	           select @nametmp2 = substring(@name, @tempindex+3, len(@name)-@tempindex-3 )
+	           select @nametmp  = REPLACE(@nametmp, N']', N']]')
+	           select @nametmp2 = REPLACE(@nametmp2, N']', N']]')
+	           select @name = N'[' + @nametmp + N'].[' + @nametmp2 + ']'
+        	end
+        else if ((@name LIKE N'%]') and (substring(@name, 1, 1) = N'[')) 
+        	begin
+	           /* ? is NOT inside of [] nor '', and the name is in [name] format, handle it */
+	           /* j.i.c., since we should not fall into this case */
+	           /* !!! work around, when using LIKE to find string pattern, can't use '[', since LIKE operator is treating '[' as a wide char */
+	           select @nametmp = substring(@name, 2, len(@name)-2 )
+	           select @nametmp = REPLACE(@nametmp, N']', N']]')
+	           select @name = N'[' + @nametmp + N']'
+        	end
+Roy_88(中国风)(3813163) 22:20:43
+select @namelen = datalength(@name)
+
+        /* start normal process */
+			if (datalength(@cmd) + @namelen - 1 > 2000) 
+				begin
+					/* Overflow; put preceding stuff into the temp table */
+					if (@useq > 9) 
+					begin
+						close @local_cursor
+						if @worker_type=1	
+							deallocate hCForEachDatabase
+						else
+							deallocate hCForEachTable
+							
+						raiserror 55555 N'sp_MSforeach_worker assert failed:  command too long'
+						return 1
+					end
+				if (@replacecharindex < @namelen) 
+					begin
+						/* If this happened close to beginning, make sure expansion has enough room. */
+						/* In this case no trailing space can occur as the row ends with @name. */
+						select @nextcmd = substring(@cmd, 1, @replacecharindex)
+						select @cmd = substring(@cmd, @replacecharindex + 1, 2000)
+						select @nextcmd = stuff(@nextcmd, @replacecharindex, 1, @name)
+						select @replacecharindex = charindex(@replacechar, @cmd)
+						insert #qtemp values (@useq, @nextcmd)
+						select @useq = @useq + 1
+						continue
+					end
+				/* Move the string down and stuff() in-place. */
+				/* Because varchar columns trim trailing spaces, we may need to prepend one to the following string. */
+				/* In this case, the char to be replaced is moved over by one. */
+				insert #qtemp values (@useq, substring(@cmd, 1, @replacecharindex - 1))
+				if (substring(@cmd, @replacecharindex - 1, 1) = N' ') 
+					begin
+						select @cmd = N' ' + substring(@cmd, @replacecharindex, 2000)
+						select @replacecharindex = 2
+					end
+				else 
+					begin
+						select @cmd = substring(@cmd, @replacecharindex, 2000)
+						select @replacecharindex = 1
+					end
+				select @useq = @useq + 1
+			end
+			select @cmd = stuff(@cmd, @replacecharindex, 1, @name)
+			select @replacecharindex = charindex(@replacechar, @cmd)
+		end
+
+		/* Done replacing for current @cmd.  Get the next one and see if it's to be appended. */
+		select @usecmd = @usecmd + 1
+		select @nextcmd = case (@usecmd) when 2 then @command2 when 3 then @command3 else null end
+		if (@nextcmd is not null and substring(@nextcmd, 1, 2) = N'++') 
+			begin
+				insert #qtemp values (@useq, @cmd)
+				select @cmd = substring(@nextcmd, 3, 2000), @useq = @useq + 1
+				continue
+			end
+Roy_88(中国风)(3813163) 22:20:52
+select @q1 = null, @q2 = null, @q3 = null, @q4 = null, @q5 = null, @q6 = null, @q7 = null, @q8 = null, @q9 = null, @q10 = null
+		select @q1 = qchar from #qtemp where qnum = 1
+		select @q2 = qchar from #qtemp where qnum = 2
+		select @q3 = qchar from #qtemp where qnum = 3
+		select @q4 = qchar from #qtemp where qnum = 4
+		select @q5 = qchar from #qtemp where qnum = 5
+		select @q6 = qchar from #qtemp where qnum = 6
+		select @q7 = qchar from #qtemp where qnum = 7
+		select @q8 = qchar from #qtemp where qnum = 8
+		select @q9 = qchar from #qtemp where qnum = 9
+		select @q10 = qchar from #qtemp where qnum = 10
+		truncate table #qtemp
+		exec (@q1 + @q2 + @q3 + @q4 + @q5 + @q6 + @q7 + @q8 + @q9 + @q10 + @cmd)
+		select @cmd = @nextcmd, @useq = 1
+	end /* while @cmd is not null, generating @q* for exec() */
+
+	/* All commands done for this name.  Go to next one. */
+	fetch @local_cursor into @name
+end /* while FETCH_SUCCESS */
+close @local_cursor
+if @worker_type=1	
+	deallocate hCForEachDatabase
+else
+	deallocate hCForEachTable
+	
+return 0
+西门吹风(79950949) 22:21:08
+这么长。看了都头晕。
+Roy_88(中国风)(3813163) 22:21:09
+有点长分几次发
+ 咖啡(煮鱼)(61999044) 22:21:25
+先 UP 一下多，洗澡后慢慢看。
+gslrq(179179312) 22:21:43
+先说说是什么做用
+gslrq(179179312) 22:21:49
+有没有人用ORACLE
+Roy_88(中国风)(3813163) 22:21:52
+这个存储过程sp_MSforeach_worker在2005里已经变动了
+gslrq(179179312) 22:22:11
+怎么能做到在程序中兼容SQL和ORACLE
+王者之风(282790778) 22:22:40
+那你用接口实现啊
+王者之风(282790778) 22:22:55
+就能做到同时兼容了
+gslrq(179179312) 22:23:05
+你一定是用C#的吧
+gslrq(179179312) 22:23:15
+我不喜欢接口这个词
+王者之风(282790778) 22:23:29
+c#，java中都有接口
+gslrq(179179312) 22:23:54
+主要是部分语法不同
+gslrq(179179312) 22:24:06
+只要总结出不同的语法就可以了
+gslrq(179179312) 22:24:54
+谁做可??
+gslrq(179179312) 22:25:02
+谁做过??
+gslrq(179179312) 22:26:48
+晕,怎么没有人回答呀
+Roy_88(中国风)(3813163) 22:27:37
+楼上有没有学习java\c#，如果学过就不会问这样的问题
+gslrq(179179312) 22:27:49
+没有学过
+西门吹风(79950949) 22:29:10
+中国风你对系统存过研究很多？
+
+gslrq(179179312) 22:30:17
+ 
+Roy_88(中国风)(3813163) 22:30:40
+是指?
+上面的sp_msforeach_worker,大家有用过sp_msforeachdb/sp_msforeachtable都是调用的这个存储过程。。值得大家学习一下
+gslrq(179179312) 22:31:01
+先说说是什么做用
+gslrq(179179312) 22:31:16
+不知道谁敢用呀
+西门吹风(79950949) 22:31:23
+这个到是看到了。
+Roy_88(中国风)(3813163) 22:31:32
+遍历数据库
+西门吹风(79950949) 22:31:52
+我以为你全部研究呢
+gslrq(179179312) 22:32:50
+SQL2005和SQL 2000有什么不同
+Roy_88(中国风)(3813163) 22:39:32
+不同的地方太多，楼上最好看一下联机帮助。。
+比较用意思的是，排序增加了4函数\行转列有两个函数\xml有6个函数\表连接多了两个函数.触发器多了针对数据库\事务控制可用C#的方式抛出错误信息。。
+转换DTS变为SSIS
+gslrq(179179312) 22:40:06
+我只是想听听用过的人怎么说
+西门吹风(79950949) 22:41:20
+2005不用学了。直接学2008了
+西门吹风(79950949) 22:41:24
+ 
+Roy_88(中国风)(3813163) 22:41:37
+ 用过2年了，上面的楼上听到了..
+
+gslrq(179179312) 22:42:43
+呵呵
+Roy_88(中国风)(3813163) 22:42:45
+具体的差别在05的联机帮助里讲得比较详细
+gslrq(179179312) 22:43:03
+用过的人说好就行了
+gslrq(179179312) 22:43:12
+我比较务实
+gslrq(179179312) 22:43:38
+我们一个用户还在用NT4.0呢
+Roy_88(中国风)(3813163) 22:44:29
+不是在这里敲几个字就可以完事，最后的基础在联机帮助里
+野蛮人(175183020) 22:57:37
+呵呵...
+野蛮人(175183020) 22:57:42
+睡觉了。
+Roy_88(中国风)(3813163) 22:57:53
+ 
+西门吹风(79950949) 22:58:53
+88

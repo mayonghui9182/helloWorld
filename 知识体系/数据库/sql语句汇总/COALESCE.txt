@@ -1,0 +1,96 @@
+COALESCE
+返回其参数中第一个非空表达式。
+
+语法
+COALESCE ( expression [ ,...n ] ) 
+
+参数
+expression
+
+任何类型的表达式。
+
+n
+
+表示可以指定多个表达式的占位符。所有表达式必须是相同类型，或者可以隐性转换为相同的类型。
+
+返回类型
+将相同的值作为 expression 返回。
+
+注释
+如果所有自变量均为 NULL，则 COALESCE 返回 NULL 值。
+
+COALESCE(expression1,...n) 与此 CASE 函数等价：
+
+CASE
+   WHEN (expression1 IS NOT NULL) THEN expression1
+   ...
+   WHEN (expressionN IS NOT NULL) THEN expressionN
+   ELSE NULL
+
+示例
+在下面的示例中，显示包含三列有关某个雇员每年工资收入信息的 wages 表：hourly_wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的工资总额，请使用 COALESCE 函数接受在 hourly_wage、salary 和 commission 中找到的非空值。
+
+SET NOCOUNT ON
+GO
+USE master
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES 
+      WHERE TABLE_NAME = 'wages')
+   DROP TABLE wages
+GO
+CREATE TABLE wages
+(
+   emp_id      tinyint    identity,
+   hourly_wage   decimal   NULL,
+   salary      decimal    NULL,
+   commission   decimal   NULL,
+   num_sales   tinyint   NULL
+)
+GO
+INSERT wages VALUES(10.00, NULL, NULL, NULL)
+INSERT wages VALUES(20.00, NULL, NULL, NULL)
+INSERT wages VALUES(30.00, NULL, NULL, NULL)
+INSERT wages VALUES(40.00, NULL, NULL, NULL)
+INSERT wages VALUES(NULL, 10000.00, NULL, NULL)
+INSERT wages VALUES(NULL, 20000.00, NULL, NULL)
+INSERT wages VALUES(NULL, 30000.00, NULL, NULL)
+INSERT wages VALUES(NULL, 40000.00, NULL, NULL)
+INSERT wages VALUES(NULL, NULL, 15000, 3)
+INSERT wages VALUES(NULL, NULL, 25000, 2)
+INSERT wages VALUES(NULL, NULL, 20000, 6)
+INSERT wages VALUES(NULL, NULL, 14000, 4)
+GO
+SET NOCOUNT OFF
+GO
+SELECT CAST(COALESCE(hourly_wage * 40 * 52, 
+   salary, 
+   commission * num_sales) AS money) AS 'Total Salary' 
+FROM wages
+GO
+
+下面是结果集：
+
+Total Salary 
+------------ 
+20800.0000
+41600.0000
+62400.0000
+83200.0000
+10000.0000
+20000.0000
+30000.0000
+40000.0000
+45000.0000
+50000.0000
+120000.0000
+56000.0000
+
+(12 row(s) affected)
+
+
+请参见
+
+CASE
+
+系统函数
+
+ 1988-2000 Microsoft Corporation。保留所有权利。

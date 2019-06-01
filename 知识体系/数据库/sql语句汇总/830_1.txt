@@ -1,0 +1,103 @@
+declare @t table(id int,num int)
+insert @t
+select 1,2 union all
+select 2,4 union all
+select 3,6
+
+----查询
+declare @idList varchar(1000),@numList varchar(1000)
+set @idList = ''
+set @numList = ''
+select 
+@idList = case @idList when '' then '' else @idList + ',' end + rtrim(id),
+@numList = case @numList when '' then '' else @numList + ',' end + rtrim(num)
+from @t
+
+select @idList as id,@numList as num
+
+/*结果
+id      num
+------------------
+1,2,3   2,4,6
+*/
+
+declare @t table(name varchar(20),type int)
+insert into @t
+select 'a',0
+union all select 'b',0
+union all select 'fb',1
+union all select 'fbf',2
+union all select 'fdfs',1
+
+
+
+
+
+if object_id('test1') is not null
+drop table test1
+create table test1(
+name varchar(20),
+type int)
+insert into test1
+select 'a',0
+union all select 'b',0
+union all select 'fb',1
+union all select 'fbf',2
+union all select 'fdfs',1
+
+select * from test1
+
+create function ss()
+returns varchar(1000)
+as
+begin
+declare @sql varchar(1000)
+set @sql=''
+select @sql=@sql+','+ name from test1 
+set @sql=stuff(@sql,1,1,' ')
+return @sql
+end
+
+select dbo.ss(),count_0=(select count(1) from test1 where type=0),
+count_1=(select count(1) from test1 where type=1),
+count_2=(select count(1) from test1 where type=2)
+/*
+我想要的结果是这样的
+    name         count_0   count_1   count_2  
+a,b,fb,fbf,fdfs       2       2         1
+
+*/
+declare @b varchar(1000)
+set @b=''
+select @b=case @b when ''then '' else @b+',' end +rtrim(name) from @t group by name
+
+
+
+
+select @b name,count_0=sum(case type when 0 then 1 end),
+		count_1=sum(case type when 1 then 1 end),
+		count_2=sum(case type when 2 then 1 end)
+ from @t 
+
+
+declare @t table(id int,num int,name varchar(20))
+insert into @t
+select 1,2,'张'
+union all select 1,1,'wnang'
+union all select 3,3,'wnang'
+union all select 4,5,'wnang'
+union all select 5,4,'wnang'
+
+select id,max(num),max(name)from @t group by id
+select * from @t a where not exists(select * from @t where id=a.id and num<a.num)
+
+
+select dateadd(day,100,getdate())
+
+
+Select @@Identity
+
+
+Select IDENT_CURRENT('table_name')
+
+SELECT SCOPE_IDENTITY()

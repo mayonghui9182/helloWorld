@@ -1,0 +1,165 @@
+/*declare @t table(id varchar(255),字段1 varchar(255))
+insert @t
+select '1','333' union all
+select '2','444' union all
+select '3','555' union all
+select '4','666' union all
+select '5','777'
+
+declare @b table(id varchar(255),字段1 varchar(255))
+insert @b
+select '1','999' union all
+select '2','444' union all
+select '3','000' union all
+select '4','888' union all
+select '5','777'
+
+
+
+--方法一
+select * from @b where checksum(id,字段1)not in (select checksum(id,字段1)from @t)
+--方法二
+select a.* from @b a inner join @t b on a.id=b.id where a.字段1<>b.字段1
+--方法三
+select * from @b a where not exists(select * from @t b where a.id=b.id and a.字段1=b.字段1)
+*/
+
+
+DECLARE @t table(po int,item_no int,qty int,dest_name varchar(20),_120 int,_125 int,_130 int,_330 int,_xo int)
+insert into @t 
+select 11,22,30,'AAA',0,0,15,15,0
+union all select 11,22,45,'BBB',0,10,20,10,0
+union all select 11,22,15,'DDD',0,0,0,0,15
+
+select * from @t
+Select * From
+(
+	Select 
+		PO, 
+		ITEM_NO, 
+		QTY, 
+		'_120' As [SIZE], 
+		Max(Case DEST_NAME When 'AAAA' Then _120 Else 0 End) As AAAA,
+		Max(Case DEST_NAME When 'BBBB' Then _120 Else 0 End) As BBBB,
+		Max(Case DEST_NAME When 'CCCC' Then _120 Else 0 End) As CCCC,
+		Max(Case DEST_NAME When 'DDDD' Then _120 Else 0 End) As DDDD
+	From
+		@t
+	Group By
+		PO, 
+		ITEM_NO, 
+		QTY
+	Union
+	Select 
+		PO, 
+		ITEM_NO, 
+		QTY, 
+		'_125' As [SIZE], 
+		Max(Case DEST_NAME When 'AAAA' Then _125 Else 0 End) As AAAA,
+		Max(Case DEST_NAME When 'BBBB' Then _125 Else 0 End) As BBBB,
+		Max(Case DEST_NAME When 'CCCC' Then _125 Else 0 End) As CCCC,
+		Max(Case DEST_NAME When 'DDDD' Then _125 Else 0 End) As DDDD
+	From
+		@t
+	Group By
+		PO, 
+		ITEM_NO, 
+		QTY
+
+	Union
+	Select 
+		PO, 
+		ITEM_NO, 
+		QTY, 
+		'_XO' As [SIZE], 
+		Max(Case DEST_NAME When 'AAAA' Then _XO Else 0 End) As AAAA,
+		Max(Case DEST_NAME When 'BBBB' Then _XO Else 0 End) As BBBB,
+		Max(Case DEST_NAME When 'CCCC' Then _XO Else 0 End) As CCCC,
+		Max(Case DEST_NAME When 'DDDD' Then _XO Else 0 End) As DDDD
+	From
+		@t
+	Group By
+		PO, 
+		ITEM_NO, 
+		QTY	
+) A
+Where 
+	AAAA + BBBB + CCCC + DDDD > 0
+
+
+
+
+Create Table 表1
+(PO Int,
+ ITEM_NO Int,
+ QTY Int,
+ DEST_NAME Varchar(10),
+ _120 Int,
+ _125 Int,
+ _130 Int,
+ _330 Int,
+ _XO Int)
+--插入數據
+Insert 表1 Select 11,   22,     30,    'AAAA',    0,     0,    15,     15,   0
+Union All Select 11,   22,     45,    'BBBB',     0,     10,   20,    10,   0
+Union All Select 11,   22,     15,    'DDDD',    0,      0,    0,       0,   15
+GO
+--測試
+--列名應該會有很多，手寫比較長，使用動態語句來做
+Declare @S Varchar(8000)
+Select @S = ''
+Select @S = @S + ' Union Select PO, ITEM_NO, QTY, ''' + Name + ''' As [SIZE], Max(Case DEST_NAME When ''AAAA'' Then ' + Name + ' Else 0 End) As AAAA, Max(Case DEST_NAME When ''BBBB'' Then ' + Name + ' Else 0 End) As BBBB, Max(Case DEST_NAME When ''CCCC'' Then ' + Name + ' Else 0 End) As CCCC, Max(Case DEST_NAME When ''DDDD'' Then ' + Name + ' Else 0 End) As DDDD From 表1 Group By PO, ITEM_NO, QTY'
+From SysColumns Where ID = OBJECT_ID('表1') And Name Not In('PO', 'ITEM_NO', 'QTY', 'DEST_NAME') Order By ColID
+Select @S = 'Select * From (' + Stuff(@S, 1, 6, '') + ' ) A Where AAAA + BBBB + CCCC + DDDD > 0'
+EXEC(@S)
+GO
+--刪除測試環境
+Drop Table 表1 
+--結果
+/*
+POITEM_NOQTYSIZEAAAABBBBCCCCDDDD
+112215_XO00015
+112230_13015000
+112230_33015000
+112245_12501000
+112245_13002000
+112245_33001000
+*/
+
+Create Table department
+(departmenid Int,
+parentid Int)
+Insert department Select 60, null
+Union All Select 1, 0
+Union All Select 2, 1
+Union All Select 3, 1
+Union All Select 4, 2
+Union All Select 5, 2
+Union All Select 6, 3
+Union All Select 7, 3
+Union All Select 8, 7
+GO
+--創建存儲過程
+Create ProceDure SP_GetParent(@departmenid Int)
+As
+Begin
+Select * Into #Tree From department Where departmenid = @departmenid
+While @@Rowcount > 0
+Insert #Tree Select A.* From department A Inner Join #Tree B On A.departmenid = B.parentid And A.departmenid Not In (Select departmenid From #Tree) Where A.parentid Is Not Null
+Select departmenid From #Tree Order By parentid
+Drop Table #Tree
+End
+GO
+--測試
+EXEC SP_GetParent 8
+GO
+--刪除測試環境
+Drop Table department
+Drop ProceDure SP_GetParent
+--結果
+/*
+departmenid
+1
+3
+7
+8

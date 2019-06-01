@@ -1,0 +1,207 @@
+EXEC sp_addlinkedserver @server='serverA', @srvproduct='', @provider='SQLOLEDB', @datasrc='192.168.0.28'
+EXEC sp_addlinkedsrvlogin @rmtsrvname='serverA', @useself='false', @rmtuser ='sa',@rmtpassword = 'aaa' 
+阿乌(185940804) 10:49:20
+去网上找找！ 
+hrb2008(35948413) 10:49:32
+Exec sp_serveroption 'serverA', 'lazy schema validation', 'true' 
+
+如何在sql   server中建立与其它sql   server的连接   
+  创建一台名为   server2   的链接服务器：   
+  use   master   
+  exec   sp_addlinkedserver   server2,nsql   server   
+  创建一个映射，使用帐号   sa   和密码   password   连接到链接服务器   server2：   
+  exec   sp_addlinkedsrvlogin   server2,   false,   null,   sa,   password   
+  查询数据：   
+  select   *   from   server2.dbname.dbo.tablename   
+    
+  
+
+发表者：zjcxc
+--如果经常访问或数据量大,建议用链接服务器   
+    
+  --创建链接服务器   
+  exec   sp_addlinkedserver     srv_lnk,,sqloledb,远程服务器名或ip地址   
+  exec   sp_addlinkedsrvlogin   srv_lnk,false,null,用户名,密码   
+  go   
+    
+  --查询示例   
+  select   *   from   srv_lnk.数据库名.dbo.表名   
+    
+  --导入示例   
+  select   *   into   表   from   srv_lnk.数据库名.dbo.表名   
+    
+  go   
+  --处理完成后删除链接服务器   
+  exec   sp_dropserver   srv_lnk,droplogins
+
+.
+
+
+由于业务逻辑的多样性 
+经常得在sql server中查询不同数据库中数据 
+这就产生了分布式查询的需求 
+现我将开发中遇到的几种查询总结如下：
+
+
+1.access版本 
+
+--建立连接服务器 
+EXEC sp_addlinkedserver 
+--要创建的链接服务器名称  
+'ai',             
+--产品名称               
+'access',     
+--OLE DB 字符 
+'Microsoft.Jet.OLEDB.4.0',  
+--数据源 
+--格式： 
+-- 盘符:\路径\文件名 
+-- \\网络名\共享名\文件名  (网络版本) 
+'d:\testdb\db.mdb' 
+GO 
+
+
+--创建链接服务器上远程登录之间的映射 
+--链接服务器默认设置为用登陆的上下文进行 
+--现在我们修改为连接链接服务器不需使用任何登录或密码 
+exec sp_addlinkedsrvlogin 'ai','false' 
+go 
+
+
+--查询数据 
+select * from ai...mytable 
+go 
+
+
+2.excel版本
+
+--建立连接服务器 
+EXEC sp_addlinkedserver 
+--要创建的链接服务器名称  
+'ai_ex',             
+--产品名称               
+'ex',     
+--OLE DB 字符 
+'Microsoft.Jet.OLEDB.4.0',  
+--数据源 
+--格式： 
+-- 盘符:\路径\文件名 
+-- \\网络名\共享名\文件名  (网络版本) 
+'d:\testdb\mybook.xls' , 
+null, 
+--OLE DB 提供程序特定的连接字符串 
+'Excel 5.0' 
+GO 
+
+
+----创建链接服务器上远程登录之间的映射 
+--链接服务器默认设置为用登陆的上下文进行 
+--现在我们修改为连接链接服务器不需使用任何登录或密码 
+exec sp_addlinkedsrvlogin 'ai_ex','false' 
+go 
+
+
+--查询数据 
+select * from ai_ex...sheet3$ 
+go 
+
+
+3.ms sql版本 
+
+--建立连接服务器 
+EXEC sp_addlinkedserver 
+--要创建的链接服务器名称  
+'ai_mssql',             
+--产品名称               
+'ms',     
+--OLE DB 字符 
+'SQLOLEDB',  
+--数据源 
+'218.204.111.111,3342' 
+GO 
+
+
+--创建链接服务器上远程登录之间的映射 
+EXEC sp_addlinkedsrvlogin 
+'ai_mssql', 
+'false', 
+NULL, 
+--远程服务器的登陆用户名 
+'zhangzhe', 
+--远程服务器的登陆密码 
+'fish2231' 
+go 
+
+
+--查询数据 
+select * from ai_mssql.pubs.dbo.jobs 
+go 
+
+
+--还有一个更简单的办法 
+--这种方式在链接服务器建立后，它是默认开放RPC的 
+
+--建立连接服务器 
+EXEC sp_addlinkedserver 
+--要创建的链接服务器名称 
+--这里就用数据源作名称 
+'218.204.111.111,3342', 
+'SQL Server' 
+GO 
+
+
+--创建链接服务器上远程登录之间的映射 
+EXEC sp_addlinkedsrvlogin 
+'218.204.111.111,3342', 
+'false', 
+NULL, 
+--远程服务器的登陆用户名 
+'zhangzhe', 
+--远程服务器的登陆密码 
+'fish2231' 
+go 
+
+
+--查询数据 
+select * from [218.204.253.131,3342].pubs.dbo.jobs 
+go 
+
+
+4.Oracle版本
+
+--建立连接服务器 
+EXEC sp_addlinkedserver 
+--要创建的链接服务器名称  
+'o', 
+--产品名称               
+'Oracle', 
+--OLE DB 字符 
+'MSDAORA', 
+--数据源 
+'acc' 
+GO 
+
+
+--创建链接服务器上远程登录之间的映射 
+EXEC sp_addlinkedsrvlogin 
+'o', 
+'false', 
+NULL, 
+--Oracle服务器的登陆用户名 
+'F02M185', 
+--Oracle服务器的登陆密码 
+'f02m185185' 
+go 
+
+--查询数据 
+--格式：LinkServer..Oracle用户名.表名 
+--注意用大写，因为在Oracle的数据字典中为大写 
+select * from o..F02M185.AI 
+go 
+
+
+
+
+希望上面提到的知识对你有所提示 
+当然欢迎交流和指正 
+

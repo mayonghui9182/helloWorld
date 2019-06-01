@@ -1,0 +1,3 @@
+EXEC sp_dboption 'my', 'Single User', 'TRUE' 
+EXEC sp_renamedb 'my', 'mycrjtest' 
+EXEC sp_dboption 'mycrjtest', 'Single User', 'FALSE' 

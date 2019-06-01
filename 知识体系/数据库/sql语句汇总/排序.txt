@@ -1,0 +1,29 @@
+ORDER BY子句可包括未出现在此选择列表的项目.然而,如果指定SELECT DISTINCT,则排序列必定出现在选择列表中.
+
+错误的语句:SELECT DISTINCT 书名 FROM tb_BookStore ORDER BY 现存数量
+
+正确的语句:SELECT DISTINCT (书名),现存数量 FROM tb_BookStore ORDER BY 现存数量
+
+(2)
+
+gold是等级   expire_date是到期时间   
+    
+根据前面的查询是按等级后再按到期时间,这样的话高等级的过期的人就在低等级没过期的人的前面.   
+    
+现在要做成   过期的都要到后面显示   无论等级是多少   而没过期的还是正常按等级及到期时间排列   
+
+Create   Table   #TEST   
+  (ID   Int,   
+    gold Int,   
+    expire_date DateTime)   
+  Insert   #TEST   Select   1,2,'2006-06-30'   
+  Union   All   Select   2,3,'2006-06-30'   
+  Union   All   Select   3,5,'2006-05-30'   
+  Union   All   Select   4,6,'2006-06-12'   
+  Union   All   Select   5,10,'2006-07-30'   
+  Union   All   Select   6,1,'2006-08-30'   
+  Union   All   Select   6,1,'2008-08-30'  
+  Union   All   Select   6,1,'2009-08-30'  
+
+select   top   100   *   from   [#TEST]   order   by   (Case   When   expire_date>=GetDate()   Then  0   Else  1  End),   gold   desc,expire_date   desc   
+

@@ -1,0 +1,66 @@
+sp_MSforeachdb
+
+leo_lesley 11:21:18
+mssql里sp_MSforeachtable和sp_MSforeachdb的用法
+从mssql6.5开始，微软提供了两个不公开，非常有用的系统存储过程sp_MSforeachtable和sp_MSforeachdb，用于遍历某个数据库的每个表和遍历DBMS管理下的每个数据库。
+
+
+我们在master数据库里执行下面的语句可以看到两个proc详细的代码
+
+
+use master
+
+
+exec sp_helptext sp_MSforeachtable
+
+
+exec sp_helptext sp_Msforeachdb
+
+
+sp_MSforeachtable系统存储过程有7个参数，解释如下：
+
+
+@command1 nvarchar（2000）,  --第一条运行的T-SQL指令
+
+
+@replacechar nchar（1） = N'?',   --指定的占位符号 
+
+
+@command2 nvarchar（2000）= null,--第二条运行的T-SQL指令
+
+
+@command3 nvarchar（2000）= null, --第三条运行的T-SQL指令
+
+
+@whereand nvarchar（2000）= null, --可选条件来选择表
+
+
+@precommand nvarchar（2000）= null, --在表前执行的指令
+
+
+@postcommand nvarchar（2000）= null --在表后执行的指令 
+
+
+
+
+
+sp_MSforeachdb除了@whereand外，和sp_MSforeachtable的参数是一样的。
+
+
+
+
+--我们来看看sp_MSforeachtable的用法（sp_MSforeachdb的用法类似）：
+
+--统计数据库里每个表的详细情况：
+
+exec sp_MSforeachtable @command1="sp_spaceused '?'"
+
+ 
+
+
+--检查数据库里每个表或索引视图的数据、索引及text、ntext 和image 页的完整性
+
+--下列语句需在单用户模式下执行（sp_dboption 'db_name', 'single user', 'true'）,将true改成false就又变成多用户了
+
+exec sp_msforeachtable "dbcc checktable('?',repair_rebuild)"
+

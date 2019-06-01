@@ -1,0 +1,70 @@
+--对输入的数据进行约束
+create table t(studentID char(10), [name] varchar(8),
+ startDate char(10) Check (isdate(startdate)=1 and cast(startdate as datetime)=convert(datetime,startdate,120)))
+insert into t
+select 'aa','bb','77799820'
+union all select 'bb','ggg','2007-10-11'
+union all select 'cc','ddd','2007-20-11'
+select * from t
+--创建测试表
+create table tbl ([name] varchar(8), chinese float, math float,zong float,px int)
+insert tbl
+select 'a', 80, 90,null,null
+union all select 'b', 85, 88,null,null
+union all select 'c', 77, 93,null,null
+union all select 'd', 80, 90,null,null
+union all select 'e', 99, 100,null,null
+--另一种方法
+select *,zong=chinese + math,
+px=(select count(1)+1 from tbl b where b.chinese + b.math >a.chinese + a.math ) 
+from tbl a order by px,chinese 
+
+
+
+
+--创建存储过程
+create proc mysql 
+as
+update bb set zong=tt.zong,px=tt.px from tbl bb,
+(SELECT name,zong , px=(SELECT COUNT(zong) FROM  
+( 
+  select name,chinese,math,zong = chinese + math from tbl 
+) t  
+WHERE zong  > a.zong or (zong = a.zong and chinese  > a.chinese)) + 1 
+FROM  
+( 
+  select name,chinese,math,zong = chinese + math from tbl 
+) a 
+) tt
+where bb.name=tt.name
+go
+--调用存储过程
+exec mysql
+--查看
+select * from tbl
+
+--删除
+drop table tbl
+drop proc mysql
+
+
+--创建表
+create table tb(ID int,TEAM varchar(10),SCORE int,SCORE2 int,SCORE3 int)  
+insert into tb values(1,   'A ',    100  , 100  ,  100)  
+insert into tb values(2,   'A ',    90   , 100  ,  100)  
+insert into tb values(3,   'B ',    50   , 40   , 30 ) 
+insert into tb values(4,   'B ',    50   , 40   , 30)  
+insert into tb values(5,   'A ',    90   , 100  , 80)  
+insert into tb values(6,   'B ',    55   , 50   , 50)  
+insert into tb values(7,   'A ',    90   , 100  , 50) 
+
+--查询
+select *,px=(select count(1)+1 from tb 
+where team=a.team and (score  >a.score)
+or (score = a.score and score2  >a.score2)
+or (score = a.score and score2=a.score2 and score3  >a.score3) 
+or (score = a.score and score2=a.score2 and score3=a.score3 and id  <a.id)) 
+from tb a order by team 
+
+--删除
+drop table tb

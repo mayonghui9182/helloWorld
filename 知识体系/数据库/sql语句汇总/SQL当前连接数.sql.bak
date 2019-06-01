@@ -1,0 +1,4 @@
+--当前SQL连接数
+
+select connectnum=count(distinct net_address)-1 from master..sysprocesses
+

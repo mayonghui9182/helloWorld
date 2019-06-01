@@ -1,0 +1,198 @@
+sql分段处理删除大量数据
+SELECT mid, rowid bulk_collect into v_mid_to_delete, v_rowid from temp_mid_hubei_bak WHERE ROWNUM&lt;10001;COUNT DELETE FROM SSF WHERE mid=v_mid_to_delete(i);COUNT) || ‘ records deleted from hubei_SSF !!!‘); FORALL i in i ..v_rowid.COUNT DELETE FROM temp_mid_hubei_bak WHERE ROWID=v_rowid(i); --DBMS_OUTPUT_LINE(TO_CHAR(v_mid_to_delete.COUNT) || ‘ records deleted from hubei_SSF !!!‘);END;p_RowCount in number, --Total need to delete rows count p_ExeCount in number)
+
+不务正业的程序员 - Tue, 17 Jul 2007 13:57:58 GMT
+SQL分段处理删除大量数据
+SELECT mid, rowid bulk_collect into v_mid_to_delete, v_rowid from temp_mid_hubei_bak WHERE ROWNUM&lt;10001;COUNT DELETE FROM SSF WHERE mid=v_mid_to_delete(i);COUNT) || ‘ records deleted from hubei_SSF !!!‘); FORALL i in i ..v_rowid.COUNT DELETE FROM temp_mid_hubei_bak WHERE ROWID=v_rowid(i); --DBMS_OUTPUT_LINE(TO_CHAR(v_mid_to_delete.COUNT) || ‘ records deleted from hubei_SSF !!!‘);END;p_RowCount in number, --Total need to delete rows count p_ExeCount in number)
+
+wonth - Thu, 05 Jul 2007 00:19:58 GMT
+分页方法
+declare @sqlstr nvarchar(4000) --查询字符串 declare @pagecount int--第N页 declare @pagesize int--每页行数 set @pagecount=1--第3页 set @pagesize=20--第页10条 set @sqlstr='select zclabel,zcmc,zcxh,zcsl,dwje,bmbm,bmmc from zckc order by zcmc' set nocount on declare @P1 int--P1是游标的id declare @rowcount int exec sp_cursoropen @P1 output,@sqlstr,@scrollopt=1,@ccopt=1,@rowcount=@rowcount output select 总行数=@rowcount,页数=ceiling(1*@rowcount/@pagesize),当前页=@pagecount set @pagecount=(@pagecount-1)*@pagesize+1 exec sp_cursor
+
+kangqbing - Mon, 18 Jun 2007 05:38:03 GMT
+jsp:由rs.last()方法不可用，学习ResultSet游标笔记
+它是 ---ResultSet.CONCUR_READ_ONLY 或 //只读---ResultSet.CONCUR_UPDATABLE 之一 //可以修改返回：一个新的 Statement 对象，该对象将生成具有给定类型和并发性的 ResultSet 对象 抛出： SQLException - 如果发生数据库访问错误，或者给定参数不是指示类型和并发性的 ResultSet 常量从以下版本开始： 1.2.在创建Statement对象时，指定游标参数conn = DriverManager.getConnection(getConnectionUrl(),dbUserName,dbPassword);stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+
+Fjnu_Angel - Sat, 26 May 2007 09:10:57 GMT
+绑定DataGird,没有数据时的显示
+绑定DataGird,没有数据时的显示,当数据源的数据表为空的时候,加DBNull到表中. private DataTable GetBalance()&#160;&#160;{&#160;&#160; &#160;SqlConnection cnn=new SqlConnection();&#160;&#160;&#160;cnn.ConnectionString=System.Configuration.ConfigurationSettings.AppSettings[&quot;cnn&quot;];&#160;&#160;&#160;string sql=&quot;SELECT C_ProjectName+'asb'as a FROM TCST_DATA_Projects&quot;;&#160;&#160;&#160;SqlDataAdapter adp = new SqlDataAdapter(sql,cnn);&#160;&#160;&#160;DataSet ds = new DataSet();&#160;&#160;&#160;int RowCount=adp.Fill(ds);&#160;&#160;&#160;int RowEven=RowCount % DataGrid1.PageSize;&#160;&#160;&#160;if(DataGrid1.CurrentPageIndex &gt; (RowCount / DataGrid1.PageSize)
+
+tenglingbo - Wed, 23 May 2007 10:15:25 GMT
+SQL Server通用分页存储过程：利用SQL Server未公开的存储过程实现
+存储过程定义：CREATE procedure [dbo].[SplitPage]( @SelectCommandText nvarchar(4000), -- 要执行的查询命令 @CurrentPageIndex int = 0, -- 当前页的索引，从 0 开始 @PageSize int = 20, -- 每页的记录数 @RowCount int = 0 out, -- 总的记录数 @PageCount int = 0 out -- 总的页数)ASIF @PageSize &lt;= 0BEGIN RAISERROR(‘参数 PageSize 必须大于零。
+
+虫子 - Mon, 06 Aug 2007 12:49:38 GMT
+RowCount
+--首次看到ROWCOUNT的用法。if exists (select * from dbo.sysobjects where id = object_id(N‘[dbo].[aa]‘) and OBJECTPROPERTY(id, N‘IsProcedure‘) = 1)drop procedure [dbo].[aa]GO.@aa nvarchar(20) , @bb nvarchar(20), @cc int )
+
+lwl0606 - Mon, 23 Apr 2007 10:58:17 GMT
+存储过程分页
+set nocount ondeclare @P1 int, --P1是游标的id @rowcount intexec sp_cursoropen @P1 output,@sqlstr,@scrollopt=1,@ccopt=1,@rowcount=@rowcount outputselect ceiling(1.0*@rowcount/@pagesize) as 总页数--,@rowcount as 总行数,@currentpage as 当前页 set @currentpage=(@currentpage-1)*@pagesize+1exec sp_cursorfetch @P1,16,@currentpage,@pagesize exec sp_cursorclose @P1set nocount off.
+
+evane1890 - Tue, 10 Apr 2007 17:46:39 GMT
+SQL笔记
+/*--SQL笔记--*//*** 1.用变量控制显示前N条记录*/declare @n intset @n=10set rowcount @nselect * from syscolumnsset rowcount 0./*** 2.显示分析编译和执行各语句所需的毫秒数*//*** 3.显示相关Transact_SQL语句生成的磁盘活动量信息*/
+
+濃(龍)情派對 - Fri, 30 Mar 2007 08:36:00 GMT
+SQL SERVER的ROWCOUNT关键字
+实际上，在SQL 2000中完全可以使用ROWCOUNT关键字解决这个问题。DECLARE @n INTSET @n = 1000SET ROWCOUNT @nINSERT INTO Table_2 (colname1)SELECT colname1=colname2 FROM Table_1.不过也有解决办法，只要能够使用ORDER BY关键字就可以了，比如说直接用含ORDER BY的子句，或者先使用ORDER BY语法把需要操作的标识列存为一个临时表或表变量，然后再操作语句中使用IN或EXISTS关键字。使用这样的语句即可取消ROWCOUNT了。使用ROWCOUNT之后可以很方便的解决TOP关键字不能带变量的问题，这样，对于需要排序取值的问题就比较容易解决了。
+
+liuzh501448 - Thu, 29 Mar 2007 00:21:16 GMT
+@@ERROR @@ROWCOUNT 返回的都是上一条SQL 语句后的执行信息。 
+select EmployeeID from employees -- 这条SQL 语句返回9条记录print(@@ROWCOUNT)print(@@error)返回的结果是：如果想在一个语句执行后，即获得 @@ROWCOUNT 也获得 @@error，需要用一个SQL 语句把它们读出来：declare @a int ,@b intselect EmployeeID from employees -- 这条SQL 语句返回9条记录select @a = @@ROWCOUNT,@b = @@errorprint(@a)print(@b)declare @a int ,@b intselect EmployeeID from employees -- 这条SQL 语句返回9条记录select @a = @@ROWCOUNTselect @b = @@errorprint(@a)print(@b)返回结果：(9 row affected)
+
+网际浪子 - Wed, 28 Feb 2007 14:55:43 GMT
+SQL操作行更新问题---使用游标
+这张表格是要进行更行的表userData USERID 1,2,3,4 4,5,6,7 下面这张表格是一张影射表，从userData表中找到与map_table相匹配的old_ID，并且用new_ID来更新响应的USERID map_table old_ID new_ID 2 Y222 1 Y111 6 Y6
+
+圈圈 - Thu, 11 Jan 2007 18:36:24 GMT
+@@ERROR @@ROWCOUNT 返回的都是上一条SQL 语句后的执行信息。
+比如下面的SQL 语句：select EmployeeID from employees -- 这条SQL 语句返回9条记录print(@@error)print(@@ROWCOUNT)返回的结果是：(9 row&lt;IMG alt=弯月 src=&quot;http://messenger.china.msn.com/Resource/emoticons/moon.gif&quot;&gt; affected)00而select EmployeeID from employees -- 这条SQL 语句返回9条记录print(@@ROWCOUNT)print(@@error)返回的结果是：(9 row&lt;IMG alt=弯月 src=&quot;http://messenger.china.msn.com/Resource/emoticons/moon.gif&quot;&gt; affected)90原因，后一个打印出来的是前一个print 执行后的对应变量的结果。
+
+蝈蝈俊.net - Fri, 22 Dec 2006 00:00:00 GMT
+分页存储过程，综合了NOT_IN和SET　ROWCOUNT
+
+- Fri, 01 Dec 2006 00:00:00 GMT
+SQL Server 一些技巧
+KeyLife富翁笔记 作者: HongYuan 标题: SQL Server 一些技巧 关键字: 分类: sql server 2000 密级: 私有 (评分: , 回复: 0, 阅读: 4) &#187;&#187; 1、重置 Identity 字段的起始值 DBCC CHECKIDENT ( &#180;[table-name]&#180;, RESEED, 0 ) 2、压缩数据库 (清除 transaction log) DUMP TRANSACTION [database-name] WITH NO_LOG 3、动态 top xxx Set ROWCOUNT = xxx 错的 set rowcount 0 select时显示所有记录 set rowcount 1 select时显示一条记录，但可以指定top xx显示多条记录 4、动态 order by 注意动态排序字段需要类型相同，如都是数值或字符，或者可以相互转换 select ...from ... where order by case when @ord=1 then name end, case
+
+周喜宏 - Wed, 22 Nov 2006 00:00:00 GMT
+MS SQL用ROWCOUNT解决TOP子句不支持变量的问题
+DECLARE @n INTSET @n = 1000SET ROWCOUNT @nDELETE FROM Table_1 不过也有解决办法，只要能够使用ORDER BY关键字就可以了，比如说直接用含ORDER BY的子句，或者先使用ORDER BY语法把需要操作的标识列存为一个临时表或表变量，然后再操作语句中使用IN或EXISTS关键字。如果占用了一个Session，那么对应的这个数据库Session将使用最近一次设置的ROWCOUNT，直到Session结束或者修改了ROWCOUNT。SET ROWCOUNT 0 8、总结使用ROWCOUNT之后可以很方便的解决TOP关键字不能带变量的问题，这样，对于需要排序取值的问题就比较容易解决了。
+
+海纳百川 - Wed, 08 Nov 2006 00:00:00 GMT
+限制选择的行数TOP() 与ROWCOUNT()分析
+一般情况我们用TOP ( expression ) [ PERCENT ] [ WITH TIES ]来控制返回限定的行数TOP (120) /* 返回前120行*/TOP (15) PERCENT /* 返回前总行数的百分之十五行*/TOP(@n) /* 返回参数代表的行数 如: DECLARE @n AS BIGINT; SET @n = 2 */.还有一种方法是在运行SELECT语句前用SET ROWCOUNT=N 来控制主要的区别：1.TOP()只能对单条SELECT语句起作用，而ROWCOUNT会一直起作用，知道他被关闭(SET ROWCOUNT=0)2.ROWCOUNT在返回指定的行数之后停止处理查询3ROWCOUNT在2000里对DELETE,UPDATE,INSERT都会起作用，但在2005中不会。
+
+风吹河岸柳轻扬 - Fri, 29 Sep 2006 00:00:00 GMT
+GS HR SP study
+今天略看了一下GS HR的SP，学到了一些东西和经验。mark 一下。 1 用Print函数查看SQL语句字符串 2 CreateTable比较多 CREATE TABLE #TempConsignAPBalanceTable( Row int IDENTITY(1,1) PRIMARY KEY, Fiscal varchar(6), CompanyID varchar(30), /*公司ID*/ CompanyName varchar(60), /*公司名称*/ PartnerID varchar(30), /*供应商id*/ PartnerName varchar(60), /*供应商名称*/ CSQCYE decimal(20,8) default 0 , /*期初余额*/ ) 3 SELECT 语句中 CASE WHEN 的用法 1 SELECT column1, column2, CASE WHEN column3 = 1 THEN &#180;yes&#180; WHEN column3 = 0 THEN &#180;no&#180; else &#180;error&#180; end as column
+
+李冠聪 - Tue, 04 Jul 2006 00:00:00 GMT
+StringGrid使用全书 
+Cells[Acol,Arow]),Length(StringGrid1.Cells[ACol,ARow];repeat if Order and not NumOrStr then //按正序、字符排 begin while Grid.Cells[ACol,Lo] &amp;lt;Mid do Inc(Lo); while Grid.Cells[ACol,Hi] &amp;gt;Mid do Dec(Hi); end ; if not Order and not NumOrStr then //按反序、字符排 begin while Grid.Cells[ACol,Lo] &amp;gt;Mid do Inc(Lo); while Grid.Cells[ACol,Hi] &amp;lt;Mid do Dec(Hi); end;
+
+chuiyanjie - Tue, 23 May 2006 14:44:00 GMT
+StringGrid使用全书 
+Cells[Acol,Arow]),Length(StringGrid1.Cells[ACol,ARow];repeat if Order and not NumOrStr then //按正序、字符排 begin while Grid.Cells[ACol,Lo] &amp;lt;Mid do Inc(Lo); while Grid.Cells[ACol,Hi] &amp;gt;Mid do Dec(Hi); end ; if not Order and not NumOrStr then //按反序、字符排 begin while Grid.Cells[ACol,Lo] &amp;gt;Mid do Inc(Lo); while Grid.Cells[ACol,Hi] &amp;lt;Mid do Dec(Hi); end;
+
+chuiyanjie - Tue, 23 May 2006 14:44:00 GMT
+关于datagrid的打印
+X = TheDataGrid.RectangleF cellbounds = new RectangleF(startxposition, TheDataGrid.SizeInPoints + kVerticalCellLeeway),columnwidth, TheDataGrid.RectangleF cellbound1 = new RectangleF(TheDataGrid.RectangleF cellbound2 = new RectangleF(TheDataGrid.RectangleF cellbound3 = new RectangleF(TheDataGrid.RectangleF cellbound4 = new RectangleF(TheDataGrid.RectangleF cellbound5 = new RectangleF(TheDataGrid.
+
+ahniyilin - Thu, 11 May 2006 17:47:00 GMT
+分页
+Function listPages(LinkFile) if not (rs.eof and rs.bof) then gopage=currentpage totalpage=n blockPage=Int((gopage-1)/10)*10+1’ if instr(linkfile,&amp;quot;?
+
+thx_bj - Fri, 28 Apr 2006 13:40:00 GMT
+分页存储过程 
+DECLARE @SortColumn ’ + @type + ’SET ROWCOUNT ’ + @strStartRow + ’SELECT @SortColumn=’ + @strSortColumn + ’ FROM ’ + @Tables + @strFilter + ’ ’ + @strGroup + ’ ORDER BY ’ + @Sort + ’SET ROWCOUNT ’ + @strPageSize + ’SELECT ’ + @Fields + ’ FROM ’ + @Tables + ’ WHERE ’ + @strSortColumn + @operator + ’ @SortColumn ’ + @strSimpleFilter + ’ ’ + @strGroup + ’ ORDER BY ’ + @Sort + ’’
+
+sunjay117 - Tue, 11 Apr 2006 18:06:00 GMT
+关于datagrid的打印
+X = TheDataGrid.RectangleF cellbounds = new RectangleF(startxposition, TheDataGrid.SizeInPoints + kVerticalCellLeeway),columnwidth, TheDataGrid.RectangleF cellbound1 = new RectangleF(TheDataGrid.RectangleF cellbound2 = new RectangleF(TheDataGrid.RectangleF cellbound3 = new RectangleF(TheDataGrid.RectangleF cellbound4 = new RectangleF(TheDataGrid.RectangleF cellbound5 = new RectangleF(TheDataGrid.
+
+zzjj - Sat, 08 Apr 2006 23:10:00 GMT
+精彩的近乎完美的分页存储过程 
+IF CHARINDEX(’.’, @strSortColumn) &amp;gt;0BEGINSET @SortTable = SUBSTRING(@strSortColumn, 0, CHARINDEX(’.’,@strSortColumn))SET @SortName = SUBSTRING(@strSortColumn, CHARINDEX(’.’,@strSortColumn) + 1, LEN(@strSortColumn))ENDELSEBEGINSET @SortTable = @TablesSET @SortName = @strSortColumnEND.
+
+xhbpc - Tue, 21 Mar 2006 17:21:00 GMT
+精彩的近乎完美的分页存储过程
+IF CHARINDEX(’.’, @strSortColumn) &amp;gt;0 BEGIN SET @SortTable = SUBSTRING(@strSortColumn, 0, CHARINDEX(’.’,@strSortColumn)) SET @SortName = SUBSTRING(@strSortColumn, CHARINDEX(’.’,@strSortColumn) + 1, LEN(@strSortColumn)) ENDELSE.DECLARE @strPageSize varchar(50)DECLARE @strStartRow varchar(50)DECLARE @strFilter varchar(1000)DECLARE @strSimpleFilter varchar(1000)DECLARE @strGroup varchar(1000)
+
+carefreejourney - Tue, 14 Mar 2006 13:36:00 GMT
+关于datagrid的打印
+X = TheDataGrid.RectangleF cellbounds = new RectangleF(startxposition, TheDataGrid.SizeInPoints + kVerticalCellLeeway),columnwidth, TheDataGrid.RectangleF cellbound1 = new RectangleF(TheDataGrid.RectangleF cellbound2 = new RectangleF(TheDataGrid.RectangleF cellbound3 = new RectangleF(TheDataGrid.RectangleF cellbound4 = new RectangleF(TheDataGrid.RectangleF cellbound5 = new RectangleF(TheDataGrid.
+
+冷雨夜 - Thu, 26 Jan 2006 08:26:00 GMT
+关于datagrid的打印
+X = TheDataGrid.RectangleF cellbounds = new RectangleF(startxposition, TheDataGrid.SizeInPoints + kVerticalCellLeeway),columnwidth, TheDataGrid.RectangleF cellbound1 = new RectangleF(TheDataGrid.RectangleF cellbound2 = new RectangleF(TheDataGrid.RectangleF cellbound3 = new RectangleF(TheDataGrid.RectangleF cellbound4 = new RectangleF(TheDataGrid.RectangleF cellbound5 = new RectangleF(TheDataGrid.
+
+一帆 - Wed, 25 Jan 2006 10:18:00 GMT
+DataGrid实现单元格合并
+Content from Assess_Item b left join (select * from Assess_Item where Grade=0) a on Left(RTrim(LTrim(b.DataGridEx1 .//合并单元格。private void DataGridEx1_PreRender(object sender, System.int itemStart=0;i++) { if(i==0) itemStart=0;Items [itemStart].itemStart=i;\\如果取出的数据为空，不合并单元格 if(rowCount&amp;gt;0) this.DataGridEx1 .Items [itemStart].Cells [1].RowSpan =itemCount+1;
+
+RainyBoo - Fri, 13 Jan 2006 13:40:00 GMT
+不错的分页存储过程
+CREATE PROCEDURE gaochao123@CurPage int --页号（第几页）1：第一页；declare @Count intdeclare @sxid intdeclare @pageSize int --返回一页的记录数.--最后一页set rowcount @pageSizeselect @sxid=sxID from CompanyTable50 order by sxID end.set @Count = @pageSize * (@CurPage -1) + 1set rowcount @Countselect @sxid=sxID from CompanyTable50 order by sxID descend.
+
+wzhxj - Tue, 13 Dec 2005 11:40:00 GMT
+精彩近乎完美的存储过程
+IF CHARINDEX(’.’, @strSortColumn) &amp;gt;0 BEGIN SET @SortTable = SUBSTRING(@strSortColumn, 0, CHARINDEX(’.’,@strSortColumn)) SET @SortName = SUBSTRING(@strSortColumn, CHARINDEX(’.’,@strSortColumn) + 1, LEN(@strSortColumn)) ENDELSE.DECLARE @strPageSize varchar(50)DECLARE @strStartRow varchar(50)DECLARE @strFilter varchar(1000)DECLARE @strSimpleFilter varchar(1000)DECLARE @strGroup varchar(1000)
+
+pgy8288 - Thu, 20 Oct 2005 14:13:00 GMT
+Excel
+Cells[0,0] := ’物资名称’; Cells[1,0] := ’年初转入数量’; Cells[2,0] := ’年初转入金额’; Cells[3,0] := ’本年采购数量’; Cells[4,0] := ’本年采购金额’; end;end;
+
+yjswjm119 - Mon, 17 Oct 2005 16:53:00 GMT
+分页存储过程
+IF CHARINDEX(’.’, @strSortColumn) &amp;gt;0 BEGIN SET @SortTable = SUBSTRING(@strSortColumn, 0, CHARINDEX(’.’,@strSortColumn)) SET @SortName = SUBSTRING(@strSortColumn, CHARINDEX(’.’,@strSortColumn) + 1, LEN(@strSortColumn)) ENDELSE.DECLARE @strPageSize varchar(50)DECLARE @strStartRow varchar(50)DECLARE @strFilter varchar(1000)DECLARE @strSimpleFilter varchar(1000)DECLARE @strGroup varchar(1000)
+
+hushan518 - Mon, 22 Aug 2005 22:26:00 GMT
+精彩的近乎完美的分页存储过程
+IF CHARINDEX(’.’, @strSortColumn) &amp;gt;0 BEGIN SET @SortTable = SUBSTRING(@strSortColumn, 0, CHARINDEX(’.’,@strSortColumn)) SET @SortName = SUBSTRING(@strSortColumn, CHARINDEX(’.’,@strSortColumn) + 1, LEN(@strSortColumn)) ENDELSE.DECLARE @strPageSize varchar(50)DECLARE @strStartRow varchar(50)DECLARE @strFilter varchar(1000)DECLARE @strSimpleFilter varchar(1000)DECLARE @strGroup varchar(1000)
+
+- Mon, 01 Aug 2005 23:00:00 GMT
+精彩的近乎完美的分页存储过程
+IF CHARINDEX(’.’, @strSortColumn) &amp;gt;0 BEGIN SET @SortTable = SUBSTRING(@strSortColumn, 0, CHARINDEX(’.’,@strSortColumn)) SET @SortName = SUBSTRING(@strSortColumn, CHARINDEX(’.’,@strSortColumn) + 1, LEN(@strSortColumn)) ENDELSE.DECLARE @strPageSize varchar(50)DECLARE @strStartRow varchar(50)DECLARE @strFilter varchar(1000)DECLARE @strSimpleFilter varchar(1000)DECLARE @strGroup varchar(1000)
+
+zenghai - Fri, 29 Jul 2005 11:21:00 GMT
+存儲過程分頁
+DECLARE @PageLowerBound intDECLARE @PageUpperBound intDECLARE @RowsToReturn int.-- First set the rowcountSET @RowsToReturn = @PageSize * (@PageIndex + 1)SET ROWCOUNT @RowsToReturn.-- Set the page boundsSET @PageLowerBound = @PageSize * @PageIndexSET @PageUpperBound = @PageLowerBound + @PageSize + 1.-- Insert into the temp tableINSERT INTO #PageIndex (OrderID)SELECT OrderIDFROM.
+
+enjoy330 - Wed, 27 Jul 2005 11:53:00 GMT
+excel宏中动态数组的应用和求动态数组最小值
+Cells(i, 1) Then MyArray(ArrayCount).line = j If rq &amp;gt;= CDate(Sheets(&amp;quot;sheet1&amp;quot;).Cells(i, 6)) Then MyArray(ArrayCount).bz = rq - CDate(Sheets(&amp;quot;sheet1&amp;quot;).
+
+骆驼刺 - Thu, 14 Jul 2005 14:20:00 GMT
+救命--哪位能给在下讲解一下这段代码的功能实现和里面的算法呢，急---在线等
+procedure Button5Click(Sender: TObject);procedure Button4Click(Sender: TObject);row1,row2,col1,col2:integer;filename:=filename+’中国画.bmp’;image1.Picture.LoadFromFile(filename);form3.image1.Picture.LoadFromFile(filename);button1.Enabled :=true;end;filename:=filename+’中国熊猫.bmp’;image1.Picture.LoadFromFile(filename);form3.image1.Picture.LoadFromFile(filename);button1.Enabled :=true;end;
+
+haier2166 - Tue, 14 Jun 2005 17:39:00 GMT
+一个消息提示托盘程序的开发历程（采用socket技术，附源代码）三－－－客户端源代码 
+#ifndef Unit2H#define Unit2H//---------------------------------------------------------------------------#include &amp;lt;Classes.hpp&amp;gt;#include &amp;lt;Controls.hpp&amp;gt;#include &amp;lt;StdCtrls.hpp&amp;gt;#include &amp;lt;Forms.hpp&amp;gt;#include &amp;lt;ScktComp.hpp&amp;gt;#include &amp;lt;Mask.hpp&amp;gt;#include &amp;lt;Buttons.hpp&amp;gt;//---------------------------------------------------------------------------class TLoginForm : publi
+
+lcllcl987 - Fri, 04 Feb 2005 16:34:00 GMT
+How to select rows N to M without Oracle's rownum?(摘抄)
+CREATE PROCEDURE dbo.sp_get_posts @perpage INT, @pagenumber INTWITH RECOMPILEAS.-- if we’re on the first page no need to go through the @postid push IF @pagenumber = 1 BEGIN SET ROWCOUNT @perpage.SELECT @position = @perpage * ( @pagenumber - 1 ) + 1.-- It will stop push postid into @min_postid until it hits -- ROWCOUNT and does this out of the ordered set (a work -- table).
+
+HaiLong - Tue, 01 Feb 2005 16:08:00 GMT
+事务
+事务嵌套的例子(happydreamer)1) 如果内层事务出错就取消所有事务。BEGIN TRAN UPDATE tablename SET colname=’37775’ WHERE id=170 IF ( @@rowcount=0 ) ROLLBACK TRAN UPDATE tablename SET colname=’37775’ WHERE id=870 --此id不存在 IF ( @@rowcount=0 ) ROLLBACK TRAN.
+
+小君 - Wed, 19 Jan 2005 10:33:00 GMT
+很强的分页存储过程，速度超快!
+CREATE procedure dbo.pager(--取得当前页数@pagenum int,--取得每页记录数@rowcount int,--返回记录总数@count int output ) AS--定义起始记录IDdeclare @start int --定义结束记录IDdeclare @end int--设置起始记录ID，与当前页数和每页记录数相关。set @end=@start-@rowcount--设置选取记录数set rowcount @start--将选取的记录插入临时表select * into #t1 from myTable--设置删除的记录数set rowcount @end--不是第一页时删除表，第一页时不删除表中数据。
+
+ByNow - Wed, 19 Jan 2005 00:00:00 GMT
+DBGrid使用全书(二)
+
+CYRTSOFT - Mon, 29 Nov 2004 20:59:00 GMT
+DBGrid使用全书(二)
+
+zhlwyy - Sat, 20 Nov 2004 21:36:00 GMT
+一個可以顯示CheckBox或RadioButtons的StringGrid類.
+SetLength(FSelArray,RowCount);procedure TStringGridEx.if FShowTick and (ACol = FTickCol) and (ARow &amp;gt;= FixedRows) then begin Checked := FSelArray[ARow];if FShowTick and (Col = FTickCol) then FSelArray[Row] := not FSelArray[Row];if IsDblClicked then begin if FShowTick and (ACol = FTickCol) then FSelArray[ARow] := not FSelArray[ARow];If FSelArray[ARow] then begin FSelRows[ARow].
+
+zjmaskman - Thu, 04 Nov 2004 12:48:00 GMT
+Handling SQL Server Errors in Nested Procedures
+Nesting Stored Procedures and Transactions.When you issue COMMIT or ROLLBACK in any Transact-SQL code, and there is no transaction in effect, SQL Server will return the non-fatal error 3903, &amp;quot;The COMMIT TRANSACTION request has no corresponding BEGIN TRANSACTION.&amp;quot; You can avoid this error by making sure you don’t issue a COMMIT or ROLLBACK unless a transaction is really in effect.
+
+waterboy - Thu, 26 Aug 2004 09:39:00 GMT
+心存感激
+select tfrom (select t, rownum rowcount from t) torder by rowcount desc;SQL&amp;gt; select t 2 from (select t, rownum rowcount from t) t 3 order by rowcount desc;
+http://tag.csdn.net/tag/rowcount.xml
+
+
+lunar - Mon, 26 Jul 2004 08:57:00 GMT
+又找到一个很经典的存储过程分页
+IF CHARINDEX(’.’, @strSortColumn) &amp;gt;0 BEGIN SET @SortTable = SUBSTRING(@strSortColumn, 0, CHARINDEX(’.’,@strSortColumn)) SET @SortName = SUBSTRING(@strSortColumn, CHARINDEX(’.’,@strSortColumn) + 1, LEN(@strSortColumn)) ENDELSE.DECLARE @strPageSize varchar(50)DECLARE @strStartRow varchar(50)DECLARE @strFilter varchar(1000)DECLARE @strSimpleFilter varchar(1000)DECLARE @strGroup varchar(1000)
+
+dcboy - Sat, 26 Jun 2004 15:31:00 GMT
+一种新的编程思路（下）：附 ntDB.java
+} else{ if(ht_PinYin.size()==0){toPinYin_ht();private static void toPinYin_ht(){ ht_PinYin.put(&amp;quot;-20319&amp;quot;,&amp;quot;a&amp;quot;);ht_PinYin.put(&amp;quot;-20317&amp;quot;,&amp;quot;ai&amp;quot;);ht_PinYin.put(&amp;quot;-20304&amp;quot;,&amp;quot;an&amp;quot;);ht_PinYin.put(&amp;quot;-20295&amp;quot;,&amp;quot;ang&amp;quot;);ht_PinYin.put(&amp;quot;-20292&amp;quot;,&amp;quot;ao&amp;quot;);ht_PinYin.put(&amp;quot;-20283&amp;quot;,&amp;quot;ba&amp;quot;);ht_PinYin.p
+
+newtower - Mon, 15 Jul 2002 10:11:00 GMT
+JAVA 使用哈希表操作数据库的例子 Using Hashtables to Store &amp; Extract results from a Database.
+lht_temp[li_loop] = lht_results[li_loop];private String hashToTab(Hashtable[] ahash_data, boolean ab_header){//*****************************************************************// ahash_data: array of hashtables to convert to tabfile// ab_header : True if you want the tab file to include the headers//*****************************************************************String ls_tabfile = &amp;quot;&amp;quot;;
+

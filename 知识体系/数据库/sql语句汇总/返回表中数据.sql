@@ -1,0 +1,1 @@
+select @cnt=rowcnt from sysindexes where id = object_id('CSCustomersInfo') and indid in (0,1)

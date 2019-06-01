@@ -1,0 +1,118 @@
+动态的
+--創建測試環境
+Create Table 表1
+(PO Int,
+ ITEM_NO Int,
+ QTY Int,
+ DEST_NAME Varchar(10),
+ _120 Int,
+ _125 Int,
+ _130 Int,
+ _330 Int,
+ _XO Int)
+--插入數據
+Insert 表1 Select 11,   22,     30,    'AAAA',    0,     0,    15,     15,   0
+Union All Select 11,   22,     45,    'BBBB',     0,     10,   20,    10,   0
+Union All Select 11,   22,     15,    'DDDD',    0,      0,    0,       0,   15
+GO
+--測試
+--列名應該會有很多，手寫比較長，使用動態語句來做
+Declare @S Varchar(8000)
+Select @S = ''
+Select @S = @S + ' Union Select PO, ITEM_NO, QTY, ''' + Name + ''' As [SIZE], Max(Case DEST_NAME When ''AAAA'' Then ' + Name + ' Else 0 End) As AAAA, Max(Case DEST_NAME When ''BBBB'' Then ' + Name + ' Else 0 End) As BBBB, Max(Case DEST_NAME When ''CCCC'' Then ' + Name + ' Else 0 End) As CCCC, Max(Case DEST_NAME When ''DDDD'' Then ' + Name + ' Else 0 End) As DDDD From 表1 Group By PO, ITEM_NO, QTY'
+From SysColumns Where ID = OBJECT_ID('表1') And Name Not In('PO', 'ITEM_NO', 'QTY', 'DEST_NAME') Order By ColID
+Select @S = 'Select * From (' + Stuff(@S, 1, 6, '') + ' ) A Where AAAA + BBBB + CCCC + DDDD > 0'
+EXEC(@S)
+GO
+--刪除測試環境
+Drop Table 表1 
+--結果
+/*
+POITEM_NOQTYSIZEAAAABBBBCCCCDDDD
+112215_XO00015
+112230_13015000
+112230_33015000
+112245_12501000
+112245_13002000
+112245_33001000
+*/
+
+--静态的
+
+Select * From
+(
+Select 
+PO, 
+ITEM_NO, 
+QTY, 
+'_120' As [SIZE], 
+Max(Case DEST_NAME When 'AAAA' Then _120 Else 0 End) As AAAA,
+Max(Case DEST_NAME When 'BBBB' Then _120 Else 0 End) As BBBB,
+Max(Case DEST_NAME When 'CCCC' Then _120 Else 0 End) As CCCC,
+Max(Case DEST_NAME When 'DDDD' Then _120 Else 0 End) As DDDD
+From
+表1
+Group By
+PO, 
+ITEM_NO, 
+QTY
+Union
+Select 
+PO, 
+ITEM_NO, 
+QTY, 
+'_125' As [SIZE], 
+Max(Case DEST_NAME When 'AAAA' Then _125 Else 0 End) As AAAA,
+Max(Case DEST_NAME When 'BBBB' Then _125 Else 0 End) As BBBB,
+Max(Case DEST_NAME When 'CCCC' Then _125 Else 0 End) As CCCC,
+Max(Case DEST_NAME When 'DDDD' Then _125 Else 0 End) As DDDD
+From
+表1
+Group By
+PO, 
+ITEM_NO, 
+QTY
+...
+Union
+Select 
+PO, 
+ITEM_NO, 
+QTY, 
+'_XO' As [SIZE], 
+Max(Case DEST_NAME When 'AAAA' Then _XO Else 0 End) As AAAA,
+Max(Case DEST_NAME When 'BBBB' Then _XO Else 0 End) As BBBB,
+Max(Case DEST_NAME When 'CCCC' Then _XO Else 0 End) As CCCC,
+Max(Case DEST_NAME When 'DDDD' Then _XO Else 0 End) As DDDD
+From
+表1
+Group By
+PO, 
+ITEM_NO, 
+QTY
+) A
+Where 
+AAAA + BBBB + CCCC + DDDD > 0
+
+--静态的方法二
+
+select PO, ITEM_NO, QTY,SIZE = '_120',
+  max(case when DEST_NAME = 'AAAA' then _120 else 0 end) 'AAAA',
+  max(case when DEST_NAME = 'bbbb' then _120 else 0 end) 'bbbb',
+  max(case when DEST_NAME = 'cccc' then _120 else 0 end) 'cccc',
+  max(case when DEST_NAME = 'dddd' then _120 else 0 end) 'dddd'
+from tb group by PO, ITEM_NO, QTY
+union all
+select PO, ITEM_NO, QTY,SIZE = '_125',
+  max(case when DEST_NAME = 'AAAA' then _125 else 0 end) 'AAAA',
+  max(case when DEST_NAME = 'bbbb' then _125 else 0 end) 'bbbb',
+  max(case when DEST_NAME = 'cccc' then _125 else 0 end) 'cccc',
+  max(case when DEST_NAME = 'dddd' then _125 else 0 end) 'dddd'
+from tb group by PO, ITEM_NO, QTY
+..............
+union all
+select PO, ITEM_NO, QTY,SIZE = '_XO',
+  max(case when DEST_NAME = 'AAAA' then _XO else 0 end) 'AAAA',
+  max(case when DEST_NAME = 'bbbb' then _XO else 0 end) 'bbbb',
+  max(case when DEST_NAME = 'cccc' then _XO else 0 end) 'cccc',
+  max(case when DEST_NAME = 'dddd' then _XO else 0 end) 'dddd'
+from tb group by PO, ITEM_NO, 

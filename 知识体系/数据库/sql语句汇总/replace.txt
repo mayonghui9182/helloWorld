@@ -1,0 +1,12 @@
+REPLACE   (   'string_expression1'   ,   'string_expression2'   ,   'string_expression3'   )   
+
+示例   
+  下例用   xxx   替换   abcdefghi   中的字符串   cde。   
+  SELECT   REPLACE('abcdefghicde','cde','xxx')   
+  GO   
+    
+  下面是结果集：   
+    
+  ------------   
+  abxxxfghixxx   
+  (1   row(s)   affected)   

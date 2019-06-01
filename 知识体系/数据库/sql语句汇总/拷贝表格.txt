@@ -1,0 +1,30 @@
+建立表格：
+
+CREATE   TABLE   tb(ID   int,   名称   NVARCHAR(30),   备注   NVARCHAR(1000))   
+  INSERT   tb       SELECT   1,'DDD',1   
+  UNION     ALL                 SELECT   1,'5100','D'   
+  UNION     ALL                 SELECT   1,'5200','E'   
+    
+  也可以这样:   
+  CREATE   TABLE   tb1(ID   int,   名称   NVARCHAR(30),   备注   NVARCHAR(1000))   
+  INSERT   TB1   (ID,名称,备注)VALUES(1,'DDD',1)   
+  INSERT   TB1   (ID,名称,备注)VALUES(1,'5100','D')   
+  INSERT   TB1   (ID,名称,备注)VALUES(1,'5200','E')   
+
+
+（2）  
+
+table_new 原来已经存在且字段和顺序和table_old 完全一样
+
+insert into table_new  select * from table_old 
+
+ 如不一样修改对应字段即可，注意插入数据主键问题..
+
+    insert into table_new(column1,column2)
+    select column1,column2 from table_old 
+
+或者
+
+（3）数据库中不存在table_new表 很简单 
+
+   select * into table_new from table_old

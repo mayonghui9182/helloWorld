@@ -1,0 +1,170 @@
+据传SQL 2005有了RowID的东西，可以解决TOP排序的问题。可惜还没有机会体验。在SQL 2000中写存储过程，总会遇到需要TOP的地方，而一旦遇到TOP，因为没办法把TOP后面的数字作为变量写到预编译的语句中去，所以只能够使用构造 SQL，使用Exec来执行。不说效率的问题，心里也总觉得这个办法很笨。
+
+实际上，在SQL 2000中完全可以使用ROWCOUNT关键字解决这个问题。
+
+ROWCOUNT关键字的用法在联机帮助中有比较详细的说明，这儿就不罗嗦了。谈谈体会。
+
+1、使用ROWCOUNT查询前几行结果。
+
+DECLARE @n INT
+SET @n = 1000
+SET ROWCOUNT @n
+SELECT * FROM Table_1
+
+
+
+这样，查询结果将等同于
+
+SELECT TOP 100 FROM Table_1 
+
+2、同样的道理，使用INSERT INTO..SELECT的时候也有效。
+
+DECLARE @n INT
+SET @n = 1000
+SET ROWCOUNT @n
+INSERT INTO Table_2 (colname1)
+SELECT colname1=colname2 FROM Table_1 
+
+执行的结果将等同于
+
+INSERT INTO Table_2(colname1)
+SELECT TOP 1000 colname1 = colname2 FROM Table_1 
+
+
+3、执行UPDATE和DELETE。
+
+因为UPDATE和DELETE无法直接使用ORDER BY语法，如果使用ROWCOUNT，将按照主键顺序从前往后操作。
+
+DECLARE @n INT
+SET @n = 1000
+SET ROWCOUNT @n
+DELETE FROM Table_1 
+
+
+不过也有解决办法，只要能够使用ORDER BY关键字就可以了，比如说直接用含ORDER BY的子句，或者先使用ORDER BY语法把需要操作的标识列存为一个临时表或表变量，然后再操作语句中使用IN或EXISTS关键字。 
+
+DECLARE @n INT
+SET @n = 1000
+SET ROWCOUNT @n
+DECLARE @t TABLE(ID INT)
+INSERT INTO @t
+SELECT ID FROM Table_1 ORDER BY colname [ASC/DESC]
+
+DELETE FROM   Table_1 WHERE ID IN (SELECT ID FROM @t) 
+
+
+4、对于ROWCOUNT的设置是与Session有关的。如果占用了一个Session，那么对应的这个数据库Session将使用最近一次设置的ROWCOUNT，直到Session结束或者修改了ROWCOUNT。
+
+5、在用户自定义函数中不能使用ROWCOUNT。
+
+6、取消ROWCOUNT。
+
+我不知道为什么在联机帮助中说，写存储过程的时候应该注意尽量避免使用ROWCOUNT，而建议使用TOP。难道MS不知道TOP关键后面的数字不能为变量吗？也许MS是出于担心开发者忘记了取消ROWCOUNT而影响正常的实现。
+
+使用这样的语句即可取消ROWCOUNT了。
+
+SET ROWCOUNT 0 
+
+
+8、总结
+
+使用ROWCOUNT之后可以很方便的解决TOP关键字不能带变量的问题，这样，对于需要排序取值的问题就比较容易解决了。避免了使用EXEC来执行构造SQL语句，调试存储过程的时候也要方便很多。唯一不方便的是，没有找到获取当前ROWCOUNT值的办法，但仔细想来，得到这个值的用处也并不大。
+
+create table #t (ID int IDENTITY, --自增字段 
+yhm_id int, 
+yhm_name varchar(40)) 
+--向临时表中写入数据 
+declare @iRecordCount int 
+insert into #t 
+select yhm_id,yhm_name from dbo.[yhm] 
+order by yhm_id 
+--select * from dbo.[t] 
+--取得记录总数 
+set @iRecordCount=@@rowcount 
+
+这个试下！不行了！ME我
+回答者：aogog - 高级魔法师 六级 5-8 09:19
+
+提问者对于答案的评价：
+谢谢大家了，但是只能选择一个
+评价已经被关闭 目前有 1 个人评价 
+     好
+0% （0） 不好
+100% （1） 
+
+其他回答共 6 条
+@@ROWCOUNT是返回受上一语句影响的行数。并不是取得总记录数 
+
+可以这样写得到所有记录 
+把set @iRecordCount=@@rowcount 替换成 
+select @iRecordCount=count(*) from #t 
+这样就可以得到总记录数啊 
+回答者：alwaysfirst - 试用期 一级 5-5 21:22
+
+-.-! 
+回答者：bin465047118 - 童生 一级 5-6 00:04
+
+不知道~！ 
+回答者：标准小子 - 兵卒 一级 5-6 16:09
+
+.. 
+回答者：mayi9494 - 见习魔法师 二级 5-8 05:13
+
+--源表 
+create table t1(name varchar(40)) 
+insert into t1 select 'abc' 
+insert into t1 select 'def' 
+insert into t1 select 'ghi' 
+
+--创建临时表 
+create table #t (ID int IDENTITY, yhm_name varchar(40)) 
+
+--向临时表中写入数据 
+insert into #t 
+select name from t1 
+
+select @@rowcount 
+
+--取得记录总数 
+declare @iRecordCount int 
+
+set @iRecordCount=@@rowcount 
+
+print @iRecordCount 
+
+--删除测试数据 
+drop table #t,t1 
+
+--结果 
+/* 
+3 
+*/ 
+
+******************************************************** 
+联机帮助： 
+@@ROWCOUNT 
+返回受上一语句影响的行数。 
+
+语法 
+@@ROWCOUNT 
+
+返回类型 
+integer 
+
+注释 
+任何不返回行的语句将这一变量设置为 0 ，如 IF 语句。 
+
+示例 
+下面的示例执行 UPDATE 语句并用 @@ROWCOUNT 来检测是否有发生更改的行。 
+
+UPDATE authors SET au_lname = 'Jones' 
+WHERE au_id = '999-888-7777' 
+IF @@ROWCOUNT = 0 
+print 'Warning: No rows were updated' 
+******************************************************** 
+回答者：gc_ding - 助理 三级 5-8 15:16
+
+1. declare @iRecordCount int 
+2. set @iRecordCount=@@rowcount 
+
+应该是这里错误了。你应该在最前面定义（第1句）。在执行语句后马上用第2句来取。这样才正确。

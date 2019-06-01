@@ -1,0 +1,24 @@
+create table tbl1
+               (school varchar(10),class1 int,class2 int,class3 int)
+insert into tbl1  select '内',11,11,11
+        union all select '内',12,12,12
+        union all select '外',13,13,13
+        union all select '外',14,14,14
+
+
+
+create table tbl2
+               (school varchar(10),hope1 int,hope2 int,hope3 int)
+insert into tbl2  select '内',110,110,110
+        union all select '内',120,120,120
+        union all select '外',130,130,130
+        union all select '外',140,140,140
+
+go
+
+select ta.school,[class1SUM],[class2SUM],[class3SUM],[hope1SUM],[hope2SUM],[hope3SUM]
+from 
+(select school,	[class1SUM]=sum(class1),[class2SUM]=sum(class2),[class3SUM]=sum(class3) from tbl1 group by school)ta
+left join
+(select school,[hope1SUM]=sum(hope1),[hope2SUM]=sum(hope2),[hope3SUM]=sum(hope3)from tbl2 group by school)tb
+on ta.school=tb.school

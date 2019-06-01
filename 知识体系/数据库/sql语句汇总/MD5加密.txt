@@ -1,0 +1,1 @@
+select sys.fn_VarBinToHexStr(hashbytes('MD5', 'Œ“'))

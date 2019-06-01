@@ -1,0 +1,27 @@
+ 1.   
+  select   top   m   *   from   tablename   where   id   not   in   (select   top   n   *   from   tablename)   
+    
+  2.   
+  select   top   m   *   into   临时表(或表变量)   from   tablename   order   by   columnname   --   将top   m笔插入   
+  set   rowcount   n   
+  select   *   from   表变量   order   by   columnname   desc   
+    
+  3.   
+  select   top   n   *   from     
+  (select   top   m   *   from   tablename   order   by   columnname)   a   
+  order   by   columnname   desc   
+    
+    
+  4.如果tablename里没有其他identity列，那么：   
+  select   identity(int)   id0,*   into   #temp   from   tablename   
+    
+  取n到m条的语句为：   
+  select   *   from   #temp   where   id0   >=n   and   id0   <=   m   
+    
+  如果你在执行select   identity(int)   id0,*   into   #temp   from   tablename这条语句的时候报错,那是因为你的DB中间的select   into/bulkcopy属性没有打开要先执行：   
+  exec   sp_dboption   你的DB名字,'select   into/bulkcopy',true   
+    
+    
+  5.如果表里有identity属性，那么简单：   
+  select   *   from   tablename   where   identitycol   between   n   and   m     
+

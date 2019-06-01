@@ -1,0 +1,11 @@
+create     table   tab(idd   int,address   varchar(20)   COLLATE   Chinese_PRC_CS_AS)   
+  insert   tab   values(1,'aaaa')   
+  insert   tab   values(2,'AAAA')   
+  insert   tab   values(3,'aaaa')   
+  insert   tab   values(4,'aAAa')   
+  insert   tab   values(5,'aAAA')   
+    
+  select   *   from   tab   where   address   =   'aaaa'   COLLATE   Chinese_PRC_CS_AS   
+  select   *   from   tab   where   address   =   'aAAa'   COLLATE   Chinese_PRC_CS_AS   
+  drop   table   tab   
+    

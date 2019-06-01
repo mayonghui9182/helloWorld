@@ -1,0 +1,21 @@
+
+  select   *   from   A   
+  union     
+  select   *   from   B   
+    
+    
+    
+  --不合并重复行   
+  select   *   from   A   
+  union   all   
+  select   *   from   B   
+    
+    
+  --如果要对字段进行排序   
+  select   *   
+  from   (   
+  select   id,...   from   A   
+  union   all   
+  select   id,...   from   B   
+  )   t   
+  order   by   ID

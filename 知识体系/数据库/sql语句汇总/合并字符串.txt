@@ -1,0 +1,202 @@
+就是合并字符串吧?
+
+--带符号合并行列转换
+
+--有表t，其数据如下：
+  a b
+  1 1
+  1 2
+  1 3
+  2 1
+  2 2
+  3 1
+--如何转换成如下结果:
+  a b
+  1 1,2,3
+  2 1,2
+  3 1 
+
+create table tb
+(
+   a int,
+   b int
+)
+insert into tb(a,b) values(1,1)
+insert into tb(a,b) values(1,2)
+insert into tb(a,b) values(1,3)
+insert into tb(a,b) values(2,1)
+insert into tb(a,b) values(2,2)
+insert into tb(a,b) values(3,1)
+go
+
+if object_id('pubs..f_hb') is not null
+   drop function f_hb
+go
+
+--创建一个合并的函数
+create function f_hb(@a int)
+returns varchar(8000)
+as
+begin
+  declare @str varchar(8000)
+  set @str = ''
+  select @str = @str + ',' + cast(b as varchar) from tb where a = @a 
+  set @str = right(@str , len(@str) - 1)
+  return(@str)
+End
+go
+
+--调用自定义函数得到结果：
+select distinct a ,dbo.f_hb(a) as b from tb
+
+drop table tb
+
+--结果
+a           b     
+----------- ------
+1           1,2,3
+2           1,2
+3           1
+
+（所影响的行数为 3 行）
+
+
+多个前列的合并
+数据的原始状态如下：
+ID  PR   CON  OP    SC 
+001 p    c    差    6
+001 p    c    好    2
+001 p    c    一般  4
+002 w    e    差    8
+002 w    e    好    7
+002 w    e    一般  1
+===========================
+用SQL语句实现，变成如下的数据
+ID  PR   CON  OPS
+001 p    c    差(6),好(2),一般(4)
+002 w    e    差(8),好(7),一般(1)
+
+if object_id('pubs..tb') is not null
+   drop table tb
+go
+
+create table tb
+(
+id varchar(10),
+pr varchar(10),
+con varchar(10),
+op varchar(10),
+sc int
+)
+ 
+insert into tb(ID,PR,CON,OP,SC) values('001', 'p',    'c',    '差',    6)
+insert into tb(ID,PR,CON,OP,SC) values('001', 'p',    'c',    '好',    2)
+insert into tb(ID,PR,CON,OP,SC) values('001', 'p',    'c',    '一般',  4)
+insert into tb(ID,PR,CON,OP,SC) values('002', 'w',    'e',    '差',    8)
+insert into tb(ID,PR,CON,OP,SC) values('002', 'w',    'e',    '好',    7)
+insert into tb(ID,PR,CON,OP,SC) values('002', 'w',    'e',    '一般',  1)
+go
+
+if object_id('pubs..test') is not null
+   drop table test
+go
+select ID,PR,CON , OPS = op + '(' + cast(sc as varchar(10)) + ')' into test from tb
+
+--创建一个合并的函数
+if object_id('pubs..f_hb') is not null
+   drop function f_hb
+go
+create function f_hb(@id varchar(10),@pr varchar(10),@con varchar(10))
+returns varchar(8000)
+as
+begin
+  declare @str varchar(8000)
+  set @str = ''
+  select @str = @str + ',' + cast(OPS as varchar) from test where id = @id and @pr = pr and @con = con
+  set @str = right(@str , len(@str) - 1)
+  return(@str)
+End
+go
+
+--调用自定义函数得到结果：
+select distinct id ,pr , con , dbo.f_hb(id,pr,con) as OPS from test
+
+drop table tb
+drop table test
+
+--结果
+id         pr         con        OPS                
+---------- ---------- ---------- -------------------
+001        p          c          差(6),好(2),一般(4)
+002        w          e          差(8),好(7),一般(1)
+
+（所影响的行数为 2 行）
+
+
+
+create table b
+(col varchar(20))
+
+insert b values ('a')
+insert b values ('b')
+insert b values ('c')
+insert b values ('d')
+insert b values ('e')
+
+
+declare @sql varchar(1024)
+set @sql=''
+select @sql=@sql+b.col+',' from (select col from b) as b
+set @sql='select '''+@sql+''''
+exec(@sql)
+
+解答二
+create table A(SID int,   F1 int,  F2 int)
+insert into A values(1,    2,    3)
+insert into A values(2,    2,    1)
+insert into A values(3,    3,    2)
+create table B(BID int, SID int,  T int,  V int)
+insert into B values(1,    1,     1,    4)
+insert into B values(2,    1,     2,   2)
+insert into B values(3,    2,     1,    3)
+insert into B values(4,    2,     2,    4)
+insert into B values(5,    3,     1,    5)
+insert into B values(6,    3,     2,    2)
+go
+
+--静态SQL，即t的值固定为1,2
+select sid,f1,f2,
+  max(case when t = 1 then v else 0 end) v1,
+  max(case when t = 2 then v else 0 end) v2
+from
+(
+  select a.*,b.t,b.v from a,b where a.sid = b.sid
+) t
+group by sid,f1,f2
+
+--动态sql,即T的值不固定
+declare @sql varchar(8000)
+set @sql = 'select SID ,  F1 , F2'
+select @sql = @sql + ' , sum(case t when ''' + cast(t as varchar) + ''' then v else 0 end) [V' + cast(t as varchar) + ']'
+from (select distinct t from (select a.sid,a.f1,a.f2,b.t,b.v from a,b where a.sid = b.sid) m) as a
+set @sql = @sql + ' from (select a.sid,a.f1,a.f2,b.t,b.v from a,b where a.sid = b.sid) m group by SID ,  F1 , F2'
+exec(@sql)
+
+drop table A,B
+
+/*
+sid         f1          f2          v1          v2          
+----------- ----------- ----------- ----------- ----------- 
+1           2           3           4           2
+2           2           1           3           4
+3           3           2           5           2
+
+（所影响的行数为 3 行）
+
+SID         F1          F2          V1          V2          
+----------- ----------- ----------- ----------- ----------- 
+1           2           3           4           2
+2           2           1           3           4
+3           3           2           5           2
+*/
+

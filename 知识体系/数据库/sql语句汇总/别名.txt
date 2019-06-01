@@ -1,0 +1,19 @@
+1:   select   *   from     
+  2:   (   
+  3:   select   yw_shangsi,   sum(case   yw_del   when   1   then   1   else   0   end)   as   num     
+  4:   from   yewuyuan     
+  5:   group   by   yw_shangsi   having   sum(case   yw_del   when   1   then   1   else   0   end)>=3   
+  6:   )   
+    
+  服务器:   消息   170，级别   15，状态   1，行   6   
+  第   6   行:   ')'   附近有语法错误。   
+    1:   select   *   from     
+  2:   (   
+  3:   select   yw_shangsi,   sum(case   yw_del   when   1   then   1   else   0   end)   as   num     
+  4:   from   yewuyuan     
+  5:   group   by   yw_shangsi   having   sum(case   yw_del   when   1   then   1   else   0   end)>=3   
+  6:   )   aa   
+    
+  这样就没问题了
+
+内嵌视图，要定义别名才能在select   后作为表使用

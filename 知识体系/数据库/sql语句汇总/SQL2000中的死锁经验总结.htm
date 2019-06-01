@@ -1,0 +1,1349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0050)http://space.zdnet.com.cn/html/05/250805-1416.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office" xmlns:v = 
+"urn:schemas-microsoft-com:vml"><HEAD><TITLE>SQL Server2000中死锁经验总结 - TerryLee's Tech Space - ZDNetChina空间</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gbk">
+<META 
+content="xml,系统,程序,存储,数据库,网络,sql ZDNet空间,ZDNet博客,ZDNet写作平台,ZDNetChina,至顶网,圈子,收藏,相册,文件,论坛,社区" 
+name=keywords>
+<META 
+content="将死锁减至最少虽然不能完全避免死锁，但可以使死锁的数量减至最少。将死锁减至最少可以增加事务的吞吐量并减少系统开销，因为只有很少的事务： 回滚，而回滚会取消事务执行的所有工作。 由于死锁时回滚而由应用程 ZDNetChina个人空间,为IT人提供的写作平台" 
+name=description><LINK title="TerryLee's Tech Space" 
+href="http://space.zdnet.com.cn/?uid-250805-action-rss-type-blog" 
+type=application/rss+xml rel=alternate><LINK title=RSD 
+href="http://space.zdnet.com.cn/xmlrpc.php?rsd=250805" type=application/rsd+xml 
+rel=EditURI><LINK id=commonstyle href="SQL2000中的死锁经验总结.files/space.css" 
+type=text/css rel=stylesheet><LINK id=themestyle 
+href="SQL2000中的死锁经验总结.files/css_250805.cache.css" type=text/css rel=stylesheet>
+<SCRIPT type=text/javascript>
+var siteUrl = "http://space.zdnet.com.cn";
+</SCRIPT>
+
+<SCRIPT language=javascript src="SQL2000中的死锁经验总结.files/ajax.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=javascript src="SQL2000中的死锁经验总结.files/common.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2900.3243" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=wrap>
+<DIV id=header>
+<DIV id=spacename>
+<DIV id=xspace-spacename><STRONG>TerryLee's Tech Space</STRONG> 
+<P><A class=xspace-copyurl title=复制地址 
+onclick="javascript:setCopy('http://space.zdnet.com.cn/?250805');" 
+href="javascript:;">copy</A> <A class=xspace-add2fav title=加入收藏 
+onclick="javascript:addBookmark('TerryLee\'s Tech Space','http://space.zdnet.com.cn/?250805');return false;" 
+href="http://space.zdnet.com.cn/?250805">Bookmark</A> 
+http://space.zdnet.com.cn/?250805 </P></DIV></DIV>
+<DIV id=menu>
+<UL id=xspace-menu>
+  <LI class=xspace-active><A class=xspace-blog 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-blog">日志</A> 
+  </LI>
+  <LI><A class=xspace-image 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-image">图片</A> 
+  </LI>
+  <LI><A class=xspace-file 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-file">文件</A> 
+  </LI>
+  <LI><A class=xspace-link 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-link">书签</A> 
+  </LI>
+  <LI><A class=xspace-group 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-group">圈子</A> 
+  </LI>
+  <LI><A class=xspace-friend 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-friend">好友</A> 
+  </LI>
+  <LI><A class=xspace-mybbs 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-bbs">论坛</A> 
+  </LI>
+  <LI><A class=xspace-guestbook 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewpro">留言</A> </LI>
+  <LI><A class=xspace-mybbs 
+  href="http://space.zdnet.com.cn/batch.manage.php?uid=250805" 
+  target=_blank>工具箱</A> </LI></UL></DIV></DIV>
+<DIV class=xspace-layout1 id=content>
+<DIV class=mainarea-side id=mainarea>
+<DIV id=xspace-guide><!--<a href="http://space.zdnet.com.cn/batch.manage.php?uid=250805" class="xspace-spacecp" target="_blank">工具箱</a>-->您的位置: 
+<A href="http://space.zdnet.com.cn/" target=_blank>ZDNetChina空间</A> &raquo; <A 
+href="http://space.zdnet.com.cn/?uid-250805">TerryLee's Tech Space</A> &raquo; <A 
+href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-type-blog">博文</A> 
+</DIV><TR><TD class=line style="PADDING-TOP: 10px" -- height="100%" 
+valign="top"><!--{if $post['number'] == 1 }--><IFRAME id=innerframe 
+style="MARGIN-TOP: 0px; FLOAT: right; MARGIN-RIGHT: 7px" border=0 
+name=innerframe marginWidth=0 frameSpacing=0 marginHeight=0 
+src="SQL2000中的死锁经验总结.files/digg.htm" frameBorder=0 noResize width=280 
+scrolling=no height=52></IFRAME><!--{/if}-->
+<DIV id=show>
+<DIV class=chshbox style="WIDTH: auto">
+<DIV class=boclee>
+<DIV class=mainarea-side id=mainarea><!--main start-->
+<DIV class=stocks_notice>
+<H1 class=xspace-title>SQL Server2000中死锁经验总结</H1>
+<P class=xspace-smalltxt><A 
+href="http://space.zdnet.com.cn/batch.common.php?action=viewspace&amp;op=up&amp;itemid=1416&amp;uid=250805">上一篇</A> 
+/ <A 
+href="http://space.zdnet.com.cn/batch.common.php?action=viewspace&amp;op=next&amp;itemid=1416&amp;uid=250805">下一篇</A> 
+&nbsp;2007-09-24 21:06:52 &nbsp;&nbsp; <A>文章类型： 转载 </A></P>
+<DIV class=xspace-itemdata><A 
+href="http://space.zdnet.com.cn/html/05/250805-1416.html#xspace-tracks">查看( 376 
+)</A> / <A 
+href="http://space.zdnet.com.cn/html/05/250805-1416.html#xspace-itemreply">评论( 1 
+)</A> / <A 
+href="http://space.zdnet.com.cn/html/05/250805-1416.html#xspace-itemform">评分( 
+<SPAN class=xspace-rategood title=好评>5</SPAN> / <SPAN class=xspace-ratebad 
+title=差评>0</SPAN> )</A> </DIV>
+<DIV class=xspace-itemmessage id=xspace-showmessage>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-outline-level: 3" 
+align=left><B><SPAN 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">将死锁减至最少<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></B></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">虽然不能完全避免死锁，但可以使死锁的数量减至最少。将死锁减至最少可以增加事务的吞吐量并减少<A 
+onclick="javascript:tagshow(event, '%CF%B5%CD%B3');" href="javascript:;" 
+target=_self><U><STRONG>系统</STRONG></U></A>开销，因为只有很少的事务：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<UL style="MARGIN-TOP: 0cm" type=disc>
+  <LI class=MsoNormal 
+  style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><SPAN 
+  style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">回滚，而回滚会取消事务执行的所有工作。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN>
+  <LI class=MsoNormal 
+  style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><SPAN 
+  style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">由于死锁时回滚而由应用<A 
+  onclick="javascript:tagshow(event, '%B3%CC%D0%F2');" href="javascript:;" 
+  target=_self><U><STRONG>程序</STRONG></U></A>重新提交。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></LI></UL>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">下列方法有助于最大限度地降低死锁：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<UL style="MARGIN-TOP: 0cm" type=disc>
+  <LI class=MsoNormal 
+  style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><SPAN 
+  style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">按同一顺序访问对象。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN>
+  <LI class=MsoNormal 
+  style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><SPAN 
+  style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">避免事务中的用户交互。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN>
+  <LI class=MsoNormal 
+  style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><SPAN 
+  style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">保持事务简短并在一个批处理中。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN>
+  <LI class=MsoNormal 
+  style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><SPAN 
+  style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">使用低隔离级别。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN>
+  <LI class=MsoNormal 
+  style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><SPAN 
+  style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">使用绑定连接。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></LI></UL>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-outline-level: 5" 
+align=left><B><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">按同一顺序访问对象<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></B></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">如果所有并发事务按同一顺序访问对象，则发生死锁的可能性会降低。例如，如果两个并发事务获得<B><SPAN 
+lang=EN-US>Supplier</SPAN></B><SPAN lang=EN-US></SPAN>表上的锁，然后获得<B><SPAN 
+lang=EN-US>Part</SPAN></B><SPAN 
+lang=EN-US></SPAN>表上的锁，则在其中一个事务完成之前，另一个事务被阻塞在<B><SPAN 
+lang=EN-US>Supplier</SPAN></B><SPAN 
+lang=EN-US></SPAN>表上。第一个事务提交或回滚后，第二个事务继续进行。不发生死锁。将<A 
+onclick="javascript:tagshow(event, '%B4%E6%B4%A2');" href="javascript:;" 
+target=_self><U><STRONG>存储</STRONG></U></A>过程用于所有的数据修改可以标准化访问对象的顺序。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: center; mso-pagination: widow-orphan" 
+align=center><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><v:shapetype 
+id=_x0000_t75 coordsize="21600,21600" o:spt="75" o:preferrelative="t" 
+path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f"><v:stroke 
+joinstyle="miter"></v:stroke><v:formulas><v:f 
+eqn="if lineDrawn pixelLineWidth 0"></v:f><v:f eqn="sum @0 1 0"></v:f><v:f 
+eqn="sum 0 0 @1"></v:f><v:f eqn="prod @2 1 2"></v:f><v:f 
+eqn="prod @3 21600 pixelWidth"></v:f><v:f 
+eqn="prod @3 21600 pixelHeight"></v:f><v:f eqn="sum @0 0 1"></v:f><v:f 
+eqn="prod @6 1 2"></v:f><v:f eqn="prod @7 21600 pixelWidth"></v:f><v:f 
+eqn="sum @8 21600 0"></v:f><v:f eqn="prod @7 21600 pixelHeight"></v:f><v:f 
+eqn="sum @10 21600 0"></v:f></v:formulas><v:path o:extrusionok="f" 
+gradientshapeok="t" o:connecttype="rect"></v:path><o:lock v:ext="edit" 
+aspectratio="t"></o:lock></v:shapetype><IMG height=305 hspace=0 
+src="SQL2000中的死锁经验总结.files/PIC050.jpg" width=436><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-outline-level: 5" 
+align=left><B><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">避免事务中的用户交互<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></B></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">避免编写包含用户交互的事务，因为运行没有用户交互的批处理的速度要远远快于用户手动响应查询的速度，例如答复应用程序请求参数的提示。例如，如果事务正在等待用户输入，而用户去吃午餐了或者甚至回家过周末了，则用户将此事务挂起使之不能完成。这样将降低系统的吞吐量，因为事务持有的任何锁只有在事务提交或回滚时才会释放。即使不出现死锁的情况，访问同一资源的其它事务也会被阻塞，等待该事务完成。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-outline-level: 5" 
+align=left><B><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">保持事务简短并在一个批处理中<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></B></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">在同一<A 
+onclick="javascript:tagshow(event, '%CA%FD%BE%DD%BF%E2');" href="javascript:;" 
+target=_self><U><STRONG>数据库</STRONG></U></A>中并发执行多个需要长时间运行的事务时通常发生死锁。事务运行时间越长，其持有排它锁或更新锁的时间也就越长，从而堵塞了其它活动并可能导致死锁。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">保持事务在一个批处理中，可以最小化事务的<A 
+onclick="javascript:tagshow(event, '%CD%F8%C2%E7');" href="javascript:;" 
+target=_self><U><STRONG>网络</STRONG></U></A>通信往返量，减少完成事务可能的延迟并释放锁。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-outline-level: 5" 
+align=left><B><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">使用低隔离级别<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></B></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">确定事务是否能在更低的隔离级别上运行。执行提交读允许事务读取另一个事务已读取（未修改）的数据，而不必等待第一个事务完成。使用较低的隔离级别（例如提交读）而不使用较高的隔离级别（例如可串行读）可以缩短持有共享锁的时间，从而降低了锁定争夺。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-outline-level: 5" 
+align=left><B><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">使用绑定连接<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></B></P>
+<P class=MsoNormal 
+style="LINE-HEIGHT: 200%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">使用绑定连接使同一应用程序所打开的两个或多个连接可以相互合作。次级连接所获得的任何锁可以象由主连接获得的锁那样持有，反之亦然，因此不会相互阻塞<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">检测死锁</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%"><o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="LINE-HEIGHT: 200%"><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体">如果发生死锁了，我们怎么去检测具体发生死锁的是哪条<SPAN 
+lang=EN-US><A onclick="javascript:tagshow(event, 'SQL');" href="javascript:;" 
+target=_self><U><STRONG>SQL</STRONG></U></A></SPAN>语句或存储过程？<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 200%"><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体">这时我们可以使用以下存储过程来检测，就可以查出引起死锁的进程和<SPAN 
+lang=EN-US>SQL</SPAN>语句。<SPAN lang=EN-US>SQL Server</SPAN>自带的系统存储过程<SPAN 
+lang=EN-US>sp_who</SPAN>和<SPAN lang=EN-US>sp_lock</SPAN>也可以用来查找阻塞和死锁<SPAN 
+lang=EN-US>,</SPAN>但没有这里介绍的方法好用。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 150%"><o:p></P>
+<DIV 
+style="BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 98%; WORD-BREAK: break-all; PADDING-TOP: 4px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #eeeeee"><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><SPAN 
+style="COLOR: #0000ff">use</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;master<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">go</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">create</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">procedure</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;sp_who_lock<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">as</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">begin</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">declare</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,</SPAN><SPAN style="COLOR: #008000">@bl</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intTransactionCountOnEntry</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intRowcount</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCountProperties</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCounter</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN style="COLOR: #0000ff">create</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">table</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tmp_lock_who&nbsp;(<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;id&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">identity</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">1</SPAN><SPAN 
+style="COLOR: #000000">,</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">1</SPAN><SPAN 
+style="COLOR: #000000">),<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;spid&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">smallint</SPAN><SPAN 
+style="COLOR: #000000">,<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;bl&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">smallint</SPAN><SPAN 
+style="COLOR: #000000">)<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN style="COLOR: #0000ff">IF</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</SPAN><SPAN 
+style="COLOR: #808080">&lt;&gt;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">RETURN</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN style="COLOR: #0000ff">insert</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">into</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tmp_lock_who(spid,bl)&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;,blocked<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;sysprocesses&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;blocked</SPAN><SPAN 
+style="COLOR: #808080">&gt;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;)&nbsp;a&nbsp;<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">not</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">exists</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;sysprocesses&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;blocked</SPAN><SPAN 
+style="COLOR: #808080">&gt;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;)&nbsp;b&nbsp;<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;a.blocked</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">spid)<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">union</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;spid,blocked&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;sysprocesses&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;blocked</SPAN><SPAN 
+style="COLOR: #808080">&gt;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN style="COLOR: #0000ff">IF</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</SPAN><SPAN 
+style="COLOR: #808080">&lt;&gt;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">RETURN</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #008080">--</SPAN><SPAN 
+style="COLOR: #008080">&nbsp;找到临时表的记录数</SPAN><SPAN 
+style="COLOR: #008080"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCountProperties</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">Count</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #808080">*</SPAN><SPAN style="COLOR: #000000">),</SPAN><SPAN 
+style="COLOR: #008000">@intCounter</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">1</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tmp_lock_who<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">IF</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</SPAN><SPAN 
+style="COLOR: #808080">&lt;&gt;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">RETURN</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN style="COLOR: #0000ff">if</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCountProperties</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;</SPAN><SPAN style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">现在没有阻塞和死锁信息</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">as</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;message<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #008080">--</SPAN><SPAN 
+style="COLOR: #008080">&nbsp;循环开始</SPAN><SPAN style="COLOR: #008080"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">while</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCounter</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">&lt;=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCountProperties</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">begin</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #008080">--</SPAN><SPAN 
+style="COLOR: #008080">&nbsp;取第一条记录</SPAN><SPAN style="COLOR: #008080"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;spid,</SPAN><SPAN 
+style="COLOR: #008000">@bl</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">&nbsp;bl<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tmp_lock_who&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;Id&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCounter</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;</SPAN><SPAN style="COLOR: #0000ff">begin</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;</SPAN><SPAN style="COLOR: #0000ff">if</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">=</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">引起数据库死锁的是:&nbsp;</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">CAST</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #008000">@bl</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">AS</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">VARCHAR</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">10</SPAN><SPAN 
+style="COLOR: #000000">))&nbsp;</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">进程号,其执行的SQL语法如下</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">else</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">进程号SPID：</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #808080">+</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">CAST</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #0000ff">AS</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">VARCHAR</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">10</SPAN><SPAN 
+style="COLOR: #000000">))</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">被</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">进程号SPID：</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #808080">+</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">CAST</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #008000">@bl</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">AS</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">VARCHAR</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">10</SPAN><SPAN 
+style="COLOR: #000000">))&nbsp;</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">阻塞,其当前进程执行的SQL语法如下</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">DBCC</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;INPUTBUFFER&nbsp;(</SPAN><SPAN 
+style="COLOR: #008000">@bl</SPAN><SPAN style="COLOR: #000000">&nbsp;)<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">end</SPAN><SPAN style="COLOR: #000000">&nbsp;<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #008080">--</SPAN><SPAN 
+style="COLOR: #008080">&nbsp;循环指针下移</SPAN><SPAN style="COLOR: #008080"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #0000ff">set</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCounter</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@intCounter</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">1</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">end</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">drop</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">table</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tmp_lock_who<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">return</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">end</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN></DIV>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"></o:p></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">杀死锁和进程</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%"><o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="LINE-HEIGHT: 200%"><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体">如何去手动的杀死进程和锁？最简单的办法，重新启动服务。但是这里要介绍一个存储过程，通过显式的调用，可以杀死进程和锁。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 150%"><o:p></P>
+<DIV 
+style="BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 98%; WORD-BREAK: break-all; PADDING-TOP: 4px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #eeeeee"><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><SPAN 
+style="COLOR: #0000ff">use</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;master<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">go</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">exists</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #808080">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;dbo.sysobjects&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;id&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">object_id</SPAN><SPAN 
+style="COLOR: #000000">(N</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">[dbo].[p_killspid]</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000">)&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">and</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">OBJECTPROPERTY</SPAN><SPAN 
+style="COLOR: #000000">(id,&nbsp;N</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">IsProcedure</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000">)&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">1</SPAN><SPAN 
+style="COLOR: #000000">)<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">drop</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">procedure</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">[</SPAN><SPAN 
+style="COLOR: #ff0000">dbo</SPAN><SPAN style="COLOR: #ff0000">]</SPAN><SPAN 
+style="COLOR: #000000">.</SPAN><SPAN style="COLOR: #ff0000">[</SPAN><SPAN 
+style="COLOR: #ff0000">p_killspid</SPAN><SPAN 
+style="COLOR: #ff0000">]</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">GO</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">create</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">proc</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;p_killspid<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #008000">@dbname</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">varchar</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">200</SPAN><SPAN 
+style="COLOR: #000000">)&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008080">--</SPAN><SPAN 
+style="COLOR: #008080">要关闭进程的数据库名</SPAN><SPAN style="COLOR: #008080"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">as</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">declare</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@sql</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">nvarchar</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">500</SPAN><SPAN 
+style="COLOR: #000000">)&nbsp;&nbsp;<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">declare</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">nvarchar</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">20</SPAN><SPAN 
+style="COLOR: #000000">)<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">declare</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tb&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">cursor</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;spid</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #ff00ff">cast</SPAN><SPAN 
+style="COLOR: #000000">(spid&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">as</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">varchar</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">20</SPAN><SPAN 
+style="COLOR: #000000">))&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;master..sysprocesses&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;dbid</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #ff00ff">db_id</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN style="COLOR: #008000">@dbname</SPAN><SPAN 
+style="COLOR: #000000">)<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">open</SPAN><SPAN style="COLOR: #000000">&nbsp;#tb<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">fetch</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">next</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tb&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">into</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">while</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@fetch_status</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">begin</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">exec</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">kill&nbsp;</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN style="COLOR: #000000">)<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">fetch</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">next</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tb&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">into</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@spid</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">end</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">close</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tb<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">deallocate</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#tb<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">go</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #008080">--</SPAN><SPAN 
+style="COLOR: #008080">用法&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008080"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">exec</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;p_killspid&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #ff0000">newdbpy</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN></DIV>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"></o:p></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">查看锁信息</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%"><o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="LINE-HEIGHT: 200%"><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">如何查看系统中所有锁的详细信息？在企业管理管理器中，我们可以看到一些进程和锁的信息，这里介绍另外一种方法。</SPAN><SPAN 
+lang=EN-US style="FONT-SIZE: 10pt; LINE-HEIGHT: 200%"><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 150%"><o:p></P>
+<DIV 
+style="BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 98%; WORD-BREAK: break-all; PADDING-TOP: 4px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #eeeeee"><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><SPAN 
+style="COLOR: #008080">--</SPAN><SPAN style="COLOR: #008080">查看锁信息</SPAN><SPAN 
+style="COLOR: #008080"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">create</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">table</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#t(req_spid&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,obj_name&nbsp;sysname)<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">declare</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #008000">@s</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">nvarchar</SPAN><SPAN 
+style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">4000</SPAN><SPAN 
+style="COLOR: #000000">)<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;,</SPAN><SPAN 
+style="COLOR: #008000">@rid</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,</SPAN><SPAN style="COLOR: #008000">@dbname</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;sysname,</SPAN><SPAN 
+style="COLOR: #008000">@id</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #000000">int</SPAN><SPAN 
+style="COLOR: #000000">,</SPAN><SPAN style="COLOR: #008000">@objname</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;sysname<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">declare</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;tb&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">cursor</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">distinct</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;req_spid,dbname</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #ff00ff">db_name</SPAN><SPAN 
+style="COLOR: #000000">(rsc_dbid),rsc_objid<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;master..syslockinfo&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">where</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;rsc_type&nbsp;</SPAN><SPAN 
+style="COLOR: #808080">in</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">4</SPAN><SPAN 
+style="COLOR: #000000">,</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">5</SPAN><SPAN 
+style="COLOR: #000000">)<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">open</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;tb<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">fetch</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">next</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;tb&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">into</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@rid</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN 
+style="COLOR: #008000">@dbname</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN 
+style="COLOR: #008000">@id</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">while</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #008000">@@fetch_status</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">0</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top></SPAN><SPAN style="COLOR: #0000ff">begin</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">set</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@s</SPAN><SPAN style="COLOR: #808080">=</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">select&nbsp;@objname=name&nbsp;from&nbsp;[</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #008000">@dbname</SPAN><SPAN style="COLOR: #808080">+</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">]..sysobjects&nbsp;where&nbsp;id=@id</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">exec</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;sp_executesql&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@s</SPAN><SPAN style="COLOR: #000000">,N</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">@objname&nbsp;sysname&nbsp;out,@id&nbsp;int</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN 
+style="COLOR: #008000">@objname</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;out,</SPAN><SPAN 
+style="COLOR: #008000">@id</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">insert</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">into</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#t&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">values</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #008000">@rid</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN 
+style="COLOR: #008000">@objname</SPAN><SPAN style="COLOR: #000000">)<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">fetch</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">next</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;tb&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">into</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">@rid</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN 
+style="COLOR: #008000">@dbname</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN 
+style="COLOR: #008000">@id</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">end</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">close</SPAN><SPAN style="COLOR: #000000">&nbsp;tb<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">deallocate</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;tb<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">select</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;进程id</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">a.req_spid<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;,数据库</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #ff00ff">db_name</SPAN><SPAN 
+style="COLOR: #000000">(rsc_dbid)<BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;,类型</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #ff00ff">case</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;rsc_type&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">1</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">NULL&nbsp;资源（未使用）</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">2</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">数据库</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">3</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">文件</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">4</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">索引</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">5</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">表</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">6</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">页</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">7</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">键</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">8</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">扩展盘区</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">9</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">RID（行&nbsp;ID)</SPAN><SPAN 
+style="COLOR: #ff0000">'</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">when</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #800000">10</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">then</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #ff0000">应用程序</SPAN><SPAN style="COLOR: #ff0000">'</SPAN><SPAN 
+style="COLOR: #000000"><BR><IMG src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">end</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;,对象id</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">rsc_objid<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;,对象名</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">b.obj_name<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" 
+align=top>&nbsp;&nbsp;&nbsp;&nbsp;,rsc_indid<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top>&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">from</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;master..syslockinfo&nbsp;a&nbsp;</SPAN><SPAN 
+style="COLOR: #ff00ff">left</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">join</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;#t&nbsp;b&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">on</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;a.req_spid</SPAN><SPAN 
+style="COLOR: #808080">=</SPAN><SPAN style="COLOR: #000000">b.req_spid<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">go</SPAN><SPAN style="COLOR: #000000"><BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN><SPAN 
+style="COLOR: #0000ff">drop</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">table</SPAN><SPAN style="COLOR: #000000">&nbsp;#t<BR><IMG 
+src="SQL2000中的死锁经验总结.files/None.gif" align=top></SPAN></DIV>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"></o:p></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">总结</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: #006699; LINE-HEIGHT: 150%"><o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">虽然不能完全避免死锁，但我们可以将死锁减至最少，并通过一定的方法来检测死锁。</SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 10pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">原文地址：</SPAN></P><BR>
+<DIV class=xspace-imginlog></DIV></DIV>
+<DIV class=xspace-msgmodule id=xspace-relatives>
+<H5>相关阅读:</H5>
+<UL class=xspace-list>
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-246879-action-viewspace-itemid-386" 
+  target=_blank>手工安装win2003无盘终端教程</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?246879" target=_blank>烂泥</A>, 
+  2007-8-23)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-246051-action-viewspace-itemid-702" 
+  target=_blank>Oracle技术沙龙、盖国强、我的同事们</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?246051" target=_blank>ericlee</A>, 
+  2007-9-09)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-246879-action-viewspace-itemid-772" 
+  target=_blank>Oracle安全全接触</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?246879" target=_blank>烂泥</A>, 
+  2007-9-12)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewspace-itemid-1013" 
+  target=_blank>利用SQL语句得到客户端的IP地址</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?250805" target=_blank>TerryLee117</A>, 
+  2007-9-21)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewspace-itemid-1015" 
+  target=_blank>数据库设计技巧系列（一）——设计数据库之前</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?250805" target=_blank>TerryLee117</A>, 
+  2007-9-21)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewspace-itemid-1016" 
+  target=_blank>数据库设计技巧系列（二）——设计表和字段</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?250805" target=_blank>TerryLee117</A>, 
+  2007-9-21)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewspace-itemid-1018" 
+  target=_blank>数据库设计技巧系列（三）——选择键和索引</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?250805" target=_blank>TerryLee117</A>, 
+  2007-9-21)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewspace-itemid-1020" 
+  target=_blank>数据库设计技巧系列（五）——各种小技巧</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?250805" target=_blank>TerryLee117</A>, 
+  2007-9-21)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewspace-itemid-1021" 
+  target=_blank>数据库设计技巧系列（四）——保证数据的完整性</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?250805" target=_blank>TerryLee117</A>, 
+  2007-9-21)</SPAN> 
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewspace-itemid-1335" 
+  target=_blank>用任务计划实现数据库的异地备份</A> <SPAN class=xspace-smalltxt>(<A 
+  href="http://space.zdnet.com.cn/?250805" target=_blank>TerryLee117</A>, 
+  2007-9-23)</SPAN> </LI></UL></DIV>
+<P class=xspace-itemlinks><A 
+href="http://bbs.zdnet.com.cn/post.php?action=import&amp;itemid=1416" 
+target=_blank>导入论坛</A> <A 
+onclick="showajaxdiv('http://space.zdnet.com.cn/batch.common.php?action=trackback&amp;itemid=1416', 300);" 
+href="javascript:;">引用链接</A> <A onclick=joinfavorite(1416); 
+href="javascript:;">收藏</A> <A 
+onclick="showajaxdiv('http://space.zdnet.com.cn/batch.common.php?action=emailfriend&amp;itemid=1416', 400);" 
+href="javascript:;">分享给好友</A> <A 
+onclick="showajaxdiv('http://space.zdnet.com.cn/batch.common.php?action=group&amp;itemid=1416', 300);" 
+href="javascript:;">推荐到圈子</A> <A 
+href="http://space.zdnet.com.cn/batch.manage.php?itemid=1416" 
+target=_blank>管理</A> <A onclick=report(1416); href="javascript:;">举报</A> </P>
+<P class=xspace-itemtag>TAG: <A 
+href="http://space.zdnet.com.cn/?action-tag-tagname-%CA%FD%BE%DD%BF%E2" 
+target=_blank>数据库</A> </P>
+<DIV id=xspace-itemreply>
+<DL id=xspace-comment21064>
+  <DT><IMG class="xspace-signavatar xspace-imgstyle" 
+  src="SQL2000中的死锁经验总结.files/space_noface.gif"> <A class=xspace-quote 
+  onclick=getQuote(21064) href="javascript:;">引用</A> <A class=xspace-del 
+  onclick=javascript:deletecomment(21064); href="javascript:;">删除</A> Guest 
+  <SPAN class=xspace-smalltxt>&nbsp; / &nbsp; 2008-05-28 09:35:13</SPAN> </DT>
+  <DD>评 <SPAN style="FONT-WEIGHT: bold; FONT-SIZE: 18px">5</SPAN> 分<BR></DD></DL>
+<DIV class=xspace-multipage id=xspace-multipage-div><A 
+onclick=javascript:showcomment(1); href="javascript:;">查看全部评论</A></DIV></DIV>
+<DIV id=xspace-itemform>
+<FORM id=xspace-commentform action=http://space.zdnet.com.cn/batch.comment.php 
+method=post target=xspace-phpframe>
+<FIELDSET id=xspace-rates>
+<DIV id=xspace-rates-bg>
+<DIV class=xspace-rates0 id=xspace-rates-star></DIV>
+<DIV id=xspace-rates-a><A onmouseover=rateHover(-5); 
+onclick="setRate('-5', '1416');" onmouseout=rateOut(); 
+href="javascript:;">-5</A> <A onmouseover=rateHover(-3); 
+onclick="setRate('-3', '1416');" onmouseout=rateOut(); 
+href="javascript:;">-3</A> <A onmouseover=rateHover(-1); 
+onclick="setRate('-1', '1416');" onmouseout=rateOut(); 
+href="javascript:;">-1</A> <A onmouseover=rateHover(0); 
+onclick="setRate('0', '1416');" onmouseout=rateOut(); href="javascript:;">-</A> 
+<A onmouseover=rateHover(1); onclick="setRate('1', '1416');" 
+onmouseout=rateOut(); href="javascript:;">+1</A> <A onmouseover=rateHover(3); 
+onclick="setRate('3', '1416');" onmouseout=rateOut(); href="javascript:;">+3</A> 
+<A onmouseover=rateHover(5); onclick="setRate('5', '1416');" 
+onmouseout=rateOut(); href="javascript:;">+5</A> </DIV><INPUT 
+id=xspace-rates-value type=hidden value=0 name=rates> </DIV>
+<P>评分：<SPAN id=xspace-rates-tip>0</SPAN></P></FIELDSET> 
+<FIELDSET><LEGEND>我来说两句</LEGEND>
+<P><SPAN class=xspace-moresmilies onclick=moresmilies();>显示全部</SPAN> </P>
+<DIV id=xspace-smilies><IMG id=smilie_0 onclick=insertSmilies(0) 
+alt=:loveliness: src="SQL2000中的死锁经验总结.files/loveliness.gif" border=0> <IMG 
+id=smilie_1 onclick=insertSmilies(1) alt=:handshake 
+src="SQL2000中的死锁经验总结.files/handshake.gif" border=0> <IMG id=smilie_2 
+onclick=insertSmilies(2) alt=:victory: src="SQL2000中的死锁经验总结.files/victory.gif" 
+border=0> <IMG id=smilie_3 onclick=insertSmilies(3) alt=:funk: 
+src="SQL2000中的死锁经验总结.files/funk.gif" border=0> <IMG id=smilie_4 
+onclick=insertSmilies(4) alt=:time: src="SQL2000中的死锁经验总结.files/time.gif" 
+border=0> <IMG id=smilie_5 onclick=insertSmilies(5) alt=:kiss: 
+src="SQL2000中的死锁经验总结.files/kiss.gif" border=0> <IMG id=smilie_6 
+onclick=insertSmilies(6) alt=:call: src="SQL2000中的死锁经验总结.files/call.gif" 
+border=0> <IMG id=smilie_7 onclick=insertSmilies(7) alt=:hug: 
+src="SQL2000中的死锁经验总结.files/hug.gif" border=0> <IMG id=smilie_8 
+onclick=insertSmilies(8) alt=:lol src="SQL2000中的死锁经验总结.files/lol.gif" border=0> 
+<IMG id=smilie_9 onclick=insertSmilies(9) alt=":'(" 
+src="SQL2000中的死锁经验总结.files/cry.gif" border=0> <IMG id=smilie_10 
+onclick=insertSmilies(10) alt=:Q src="SQL2000中的死锁经验总结.files/mad.gif" border=0> 
+<IMG id=smilie_11 onclick=insertSmilies(11) alt=:L 
+src="SQL2000中的死锁经验总结.files/sweat.gif" border=0> <IMG id=smilie_12 
+onclick=insertSmilies(12) alt=;P src="SQL2000中的死锁经验总结.files/titter.gif" 
+border=0> <IMG id=smilie_13 onclick=insertSmilies(13) alt=:$ 
+src="SQL2000中的死锁经验总结.files/shy.gif" border=0> <IMG id=smilie_14 
+onclick=insertSmilies(14) alt=:P src="SQL2000中的死锁经验总结.files/tongue.gif" 
+border=0> <IMG id=smilie_15 onclick=insertSmilies(15) alt=:o 
+src="SQL2000中的死锁经验总结.files/shocked.gif" border=0> <IMG id=smilie_16 
+onclick=insertSmilies(16) alt=:@ src="SQL2000中的死锁经验总结.files/huffy.gif" border=0> 
+<IMG id=smilie_17 onclick=insertSmilies(17) alt=:D 
+src="SQL2000中的死锁经验总结.files/biggrin.gif" border=0> <IMG id=smilie_18 
+onclick=insertSmilies(18) alt=:( src="SQL2000中的死锁经验总结.files/sad.gif" border=0> 
+<IMG id=smilie_19 onclick=insertSmilies(19) alt=:) 
+src="SQL2000中的死锁经验总结.files/smile.gif" border=0> </DIV>
+<P></P>
+<P><LABEL for=xspace-commentmsg>内容</LABEL> <TEXTAREA id=xspace-commentmsg name=message></TEXTAREA> </P>
+<P><LABEL for=xspace-nickname>昵称</LABEL> <INPUT id=xspace-nickname 
+name=nickname> </P>
+<P id=xspace-seccodeline><LABEL for=xspace-seccode>验证</LABEL> <INPUT 
+id=xspace-seccode size=10 name=seccode> <LABEL for=xspace-seccode><IMG 
+id=xspace-imgseccode title=看不清？点击换一个 onclick=javascript:newseccode(this); 
+alt=seccode src="SQL2000中的死锁经验总结.files/batch.seccode.png"></LABEL> </P>
+<P><INPUT type=hidden value=1416 name=itemid><BUTTON id=xspace-btncomment 
+name=submitcomment type=submit value="true">提交评论</BUTTON> </P></FIELDSET> 
+</FORM></DIV>
+<SCRIPT language=javascript type=text/javascript>
+<!--
+function showcomment(page) {
+var x = new Ajax('statusid', 'XML');
+x.get('http://space.zdnet.com.cn/batch.comment.php?action=view&itemid=1416&page='+page, function(s) {
+getbyid("xspace-itemreply").innerHTML = s.lastChild.firstChild.nodeValue;
+});
+}
+function deletecomment(cid) {
+var x = new Ajax('statusid', 'XML');
+x.get('http://space.zdnet.com.cn/batch.comment.php?action=delete&cid='+cid, function(s) {
+alert(s.lastChild.firstChild.nodeValue);
+});
+}
+
+function moresmilies() {
+var smilies = document.getElementById('xspace-smilies');
+if (smilies.style.height=='auto') {
+smilies.style.height = '';
+} else {
+smilies.style.height = 'auto';
+}
+}
+addImgLink("xspace-showmessage");
+addMediaAction('xspace-showmessage');
+//-->
+</SCRIPT>
+<IFRAME id=xspace-phpframe name=xspace-phpframe marginWidth=0 src="about:blank" 
+frameBorder=0 width=0 height=0></IFRAME></DIV></DIV></DIV></DIV></DIV></DIV>
+<DIV class=sidearea id=sideleft>
+<DIV class=xspace-sideblock id=avatar>
+<DIV id=xspace-avatar><IMG class=xspace-imgstyle alt=TerryLee117 
+src="SQL2000中的死锁经验总结.files/space_noface.gif">
+<P><A 
+href="http://space.zdnet.com.cn/?uid-250805-action-viewpro-showpro-1">TerryLee117</A></P></DIV></DIV>
+<DIV class=xspace-sideblock id=action>
+<H3 class=xspace-blocktitle>用户菜单</H3>
+<UL id=xspace-action>
+  <LI><A class=xspace-message 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewpro">给我留言</A> </LI>
+  <LI><A class=xspace-addfriend onclick="javascript:joinfriend('250805');" 
+  href="javascript:;">加入好友</A> </LI>
+  <LI><A class=xspace-sendpm 
+  href="http://bbs.zdnet.com.cn/pm.php?action=send&amp;uid=250805" 
+  target=_blank>发短消息</A> </LI>
+  <LI><A class=xspace-profile 
+  href="http://space.zdnet.com.cn/?uid-250805-action-viewpro-showpro-1">我的介绍</A> 
+<!--<li><a class="xspace-profile" href="http://bbs.zdnet.com.cn/viewpro.php?uid=250805">论坛资料</a></li>
+			<li><a class="xspace-ctrlpannel" href="http://space.zdnet.com.cn/batch.manage.php?uid=250805">工具箱</a></li>--></LI></UL></DIV>
+<DIV class=xspace-sideblock id=search>
+<H3 class=xspace-blocktitle>标题搜索</H3>
+<FORM id=xspace-search 
+action=http://space.zdnet.com.cn/index.php?uid/250805/action/spacelist/php/1 
+method=post><INPUT id=xspace-searchkey name=searchkey> <INPUT type=hidden 
+value=yes name=searchsubmit> <INPUT id=xspace-dosearch type=submit value=搜索 name=xspace-dosearch> 
+</FORM></DIV>
+<DIV class=xspace-sideblock id=calendar>
+<H3 class=xspace-blocktitle>日历</H3>
+<TABLE id=xspace-calendar cellSpacing=2 cellPadding=2 width="100%" 
+summary=xspace-Calendar border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle colSpan=7>
+      <TABLE class=xspace-datenav cellSpacing=3 cellPadding=3 
+      summary="xspace-Date nav">
+        <TBODY>
+        <TR>
+          <TD align=middle><A 
+            href="http://space.zdnet.com.cn/?action-spacelist-uid-250805-type-blog-starttime-1212249600-endtime-1214841600">&laquo;</A></TD>
+          <TD noWrap align=middle><A 
+            href="http://space.zdnet.com.cn/?action-spacelist-uid-250805-type-blog-starttime-1214841600-endtime-1217520000">2008-07-01</A></TD>
+          <TD align=middle>&nbsp;</TD></TR></TBODY></TABLE></TD></TR>
+  <TR class=xspace-week align=middle>
+    <TD>日</TD>
+    <TD>一</TD>
+    <TD>二</TD>
+    <TD>三</TD>
+    <TD>四</TD>
+    <TD>五</TD>
+    <TD>六</TD></TR>
+  <TR align=middle>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD></TR>
+  <TR align=middle>
+    <TD>6</TD>
+    <TD>7</TD>
+    <TD>8</TD>
+    <TD>9</TD>
+    <TD>10</TD>
+    <TD>11</TD>
+    <TD>12</TD></TR>
+  <TR align=middle>
+    <TD>13</TD>
+    <TD>14</TD>
+    <TD>15</TD>
+    <TD>16</TD>
+    <TD>17</TD>
+    <TD>18</TD>
+    <TD>19</TD></TR>
+  <TR align=middle>
+    <TD>20</TD>
+    <TD>21</TD>
+    <TD>22</TD>
+    <TD>23</TD>
+    <TD>24</TD>
+    <TD>25</TD>
+    <TD>26</TD></TR>
+  <TR align=middle>
+    <TD>27</TD>
+    <TD>28</TD>
+    <TD>29</TD>
+    <TD>30</TD>
+    <TD>31</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD></TR></TBODY></TABLE></DIV>
+<DIV class=xspace-sideblock id=archive>
+<H3 class=xspace-blocktitle>我的存档</H3>
+<UL class=xspace-list>
+  <LI><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-spacelist-starttime-1188576000-endtime-1191168000">2007年09月</A></LI></UL></DIV>
+<DIV class=xspace-sideblock id=infomation>
+<H3 class=xspace-blocktitle>数据统计</H3>
+<UL class=xspace-list>
+  <LI>访问量: 18182
+  <LI>日志数: 133
+  <LI>建立时间: 2007-09-21 
+  <LI>更新时间: 2007-09-30 </LI></UL></DIV>
+<DIV class=xspace-sideblock id=rss>
+<H3 class=xspace-blocktitle>RSS订阅</H3>
+<UL class=xspace-list>
+  <LI class=xspace-logo><A 
+  href="http://space.zdnet.com.cn/?uid-250805-action-rss-type-blog"><IMG 
+  alt=RSS订阅 src="SQL2000中的死锁经验总结.files/rss.gif" border=0></A> 
+</LI></UL></DIV></DIV></DIV></DIV>
+<DIV id=xspace-footer>
+<P id=xspace-footer-ad></P>
+<P id=xspace-footer_menu><A 
+href="http://space.zdnet.com.cn/batch.login.php?action=logout">清空Cookie</A> - <A 
+href="mailto:jiang.yang@zdnet.com.cn">联系我们</A> - <A 
+href="http://space.zdnet.com.cn/" target=_blank>ZDNetChina空间</A> - <A 
+href="http://bbs.zdnet.com.cn/" target=_blank>交流论坛</A> - <A 
+href="http://space.zdnet.com.cn/?action/spaces">空间列表</A> - <A 
+href="http://space.zdnet.com.cn/archiver/" target=_blank>站点存档</A> <!--- 
+		<a href="http://space.zdnet.com.cn/?action/register" target="_blank">开通自己的空间</a>--></P>
+<P id=xspace-footer-ad>Copyright &copy; 1997-2008 CNET Networks 版权所有。 ZDNet 是CNET 
+Networks公司注册服务商标。<BR>中华人民共和国电信与信息服务业务经营许可证编号：京ICP证010391号</P>
+<P id=xspace-copyright><SPAN 
+id=xspace-copyright-red>此空间内的所有言论及行为与ZDNetChina和CNET 
+Networks无关</SPAN>&nbsp;&nbsp;Powered by X-Space &copy; 2001-2007Comsenz Inc. 
+<BR></P></DIV>
+<DIV id=toolbarshowbtn><A onmouseover=showtoolbar(); href="javascript:;">Open 
+Toolbar</A></DIV>
+<DIV id=toolbarframe><IFRAME src="SQL2000中的死锁经验总结.files/batch.toolbar.htm" 
+frameBorder=0 width="100%" scrolling=no></IFRAME></DIV>
+<SCRIPT>
+	var pv_subcatid = "spacecountbuilder459";
+</SCRIPT>
+
+<SCRIPT language=javascript src="SQL2000中的死锁经验总结.files/pv.js"></SCRIPT>
+
+<SCRIPT src="SQL2000中的死锁经验总结.files/dw.js"></SCRIPT>
+
+<SCRIPT>
+ 
+   		DW.pageParams = {
+     	siteid: 71
+   		};
+   
+   		DW.clear();
+
+	</SCRIPT>
+
+<SCRIPT language=javascript>
+			<!--
+			var Modified = new Date(document.lastModified);
+			var copyright = document.getElementById("xspace-copyright");
+			if(copyright) {
+				copyright.innerHTML += "Last update: <a href=\"http://space.zdnet.com.cn/index.php?uid/250805/action/viewspace/itemid/1416/php/1\" title=\"点击可以立即更新本页面\">"+(Modified.getYear()<200?(Modified.getYear()+1900):Modified.getYear())+"-"+(Modified.getMonth()+1)+"-"+Modified.getDate()+" "+Modified.getHours()+":"+Modified.getMinutes()+":"+Modified.getSeconds() + "</a><br>";
+			}
+			document.write('<script src="http://space.zdnet.com.cn/batch.html.php?code=http%253A%252F%252Fspace.zdnet.com.cn%252Findex.php%253Fuid%252F250805%252Faction%252Fviewspace%252Fitemid%252F1416%2F1214880458%2F300%2F250805%2F1416%2Fviewspace&amp;lastmodified=' + Modified.getTime() + '" type="text\/javascript" language="javascript"><\/script>');
+			//-->
+			</SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,5 @@
+exec sp_helptext aa--应用sp_helptext查看存储过程的定义文本
+exec sp_depends aa --通过sp_depends查看存储过程的相关性
+exec sp_help aa --应用sp_help查看存储过程的其它属性
+exec sp_rename aa,bb--将指定的存储过程或表名进行更改
+exec sp_renamedb --更改数据库的名称
