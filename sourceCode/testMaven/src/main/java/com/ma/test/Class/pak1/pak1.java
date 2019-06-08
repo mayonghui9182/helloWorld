@@ -6,7 +6,7 @@ import java.util.List;
 
 public class pak1{
     pak1(){ }
-    public  static <T extends pak1> T get(<T super pak1> t1) {
+    public  static <T> T get(T t1) {
         return null;
     }
     public  static  T get1() {return null;}

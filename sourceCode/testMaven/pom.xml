@@ -20,6 +20,7 @@
         <module>onjava8</module>
         <module>document-deal</module>
         <module>utils</module>
+        <module>effective-java-3e-source-code-master</module>
     </modules>
 
     <properties>

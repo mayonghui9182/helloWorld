@@ -40,31 +40,31 @@ public class TestJson {
     }
 
     private static void arrayToJSONTest() {
-        ArrayList<TestBean> testBeans = new ArrayList<>();
-        TestBean testBean = new TestBean();
-        testBean.setName("马永辉");
-        testBean.setAge(18);
-        testBean.setSex("男");
-        testBean.setAdress("北京市海淀区");
-        testBeans.add(testBean);
-
-        TestBean testBean1 = new TestBean();
-        testBean1.setName("马永辉");
-        testBean1.setAge(18);
-        testBean1.setSex("男");
-        testBean1.setAdress("北京市海淀区");
-        testBeans.add(testBean1);
-        System.out.println(JSON.toJSONString(testBeans));
+//        ArrayList<TestBean> testBeans = new ArrayList<>();
+//        TestBean testBean = new TestBean();
+//        testBean.setName("马永辉");
+//        testBean.setAge(18);
+//        testBean.setSex("男");
+//        testBean.setAdress("北京市海淀区");
+//        testBeans.add(testBean);
+//
+//        TestBean testBean1 = new TestBean();
+//        testBean1.setName("马永辉");
+//        testBean1.setAge(18);
+//        testBean1.setSex("男");
+//        testBean1.setAdress("北京市海淀区");
+//        testBeans.add(testBean1);
+//        System.out.println(JSON.toJSONString(testBeans));
 
     }
 
     private static void beanToJSONTest() {
-        TestBean testBean = new TestBean();
-        testBean.setName("马永辉");
-        testBean.setAge(18);
-        testBean.setSex("男");
-        testBean.setAdress("北京市海淀区");
-        System.out.println(JSON.toJSONString(testBean));
+//        TestBean testBean = new TestBean();
+//        testBean.setName("马永辉");
+//        testBean.setAge(18);
+//        testBean.setSex("男");
+//        testBean.setAdress("北京市海淀区");
+//        System.out.println(JSON.toJSONString(testBean));
 
     }
 

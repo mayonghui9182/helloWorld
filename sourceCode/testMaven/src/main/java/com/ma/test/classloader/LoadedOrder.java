@@ -46,11 +46,11 @@ public class LoadedOrder extends Super{
         Const.doStaticSomeThing();
         System.out.println("------------------------");
         Super[] supers=new Super[1];
-        LoadedOrder[] loadedOrders=new LoadedOrder[1];
-        supers=loadedOrders;
-        supers[0]=new Super();
-        LoadedOrder loadedOrder = loadedOrders[0];
-        loadedOrder.test();
+//        LoadedOrder[] loadedOrders=new LoadedOrder[1];
+//        supers=loadedOrders;
+//        supers[0]=new Super();
+//        LoadedOrder loadedOrder = loadedOrders[0];
+//        loadedOrder.test();
 
     }
     void test(){
