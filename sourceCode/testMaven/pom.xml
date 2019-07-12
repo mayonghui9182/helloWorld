@@ -21,6 +21,8 @@
         <module>document-deal</module>
         <module>utils</module>
         <module>effective-java-3e-source-code-master</module>
+        <module>understandJVMDeeply</module>
+        <module>concurrent</module>
     </modules>
 
     <properties>

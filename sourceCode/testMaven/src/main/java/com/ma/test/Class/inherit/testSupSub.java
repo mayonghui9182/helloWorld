@@ -5,12 +5,13 @@ import java.util.List;
 
 public class testSupSub {
     public static void main(String[] args) {
-        ArrayList<SubClass> subList=new ArrayList<SubClass>();
-        ArrayList<SupClass> supList=new ArrayList<SupClass>();
-        ArrayList<String> srtList=new ArrayList<String>();
+//        ArrayList<SubClass> subList=new ArrayList<SubClass>();
+//        ArrayList<SupClass> supList=new ArrayList<SupClass>();
+//        ArrayList<String> srtList=new ArrayList<String>();
 //        subList=srtList;
 //        subList=supList;
 //        supList=subList;
 //        supList=srtList;
+        new SubClass().callSelfMethod();
     }
 }

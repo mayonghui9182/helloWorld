@@ -5,15 +5,16 @@ import java.time.Instant;
 // Demonstration of what can go wrong when you override a method  called from constructor (Page 96)
 public final class Sub extends Super {
     // Blank final, set by constructor
-    private final Instant instant;
+    private final Instant instant =Instant.now();;
 
     Sub() {
-        instant = Instant.now();
+//        instant = Instant.now();
     }
 
     // Overriding method invoked by superclass constructor
     @Override public void overrideMe() {
         System.out.println(instant);
+        System.out.println(anInt);
     }
 
     public static void main(String[] args) {

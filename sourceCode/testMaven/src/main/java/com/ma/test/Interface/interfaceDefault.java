@@ -1,4 +1,4 @@
-package com.ma.test.myInterface;
+package com.ma.test.Interface;
 
 public interface interfaceDefault {
 	void test1();

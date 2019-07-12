@@ -13,5 +13,12 @@ public class SupClass {
     private void supPrivateMethod() {
         System.out.println("supPrivateMethod");
     }
+    public void callSelfMethod(){
+        System.out.println("callSelfMethod");
+        this.selfMethod();
+    }
+    public void selfMethod(){
+        System.out.println("selfMethodOfSup");
 
+    }
 }
