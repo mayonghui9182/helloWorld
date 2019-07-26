@@ -9,14 +9,12 @@ class HoldItem<T> {
   T getItem() { return item; }
 }
 
-class WithColor2<T extends HasColor>
-extends HoldItem<T> {
+class WithColor2<T extends HasColor> extends HoldItem<T> {
   WithColor2(T item) { super(item); }
   java.awt.Color color() { return item.getColor(); }
 }
 
-class WithColorCoord2<T extends Coord & HasColor>
-extends WithColor2<T> {
+class WithColorCoord2<T extends Coord & HasColor> extends WithColor2<T> {
   WithColorCoord2(T item) {  super(item); }
   int getX() { return item.x; }
   int getY() { return item.y; }

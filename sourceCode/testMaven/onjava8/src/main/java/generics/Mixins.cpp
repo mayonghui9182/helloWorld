@@ -28,7 +28,7 @@ template<class T> long SerialNumbered<T>::counter = 1;
 class Basic {
   string value;
 public:
-  void set(string val) { value = val; }
+  void set(string val) { value = val; }5cea8f0faff62
   string get() { return value; }
 };
 

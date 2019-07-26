@@ -22,7 +22,7 @@ public class ShapeFactory2 implements FactoryMethod {
   }
   public Shape create(String id) {
     try {
-      return (Shape)factories
+      return (Shape) factories
         .computeIfAbsent(id, ShapeFactory2::load)
         .newInstance();
     } catch(InstantiationException |

@@ -8,7 +8,6 @@ import java.util.Set;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import com.ma.test.testOfficeParse.ReadWriteExcel;
 
 public class TestStockRegistration {
 	private static String path = "E:\\document\\96\\4.产品代码分配表-模板20180202.xlsx";
@@ -16,7 +15,7 @@ public class TestStockRegistration {
 		// 获取excel文件流
 		Map<String, List<List<String>>> rows=null;
 		try {
-			rows = ReadWriteExcel.readExcel(path);
+//			rows = ReadWriteExcel.readExcel(path);
 		} catch (Exception e) {
 			System.out.println("读取excel文件失败！");
 		}

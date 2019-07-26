@@ -9,8 +9,13 @@ public class Tuple2<A, B> {
   public final B a2;
   public Tuple2(A a, B b) { a1 = a; a2 = b; }
   public String rep() { return  a1 + ", " + a2; }
+  public String testString() { return  "str1" + ", " + "str2"; }
   @Override
   public String toString() {
     return "(" + rep() + ")";
+  }
+
+  public static void main(String[] args) {
+    ClassLoader classLoader = Tuple2.class.getClassLoader();
   }
 }

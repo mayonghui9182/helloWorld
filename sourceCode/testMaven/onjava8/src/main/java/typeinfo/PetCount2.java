@@ -2,12 +2,13 @@ package typeinfo;// typeinfo/PetCount2.java
 // (c)2017 MindView LLC: see Copyright.txt
 // We make no guarantees that this code is fit for any purpose.
 // Visit http://OnJava8.com for more book information.
+
 import typeinfo.pets.*;
 
 public class PetCount2 {
-  public static void main(String[] args) {
-    PetCount.countPets(Pets.CREATOR);
-  }
+    public static void main(String[] args) {
+        PetCount.countPets(Pets.CREATOR);
+    }
 }
 /* Output:
 Rat Manx Cymric Mutt Pug Cymric Pug Manx Cymric Rat

@@ -4,6 +4,8 @@ package functional;// functional/UnboundMethodReference.java
 // Visit http://OnJava8.com for more book information.
 // Method reference without an object
 
+import java.util.stream.IntStream;
+
 class X {
   String f() { return "X::f()"; }
 }
@@ -29,3 +31,35 @@ public class UnboundMethodReference {
 X::f()
 X::f()
 */
+/**
+  *@创建人  mayh
+  *@描述 【】
+  *@创建时间  2019/5/25
+  *@修改人和其它信息
+ * @see  streams/Matching.java
+ */
+interface MethodInvoker{
+    void invoke(MethodReferece mr);
+}
+class MethodInvokerImp implements MethodInvoker{
+
+  @Override
+  public void invoke(MethodReferece mr) {
+    System.out.println("MethodInvokerImp");
+  }
+}
+interface MethodReferece{
+  void test();
+}
+interface InnerImpMR<R,T>{
+  void invoerSelf(R mi,T mr);
+}
+class InnerImpMRMInvoer{
+  static void show(InnerImpMR<MethodInvoker,MethodReferece> iimr, int val) {
+    iimr.invoerSelf(new MethodInvokerImp(), ()-> System.out.println("123"));
+  }
+
+  public static void main(String[] args) {
+    show(MethodInvoker::invoke,2);
+  }
+}

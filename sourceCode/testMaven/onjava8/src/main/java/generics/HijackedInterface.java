@@ -4,8 +4,7 @@ package generics;// generics/HijackedInterface.java
 // Visit http://OnJava8.com for more book information.
 // {WillNotCompile}
 
-class Cat
-  extends ComparablePet implements Comparable<Cat>{
+class Cat extends ComparablePet implements Comparable<Cat>{
   // error: Comparable cannot be inherited with
   // different arguments: <Cat> and <ComparablePet>
   // class Cat

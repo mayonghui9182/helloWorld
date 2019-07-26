@@ -15,8 +15,7 @@ public class Matching {
     System.out.println(
       match.test(
         IntStream.rangeClosed(1, 9)
-          .boxed()
-          .peek(n -> System.out.format("%d ", n)),
+          .boxed(),
         n -> n < val));
   }
   public static void main(String[] args) {
