@@ -20,6 +20,8 @@
         <module>onjava8</module>
         <module>document-deal</module>
         <module>utils</module>
+        <module>formatJson</module>
+        <module>poi-test</module>
         <module>effective-java-3e-source-code-master</module>
         <module>understandJVMDeeply</module>
         <module>concurrent</module>
