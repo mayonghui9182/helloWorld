@@ -188,8 +188,6 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 
 ​	beanDefinition和bean是为了实现IOC而做的。
 
-
-
 ## IOC
 
 ​	在DI/IOC概念之前，我们实例化一个对象A，都是在需要A实例的对象中，比如对象B依赖对象A，那么就在对象B中，直接通过new关键字或者反射得到A的实例的。此时A实例的生命周期，例如A什么时候创建，使用，销毁（此处销毁指的是不在有A的引用，交给GC处理）等，都是由B控制，而A自己是无法控制的。
@@ -213,6 +211,7 @@ IoC is also known as dependency injection (DI). It is a process whereby objects 
 下面是结合有道词典的翻译
 
 ~~~
-控制反转（IoC）也称为依赖注入(dependency injection, DI)。依赖注入指的是一个过程，在这个过程中，对象仅通过构造函数参数、工厂方法的参数，或直接在得到的对象实例上设置属性来定义它们的依赖关系(即与它们一起工作的其他对象)。然后容器在创建bean时注入这些依赖项。这个过程本质上是bean本身c的逆(因此称为控制反转)
+控制反转（IoC）也称为依赖注入(dependency injection, DI)。依赖注入指的是一个过程，在这个过程中，对象仅通过构造函数参数、工厂方法的参数，或直接在得到的对象实例上设置属性来定义它们的依赖关系(即与它们一起工作的其他对象)。然后容器在创建bean时注入这些依赖项。本质上，这个过程与bean本身通过直接构造类或一种机制(如服务定位器模式)来控制依赖项的实例化或位置相反(因此称为控制反转)。
 ~~~
 
+​	spring是通过一个叫做Beanfactory的接口管理各种bean的实例。BeanFactory是IOC机制的基础接口，它提供了配置框架和基本功能。为了添加了更多企业特定的功能，在BeanFactory之上，spring提供了ApplicationContext接口，ApplicationContext是BeanFactory的一个完整超集。
