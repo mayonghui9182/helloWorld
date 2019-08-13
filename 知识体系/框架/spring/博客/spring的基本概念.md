@@ -4,7 +4,7 @@
 
 ​	讲BeanDefinition和bean之前，先回顾一下java中类和实例的概念：我们都知道，class文件是我们编写的java文件经过javac命令编译得到的一个文件，是由java虚拟机执行的文件。class文件中定义着一个或多个接口或类。这些类经过new关键字或者反射等手段可以构建一个或多个实例，而这些实例才是真正完成我们业务逻辑的单位。他们的关系就像模具和产品的概念性，类是摸具，实例是产品。
 
-​	为了实现一定的功能，在spring core中，定义了一种元素据，BeanDefinition，BeanDefinition和bean的关系类比类和实例的关系。以下是BeanDefinition接口的源码：
+​	为了实现一定的功能，在spring core中，定义了一种元素据，BeanDefinition，它是类概念的延伸，是对类的又一层封装。BeanDefinition和bean的关系类比类和实例的关系。以下是BeanDefinition接口的源码：
 
 ~~~java
 
@@ -182,17 +182,29 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 
 ~~~
 
-以上就是spring自定义的元素据BeanDefinition的基础接口，同时也定义了用于实例bean的基础属性。
+​	以上就是spring自定义的元素据BeanDefinition的基础接口，同时也定义了用于实例bean的基础属性。
 
-spring会根据beanDefinition去实例化一个对象，为了区别这个对象和一般的对象，将根据BeanDefinition实例化的对象称为bean。而spring会对这些bean进行统一的管理。
+​	java根据类的变量、方法等信息为模板实例化一个类实例，spring根据BeanDefinition的信息，例如：是单利还是多例，是不是懒加载，根据类的全限定名/工厂方法/静态工厂方法等信息实例化一个类的实例，为了区别这个对象和一般的对象，即bean。。而spring会对这些bean进行统一的管理。
 
-在DI/IOC概念之前，我们实例化一个对象A，都是在需要A实例的对象中，比如对象B依赖对象A，那么就在对象B中，直接通过new关键字或者反射得到A的实例的。此时A实例的生命周期，例如A什么时候创建，使用，销毁（此处销毁指的是不在有A的引用，交给GC处理）等，都是由B控制，而A自己是无法控制的。
+​	beanDefinition和bean是为了实现IOC而做的。
 
-​	为了实现依赖反转（IOC），在类和实例的基础之上，spring又进行了一层封装，他们通过对一些定义，实现了对类的生命周期，类的依赖关系，类的名字进行同一的管理，通过对类的这些特性的管理，进而实现了IOC的思想。
+
 
 ## IOC
 
-​	IOC（Inversion of Control ）的中文翻译式依赖反转，先看spring官网给的一些解释：
+​	在DI/IOC概念之前，我们实例化一个对象A，都是在需要A实例的对象中，比如对象B依赖对象A，那么就在对象B中，直接通过new关键字或者反射得到A的实例的。此时A实例的生命周期，例如A什么时候创建，使用，销毁（此处销毁指的是不在有A的引用，交给GC处理）等，都是由B控制，而A自己是无法控制的。
+
+​	那么我们是不是可以完成一种机制，就是有A自己定义管理自己的生命周期，当别人需要使用A的时候，直接把A自己创建的实例交给使用者。但是如果把A创建自己，交给别人调用，销毁自己这些逻辑写入A的类中，会使A中业务逻辑与生命周期耦合，也违背了类的单一职责的原则。为了解决这些问题，我们需要引入一个第三方，来维护管理A的生命周期呢，当其他类要使用A的时候，由第三方把维护的A的实例交给使用则。
+
+​	很显然，spring就是上文提到的第三方。
+
+​	那么spring怎么知道什么时候需要创建A，怎么创建A，什么时候创建A呢？用传统的class对象，已经不能实现这个功能了。所以，在class的基础上，我们需要一种元数据来描述这些行为。这个元数据就是上文提到的BeanDefinition。
+
+​	BeanDefinition就是spring创建bean的依据
+
+​	下面看下spring官网给的一些解释：
+
+
 
 ```
 IoC is also known as dependency injection (DI). It is a process whereby objects define their dependencies (that is, the other objects they work with) only through constructor arguments, arguments to a factory method, or properties that are set on the object instance after it is constructed or returned from a factory method. The container then injects those dependencies when it creates the bean. This process is fundamentally the inverse (hence the name, Inversion of Control) of the bean itself controlling the instantiation or location of its dependencies by using direct construction of classes or a mechanism such as the Service Locator pattern.

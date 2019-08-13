@@ -16,6 +16,5 @@ public class test {
         Calzone calzone = new Calzone.Builder()
                 .addTopping(HAM).sauceInside().build();
 
-        Comparator
     }
 }
