@@ -1,0 +1,9 @@
+##spring.mvc.view.prefix=/WEB-INFO/jsp/
+##spring.mvc.view.suffix=.html
+###�ر�Ĭ��ģ������
+##spring.thymeleaf.cache=false
+##spring.thymeleaf.enabled=false
+##spring.datasource.name=username
+##spring.datasource.password==123
+#ma:
+#  yong: test

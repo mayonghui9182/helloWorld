@@ -21,7 +21,7 @@ public class Card {
     public Card(Suit suit, Rank rank) {
         this.suit = suit;
         this.rank = rank;
-
+        System.out.println();
     }
     private static final List<Card> NEW_DECK = newDeck();
 

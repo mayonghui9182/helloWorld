@@ -18,7 +18,7 @@ public class JacksonConfig2 {
         ObjectMapper build = jackson2ObjectMapperBuilder.build();
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addDeserializer(BigDecimal.class,new NumberDeserializers.BigDecimalDeserializer());
-        simpleModule.addSerializer(BigDecimal.class,new BigDecimalSerializer())
+        simpleModule.addSerializer(BigDecimal.class,new BigDecimalSerializer());
         return jackson2ObjectMapperBuilder.build();
     }
 }

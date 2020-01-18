@@ -25,6 +25,7 @@
         <module>effective-java-3e-source-code-master</module>
         <module>understandJVMDeeply</module>
         <module>concurrent</module>
+        <module>refactoring</module>
     </modules>
 
     <properties>
