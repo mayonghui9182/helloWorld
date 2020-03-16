@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.lang.reflect</OriginalElement>
+  <nodes>
+    <node x="328.0" y="182.0">java.lang.reflect.GenericArrayType</node>
+    <node x="475.0" y="415.0">java.lang.reflect.Proxy</node>
+    <node x="1441.0833333333333" y="182.0">java.lang.reflect.AnnotatedTypeVariable</node>
+    <node x="600.0" y="415.0">java.lang.reflect.Array</node>
+    <node x="1254.0833333333333" y="182.0">java.lang.reflect.AnnotatedArrayType</node>
+    <node x="883.0" y="339.0">java.lang.reflect.GenericSignatureFormatError</node>
+    <node x="180.0" y="182.0">java.lang.reflect.WildcardType</node>
+    <node x="683.8333333333333" y="263.0">java.lang.reflect.Constructor</node>
+    <node x="1193.5041666666664" y="91.0">java.lang.reflect.Parameter</node>
+    <node x="749.3333333333333" y="182.0">java.lang.reflect.Executable</node>
+    <node x="819.8333333333333" y="263.0">java.lang.reflect.Method</node>
+    <node x="564.25" y="91.0">java.lang.reflect.GenericDeclaration</node>
+    <node x="1592.0" y="339.0">java.lang.reflect.ReflectPermission</node>
+    <node x="767.8333333333333" y="91.0">java.lang.reflect.AccessibleObject</node>
+    <node x="605.3333333333333" y="182.0">java.lang.reflect.TypeVariable</node>
+    <node x="933.8333333333333" y="91.0">java.lang.reflect.Member</node>
+    <node x="1367.3333333333333" y="91.0">java.lang.reflect.AnnotatedType</node>
+    <node x="326.0" y="339.0">java.lang.reflect.MalformedParametersException</node>
+    <node x="1046.0833333333333" y="182.0">java.lang.reflect.AnnotatedWildcardType</node>
+    <node x="951.0833333333333" y="182.0">java.lang.reflect.Field</node>
+    <node x="606.0" y="339.0">java.lang.reflect.UndeclaredThrowableException</node>
+    <node x="171.0" y="415.0">java.lang.reflect.WeakCache</node>
+    <node x="1146.0" y="339.0">java.lang.reflect.InvocationTargetException</node>
+    <node x="1645.0833333333333" y="182.0">java.lang.reflect.AnnotatedParameterizedType</node>
+    <node x="0.0" y="182.0">java.lang.reflect.ParameterizedType</node>
+    <node x="330.5795454545455" y="91.0">java.lang.reflect.Type</node>
+    <node x="0.0" y="339.0">java.lang.reflect.MalformedParameterizedTypeException</node>
+    <node x="332.0" y="415.0">java.lang.reflect.Modifier</node>
+    <node x="498.99999999999994" y="182.0">java.lang.Class</node>
+    <node x="1393.0" y="339.0">java.lang.reflect.InvocationHandler</node>
+    <node x="0.0" y="415.0">java.lang.reflect.ReflectAccess</node>
+    <node x="721.8333333333331" y="0.0">java.lang.reflect.AnnotatedElement</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.lang.reflect.Executable" target="java.lang.reflect.AccessibleObject">
+      <point x="0.0" y="-15.5" />
+      <point x="-36.5" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.AnnotatedWildcardType" target="java.lang.reflect.AnnotatedType">
+      <point x="0.0" y="-15.5" />
+      <point x="1140.0833333333333" y="152.0" />
+      <point x="1384.3333333333333" y="152.0" />
+      <point x="-51.0" y="15.5" />
+    </edge>
+    <edge source="java.lang.Class" target="java.lang.reflect.GenericDeclaration">
+      <point x="26.0" y="-15.5" />
+      <point x="564.0" y="162.0" />
+      <point x="590.5833333333333" y="162.0" />
+      <point x="-52.666666666666686" y="15.5" />
+    </edge>
+    <edge source="java.lang.Class" target="java.lang.reflect.AnnotatedElement">
+      <point x="0.0" y="-15.5" />
+      <point x="538.0" y="51.0" />
+      <point x="734.6666666666665" y="51.0" />
+      <point x="-64.16666666666669" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.WildcardType" target="java.lang.reflect.Type">
+      <point x="0.0" y="-15.5" />
+      <point x="244.0" y="162.0" />
+      <point x="353.37954545454545" y="162.0" />
+      <point x="-15.200000000000045" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.AnnotatedParameterizedType" target="java.lang.reflect.AnnotatedType">
+      <point x="0.0" y="-15.5" />
+      <point x="1755.0833333333333" y="152.0" />
+      <point x="1486.3333333333333" y="152.0" />
+      <point x="51.0" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.TypeVariable" target="java.lang.reflect.AnnotatedElement">
+      <point x="41.33333333333337" y="-15.5" />
+      <point x="708.6666666666665" y="162.0" />
+      <point x="732.75" y="162.0" />
+      <point x="732.75" y="71.0" />
+      <point x="785.9999999999998" y="71.0" />
+      <point x="-12.833333333333314" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.AnnotatedTypeVariable" target="java.lang.reflect.AnnotatedType">
+      <point x="0.0" y="-15.5" />
+      <point x="1533.0833333333333" y="162.0" />
+      <point x="1452.3333333333333" y="162.0" />
+      <point x="17.0" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.TypeVariable" target="java.lang.reflect.Type">
+      <point x="-41.33333333333337" y="-15.5" />
+      <point x="625.9999999999998" y="142.0" />
+      <point x="398.9795454545455" y="142.0" />
+      <point x="30.399999999999977" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.GenericDeclaration" target="java.lang.reflect.AnnotatedElement">
+      <point x="0.0" y="-15.5" />
+      <point x="643.25" y="61.0" />
+      <point x="760.3333333333331" y="61.0" />
+      <point x="-38.5" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.Field" target="java.lang.reflect.AccessibleObject">
+      <point x="-18.75" y="-15.5" />
+      <point x="969.8333333333333" y="152.0" />
+      <point x="877.3333333333333" y="152.0" />
+      <point x="36.5" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.ParameterizedType" target="java.lang.reflect.Type">
+      <point x="0.0" y="-15.5" />
+      <point x="80.0" y="152.0" />
+      <point x="338.1795454545455" y="152.0" />
+      <point x="-30.399999999999977" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.AnnotatedType" target="java.lang.reflect.AnnotatedElement">
+      <point x="0.0" y="-15.5" />
+      <point x="1435.3333333333333" y="51.0" />
+      <point x="862.9999999999999" y="51.0" />
+      <point x="64.16666666666674" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.TypeVariable" target="java.lang.reflect.GenericDeclaration">
+      <point x="0.0" y="-15.5" />
+      <point x="667.3333333333333" y="162.0" />
+      <point x="643.25" y="162.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.Executable" target="java.lang.reflect.GenericDeclaration">
+      <point x="-36.66666666666666" y="-15.5" />
+      <point x="767.6666666666665" y="152.0" />
+      <point x="695.9166666666665" y="152.0" />
+      <point x="52.66666666666663" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.AccessibleObject" target="java.lang.reflect.AnnotatedElement">
+      <point x="0.0" y="-15.5" />
+      <point x="840.8333333333333" y="71.0" />
+      <point x="811.6666666666665" y="71.0" />
+      <point x="12.833333333333371" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.Constructor" target="java.lang.reflect.Executable">
+      <point x="0.0" y="-15.5" />
+      <point x="741.8333333333333" y="238.0" />
+      <point x="776.8333333333333" y="238.0" />
+      <point x="-27.5" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.Field" target="java.lang.reflect.Member">
+      <point x="18.75" y="-15.5" />
+      <point x="24.5" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.Executable" target="java.lang.reflect.Member">
+      <point x="36.666666666666686" y="-15.5" />
+      <point x="840.9999999999999" y="162.0" />
+      <point x="958.3333333333333" y="162.0" />
+      <point x="-24.5" y="15.5" />
+    </edge>
+    <edge source="java.lang.Class" target="java.lang.reflect.Type">
+      <point x="-26.0" y="-15.5" />
+      <point x="511.99999999999994" y="152.0" />
+      <point x="383.77954545454554" y="152.0" />
+      <point x="15.200000000000045" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.AnnotatedArrayType" target="java.lang.reflect.AnnotatedType">
+      <point x="0.0" y="-15.5" />
+      <point x="1337.5833333333333" y="162.0" />
+      <point x="1418.3333333333333" y="162.0" />
+      <point x="-17.0" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.Method" target="java.lang.reflect.Executable">
+      <point x="0.0" y="-15.5" />
+      <point x="866.8333333333333" y="238.0" />
+      <point x="831.8333333333333" y="238.0" />
+      <point x="27.5" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.GenericArrayType" target="java.lang.reflect.Type">
+      <point x="0.0" y="-15.5" />
+      <point x="403.5" y="162.0" />
+      <point x="368.5795454545455" y="162.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="java.lang.reflect.Parameter" target="java.lang.reflect.AnnotatedElement">
+      <point x="0.0" y="-15.5" />
+      <point x="1247.5041666666664" y="61.0" />
+      <point x="837.3333333333331" y="61.0" />
+      <point x="38.5" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7394328517924024" x="914.5" y="213.0" />
+  <SelectedNodes>
+    <node>java.lang.reflect.ReflectAccess</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
