@@ -2,6 +2,15 @@
 
 ## IOC概念
 
+spring framework的基础模块是IOC和AOP。这里将IOC的概念。
+
+​	DI是SOLID五大原则中的D，即Dependency inversion principle，指两方面：
+
+- 高层次模块不依赖低层次模块，他们都依赖抽象
+- 抽象依赖实现，实现不依赖抽象
+
+DI是一种规则，而IOC是DI的一种实现技术。它借助BeanFactory容器类，作为第三方，创建并管理所有的实例，并将所有的被依赖项，注入到依赖项里。
+
 现在有一个解析Excel，并处理解析结果的需求。我们需要一个解析excel的类，我们叫它ExcelParser，它有一个parse方法。一个结果处理类，我们叫它Processer，它有一个process方法。下面是需求的不同实现。
 
 ### 正常的程序实现：
