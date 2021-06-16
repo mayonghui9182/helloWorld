@@ -12,7 +12,7 @@
     <artifactId>spring-annotation</artifactId>
 
     <properties>
-        <tomcat-veriosn>8.5.39</tomcat-veriosn>
+        <tomcat-veriosn>8.5.61</tomcat-veriosn>
     </properties>
 
     <dependencies>
