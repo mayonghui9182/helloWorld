@@ -39,7 +39,7 @@
         <oracle-version>11.2.0.1.0</oracle-version>
         <c3p0-version>0.9.1.2</c3p0-version>
         <!--//spring-->
-        <spring-version>5.0.9.RELEASE</spring-version>
+        <spring-version>5.3.18</spring-version>
         <springboot-version>2.0.8.RELEASE</springboot-version>
         <servlet-version>3.0-alpha-1</servlet-version>
         <javax-servlet-version>4.0.1</javax-servlet-version>
